@@ -49,4 +49,4 @@ date: 2021-05-27 18:24:04
 </style>
 
 
-<script data-pjax src="https://cdn.jsdelivr.net/gh/ayasa520/daodao@0.1.3/daodao.js"></script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/ayasa520/daodao@0.1.4/daodao.js"></script>
