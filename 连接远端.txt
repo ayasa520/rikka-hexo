@@ -1,0 +1,4 @@
+1. 远端git init
+2. 本地git init
+3. 本地 git remote  add origin git@xxxxx.git
+4. add commit push
