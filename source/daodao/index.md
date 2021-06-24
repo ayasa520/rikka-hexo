@@ -48,8 +48,8 @@ date: 2021-05-27 18:24:04
   }
 </style>
 
-<script>function addPlayer(){const ap = new APlayer({container: document.getElementsByClassName('aplayer1')})}</script>
-<script data-pjax src="https://cdn.jsdelivr.net/gh/ayasa520/daodao@0.1.4/daodao.js" onload ="addPlayer()"></script>
+<script>window.onload=function(){const ap = new APlayer({container: document.getElementsByClassName('aplayer1')})}</script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/ayasa520/daodao@0.1.4/daodao.js"></script>
 
 
 
