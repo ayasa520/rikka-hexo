@@ -441,18 +441,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // toc元素點擊
     $cardToc.addEventListener('click', (e) => {
-
       e.preventDefault()
       const $target = e.target.classList.contains('toc-link')
         ? e.target
         : e.target.parentElement
-      try{
-        btf.scrollToDest(btf.getEleTop(document.getElementById(decodeURI($target.getAttribute('href')).split('#')[1])), 300)
-      }
-      catch (err)
-      {
-        window.location.href=decodeURI($target.getAttribute('href'))
-      }
+      btf.scrollToDest(btf.getEleTop(document.getElementById(decodeURI($target.getAttribute('href')).replace('#', ''))), 300)
       if (window.innerWidth < 900) {
         mobileToc.close()
       }
