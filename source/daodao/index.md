@@ -19,7 +19,7 @@ date: 2021-05-27 18:24:04
     box-shadow: 0 5px 10px 8px rgb(7 17 27 / 16%);
     transform: translateY(-3px);
 }
-  .timeline ul li {background:none;list-style-type:none;position: inherit;
+  .timeline ul .list>li {background:none;list-style-type:none;position: inherit;
     margin: 0.8rem 0!important;
     padding: 1.5rem!important;
     border-radius: 8px;
