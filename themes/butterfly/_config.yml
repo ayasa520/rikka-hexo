@@ -818,11 +818,8 @@ note:
 # It may contain bugs and unstable, give feedback when you find the bugs.
 # https://github.com/MoOx/pjax
 pjax:
-  enable: true
+  enable: enable
   exclude:
-    # - xxxx
-    # - xxxx
-
 
 
 # Snackbar (Toast Notification 彈窗)
@@ -888,6 +885,8 @@ inject:
     - <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'">
     - <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="defer" onload="this.media='all'">
     - <link rel="stylesheet" href="/css/custom.css"  media="defer" onload="this.media='all'">
+    - <script src="https://cdn.jsdelivr.net/hls.js/latest/hls.min.js"></script>
+    - <script src="https://cdn.jsdelivr.net/gh/ayasa520/hexo/source/js/DPlayer.min.js"></script>
 
   bottom:
     # - <script src="xxxx"></script>
