@@ -33,7 +33,7 @@ categories: "教程"
 <script>
     const dp = new DPlayer({
       container: document.getElementById('dplayer'),
-      autoplay:!0,theme:"#FADFA3",loop:true,preload:"auto",volume:Number("20"),
+      autoplay:0,theme:"#FADFA3",loop:true,preload:"auto",volume:Number("20"),
       video: {
           url: 'https://cdn.jsdelivr.net/gh/ayasa520/assets/%E8%96%87%E8%96%87%20-%E8%90%A4%E7%9F%B3%E7%9C%BC%E4%B9%8B%E6%AD%8C-4/playlist.m3u8',
           type: 'hls',
