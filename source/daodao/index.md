@@ -8,6 +8,7 @@ date: 2021-05-27 18:24:04
 <div class="post">
   <div class="post-content">
     <div id="bber"></div>
+    <div id= "exec-script"></div>
   </div>
 </div>
 
@@ -49,7 +50,7 @@ date: 2021-05-27 18:24:04
 </style>
 
 
-<script data-pjax src="https://cdn.jsdelivr.net/gh/ayasa520/daodao@0.1.5/daodao.js"></script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/ayasa520/daodao@0.2.0/daodao.js"></script>
 
 
 
