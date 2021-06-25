@@ -45,7 +45,7 @@ date: 2021-05-27 18:24:04
   .dark-theme .timeline ul li::after{outline: 15px solid #292a2d;}
   @media (max-width:860px) {
     .timeline ul li{margin-left:0;}
-    .timeline ul li div{width:calc(100vw - 75px);left:30px;}
+    .timeline ul li>div{width:calc(100vw - 75px);left:30px;}
   }
 </style>
 
