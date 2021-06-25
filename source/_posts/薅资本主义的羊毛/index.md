@@ -29,8 +29,16 @@ categories: "教程"
 
 **示例**:
 看不到视频请刷新
-
-{% dplayer "url=https://cdn.jsdelivr.net/gh/ayasa520/assets/%E8%96%87%E8%96%87%20-%E8%90%A4%E7%9F%B3%E7%9C%BC%E4%B9%8B%E6%AD%8C-4/playlist.m3u8" "type: 'hls'",  "id=9E2E3368B56CDBB4" "loop=yes" "theme=#FADFA3" "autoplay=false"  %}
+<div id="dplayer" class="dplayer-video dplayer dplayer-no-danmaku"></div>   
+<script>
+  $(function(){ 
+    const dp = new DPlayer({
+      container: document.getElementById('dplayer'),
+      autoplay:!0,theme:"#FADFA3",loop:true,preload:"auto",volume:Number("20"),
+      video: {
+          url: 'https://cdn.jsdelivr.net/gh/ayasa520/assets/%E8%96%87%E8%96%87%20-%E8%90%A4%E7%9F%B3%E7%9C%BC%E4%B9%8B%E6%AD%8C-4/playlist.m3u8',
+          type: 'hls',
+},});})</script>
 
 仓库:
 
