@@ -12,13 +12,13 @@ categories: "教程"
 
 此处使用的播放器为 DPlayer:{% link DPlayer 官方文档, http://dplayer.js.org/zh/, https://i.loli.net/2019/06/06/5cf8c5d94521136430.png %}
 
-使用之前要先引入 hls.js
+使用之前要必须先引入 hls.js
 
 ```js
 <script src="https://cdn.jsdelivr.net/hls.js/latest/hls.min.js"></script>
 ```
 
-当然也可以用 `hexo-tag-dplayer` 通过外挂标签的形式使用 DPlayer:
+也可以用 `hexo-tag-dplayer` 通过外挂标签的形式使用 DPlayer:
 
 ```
 {% dplayer "url=https://cdn.jsdelivr.net/gh/ayasa520/assets/%E8%96%87%E8%96%87%20-%E8%90%A4%E7%9F%B3%E7%9C%BC%E4%B9%8B%E6%AD%8C-4/playlist.m3u8" "type: 'hls'",  "id=9E2E3368B56CDBB4" "loop=yes" "theme=#FADFA3" "autoplay=false"  %}
