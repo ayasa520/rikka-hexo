@@ -20,7 +20,7 @@ categories: "教程"
 
 也可以用 `hexo-tag-dplayer` 通过外挂标签的形式使用 DPlayer:
 
-<script src="https://cdn.jsdelivr.net/gh/ayasa520/hexo/assets/js/DPlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ayasa520/hexo/source/js/DPlayer.min.js"></script>
 
 ```
 {% dplayer "url=https://cdn.jsdelivr.net/gh/ayasa520/assets/%E8%96%87%E8%96%87%20-%E8%90%A4%E7%9F%B3%E7%9C%BC%E4%B9%8B%E6%AD%8C-4/playlist.m3u8" "type: 'hls'",  "id=9E2E3368B56CDBB4" "loop=yes" "theme=#FADFA3" "autoplay=false"  %}
