@@ -2,6 +2,7 @@
 title: "Java 基础(四) 容器与泛型"
 tag: 'Java'
 category: 教程
+date: 2020-09-01
 ---
 + 常用 Collections
 
@@ -89,8 +90,6 @@ for(String string:s)
 }
 
 //for-each
-
-
 ```
 ----
 ##### HashSet 检查重复的方法 hashCode() 与 equals()
