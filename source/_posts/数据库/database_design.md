@@ -8,7 +8,6 @@ date: 2021-06-12
 
 
 
-# 数据库设计
 
 ## 实体关系(Entity-Relationship, E-R)概念
 
