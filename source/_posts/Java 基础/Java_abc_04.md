@@ -58,31 +58,31 @@ public class NoteBook {
         System.out.println(a);
     }
 }
-
 ```
+
 ### 2. 集合容器(Set)
 #### 1. HashSet
-  ```java
+```java
 HashSet<String> s = new HashSet<String>();
 s.add("first");
 s.add("second");
 s.add("first");
 System.out.println(s);
-  ```
-  显示结果：
-  ```
-  second
-  first
-  ```
-  集合容器```HashSet```具有**无序性**和**无重复型**。此外，如果一个类的内部实现了```String toString()```函数(如数组、ArrayList 、HashMap )，那么可以直接用```System.out.println(容器名)```打印该函数内部指定返回的内容。
-  遍历 HashSet 可以使用迭代器或者 for-each 循环
+```
+显示结果：
+```
+second
+first
+```
+集合容器```HashSet```具有**无序性**和**无重复型**。此外，如果一个类的内部实现了```String toString()```函数(如数组、ArrayList 、HashMap )，那么可以直接用```System.out.println(容器名)```打印该函数内部指定返回的内容。
+遍历 HashSet 可以使用迭代器或者 for-each 循环
 
- ```Java
+```Java
 //迭代器
 Iterator iterator = s.iterator();
 for(iterator.hasNext())
 {
-...   
+	...   
 }
 for(String string:s)
 {
@@ -100,12 +100,14 @@ TreeSet 同样不允许有重复的元素，但是他会一直保持有序。
 要使用 TreeSet，必须保证下面其中一项为真：
 + TreeSet 中的元素实现了 Comparable
 + 使用重载、取用 Comparable 参数的构造函数来创建 TreeSet
+  
   ```java
   TreeSet<Song> tree = new TreeSet<Song>(new AuthorCompare());
   ```
 ### 3. 哈希表(HashMap)
 哈希表以键值对的形式储存顺序。
-  ```java
+
+```java
 package coin;
 
 import java.util.HashMap;
@@ -140,9 +142,9 @@ public class Coin {
         System.out.println(name);
     }
 }
+```
 
-  ```
-  遍历哈希表中的值可以用以下方法：
+遍历哈希表中的值可以用以下方法：
 ```java
 for(int key:coinnames.keySet()) {
     System.out.println(coinnames.get(key));
@@ -158,7 +160,9 @@ dime
 没有打印出 "half-dollar" , 这是因为 HashMap 中键( Key )是**不允许重复**的，所以后一次的 “五毛” 会覆盖前一次。
 
 ## 2. 由 sort() 方法所知道的
-ArrayList 类中不含 ```sort()``` 函数, 但是 Collections 类中含有 ```sort()```方法, 所以可以使用```Collections.sort(List list)```将实现了 List 接口的 ArrayList 传进去.
+
+ArrayList 类中不含 `sort()` 函数, 但是 Collections 类中含有 `sort()`方法, 所以可以使用`Collections.sort(List list)`将实现了 List 接口的 ArrayList 传进去.
+
 ```Java
 //创建存放歌曲名的容器
 private ArrayList<String> songList = new ArrayList<>();
@@ -208,6 +212,7 @@ comepareTo 返回值小于 0, 则传入的 Song 大于执行的 Song.
 
 ----------
 除了实现 Comparable, 还可以用 Comparator 参数来调用不同方式的排序.
+
 ```java
 class AuthorCompare implements Comparator<Song>{
     @override
@@ -217,6 +222,7 @@ class AuthorCompare implements Comparator<Song>{
     }
 }
 ```
+
 于是, 可以在其他地方调用两个参数版本的`sort()`:
 ```java
 Collection.sort(songList,new AuthorCompare);
