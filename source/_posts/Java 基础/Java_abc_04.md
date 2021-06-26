@@ -76,8 +76,8 @@ System.out.println(s);
   集合容器```HashSet```具有**无序性**和**无重复型**。此外，如果一个类的内部实现了```String toString()```函数(如数组、ArrayList 、HashMap )，那么可以直接用```System.out.println(容器名)```打印该函数内部指定返回的内容。
   遍历 HashSet 可以使用迭代器或者 for-each 循环
 
-  ```Java
-  //迭代器
+ ```Java
+//迭代器
 Iterator iterator = s.iterator();
 for(iterator.hasNext())
 {
@@ -91,7 +91,7 @@ for(String string:s)
 //for-each
 
 
-  ```
+```
 ----
 ##### HashSet 检查重复的方法 hashCode() 与 equals()
 当把对象加入 HashSet 时，它会首先使用该对象的 hashcode 值u来判断对象加入的位置，但是同时也与其他对象的 hashcode 比对，如果没有相同的，这个对象**一定不是重复的**。如果 hashcode 相等，对象也不一定相等，这就会调用其中一者的 `equals()` 来判断是否真的相同。
