@@ -847,7 +847,7 @@ pangu:
 lazyload:
   enable: true
   field: site # site/post
-  placeholder: 
+  placeholder: /img/404.jpg
   blur: true
 
 
