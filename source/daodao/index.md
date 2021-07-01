@@ -71,3 +71,4 @@ start: 0,//从第几条开始
 themecss: "https://www.bilibilianime.com/css/talk.css" //自定义说说主题，可选【仅1.1.0版本及以上使用】
 });
 </script>
+<script>console.log("123");</script>
