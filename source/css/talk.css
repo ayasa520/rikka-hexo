@@ -1,0 +1,170 @@
+/* hpp-talk: talk.css-bfonion */
+/* author: noionion (https://noionion.top/) */
+/*
+repo https://github.com/2X-ercha/butterfly-css-for-hpptalk
+cdn: https://cdn.jsdelivr.net/gh/2x-ercha/butterfly-css-for-hpptalk/Butterfly_1.css
+*/
+
+.hpp_talk_img {
+    width: auto!important;
+    max-width: 100px!important;
+}
+
+
+#article-container img {
+    margin: 0 auto 0rem!important;
+}
+
+.hppt_img-square {
+    border-radius: 100%!important;
+}
+
+a.hppt_button_nextpage {
+    color: #ffffff!important;
+    font-weight: bolder!important;
+}
+
+/* light */
+.hppt_panel-footer {
+    border-radius: 0 0 3px 3px!important;
+    padding: 1px 15px!important;
+    background-color:var(--btn-bg)!important;
+}
+
+.hppt_text-muted {
+    color: #000000aa!important;
+}
+
+.hppt_button_nextpage {
+    width: 100px!important;
+    height: 40px!important;
+    border-width: 0px!important;
+    border-radius: 100px!important;
+    background: var(--btn-bg)!important;
+    cursor: pointer!important;
+    outline: none!important;
+    font-family: auto!important;
+    font-size: 16px!important;
+    margin: .2rem auto 0!important;
+    display: block!important;
+    transition-property: background-color;
+    -moz-transition-property: background-color; /* Firefox 4 */
+    -webkit-transition-property: background-color; /* Safari 和 Chrome */
+    -o-transition-property: background-color; /* Opera */
+    transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s; /* Firefox 4 */
+    -webkit-transition-duration: 0.5s; /* Safari 和 Chrome */
+    -o-transition-duration: 0.5s; /* Opera */
+}
+
+.hppt_button_nextpage:hover {
+    width: 100px!important;
+    height: 40px!important;
+    border-width: 0px!important;
+    border-radius: 100px!important;
+    background: var(--btn-hover-color)!important;
+    cursor: pointer!important;
+    outline: none!important;
+    font-family: auto!important;
+    font-size: 16px!important;
+    margin: .2rem auto 0!important;
+    display: block!important;
+    transition-property: background-color;
+    -moz-transition-property: background-color; /* Firefox 4 */
+    -webkit-transition-property: background-color; /* Safari 和 Chrome */
+    -o-transition-property: background-color; /* Opera */
+    transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s; /* Firefox 4 */
+    -webkit-transition-duration: 0.5s; /* Safari 和 Chrome */
+    -o-transition-duration: 0.5s; /* Opera */
+}
+
+/* dark */
+[data-theme='dark'] .hppt_panel-footer {
+    border-radius: 0 0 3px 3px!important;
+    padding: 1px 15px!important;
+    background-color: var(--btn-bg)!important;
+}
+
+[data-theme='dark'] .hide-button, [data-theme='dark'] .btn-beautify, [data-theme='dark'] .mermaid, [data-theme='dark'] .post-outdate-notice, [data-theme='dark'] .error-img, [data-theme='dark'] #article-container iframe, [data-theme='dark'] img, [data-theme='dark'] .gist, [data-theme='dark'] .ads-wrap {
+    filter: brightness(1)!important;
+}
+
+[data-theme='dark'] .hppt_text-muted {
+    color: #ffffffdd!important;
+}
+
+[data-theme='dark'] .hppt_button_nextpage {
+    width: 100px!important;
+    height: 40px!important;
+    border-width: 0px!important;
+    border-radius: 100px!important;
+    background: var(--btn-bg)!important;
+    cursor: pointer!important;
+    outline: none!important;
+    font-family: auto!important;
+    font-size: 16px!important;
+    margin: .2rem auto 0!important;
+    display: block!important;
+    transition-property: background-color;
+    -moz-transition-property: background-color; /* Firefox 4 */
+    -webkit-transition-property: background-color; /* Safari 和 Chrome */
+    -o-transition-property: background-color; /* Opera */
+    transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s; /* Firefox 4 */
+    -webkit-transition-duration: 0.5s; /* Safari 和 Chrome */
+    -o-transition-duration: 0.5s; /* Opera */
+}
+
+[data-theme='dark'] .hppt_button_nextpage:hover {
+    width: 100px!important;
+    height: 40px!important;
+    border-width: 0px!important;
+    border-radius: 100px!important;
+    background: var(--btn-hover-color)!important;
+    cursor: pointer!important;
+    outline: none!important;
+    font-family: auto!important;
+    font-size: 16px!important;
+    margin: .2rem auto 0!important;
+    display: block!important;
+    transition-property: background-color;
+    -moz-transition-property: background-color; /* Firefox 4 */
+    -webkit-transition-property: background-color; /* Safari 和 Chrome */
+    -o-transition-property: background-color; /* Opera */
+    transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s; /* Firefox 4 */
+    -webkit-transition-duration: 0.5s; /* Safari 和 Chrome */
+    -o-transition-duration: 0.5s; /* Opera */
+}
+
+
+
+.hppt_streamline  #item:hover{
+    box-shadow: 0 5px 10px 8px rgb(7 17 27 / 16%);
+    transform: translateY(-3px);
+}
+.hppt_streamline #item {background:none;list-style-type:none;position: inherit;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px 6px rgb(7 17 27 / 6%);
+    transition: all 0.25s ease 0.2s, transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s, -webkit-transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s;
+    user-select: none;
+}
+.hppt_panel-footer{
+    background-color: #fff!important;
+}
+.hppt_panel{
+    background-color: #ffffff!important;
+    border-radius: 8px!important;
+
+}
+
+.hppt_streamline ol #item p img[src*="twikoo-magic"]{display:inline-block!important;width:auto;}
+
+.hppt_panel-body p{
+    margin: 0 1rem 0.5rem 1rem!important;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+    font-weight: 600;
+    font-size: 16px;
+}
+

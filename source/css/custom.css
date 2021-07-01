@@ -1,30 +1,30 @@
 /* 首页文章卡片 */
 #recent-posts > .recent-post-item{
-    background:rgba(255, 255, 255, 0.5);
+    background:rgba(255, 255, 255, 1);
 }
 /* 首页侧栏卡片 */
 .card-widget{
-  background:rgba(255, 255, 255, 0.5)!important;
+  background:rgba(255, 255, 255, 1)!important;
 }
 /* 文章页面正文背景 */
 div#post{
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 1);
 }
 /* 分页页面 */
 div#page{
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 1);
 }
 /* 归档页面 */
 div#archive{
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 1);
 }
 /* 标签页面 */
 div#tag{
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 1);
 }
 /* 分类页面 */
 div#category{
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 1);
 }
 
 
@@ -32,31 +32,31 @@ div#category{
 
 /* 首页文章卡片 */
 [data-theme=dark] #recent-posts > .recent-post-item{
-  background:rgba(0,0,0,0.5);
+  background:rgba(0,0,0,1);
 }
 /* 首页侧栏卡片 */
 [data-theme=dark] .card-widget{
-background:rgba(0,0,0,0.5)!important;
+background:rgba(0,0,0,1)!important;
 }
 /* 文章页面正文背景 */
 [data-theme=dark] div#post{
-background: rgba(0,0,0,0.5);
+background: rgba(0,0,0,1);
 }
 /* 分页页面 */
 [data-theme=dark] div#page{
-background: rgba(0,0,0,0.5);
+background: rgba(0,0,0,1);
 }
 /* 归档页面 */
 [data-theme=dark] div#archive{
-background: rgba(0,0,0,0.5);
+background: rgba(0,0,0,1);
 }
 /* 标签页面 */
 [data-theme=dark] div#tag{
-background: rgba(0,0,0,0.5);
+background: rgba(0,0,0,1);
 }
 /* 分类页面 */
 [data-theme=dark] div#category{
-background: rgba(0,0,0,0.5);
+background: rgba(0,0,0,1);
 }
 .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
   left: -66px !important;
