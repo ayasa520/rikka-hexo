@@ -63,7 +63,7 @@ date: 2021-05-27 18:24:04
 <div id="hpp_talk"></div>
 <!-- 激活HexoPlusPlus_Talk -->
 <script>console.log("123");
-document.write('<script src="https://cdn.jsdelivr.net/gh/HexoPlusPlus/HexoPlusPlus@1.2.0/talk_user.js"></script>');
+document.write('<script src="https://cdn.jsdelivr.net/gh/HexoPlusPlus/HexoPlusPlus@1.2.0/talk_user.js"><\/script>');
 </script>
 
 <script>
