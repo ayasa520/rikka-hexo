@@ -67,7 +67,7 @@ date: 2021-05-27 18:24:04
 
 {% raw %}
 <div class="js-pjax">
-<script>
+<script defer>
 new hpp_talk({
 id:"hpp_talk",//容器id
 domain: "admin.jyaoushingan.workers.dev",//您的HexoPlusPlus域名，如admin.cyfan.top
