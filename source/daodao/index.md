@@ -68,13 +68,13 @@ date: 2021-05-27 18:24:04
 {% raw %}
 <div class="js-pjax">
 <script >
-new hpp_talk({
+window.onload=function(){new hpp_talk({
 id:"hpp_talk",//容器id
 domain: "admin.jyaoushingan.workers.dev",//您的HexoPlusPlus域名，如admin.cyfan.top
 limit: 10,//单次获取的最多条数
 start: 0,//从第几条开始
 themecss: "https://www.bilibilianime.com/css/talk.css" //自定义说说主题，可选【仅1.1.0版本及以上使用】
-});
+}});
 </script>
 </div>
 {% endraw %}
