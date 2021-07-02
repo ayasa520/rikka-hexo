@@ -903,7 +903,7 @@ inject:
     - <script defer src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
     - <script defer src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@latest/source/js/issues.min.js"></script>
     - <script defer data-pjax src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.5.0/build/highlight.min.js"></script>
-    - <script data-pjax defer onload="try{hpp_talk_init()}catch(error){console.log("无talk")}" src="https://cdn.jsdelivr.net/gh/HexoPlusPlus/HexoPlusPlus@1.2.0/talk_user.js"></script> 
+    - <script data-pjax defer onload="try{hpp_talk_init()}catch(error){console.log(\"无talk\")}" src="https://cdn.jsdelivr.net/gh/HexoPlusPlus/HexoPlusPlus@1.2.0/talk_user.js"></script> 
     
 
 
