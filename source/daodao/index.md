@@ -62,13 +62,9 @@ date: 2021-05-27 18:24:04
 <!-- <script src="https://cdn.jsdelivr.net/gh/HexoPlusPlus/HexoPlusPlus@1.2.0/talk_user.js"></script> -->
 <!-- 创建HexoPlusPlus_Talk容器 -->
 <div id="hpp_talk"></div>
-<!-- 激活HexoPlusPlus_Talk -->
-{% raw %}
-<div class="js-pjax">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HexoPlusPlus/HexoPlusPlus@1.2.0/talk.css" /> 
-<script src="https://cdn.jsdelivr.net/gh/HexoPlusPlus/HexoPlusPlus@1.2.0/talk_user.js"></script>
-</div>
-{% endraw %}
+
+
 <script>
 new hpp_talk({
 id:"hpp_talk",//容器id

@@ -11,7 +11,8 @@ script.
     '#body-wrap',
     '#rightside-config-hide',
     '#rightside-config-show',
-    '.js-pjax'
+    '.js-pjax',
+
   ]
 
   if (!{Boolean(theme.Open_Graph_meta && theme.comments.use && theme.comments.use.includes('Livere'))}) {
@@ -59,6 +60,7 @@ script.
       newScript.appendChild(document.createTextNode(content))
       item.parentNode.replaceChild(newScript, item)
     })
+  
 
     GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
 
