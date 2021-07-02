@@ -65,6 +65,8 @@ date: 2021-05-27 18:24:04
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HexoPlusPlus/HexoPlusPlus@1.2.0/talk.css" /> 
 
 
+{% raw %}
+<div class="js-pjax">
 <script>
 new hpp_talk({
 id:"hpp_talk",//容器id
@@ -74,6 +76,7 @@ start: 0,//从第几条开始
 themecss: "https://www.bilibilianime.com/css/talk.css" //自定义说说主题，可选【仅1.1.0版本及以上使用】
 });
 </script>
-
+</div>
+{% endraw %}
 
 
