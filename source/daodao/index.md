@@ -67,7 +67,6 @@ date: 2021-05-27 18:24:04
 
 
 {% raw %}
-<div class="js-pjax">
 <script >
 function hpp_talk_init(){
   new hpp_talk({
@@ -78,7 +77,6 @@ function hpp_talk_init(){
     themecss: "https://www.bilibilianime.com/css/talk.css" //自定义说说主题，可选【仅1.1.0版本及以上使用】
 });}
 </script>
-</div>
 {% endraw %}
 
 
