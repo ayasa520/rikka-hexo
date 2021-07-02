@@ -154,7 +154,7 @@ a.hppt_button_nextpage {
     border-radius: 8px!important;
 
 }
-.hpp_talk_img {
+#article-container  .hppt_streamline ol #item .hpp_talk_img {
     width: auto!important;
     max-width: 100%!important;
 }
