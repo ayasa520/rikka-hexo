@@ -159,7 +159,7 @@ a.hppt_button_nextpage {
     max-width: 100%!important;
 }
 
-#article-container  .hppt_streamline ol #item p img[src*="twikoo-magic"]{width: 16px!important; display:inline-block!important;width:auto!important;}
+#article-container  .hppt_streamline ol #item p img[src*="twikoo-magic"]{width: 16px!important; display:inline-block!important;}
 
 .hppt_panel-body p{
     margin: 0 1rem 0.5rem 1rem!important;
