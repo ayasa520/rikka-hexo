@@ -9,6 +9,8 @@ cdn: https://cdn.jsdelivr.net/gh/2x-ercha/butterfly-css-for-hpptalk/Butterfly_1.
 
 #article-container img {
     margin: 0 auto 0rem!important;
+        width: auto!important;
+    max-width: 100%!important;
 }
 
 .hppt_img-square {
@@ -153,10 +155,6 @@ a.hppt_button_nextpage {
     background-color: #ffffff!important;
     border-radius: 8px!important;
 
-}
-.hpp_talk_img {
-    width: auto!important;
-    max-width: 100%!important;
 }
 
 .hppt_streamline ol #item p img[src*="twikoo-magic"]{width: 16px; display:inline-block!important;width:auto;}
