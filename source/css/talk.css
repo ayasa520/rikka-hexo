@@ -5,10 +5,6 @@ repo https://github.com/2X-ercha/butterfly-css-for-hpptalk
 cdn: https://cdn.jsdelivr.net/gh/2x-ercha/butterfly-css-for-hpptalk/Butterfly_1.css
 */
 
-.hpp_talk_img {
-    width: auto!important;
-    max-width: 100px!important;
-}
 
 
 #article-container img {
@@ -158,8 +154,12 @@ a.hppt_button_nextpage {
     border-radius: 8px!important;
 
 }
+.hpp_talk_img {
+    width: auto!important;
+    max-width: 100%!important;
+}
 
-.hppt_streamline ol #item p img[src*="twikoo-magic"]{width: 3em!important; display:inline-block!important;width:auto;}
+.hppt_streamline ol #item p img[src*="twikoo-magic"]{width: 16px; display:inline-block!important;width:auto;}
 
 .hppt_panel-body p{
     margin: 0 1rem 0.5rem 1rem!important;
