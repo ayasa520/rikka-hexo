@@ -89,6 +89,7 @@ document.getElementById("hpp_talk_list").innerHTML+=`<div id="${q["id"]}" class=
     <\/div>`
 	
 }
+$.getScript('https://cdn.jsdelivr.net/gh/ayasa520/hexo@master/source/js/prism.js');
             }
             else {
             console.log("ERROR")
