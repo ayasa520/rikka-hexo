@@ -4,6 +4,25 @@ const ap = new APlayer({
     autoplay: false,
     audio: [
       {
+        name:"Fluorite Eye's Song",
+        artist:"八木海莉",
+        url:"https://music.163.com/song/media/outer/url?id=1849953578.mp3",
+        cover:"https://p2.music.126.net/V-t3V8sqYVLY05IplTjHkg==/109951166053365814.jpg?param=300x300"
+      },
+      {
+        name:"Sing My Pleasure（Grace Ver.）",
+        artist:"小玉ひかり",
+        url:"http://music.163.com/song/media/outer/url?id=1844194161.mp3",
+        cover:"http://p2.music.126.net/wDBcfe9ZKQyAIYm4DS277w==/109951165970295417.jpg?param=300x300"
+      },
+
+      {
+        name:"Ensemble for Polaris",
+        artist:"六花,乃藍",
+        url:"https://music.163.com/song/media/outer/url?id=1835620351.mp3",
+        cover:"https://p2.music.126.net/7KtLN3AsNWkxgE7TVsM3ew==/109951165870850454.jpg?param=300x300"
+      }
+      ,{
         name: "Ensemble for Polaris",
         artist: "六花,乃藍",
         url: "https://box.nju.edu.cn/f/d3b26a05eb68403da79a/?dl=1",
