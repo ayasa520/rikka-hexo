@@ -902,10 +902,9 @@ inject:
     - <script defer src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@latest/source/js/issues.min.js"></script>
     - <script defer data-pjax src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.5.0/build/highlight.min.js"></script>
     # - <script data-pjax defer onload="try{hpp_talk_init()}catch(error){}" src="https://cdn.jsdelivr.net/gh/HexoPlusPlus/HexoPlusPlus@1.2.0/talk_user.js"></script> 
-    - <script defer data-pjax src="https://cdn.jsdelivr.net/hls.js/latest/hls.min.js"></script>
     # - <script defer data-pjax onload="try{dplayer_init()}catch(error){}" src="https://cdn.jsdelivr.net/gh/ayasa520/hexo/source/js/DPlayer.min.js"></script>
     - <script defer data-pjax>if (document.getElementById('hpp_talk')){$.getScript('https://cdn.jsdelivr.net/gh/HexoPlusPlus/HexoPlusPlus@1.2.0/talk_user.js').done(hpp_talk_init);}</script>
-    - <script defer data-pjax>if (document.getElementsByClassName('dplayer').length>0){$.getScript('https://cdn.jsdelivr.net/gh/ayasa520/hexo/source/js/DPlayer.min.js').done(dplayer_init);}</script>
+    - <script defer data-pjax>if (document.getElementsByClassName('dplayer').length>0){$.getScript('https://cdn.jsdelivr.net/hls.js/latest/hls.min.js'); $.getScript('https://cdn.jsdelivr.net/gh/ayasa520/hexo/source/js/DPlayer.min.js').done(dplayer_init);}</script>
     # - <script defer data-pjax>if (document.getElementsByClassName('dplayer').length>0){jQuery.ajax({async:false,type:'GET',url:'https://cdn.jsdelivr.net/gh/ayasa520/hexo/source/js/DPlayer.min.js',data:null,success:dplayer_init,dataType:'script'});}</script>
     # - <script defer data-pjax>if (document.getElementsByClassName('dplayer').length>0){var script = document.createElement("script"); script.type = "text/javascript"; script.src = 'https://cdn.jsdelivr.net/gh/ayasa520/hexo/source/js/DPlayer.min.js'; script.onload = dplayer_init;  document.body.appendChild(script);}</script>
     
