@@ -75,13 +75,7 @@ function hpp_talk_init(){
     limit: 10,//单次获取的最多条数
     start: 0,//从第几条开始
     themecss: "https://www.bilibilianime.com/css/talk.css" //自定义说说主题，可选【仅1.1.0版本及以上使用】
-});
-window.onload=function(){
-  Array.from();
-}
-}
-
-
+});}
 </script>
 
 
