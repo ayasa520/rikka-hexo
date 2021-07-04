@@ -63,7 +63,7 @@ date: 2021-05-27 18:24:04
 <!-- 创建HexoPlusPlus_Talk容器 -->
 <div id="hpp_talk"></div>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HexoPlusPlus/HexoPlusPlus@1.2.0/talk.css" /> 
-<link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.5.0/build/styles/github.min.css' />
+<link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/ayasa520/hexo@master/source/css/prism.css' />
 
   
 
