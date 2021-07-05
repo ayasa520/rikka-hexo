@@ -1,4 +1,1 @@
-Updating 3460bb3..503eef9
-Fast-forward
- source/link/index.md | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+Already up to date.
