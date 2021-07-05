@@ -100,3 +100,8 @@
       link: https://bilibilianime.com
       avatar: https://thirdqq.qlogo.cn/g?b=sdk&nk=1103670381&s=140
       descr: 19 岁，是学生<script>alert('XSS')</script>
+
+    - name: XSS攻击测试
+      link: https://bilibilianime.com
+      avatar: https://thirdqq.qlogo.cn/g?b=sdk&nk=1103670381&s=140" onload="alert('XSS')
+      descr: 19 岁，是学生
