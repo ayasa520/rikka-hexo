@@ -75,17 +75,6 @@
       avatar: https://cdn.jsdelivr.net/gh/YDTRINLEY/YDTRINLEY.github.io/img/avatar.png
       descr: YD·N次元药师的栖息地
 
-
-    - name: 测试自动生成
-      link: https://bilibilianime.com
-      avatar: https://thirdqq.qlogo.cn/g?b=sdk&nk=1103670381&s=140
-      descr: 19 岁，是学生
-
-    - name: 自动生成
-      link: https://bilibilianime.com
-      avatar: https://thirdqq.qlogo.cn/g?b=sdk&nk=1103670381&s=140
-      descr: 19 岁，是学生
-
     - name: WXY_JOY-快乐星球
       link: https://wxydejoy.top
       avatar: https://wxydejoy.top/img/icon/android-chrome-96x96.png
@@ -95,23 +84,3 @@
       link: https://android99.me
       avatar: https://android99.me/img/avatar.png
       descr: 矩阵
-
-    - name: XSS攻击测试
-      link: https://bilibilianime.com
-      avatar: https://thirdqq.qlogo.cn/g?b=sdk&nk=1103670381&s=140
-      descr: 19 岁，是学生<script>alert('XSS')</script>
-
-    - name: XSS攻击测试
-      link: https://bilibilianime.com
-      avatar: https://thirdqq.qlogo.cn/g?b=sdk&nk=1103670381&s=140" onload="alert('XSS')
-      descr: 19 岁，是学生
-
-    - name: 自动生成
-      link: https://bilibilianime.com
-      avatar: https://thirdqq.qlogo.cn/g?b=sdk&nk=1103670381&s=140
-      descr: 19 岁，是学生
-
-    - name: 非博主账号测试
-      link: https://bilibili.com
-      avatar: https://thirdqq.qlogo.cn/g?b=sdk&nk=1&s=140
-      descr: 前面可是一方通行啊
