@@ -5781,7 +5781,7 @@ factory = function() {
                     ,
                     t.prototype.post = function(e) {
                         $.ajax({
-                            url:'http://121.5.139.18:5000',
+                            url:'https://update-friend.bilibilianime.com/',
                             type:'POST',
                             dataType:'json',
                             contentType:'application/json;charset=UTF-8',
