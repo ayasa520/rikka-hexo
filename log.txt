@@ -1,1 +1,4 @@
-Already up to date.
+Updating 6233afe..8f61614
+Fast-forward
+ source/_data/link.yml | 12 +-----------
+ 1 file changed, 1 insertion(+), 11 deletions(-)
