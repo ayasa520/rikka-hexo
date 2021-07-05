@@ -929,7 +929,7 @@ CDN:
   disqusjs: https://cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js
   disqusjs_css: https://cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css
   utterances: https://utteranc.es/client.js
-  twikoo: https://cdn.jsdelivr.net/gh/ayasa520/hexo@master/source/js/twikoo.all.js
+  twikoo: https://cdn.jsdelivr.net/gh/ayasa520/hexo/source/js/twikoo.all.js
   waline: https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js
 
   # share
