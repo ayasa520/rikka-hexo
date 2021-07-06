@@ -1012,4 +1012,3 @@ envelope_comment:
   front_matter: #【可选】comments页面的 front_matter 配置
     title: 留言板
     comments: true
-    top_img: https://gitee.com/cailaiblog/img/raw/master/%E5%9B%BE%E7%89%8713%E5%89%AF%E6%9C%AC.jpg
