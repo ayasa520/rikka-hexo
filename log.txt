@@ -1,4 +1,5 @@
-Updating fc9e484..0aee4fe
+Updating 4a259f3..e12709e
 Fast-forward
- themes/butterfly/_config.yml | 1 -
- 1 file changed, 1 deletion(-)
+ source/_data/link.yml             |  7 +------
+ source/_posts/auto-update-link.md | 10 ++++++----
+ 2 files changed, 7 insertions(+), 10 deletions(-)
