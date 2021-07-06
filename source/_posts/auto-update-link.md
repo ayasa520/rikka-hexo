@@ -167,7 +167,7 @@ $.ajax({
 ```
 
 如图所示:
-[image](https://cdn.jsdelivr.net/gh/ayasa520/img@main/491e5e1a170b16a5327352522fa2bc1e.png?123)
+![image](https://cdn.jsdelivr.net/gh/ayasa520/img@main/491e5e1a170b16a5327352522fa2bc1e.png?123)
 
 将主题 _config.yml 内 twikoo 的 CDN 修改为更改后的. 所有的工作就完成了
 
