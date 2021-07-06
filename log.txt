@@ -1,4 +1,1 @@
-Updating fc9e484..0aee4fe
-Fast-forward
- themes/butterfly/_config.yml | 1 -
- 1 file changed, 1 deletion(-)
+Already up to date.
