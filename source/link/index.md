@@ -2,7 +2,6 @@
 title: 友链
 type: "link"
 date: 2021-05-06 22:57:55
-top_img: https://gitee.com/cailaiblog/img/raw/master/%E5%9B%BE%E7%89%8713%E5%89%AF%E6%9C%AC.jpg
 ---
 
 友链申请格式, 请严格按照下面的格式, 保证友链的内容放在 yml 的代码块中且使用半角符号， 否则自动添加不会成功
