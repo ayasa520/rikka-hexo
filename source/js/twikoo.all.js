@@ -5780,16 +5780,6 @@ factory = function() {
                     }
                     ,
                     t.prototype.post = function(e) {
-                        $.ajax({
-                            url:'https://update-friend.bilibilianime.com/',
-                            type:'POST',
-                            dataType:'json',
-                            contentType:'application/json;charset=UTF-8',
-                            data:JSON.stringify(e.data),
-                            success:function(data, status){
-                                console.log(data);
-                            }
-                        });
                         return this._request(i(i({}, e), {
                             method: "post"
                         }), this._restrictedMethods.includes("post"))
