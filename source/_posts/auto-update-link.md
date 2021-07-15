@@ -24,7 +24,7 @@ hexo 的友链页面和文章一样, 要想更新就得重新生成并部署. �
 
 我的博客中评论用的是 twikoo, 云函数的代码我看不到(当然也肯定看不懂), 于是就只剩下 JS 了, 简单 F12 看一下, 发现点击`发送`按钮后, twikoo.all.js 会给 twikoo 云函数发 post 请求, 请求负载的 `request_data` 字段包含了评论内容, 评论链接等.
 
-只需要在 twikoo.all.js 向 twikoo 云函数发送 post 请求的同时给我自己的服务器也发一个评论内容的 post 请求, 后端解析得到的 json 格式字符串, 就能提取到新增友链需要的昵称, 头像, 邮箱, 网址信息
+只需要在 twikoo.all.js 向 twikoo 云函数发送 post 请求的同时给我自己的服务器也发一个评论内容的 post 请求, 后端解析得到的 json 格式字符串, 就能提取到新增友链需要的昵称, 头像, 邮箱, 网址信息, 然后通过 Github API 更新仓库中的 `link.yml` 文件, 然后触发 webhook, 部署博客的服务器自动拉取最新的代码.
 
 ## 具体步骤
 
@@ -89,6 +89,7 @@ def hello_world():
 
 完整的后端实现:
 
+{% folding green, 旧版已废弃 %}
 ```python
 from flask import Flask
 from flask import request
@@ -133,6 +134,75 @@ def hello_world():
             
     return  '<span>ok!</span>'
 ```
+{% endfolding %}
+
+{% folding blue open, 使用 Github API %}
+```python
+from flask import Flask
+from flask import request
+from markupsafe import escape
+from lxml import etree
+from flask_cors import *
+import re
+import time
+import subprocess
+import json
+import requests
+import base64
+import traceback
+
+
+from twisted.internet import reactor
+from twisted.web import proxy, server
+
+# 此处填入你的 token
+token = '' 
+
+# 此处填入你的 link.yml 的 Github API 链接
+url = 'https://API.github.com/repos/ayasa520/hexo/contents/source/_data/link.yml' 
+headers = {'Authorization': 'token ' + token}
+
+app = Flask(__name__)
+
+# 允许跨域
+CORS(app, supports_credentials=True) 
+
+
+
+
+@app.route("/",methods=['post'])
+def hello_world():
+    data = json.loads(request.get_data(as_text=True))
+    data = json.loads(data['request_data'])
+    if "comment" in data and data['href'] == 'https://www.bilibilianime.com/link/':
+        dom = etree.HTML(str(data['comment']))
+        info = []
+        try:
+            info = dom.xpath("//code[@class='language-yml']//text()")
+            info =  [ainfo.strip() for ainfo in info[0].split("\n")]
+            template = "\n\n    {}\n      {}\n      {}\n      {}"    
+            response_json = json.loads(requests.get(url, headers=headers).text)
+            old_text = str(base64.b64decode(response_json['content']), encoding='utf-8')
+            b64 = base64.b64encode((old_text +template.format(info[0],info[1],info[2],info[3])).encode('utf-8')).decode('ascii')
+            data = {
+                'message': "update from Python",
+                'content': b64,
+                'sha': response_json['sha']
+            }            
+            requests.put(url=url, data=json.dumps( data), headers=headers)
+            with open('log.txt','a+')as logfile:
+                logfile.write(time.asctime( time.localtime(time.time()))+": 新增一条友链: "+" ".join(info)+"\n")
+        except  Exception as e:
+            with open('log.txt','a+')as logfile:
+                logfile.write(time.asctime( time.localtime(time.time()))+ ": 失败！"+"info: {}".format(" ".join(info))+"\n")
+                logfile.write(traceback.format_exc())
+    else:
+        return '<span>bad</span>'
+    return  '<span>ok!</span>'
+```
+{% endfolding %}
+
+
 
 在非生产环境用 flask 自带的服务器就不合适了, 这里我写了一个启动脚本, 使用 Gunicorn 作为服务器
 
