@@ -4,7 +4,8 @@ title: 闲话板砖
 date: 2021-05-27 18:24:04
 
 ---
-<!-- 
+
+
 <div class="post">
   <div class="post-content">
     <div id="bber"></div>
@@ -53,15 +54,15 @@ date: 2021-05-27 18:24:04
 <script data-pjax src="https://cdn.jsdelivr.net/gh/ayasa520/daodao@0.2.0/daodao.js"></script>
 
 
-  -->
+ 
 
 
   <!-- 引用 HexoPlusPlus_Talk组件 -->
 
-
 <!-- <script src="https://cdn.jsdelivr.net/gh/HexoPlusPlus/HexoPlusPlus@1.2.0/talk_user.js"></script> -->
 <!-- 创建HexoPlusPlus_Talk容器 -->
-<div id="hpp_talk"></div>
+
+<!-- <div id="hpp_talk"></div>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HexoPlusPlus/HexoPlusPlus@1.2.0/talk.css" /> 
 <link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/ayasa520/hexo@master/source/css/prism.css' />
 
@@ -77,5 +78,5 @@ function hpp_talk_init(){
     themecss: "https://www.bilibilianime.com/css/talk.css" //自定义说说主题，可选【仅1.1.0版本及以上使用】
 });}
 </script>
-
+ -->
 
