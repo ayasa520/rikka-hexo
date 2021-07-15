@@ -1,7 +1,14 @@
-script.
-  (()=>{
-    const $countDom = document.getElementById('twikoo-count')
-    const init = () => {
+---
+title: 为 butterfly 主题的 twikoo 添加图片点击放大功能 
+description: butterfly 把各种插件都集成好了, 真方便啊
+tags: ["图片放大","zoom","twikoo"]
+categories: "教程"
+date: 2021-07-16 01:09:38
+---
+
+只需将 twikoo.pug 中对应的代码修改如下 (直接抄自 main.js)
+
+```js
       twikoo.init(Object.assign({
         el: '#twikoo-wrap',
         envId: '!{theme.twikoo.envId}',
@@ -49,39 +56,4 @@ script.
           }
         }
       }, !{JSON.stringify(theme.twikoo.option)}))
-    }
-
-    const getCount = () => {
-      twikoo.getCommentsCount({
-        envId: '!{theme.twikoo.envId}',
-        region: '!{theme.twikoo.region}',
-        urls: [window.location.pathname],
-        includeReply: false
-      }).then(function (res) {
-        $countDom.innerText = res[0].count
-      }).catch(function (err) {
-        console.error(err);
-      });
-    }
-
-    const loadTwikoo = (bool = false) => {
-      if (typeof twikoo === 'object') {
-        init()
-        bool && $countDom && setTimeout(getCount,0)
-      } else {
-        getScript('!{theme.CDN.twikoo}').then(()=> {
-          init()
-          bool && $countDom && setTimeout(getCount,0)
-        })
-      }
-    }
-
-    if ('!{theme.comments.use[0]}' === 'Twikoo' || !!{theme.comments.lazyload}) {
-      if (!{theme.comments.lazyload}) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
-      else loadTwikoo(true)
-    } else {
-      window.loadOtherComment = () => {
-        loadTwikoo()
-      }
-    }
-  })()
+```
