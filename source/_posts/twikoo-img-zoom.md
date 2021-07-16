@@ -23,7 +23,7 @@ date: 2021-07-16 01:09:38
               })
             })
           }
-          if(typeof $.fancybox != 'undefined'){
+          if(GLOBAL_CONFIG.lightbox === 'fancybox'){
               const addFancybox = function (ele) {
                 const runFancybox = (ele) => {
                   ele.each(function (i, o) {
