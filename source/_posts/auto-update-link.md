@@ -204,7 +204,7 @@ def hello_world():
 
 
 
-在非生产环境用 flask 自带的服务器就不合适了, 这里我写了一个启动脚本, 使用 Gunicorn 作为服务器
+在非开发环境用 flask 自带的服务器就不合适了, 这里我写了一个启动脚本, 使用 Gunicorn 作为服务器
 
 ```bash
 source /var/hexo_source/simpleSever/# flask 源码目录
