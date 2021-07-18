@@ -108,7 +108,7 @@ date: 2021-05-27 18:24:04
   <script>
     var xmlHttp = new XMLHttpRequest();
     // 注意下面的链接换成自己的
-    xmlHttp.open("get","https://daodao-omega.vercel.app/api/query/20");
+    xmlHttp.open("get","https://daodao-kai.vercel.app/api/query/20");
     xmlHttp.send(null);
     xmlHttp.onreadystatechange=function()
     {
