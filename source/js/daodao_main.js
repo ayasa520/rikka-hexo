@@ -1,62 +1,77 @@
-function getLocalTime(nS) {
-    return new Date(parseInt(nS) * 1000).toLocaleString().replace(/:\d{1,2}$/,' ');
-}
-function getbbdata(){
-    //var bbsurl = "https://daodao-three.vercel.app/api?q=10" //这里填写你的api地址
-
-    var httpRequest = new XMLHttpRequest();//第一步：建立所需的对象
-    httpRequest.open('GET', bbsurl, true);//第二步：打开连接  将请求参数写在url中  ps:"./Ptest.php?name=test&nameone=testone"
-    httpRequest.send();//第三步：发送请求  将请求参数写在URL中
-    /**
-     * 获取数据后的处理程序
-     */
-    httpRequest.onreadystatechange = function () {
-        if (httpRequest.readyState == 4 && httpRequest.status == 200) {
-            var json = httpRequest.responseText;//获取到json字符串，还需解析
-            var obj = eval('(' + json + ')');
-            // console.log(obj.data)
-            const bbArray = obj.map(e => {
-                return {
-                    'date': e.date,
-                    'content': e.content,
-                    'from': e.from
-                }
-            })
-            // console.log(fundsArray)
-            generateBBHtml(bbArray)
+function get_data(url, callback, extra) {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("get", url);
+    xmlHttp.send(null);
+    xmlHttp.onreadystatechange = function () {
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+            if (extra)
+                callback(JSON.parse(xmlHttp.responseText), extra);
+            else
+                callback(JSON.parse(xmlHttp.responseText));
         }
-    };
-}
-
-
-var generateBBHtml = array => {
-    var $dom = document.querySelector('#bber-talk');
-    var result = '';
-if (array.length) {
-        if (array.length<10){
-            array_list_num = array.length
-        }else {
-            array_list_num = 10
-        }
-        for (let i = 0; i < array_list_num; i++) {
-            var flag_daodao = true
-            for (item of fliter_daodao){
-                if(array[i].content.indexOf(item) >= 0){
-                    flag_daodao = false
-                }
-            }
-            if(flag_daodao){
-                result += `<div class='li-style swiper-slide'>${array[i].content}</div>`;
-            }
-        }
-    } else {
-        result += '!{_p("aside.card_funds.zero")}';
     }
+}
 
-    var $dom = document.querySelector('#bber-talk');
-    $dom.innerHTML = result;
+function daodao_page_init(url, template_html, extra) {
+    get_data(url, function (data) {
+        if (!document.getElementById('daodao_template')) {
+            var temp = document.createElement('script');
+            temp.id = "daodao_template";
+            temp.type = "text/html";
+            temp.innerHTML = template_html;
+            document.body.appendChild(temp);
+        }
+        function generate_daodao_html () {
+            var html = template('daodao_template', { list: data });
+            var sec = document.createElement('section');
+            sec.className = "timeline page-1";
+            sec.innerHTML = html;
+            document.getElementById("bber").appendChild(sec);
+            if(extra)
+                extra();
+        }
+        if (template !== 'function') {
+            getScript('https://unpkg.zhimg.com/art-template@4.13.2/lib/template-web.js').then(
+                generate_daodao_html  )
+        }else{
+            generate_daodao_html();
+        }
+    })
+}
+
+function daodao_card_init(url, options) {
+    get_data(url, generateBBHtml, options);
+}
+
+
+function generateBBHtml(array, options) {
+    var bbdom = document.querySelector('#bber-talk');
+    var result = '';
+    let array_list_num;
+    if (array.length < 10) {
+        array_list_num = array.length
+    } else {
+        array_list_num = 10
+    }
+    for (let i = 0; i < array_list_num; i++) {
+        var flag_daodao = true
+        for (let item of options.fliter_daodao) {
+            if (array[i].content.indexOf(item) >= 0) {
+                flag_daodao = false
+            }
+        }
+        if (flag_daodao) {
+            var tempp = document.createElement('p');
+            tempp.innerHTML = array[i].content;
+            array[i].content = tempp.innerText;
+            tempp = null;
+            result += `<div class='li-style swiper-slide' ><a style="height=100%;weight=100%" href="${options.bbpath}#${array[i]._id}">${array[i].content}</a></div>`;
+        }
+    }
+    var bbdom = document.querySelector('#bber-talk');
+    bbdom.innerHTML = result;
     window.lazyLoadInstance && window.lazyLoadInstance.update();
-    window.pjax && window.pjax.refresh($dom);
+    window.pjax && window.pjax.refresh(bbdom);
     var swiper = new Swiper('.swiper-container', {
         direction: 'vertical', // 垂直切换选项
         loop: true,
@@ -66,17 +81,8 @@ if (array.length) {
         },
     });
 }
-var bbInit = () => {
-// console.log('运行')
-    if (document.querySelector('#bber-talk')) {
-        const data = saveToLocal.get('zhheo-bb');
-        if (data) {
-            generateBBHtml(JSON.parse(data))
-        } else {
-            getbbdata()
-        };
-    }
-}
 
-bbInit();
-document.addEventListener('pjax:complete', bbInit);
+
+
+
+
