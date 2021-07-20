@@ -133,15 +133,3 @@ offline:
       options:
         origin: https://www.bilibilianime.com/ # 可替换成你的 url
 
-daodao_swiper:
-  url: https://daodao-kai.vercel.app/api/query/20 #注意一：切记，这里后面需要修改，后续第三步会说明
-  fliter: "['img','iframe']"
-  priority: 10
-  enable: false
-  enable_page: /
-  layout:
-    type: id
-    name: recent-posts
-    index: 0
-  temple_html: ''
-  

@@ -1025,5 +1025,7 @@ daodao_plus:
   front_matter: #【可选】叨叨改页面的 front_matter 配置
     title: 闲话板砖
     comments: true
-  CDN: https://cdn.jsdelivr.net/gh/ayasa520/daodao-kai@0.3.2/daodaomain.js # daodaomain.js
+  CDN: 
+    js: https://cdn.jsdelivr.net/gh/ayasa520/hexo-daodao-plus@1.0.1/dist/js/main.js # daodaomain.js
+    css: https://cdn.jsdelivr.net/gh/ayasa520/hexo-daodao-plus@1.0.1/dist/css/main.css
 
