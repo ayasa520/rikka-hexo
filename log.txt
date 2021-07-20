@@ -1,1 +1,4 @@
-Already up to date.
+Updating f2bab0c..ba6b5d0
+Fast-forward
+ themes/butterfly/_config.yml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
