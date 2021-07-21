@@ -10,9 +10,9 @@ date: 2021-07-18 21:16:30
 >Q: 什么是叨叨·改?
 >A: 叨叨·改是用 Flask 重写了原叨叨 ([Rock-Candy-Tea/daodao (github.com)](https://github.com/Rock-Candy-Tea/daodao))的后端, 并增添了前端的一个初步可用的应用, 前端说说展示页面直接搬运自[小冰博客 - 做个有梦想的人！ (zfe.space)](https://zfe.space/) , 其余前端来源于网络. 后端 api 可见 README
 >
->A: 目前叨叨·改并未制作为 hexo 的相关插件, 只能手动引入 js 调用. 所以首页的公告栏也是没有的.
+>A: 叨叨·改已经插件化, 项目地址: [ayasa520/hexo-daodao-plus: 适用于 hexo 的"叨叨·改"插件 (github.com)](https://github.com/ayasa520/hexo-daodao-plus). 后端项目地址: [ayasa520/daodao-kai: 叨叨改，用 flask 重写叨叨的后端 (github.com)](https://github.com/ayasa520/daodao-kai)
 
-## 快速上手
+## 后端部署
 
 ### Vercel 部署
 
@@ -68,7 +68,12 @@ date: 2021-07-18 21:16:30
 
    ![image](https://cdn.jsdelivr.net/gh/ayasa520/img@main/39f898cf2ed551f5ca6f8c621a0dd738.png)
 
-#### 在博客中引入叨叨·改 (已过时, 直接 npm install hexo-daodao-plus 就行)
+## 前端部署
+
+### 不使用插件 (不推荐)
+
+以这种方式添加没有首页的滚动组件
+
 
 在 _posts 下新建一个 md 文件, 内容如下, 注意把 `https://daodao-omega.vercel.app/api/query/20` 换成自己的. **不要忘记写后面的 `api/query/20`** 
 
@@ -126,3 +131,53 @@ date: 2021-05-27 18:24:04
 然后就能看到了:
 
 ![image](https://cdn.jsdelivr.net/gh/ayasa520/img@main/f3d51a5a94b4e167afb84e1c63c43f5d.png)
+
+### npm 插件 (推荐)
+
+#### 安装
+
+在 hexo 博客根目录运行 npm 命令
+
+```bash
+npm install hexo-daodao-plus --save
+```
+
+#### 配置
+
+在主题文件夹下 (或者根目录) 的 `_config.yml` 中添加下面的配置项
+
+```yml
+daodao_plus:
+  enable: 
+    page: true
+    card: true
+  priority: 0
+  filter: 
+  url: https://daodao-kai.vercel.app/api/query/20
+  path: daodaoplus 
+  front_matter: 
+    title: 闲话板砖
+    comments: true
+  CDN: 
+    js: https://cdn.jsdelivr.net/npm/hexo-daodao-plus@1.1.2/dist/js/main.js
+    css: https://cdn.jsdelivr.net/npm/hexo-daodao-plus@1.1.2/dist/css/main.css
+```
+
+配置项说明
+
+| 配置项       | 默认                      | 说明                                            |
+| ------------ | ------------------------- | ----------------------------------------------- |
+| enable.page  | **必填**                  | 单独叨叨页面的开关                              |
+| enable.card  | **必填**                  | 首页叨叨 swiper 的开关                          |
+| url          | **必填**                  | 叨叨后端的 api                                  |
+| CDN          | **必填**                  | 引入的 CSS 和 JavaScript 文件的链接             |
+| priority     | 0                         | 过滤器优先级, priority 值越低, 过滤器会越早执行 |
+| filter       | ['iframe','img','script'] | 设置叨叨不在首页显示的标签类型                  |
+| path         | daodaoplus                | 路径名称, 生成的页面为 [path]/index.html        |
+| front_matter | 非必填                    | 页面自定义 front_matter                         |
+
+#### 截图
+
+![image](https://cdn.jsdelivr.net/gh/ayasa520/img@main/0469b9627d2384e678b0a72872f0e0f0.png)
+
+![image](https://cdn.jsdelivr.net/gh/ayasa520/img@main/3c049c61ec20f85ec6b29ba9275b5161.png)
