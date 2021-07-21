@@ -68,7 +68,7 @@ date: 2021-07-18 21:16:30
 
    ![image](https://cdn.jsdelivr.net/gh/ayasa520/img@main/39f898cf2ed551f5ca6f8c621a0dd738.png)
 
-#### 在博客中引入叨叨·改
+#### 在博客中引入叨叨·改 (已过时, 直接 npm install hexo-daodao-plus 就行)
 
 在 _posts 下新建一个 md 文件, 内容如下, 注意把 `https://daodao-omega.vercel.app/api/query/20` 换成自己的. **不要忘记写后面的 `api/query/20`** 
 
