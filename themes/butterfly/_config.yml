@@ -1016,6 +1016,7 @@ envelope_comment:
 
 # 叨叨改
 daodao_plus:
+  priority: 0 #过滤器优先级，priority 值越低，过滤器会越早执行，默认priority是0
   enable: 
     page: true # 单独的叨叨改页面开关
     card: true # 首页叨叨改的小组件开关
