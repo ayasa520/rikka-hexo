@@ -1021,12 +1021,12 @@ daodao_plus:
     page: true # 单独的叨叨改页面开关
     card: true # 首页叨叨改的小组件开关
   filter: # 首页小组件不显示的标签 默认为 ['img','script','iframe']
-  url: https://daodao.bilibilianime.com/api/query/20 #【必填】叨叨改的 api 链接，如 https://daodao-kai.vercel.app/api/query/20
+  url: https://daodao.bilibilianime.com #【必填】叨叨改的 api 链接，如 https://daodao-kai.vercel.app/api/query/20
   path: daodaoplus # daodaoplus 的路径名称. 默认为 daodaoplus, 生成的页面为 daodaoplus/index.html
   front_matter: #【可选】叨叨改页面的 front_matter 配置
     title: 闲话板砖
     comments: true
   CDN: 
-    js: https://cdn.jsdelivr.net/npm/hexo-daodao-plus@latest/dist/js/main.js # daodaomain.js
-    css: https://cdn.jsdelivr.net/npm/hexo-daodao-plus@latest/dist/css/main.css
+    js: https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.0.0/dist/js/main.js # daodaomain.js
+    css: https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.0.0/dist/css/main.css
 
