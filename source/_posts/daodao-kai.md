@@ -153,14 +153,14 @@ daodao_plus:
     card: true
   priority: 0
   filter: 
-  url: https://daodao-kai.vercel.app/api/query/20
+  url: https://daodao-kai.vercel.app/
   path: daodaoplus 
   front_matter: 
     title: 闲话板砖
     comments: true
   CDN: 
-    js: https://cdn.jsdelivr.net/npm/hexo-daodao-plus@1.1.2/dist/js/main.js
-    css: https://cdn.jsdelivr.net/npm/hexo-daodao-plus@1.1.2/dist/css/main.css
+    js: https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.1/dist/js/main.js
+    css: https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.1/dist/css/main.css
 ```
 
 配置项说明
