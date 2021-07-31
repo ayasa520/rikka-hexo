@@ -1,0 +1,656 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>计算机组织结构(六) Cache | 极东魔术昼寝结社</title><meta name="keywords" content="底层,计组"><meta name="author" content="Rikka"><meta name="copyright" content="Rikka"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="📚 文档目录合集-数的二进制表示-定点运算-BCD 码-浮点数四则运算-内置存储器-Cache-外存-纠错-RAID-内存管理-总线-指令集: 特征- 指令集:寻址方式和指令格式  为什么需要 cache? 因为 CPU 比 内存的速度要快得多.&#96;  基本思路 使用较小, 较快的 Cache 和相对较大,更为缓慢的 Memory Cache 中包含了 Memory 中数据的副本 Cache 位于">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机组织结构(六) Cache">
+<meta property="og:url" content="https://www.bilibilianime.com/2020/12/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E7%BB%87%E7%BB%93%E6%9E%84/COA_06/index.html">
+<meta property="og:site_name" content="极东魔术昼寝结社">
+<meta property="og:description" content="📚 文档目录合集-数的二进制表示-定点运算-BCD 码-浮点数四则运算-内置存储器-Cache-外存-纠错-RAID-内存管理-总线-指令集: 特征- 指令集:寻址方式和指令格式  为什么需要 cache? 因为 CPU 比 内存的速度要快得多.&#96;  基本思路 使用较小, 较快的 Cache 和相对较大,更为缓慢的 Memory Cache 中包含了 Memory 中数据的副本 Cache 位于">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/rikka_1.webp">
+<meta property="article:published_time" content="2020-12-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-06-26T03:41:42.225Z">
+<meta property="article:author" content="Rikka">
+<meta property="article:tag" content="底层">
+<meta property="article:tag" content="计组">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/rikka_1.webp"><link rel="shortcut icon" href="/image/favicon.png"><link rel="canonical" href="https://www.bilibilianime.com/2020/12/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E7%BB%87%E7%BB%93%E6%9E%84/COA_06/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/pwa/manifest.json"/><meta name="msapplication-TileColor" content="#fff"/><link rel="apple-touch-icon" sizes="180x180" href="/pwa/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/pwa/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/pwa/16.png"/><link rel="mask-icon" href="/pwa/safari-pinned-tab.svg" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"source/search/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"此文章发表于","messageNext":"天前，内容可能已经过时"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Rikka","link":"链接: ","source":"来源: 极东魔术昼寝结社","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '计算机组织结构(六) Cache',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-06-26 11:41:42'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><style type="text/css">.app-refresh{position:fixed;top:-2.2rem;left:0;right:0;z-index:99999;padding:0 1rem;font-size:15px;height:2.2rem;transition:all .3s ease}.app-refresh-wrap{display:flex;color:#fff;height:100%;align-items:center;justify-content:center}.app-refresh-wrap a{color:#fff;text-decoration:underline;cursor:pointer}</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/custom.css"  media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daodaoplus@1.0.4/static/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.0/dist/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "/img/404.jpg" data-lazy-src="/image/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">47</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/daodaoplus/"><i class="fa-fw fas fa-comment"></i><span> 闲话板砖</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comment"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/rikka_1.webp')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">极东魔术昼寝结社</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/daodaoplus/"><i class="fa-fw fas fa-comment"></i><span> 闲话板砖</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comment"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">计算机组织结构(六) Cache</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-12-26T16:00:00.000Z" title="发表于 2020-12-27 00:00:00">2020-12-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-26T03:41:42.225Z" title="更新于 2021-06-26 11:41:42">2021-06-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/NJU-%E7%AC%94%E8%AE%B0/">NJU 笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="计算机组织结构(六) Cache"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><div class="note blue icon modern"><i class="note-icon fas fa-rocket"></i><p>📚 文档目录<br><a href="/2020/12/27/计算机组织结构/COA_00">合集</a>-<a href="/2020/12/27/计算机组织结构/COA_01">数的二进制表示</a>-<a href="/2020/12/27/计算机组织结构/COA_02">定点运算</a>-<a href="/2020/12/27/计算机组织结构/COA_03">BCD 码</a>-<a href="/2020/12/27/计算机组织结构/COA_04">浮点数四则运算</a>-<a href="/2020/12/27/计算机组织结构/COA_05">内置存储器</a>-<a href="/2020/12/27/计算机组织结构/COA_06">Cache</a>-<a href="/2020/12/27/计算机组织结构/COA_07">外存</a>-<a href="/2020/12/27/计算机组织结构/COA_08">纠错</a>-<a href="/2020/12/27/计算机组织结构/COA_09">RAID</a>-<a href="/2020/12/27/计算机组织结构/COA_10">内存管理</a>-<a href="/2020/12/27/计算机组织结构/COA_11">总线</a>-<a href="/2020/12/27/计算机组织结构/COA_12">指令集: 特征</a>-<a href="/2020/12/27/计算机组织结构/COA_13"> 指令集:寻址方式和指令格式</a></p>
+</div>
+<h2 id="为什么需要-cache"><a href="#为什么需要-cache" class="headerlink" title="为什么需要 cache?"></a>为什么需要 cache?</h2><ul>
+<li>因为 CPU 比 内存的速度要快得多.`</li>
+</ul>
+<h2 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h2><ul>
+<li>使用较小, 较快的 Cache 和相对较大,更为缓慢的 Memory</li>
+<li>Cache 中包含了 Memory 中数据的<strong>副本</strong></li>
+<li>Cache 位于中央处理器和存储器之间,并可以被集成在 CPU 或者作为主板上的一个模块.</li>
+</ul>
+<h2 id="Cache-工作的原理"><a href="#Cache-工作的原理" class="headerlink" title="Cache 工作的原理"></a>Cache 工作的原理</h2><ul>
+<li><font color=FF0000>Check </font>:当处理器试图读取内存中的一个字的时候,会先检查该字是否在 Cache 中.</li>
+<li><font color=00FF00>Hit </font>: 如果确实在, 这个字被传送给处理器.</li>
+<li><p><font color=0000ff>Miss </font>: 否则,由一定数量的字组成的<strong>一块( block )主存中的数据</strong> 被读入 Cache ,然后传给处理器.<br><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/README.assets/1f77f889fe21b537409937de54e977f1790a1262.jpg" style="zoom:67%;" /></p>
+</li>
+<li><p>时间局部性:<br>未来将要使用的信息(指令和数据), 可能是现在正在使用的信息.</p>
+</li>
+<li>空间局部性:<br>未来将要使用的信息, 很可能与正在使用的信息在存储空间上是邻近的(比如遍历一个一维数组).</li>
+</ul>
+<h2 id="判断-Hit-与-Miss"><a href="#判断-Hit-与-Miss" class="headerlink" title="判断 Hit 与 Miss"></a>判断 Hit 与 Miss</h2><ul>
+<li>冯诺依曼计算机的设计:<br>内存中的内容按位置寻址,而不考虑其中的数据类型.</li>
+<li>Cache 中有 <font color="ff0000">标记</font>(tag) 来判断需要读取的信息是否存在于 Cache.</li>
+</ul>
+<h2 id="移动”块”而不是字"><a href="#移动”块”而不是字" class="headerlink" title="移动”块”而不是字"></a>移动”块”而不是字</h2><p><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/README.assets/10d416f2051d0ff9ed1a4d60861da6582a74da44.webp" style="zoom:67%;" ></p>
+<h2 id="证明-Cache-机制能够提高性能"><a href="#证明-Cache-机制能够提高性能" class="headerlink" title="证明 Cache 机制能够提高性能"></a>证明 Cache 机制能够提高性能</h2><ul>
+<li>设命中率为 $p$, $T_C$ 为访问Cache 的时间,$T_M$ 为访问主存的时间,则总时间为(可以认为返回数据不需要时间, 寻找花时间)<script type="math/tex; mode=display">T=T_Cp+(1-p)(T_C+T_M)</script>由上面可以推出,若 $T<T_M$, 则 $p>\frac{T_C}{T_M}$ ,虽然$\frac{T_C}{T_M}$非常小,但是 Cache 的容量更要远远小于主存的容量,这就体现了局部性的作用.</li>
+</ul>
+<h2 id="Cache-是否越大越好"><a href="#Cache-是否越大越好" class="headerlink" title="Cache 是否越大越好?"></a>Cache 是否越大越好?</h2><p>Cache 容量变大, 命中率增加会变得缓慢,因为搬来的数据可能关联性弱,对效果提升十分有限.此外,Cache 规模变大会使得 check 的时间变长.</p>
+<h2 id="映射功能"><a href="#映射功能" class="headerlink" title="映射功能"></a>映射功能</h2><ul>
+<li>因为 Cache 的行比主存块要少, 所以需要一个算法将主存中的块映射到 Cache 中的行.</li>
+</ul>
+<h3 id="1-直接映射"><a href="#1-直接映射" class="headerlink" title="1. 直接映射"></a>1. 直接映射</h3><ul>
+<li>地址组成：</li>
+</ul>
+<iframe frameborder="0" style="width:100%;height:300px;" src="https://viewer.diagrams.net/?highlight=0000ff&edit=_blank&layers=1&nav=1#R3ZjLjpswFIafxstIsQlgliFh2kW7SqVZe8AFq4CRcUoyT187mDAMpFAVRsmsYv%2B%2BxOc7vy8CWLvs9EWQIvnOI5oCtI5OwNoDhCD0bPWjlbNRXAfWSixYZLRWOLBXasS1UY8somWno%2BQ8lazoiiHPcxrKjkaE4FW320%2Bedv%2B1IDHtCYeQpH31mUUyqVWM3Fb%2FSlmcNP8MHa9uyUjT2URSJiTi1RvJCoC1E5zLupSddjTV9Bou9binG63XhQmayykDkFnYb5IeTXBmYfLcRCv4MY%2BoHrAGll8lTNJDQULdWqkEKy2RWapqUBXNdFRIerq5JniNVHmE8oxKcVZdzABs2Bh3NKiqljRstOQN5Y3RiElufJ24jV8VDIJhHPdE43b4eKHom%2B11F%2BGfmvBH3bAYDjiOQ%2B3fQhfDo0jPviDhLyrHubQQ65okkvFcVVfeeh5sXpfaagDb0B660v4vbpset1JVQbAB%2Fh7gPQgw2EKwxSBwwVaJWxDYwNsDz9UF%2FAR8twdaoZBdiCRlsWYWKiRUKEEDY%2BqQ3pqGjEWRHu4LWrJX8nKZSvMtOMvlJUDbB%2FZez3WUvKyvmZl863QT4E2zLZoDv93DX%2F0Lfgdg%2B6LsgL82Tc1aHzghENtjGYFwqZQ4j3uSIKvr5M20kwTPgc39cGxzUYPvqK3sadjgLHbrP2PE30%2BAHQkTamS8%2BzynMB6%2FBgffknNkAU14Td2pe9%2Bb1%2Fq4PY%2F6j65yNeJeSeKHd%2BqqezsNOdVbyqioh%2FzHJyCKuiYe8LC1FND%2BvfWN5fThicJxpJulkOIe0mcuIoCcVCN8USeEE8trmA8MeYJvZ4Ksqu2Hpkvbm%2B91VvAH"></iframe>
+
+<ul>
+<li><p>定义: 内存中的一个块映射到 Cache 中固定的行.</p>
+</li>
+<li><p>将主存中的每个块映射到<strong>固定</strong>的可用 Cache 中行.直接映射可以表示为:</p>
+<script type="math/tex; mode=display">i=j\space mod\space m</script><p>其中 i 为 Cache 行号, j 为主存块号, m 为 Cache 行数 .<br>为了实现访问 Cache 每一个主存地址可以看作由<strong>三个域</strong>组成：</p>
+<ul>
+<li>低 $w$ 位标识某个块中的唯一一个存储单元(字节或字).</li>
+<li>剩余 $s$ 位标识了主存 $2^s$ 个块中的一个.<ul>
+<li>其中 $r$ 位标识了 cache 中的行号(cache 的行数为 $m=2^r$)</li>
+<li>$s-r$ 位为 tag 位.用以区分映射到同一行的不同块.</li>
+</ul>
+</li>
+</ul>
+<p>总结:</p>
+<ul>
+<li>地址长度: $(s+w)$ 位</li>
+<li>可寻址单元数: $2^{s+w}$</li>
+<li>块大小=行大小=$2^w$ 个存储单元(字节或字)</li>
+<li>主存的块数:$\frac{2^{s+w}}{2^w}=2^s$</li>
+<li>cache 行数:$m=2^r$</li>
+<li>cache 容量: $2^{r+w}$ 个字或者字节</li>
+<li>标记长度: $(s-r)$ 位</li>
+</ul>
+</li>
+<li><p>举例:<br>$m=16K=2^{14},i=j\space mod\space 2^{14}$,用 16 进制 表示地址有</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">cache 行</th>
+<th style="text-align:center">主存块的起始地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">000000,010000,....FF0000</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">000004,010004,...,FF0004</td>
+</tr>
+<tr>
+<td style="text-align:center">...</td>
+<td style="text-align:center">...</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml mathjax-overflow"><mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="0" style="font-size: 112.9%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-semantics><mjx-mrow><mjx-msup><mjx-mn class="mjx-n"><mjx-c class="mjx-c32"></mjx-c></mjx-mn><mjx-script style="vertical-align: 0.363em;"><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c31"></mjx-c><mjx-c class="mjx-c34"></mjx-c></mjx-mn></mjx-script></mjx-msup><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c2212"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="3"><mjx-c class="mjx-c31"></mjx-c></mjx-mn></mjx-mrow></mjx-semantics></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>14</mn></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^{14}-1</annotation></semantics></math></mjx-assistive-mml></mjx-container></span></span></td>
+<td style="text-align:center">00FFFC,01FFFC,...,FFFFFFC</td>
+</tr>
+</tbody>
+</table>
+
+<p>  地址24位,其中,高8位为 tag 位,若当前存在该行的标记数与地址中的相同,则14位标识 cache 行号,  低2位标识行中的4个字节(或者字);否则,前22位标识为从主存中取一块.取的主存块的地址为22位加两位0(因为块都是以4倍数开始的,每个块有4个单元)</p>
+<ul>
+<li><p><strong>优点</strong>:</p>
+<ul>
+<li>check快,从主存中存取的时候快</li>
+<li>tag 短,额外存储少.</li>
+<li>不会随着容量增大而变慢</li>
+<li>实现简单</li>
+</ul>
+</li>
+<li><p><strong>缺点</strong>:</p>
+<ul>
+<li>容易发生抖动:用到的两个块映射到 cache 中的同一行,于是频繁的替换.</li>
+<li>命中率低</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-全相联映射"><a href="#2-全相联映射" class="headerlink" title="2. 全相联映射"></a>2. 全相联映射</h3><ul>
+<li><p>地址图示:</p>
+<iframe frameborder="0" style="width:100%;height:300px;" src="https://viewer.diagrams.net/?highlight=0000ff&edit=_blank&layers=1&nav=1#R3ZdNj5swEIZ%2FzRwj8RGIOUJgt5eeUmnPXnDBKmBkTEn219cOBsKyUViVVM1eovE7tvE8Mx4C2Pvi%2BMxxlX1nCcnBMpIj2CFYlu0i%2BauEUyeYO9fslJTTRGujcKBvRIuGVhuakHoyUTCWC1pNxZiVJYnFRMOcs3Y67SfLp0%2BtcEpmwiHG%2BVx9oYnIOhVZu1H%2FRmia9U82Xa%2FzFLifrCOpM5yw9kKyI7D3nDHRWcVxT3IFr%2BfSrXu64h0OxkkplizQ5%2FqN80bHps8lTn2wnDVlQtR8A%2BygzagghwrHytvK9EotE0UuR6Y09XaEC3K8eiRzCFRWCGEFEfwkp%2Bhq6NG0I1nL0Fp2QXWrNayTmQ47jfFKQ4d8hZfxH8V%2FfBfsdR7oXjjM2zhkxVbKjBuenwKO419E3OYyQuxGAgvKSjnceMY62LwptY39URnNsQ20%2F4rbdsatlkOIthCEgEKIEPgm%2BAiiHfhS9CFywAvB2ykDPUGwm4GWKMQUIs5pqpjFEgnhUlDAqGxLvnYUNEnU8oCTmr7h1%2FNWim%2FFaCnOAToBOKHaqxGs7hrrSnXrThOAlpWttQZ%2BZ4a%2F%2FQx%2BF5BzVvYQGNrVn%2FWBE2Ii51ZGTPNeKXEft5NY9rSSF3YStAI2a8H7aGVs9%2Bq%2F3j%2Fsv9b8vXWj%2FwqcPvz9dqfXe7Pwj8Ia17svywvgP74A0XcN84OLb98LKJoBfWE8AcvNFcFXLq1UDFE%2BMOMB13XI23Ugy%2BH4IXX2XXyO2tEf"></iframe> 
+</li>
+<li><p>定义: 内存中的块可以映射到 Cache 中的任意一行.</p>
+</li>
+<li><p>总结:</p>
+<ul>
+<li>地址长度 s+w 位</li>
+<li>可寻址单元数 $2^{s+w}$ 个字(字节)</li>
+<li>块大小=行大小=$2^w$ 个字(字节)</li>
+<li>主存的块数:$\frac{2^{s+w}}{2^w}=2^s$</li>
+<li>cache 的行数: 不由地址格式决定</li>
+<li>标记长度=s 位</li>
+</ul>
+</li>
+<li><p><strong>优点</strong>:</p>
+<ul>
+<li>避免”抖动”.</li>
+<li>命中率高</li>
+</ul>
+</li>
+<li><p><strong>缺点</strong>:</p>
+<ul>
+<li>check 慢, 从内存中放到 cache 中慢.</li>
+<li>实现较为复杂 </li>
+</ul>
+</li>
+</ul>
+<h3 id="3-组相联映射"><a href="#3-组相联映射" class="headerlink" title="3. 组相联映射"></a>3. 组相联映射</h3><ul>
+<li>图示:</li>
+</ul>
+<iframe frameborder="0" style="width:100%;height:258px;" src="https://viewer.diagrams.net/?highlight=0000ff&edit=_blank&layers=1&nav=1#R3ZhBk5sgFMc%2FDcfMiKjBY0zc9tJTOrNnVqkyVXGQ1GQ%2FfSGihrhp0qnJNHvy8QeR9%2BPxngrQutx%2FEaTOv%2FGUFsB10j1AG%2BC60PVdddHKwShLFHRKJlhqtFHYsndqRMeoO5bSxhooOS8kq20x4VVFE2lpRAje2sN%2B8MJ%2Bak0yOhG2CSmm6itLZd6p2F2O%2BlfKsrx%2FMgzCrqck%2FWDjSZOTlLcnEooBWgvOZWeV%2BzUtNL2eS3ffy4XeYWGCVvKWG8y6fpFiZ3wz65KH3lnBd1VK9XgHoKjNmaTbmiS6t1X7q7RcloVqQWWa6aiQdH9xSXBwVIUI5SWV4qCGmGjo0bQjWdhr%2BQlVz2jEbGY2zDT6qwzj8gVezn%2Fk%2F7733yzqMg98LxzwOg4VsbU2k50oDpEgyU8qr3MZIXYtSSTjlWouQmcebKFNbYGm2D6KooH2P3HzJtwa1QSxB6INwBsQY7CCYIVBvAQrJa5A7INwA8KlNvALiJYT0AqFtCGSgmWaWaKQUKEEDYyptLQyHSVLU317JGjD3snbcSrNt%2BaskkcH%2FQj4Gz3XTvKmS6wzxW1gbwC%2BLWzdOfD7E%2Fzt3%2BAPAPaPyhpEjunq1%2FrEGwKxf21HILzXlgTPm0lcZEfyjZkEz4DNvaEezYxtLmr%2BWf71b6MG54g2d1q3mkX65xQgSfb0J3wB7RO%2B%2BOBdIbzTCe8j84T590%2BA1LOJfnD20b2A4gnQVy5UFAeFJvgmlJXJwcsnZjzgugzZuxNkhCaQtyp9Xmf86K8AeMbogV8BaPo2%2ByxFCJ5XoQfWbjR9C71SgrQRRQB7Jx8Bn%2B6w44eVKNUcf5wc%2B07%2BP6H4Nw%3D%3D"></iframe> 
+
+<ul>
+<li>定义: Cache 中的行分成组(Set),内存中的块搬到固定的组,组中具体的哪一行不固定.第一步类似直接映射,第二部类似全相联映射. Cache 中分为 $v$ 个组,每组包含 $k$ 个行,则:<script type="math/tex; mode=display">\begin{aligned}
+  &m=v\times k\\
+  &i=j\space mod\space v\\
+\end{aligned}</script>其中: i 为组号, j 为主存块号,m 为主存块数,v 为组数,k 为每个组中的行数, 即 k路组(K-way Set).</li>
+<li>总结:<ul>
+<li>地址长度 s+w 位</li>
+<li>可寻址单元数 $2^{s+w}$ 个字(字节)</li>
+<li>块大小=行大小=$2^w$ 个字(字节)</li>
+<li>主存的块数:$\frac{2^{s+w}}{2^w}=2^s$ </li>
+<li>cache 中每组行数= k</li>
+<li>组数 = v = $2^d$</li>
+<li>cache 中的行数 = m = $k\times v=k\times 2^d$</li>
+<li>标记长度 s-d 位(同一个组中不会出现标记位相同的两个块)</li>
+</ul>
+</li>
+<li><p><strong>优点</strong>:</p>
+<ul>
+<li>固定组 check ,存取,速度比全相联快</li>
+<li>命中率比直接映射高</li>
+</ul>
+</li>
+<li><p><strong>缺点</strong>:</p>
+<ul>
+<li>实现复杂.</li>
+<li>若反复用的的块很多的话,仍然无法避免抖动.</li>
+</ul>
+</li>
+</ul>
+<h2 id="替换算法"><a href="#替换算法" class="headerlink" title="替换算法"></a>替换算法</h2><h3 id="1-最近最少用"><a href="#1-最近最少用" class="headerlink" title="1.最近最少用"></a>1.最近最少用</h3><h3 id="2-先进先出"><a href="#2-先进先出" class="headerlink" title="2.先进先出"></a>2.先进先出</h3><h3 id="3-使用最少"><a href="#3-使用最少" class="headerlink" title="3.使用最少"></a>3.使用最少</h3><h3 id="4-随机"><a href="#4-随机" class="headerlink" title="4.随机"></a>4.随机</h3><h2 id="写策略"><a href="#写策略" class="headerlink" title="写策略"></a>写策略</h2><h3 id="1-写入"><a href="#1-写入" class="headerlink" title="1.写入"></a>1.写入</h3><ul>
+<li>每一次改了之后都更新内存<ul>
+<li>好处:提升cache和主存一致性,保证主存中的内容都是最新的</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-写回"><a href="#2-写回" class="headerlink" title="2.写回"></a>2.写回</h3><ul>
+<li>cache 中的行要被替换时不得不写回去,用 dirty bit 来判断数据是否发生过改写,若没有改过无需写回.</li>
+</ul>
+<h2 id="块大小-Cache-Line-Size"><a href="#块大小-Cache-Line-Size" class="headerlink" title="块大小(Cache Line Size)"></a>块大小(Cache Line Size)</h2><ul>
+<li>由极小变大,根据局部性原理命中率先是提升,因为每个块所能容纳的有用数据增多了.</li>
+<li>到极大时,且新取信息的概率小于重用信息概率时,命中率会减小.因为较大的块减少了块的个数,少量的块导致装入的数据很快会被改写;当块变大时,每个附加字距离所需字就更远,被使用的概率低.</li>
+</ul>
+<h2 id="cache-数目"><a href="#cache-数目" class="headerlink" title="cache 数目"></a>cache 数目</h2><ul>
+<li>多级 cache 比单一大容量 cache 效率更高</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Rikka</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.bilibilianime.com/2020/12/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E7%BB%87%E7%BB%93%E6%9E%84/COA_06/">https://www.bilibilianime.com/2020/12/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E7%BB%87%E7%BB%93%E6%9E%84/COA_06/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.bilibilianime.com" target="_blank">极东魔术昼寝结社</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%BA%95%E5%B1%82/">底层</a><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%BB%84/">计组</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/rikka_1.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/12/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E7%BB%87%E7%BB%93%E6%9E%84/COA_07/"><img class="prev-cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/rikka_1.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">计算机组织结构(七) 外存</div></div></a></div><div class="next-post pull-right"><a href="/2020/12/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E7%BB%87%E7%BB%93%E6%9E%84/COA_05/"><img class="next-cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/erik-shoemaker-chaldea-matte-final2.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">计算机组织结构(五) 内置存储器</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/12/27/计算机组织结构/COA_00/" title="计算机组织结构 合集"><img class="cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/655087.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-27</div><div class="title">计算机组织结构 合集</div></div></a></div><div><a href="/2020/12/27/计算机组织结构/COA_01/" title="计算机组织结构(一) 数的二进制表示"><img class="cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/wallhaven-714648~1.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-27</div><div class="title">计算机组织结构(一) 数的二进制表示</div></div></a></div><div><a href="/2020/12/27/计算机组织结构/COA_03/" title="计算机组织结构(三) BCD 码"><img class="cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/wallhaven-714648~1.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-27</div><div class="title">计算机组织结构(三) BCD 码</div></div></a></div><div><a href="/2020/12/27/计算机组织结构/COA_04/" title="计算机组织结构(四) 浮点数四则运算"><img class="cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/wallhaven-714648~1.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-27</div><div class="title">计算机组织结构(四) 浮点数四则运算</div></div></a></div><div><a href="/2020/12/27/计算机组织结构/COA_05/" title="计算机组织结构(五) 内置存储器"><img class="cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/erik-shoemaker-chaldea-matte-final2.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-27</div><div class="title">计算机组织结构(五) 内置存储器</div></div></a></div><div><a href="/2020/12/27/计算机组织结构/COA_07/" title="计算机组织结构(七) 外存"><img class="cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/rikka_1.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-27</div><div class="title">计算机组织结构(七) 外存</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "/img/404.jpg" data-lazy-src="/image/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Rikka</div><div class="author-info__description">邪王真眼是最强的</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">47</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ayasa520"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/ayasa520" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1103670381@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">Rikka 的 Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81-cache"><span class="toc-text">为什么需要 cache?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF"><span class="toc-text">基本思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cache-%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-text">Cache 工作的原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A4%E6%96%AD-Hit-%E4%B8%8E-Miss"><span class="toc-text">判断 Hit 与 Miss</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E2%80%9D%E5%9D%97%E2%80%9D%E8%80%8C%E4%B8%8D%E6%98%AF%E5%AD%97"><span class="toc-text">移动”块”而不是字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%81%E6%98%8E-Cache-%E6%9C%BA%E5%88%B6%E8%83%BD%E5%A4%9F%E6%8F%90%E9%AB%98%E6%80%A7%E8%83%BD"><span class="toc-text">证明 Cache 机制能够提高性能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cache-%E6%98%AF%E5%90%A6%E8%B6%8A%E5%A4%A7%E8%B6%8A%E5%A5%BD"><span class="toc-text">Cache 是否越大越好?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%A0%E5%B0%84%E5%8A%9F%E8%83%BD"><span class="toc-text">映射功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%9B%B4%E6%8E%A5%E6%98%A0%E5%B0%84"><span class="toc-text">1. 直接映射</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%85%A8%E7%9B%B8%E8%81%94%E6%98%A0%E5%B0%84"><span class="toc-text">2. 全相联映射</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%BB%84%E7%9B%B8%E8%81%94%E6%98%A0%E5%B0%84"><span class="toc-text">3. 组相联映射</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%BF%E6%8D%A2%E7%AE%97%E6%B3%95"><span class="toc-text">替换算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9C%80%E8%BF%91%E6%9C%80%E5%B0%91%E7%94%A8"><span class="toc-text">1.最近最少用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%85%88%E8%BF%9B%E5%85%88%E5%87%BA"><span class="toc-text">2.先进先出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8%E6%9C%80%E5%B0%91"><span class="toc-text">3.使用最少</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%9A%8F%E6%9C%BA"><span class="toc-text">4.随机</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E7%AD%96%E7%95%A5"><span class="toc-text">写策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%86%99%E5%85%A5"><span class="toc-text">1.写入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%86%99%E5%9B%9E"><span class="toc-text">2.写回</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9D%97%E5%A4%A7%E5%B0%8F-Cache-Line-Size"><span class="toc-text">块大小(Cache Line Size)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cache-%E6%95%B0%E7%9B%AE"><span class="toc-text">cache 数目</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/07/18/daodao-kai/" title="基于 Vercel 和 MongoDB 的叨叨·改"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/Snipaste_2021-05-16_00-24-41.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于 Vercel 和 MongoDB 的叨叨·改"/></a><div class="content"><a class="title" href="/2021/07/18/daodao-kai/" title="基于 Vercel 和 MongoDB 的叨叨·改">基于 Vercel 和 MongoDB 的叨叨·改</a><time datetime="2021-07-18T13:16:30.000Z" title="发表于 2021-07-18 21:16:30">2021-07-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/16/twikoo-img-zoom/" title="为 butterfly 主题的 twikoo 添加图片点击放大功能"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/rikka_1.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="为 butterfly 主题的 twikoo 添加图片点击放大功能"/></a><div class="content"><a class="title" href="/2021/07/16/twikoo-img-zoom/" title="为 butterfly 主题的 twikoo 添加图片点击放大功能">为 butterfly 主题的 twikoo 添加图片点击放大功能</a><time datetime="2021-07-15T17:09:38.000Z" title="发表于 2021-07-16 01:09:38">2021-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/06/auto-update-link/" title="自动添加 twikoo 评论中的友链"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/wallhaven-714648~1.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="自动添加 twikoo 评论中的友链"/></a><div class="content"><a class="title" href="/2021/07/06/auto-update-link/" title="自动添加 twikoo 评论中的友链">自动添加 twikoo 评论中的友链</a><time datetime="2021-07-05T18:38:38.000Z" title="发表于 2021-07-06 02:38:38">2021-07-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C_04/" title="计算机网络 4 -网络层"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/rikka_1.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络 4 -网络层"/></a><div class="content"><a class="title" href="/2021/06/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C_04/" title="计算机网络 4 -网络层">计算机网络 4 -网络层</a><time datetime="2021-06-28T16:00:00.000Z" title="发表于 2021-06-29 00:00:00">2021-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/25/jsDelivr/%E8%96%85%E7%BE%8A%E6%AF%9B/" title="将 mp4 视频切片成 ts 后使用 jsDelivr 加速制作 &quot;视频床&quot;"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/真冬の標本.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="将 mp4 视频切片成 ts 后使用 jsDelivr 加速制作 &quot;视频床&quot;"/></a><div class="content"><a class="title" href="/2021/06/25/jsDelivr/%E8%96%85%E7%BE%8A%E6%AF%9B/" title="将 mp4 视频切片成 ts 后使用 jsDelivr 加速制作 &quot;视频床&quot;">将 mp4 视频切片成 ts 后使用 jsDelivr 加速制作 &quot;视频床&quot;</a><time datetime="2021-06-24T16:00:00.000Z" title="发表于 2021-06-25 00:00:00">2021-06-25</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 By Rikka</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎来到极东魔术昼寝结社！</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>(()=>{
+  const $countDom = document.getElementById('twikoo-count')
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'comment-1a9b61',
+      region: '',
+      onCommentLoaded: function () {
+        if(typeof window.mediumZoom!='undefined'){
+          const zoomComment = mediumZoom(document.querySelectorAll('.tk-content :not(a)>img'))
+          zoomComment.on('open', e => {
+            const photoBg = document.documentElement.getAttribute('data-theme') === 'dark' ? '#121212' : '#fff'
+            zoomComment.update({
+              background: photoBg
+            })
+          })
+        }
+        if(GLOBAL_CONFIG.lightbox === 'fancybox'){
+            const addFancybox = function (ele) {
+              const runFancybox = (ele) => {
+                ele.each(function (i, o) {
+                  const $this = $(o)
+                  const lazyloadSrc = $this.attr('data-lazy-src') || $this.attr('src')
+                  const dataCaption = $this.attr('alt') || ''
+                  $this.wrap(`<a href="${lazyloadSrc}" data-fancybox="group" data-caption="${dataCaption}" class="fancybox"></a>`)
+                })
+
+                $().fancybox({
+                  selector: '[data-fancybox]',
+                  loop: true,
+                  transitionEffect: 'slide',
+                  protect: true,
+                  buttons: ['slideShow', 'fullScreen', 'thumbs', 'close'],
+                  hash: false
+                })
+              }
+
+              if (typeof $.fancybox === 'undefined') {
+                $('head').append(`<link rel="stylesheet" type="text/css" href="${GLOBAL_CONFIG.source.fancybox.css}">`)
+                $.getScript(`${GLOBAL_CONFIG.source.fancybox.js}`, function () {
+                  runFancybox($(ele))
+                })
+              } else {
+                runFancybox($(ele))
+              }
+            }
+          addFancybox(document.querySelectorAll('.tk-content :not(a)>img'))
+        }
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'comment-1a9b61',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      $countDom.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const loadTwikoo = (bool = false) => {
+    if (typeof twikoo === 'object') {
+      init()
+      bool && $countDom && setTimeout(getCount,0)
+    } else {
+      getScript('https://cdn.jsdelivr.net/gh/ayasa520/hexo@master/source/js/twikoo.all.js').then(()=> {
+        init()
+        bool && $countDom && setTimeout(getCount,0)
+      })
+    }
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo(true)
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'comment-1a9b61',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.jsdelivr.net/gh/ayasa520/hexo@master/source/js/twikoo.all.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script  src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script  defer src="https://cdn.jsdelivr.net/gh/graingert/wow@1.3.0/dist/wow.min.js"></script><script defer data-pjax src="/js/wow_init.js"></script><div class="app-refresh" id="app-refresh"> <div class="app-refresh-wrap"> <label>✨ 网站已更新最新版本 👉</label> <a href="javascript:void(0)" onclick="location.reload()">点击刷新</a> </div></div><script>function showNotification(){if(GLOBAL_CONFIG.Snackbar){var t="light"===document.documentElement.getAttribute("data-theme")?GLOBAL_CONFIG.Snackbar.bgLight:GLOBAL_CONFIG.Snackbar.bgDark,e=GLOBAL_CONFIG.Snackbar.position;Snackbar.show({text:"已更新最新版本",backgroundColor:t,duration:5e5,pos:e,actionText:"点击刷新",actionTextColor:"#fff",onActionClick:function(t){location.reload()}})}else{var o=`top: 0; background: ${"light"===document.documentElement.getAttribute("data-theme")?"#49b1f5":"#1f1f1f"};`;document.getElementById("app-refresh").style.cssText=o}}"serviceWorker"in navigator&&(navigator.serviceWorker.controller&&navigator.serviceWorker.addEventListener("controllerchange",function(){showNotification()}),window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")}));</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><div id="aplayer"></div><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script type="text/javascript"> document.write("<script src='/js/music.js?"+Math.random()+"'><\/script>"); </script>·<script defer src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@latest/source/js/issues.min.js"></script><script defer data-pjax src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.5.0/build/highlight.min.js"></script><script defer data-pjax>if (document.getElementsByClassName('dplayer').length>0){$.getScript('https://cdn.jsdelivr.net/hls.js/latest/hls.min.js').done(function(){ $.getScript('https://cdn.jsdelivr.net/gh/ayasa520/hexo/source/js/DPlayer.min.js').done(dplayer_init);});}</script><script defer data-pjax>if (document.getElementById('hpp_talk')){$.getScript('https://cdn.jsdelivr.net/gh/ayasa520/HexoPlusPlus@main/src/talk_user.js').done(hpp_talk_init);}</script><script async>console.log(" ____    ______   __  __   __  __   ______     \n/\\  _`\\ /\\__  _\\ /\\ \\/\\ \\ /\\ \\/\\ \\ /\\  _  \\    \n\\ \\ \\L\\ \\/_/\\ \\/ \\ \\ \\/'/'\\ \\ \\/'/'\\ \\ \\L\\ \\   \n \\ \\ ,  /  \\ \\ \\  \\ \\ , <  \\ \\ , <  \\ \\  __ \\  \n  \\ \\ \\\\ \\  \\_\\ \\__\\ \\ \\\\`\\ \\ \\ \\\\`\\ \\ \\ \\/\\ \\ \n   \\ \\_\\ \\_\\/\\_____\\\\ \\_\\ \\_\\\\ \\_\\ \\_\\\\ \\_\\ \\_\\\n    \\/_/\\/ /\\/_____/ \\/_/\\/_/ \\/_/\\/_/ \\/_/\\/_/")</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax',
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener toc scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script  src="https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.0/dist/js/main.js"></script><script data-pjax  src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script><script data-pjax>
+        function daodao_plus_injector_config(){
+            function ddSwiperInit(){
+                const ddSwiper =new DaodaoSwiper(daodao_url,bbpath,filter);
+                ddSwiper.init();
+            }
+            var daodao_url = "https://daodao.bilibilianime.com/api/query/20";
+            var bbpath = /daodaoplus/;
+            var filter = JSON.parse('["iframe","img","script","code"]');
+            var parent_div_git = document.getElementsByClassName('recent-posts')[0];
+            var item_html =  '<div class="recent-post-item" style="height: auto;width: 100%"><div class="bbTimeList container" id="bbTimeList" style="height: auto;width: 100%"><a class="bber-gotobb fas fa-bullhorn" href="/daodaoplus/" title="叨叨"></a><div class="swiper-container" id="bbtalk"><div class="swiper-wrapper" id="bber-talk"></div></div><a class="bber-gotobb fas fa-arrow-circle-right" href="/daodaoplus/" title="查看全文"></a></div></div>';
+            console.log('已挂载daodao_plus')
+            parent_div_git.insertAdjacentHTML("afterbegin",item_html) 
+            if (typeof DaodaoSwiper === 'function' && typeof Daodao==='function'){
+                ddSwiperInit();
+            }else{
+                let ddScripts = []
+                if(typeof DaodaoSwiper!=="function")
+                    ddScripts.push( getScript('https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.0/dist/js/main.js'))
+                if(typeof Daodao!=="function")
+                    ddScripts.push( getScript('https://cdn.jsdelivr.net/npm/daodaoplus@1.0.5/static/js/index.js'))
+                Promise.all(ddScripts).then(ddSwiperInit);
+            }
+
+        }
+        if( document.getElementsByClassName('recent-posts')[0] && (location.pathname ==='/')){
+                daodao_plus_injector_config()
+        }</script><!-- hexo injector body_end end --></body></html>

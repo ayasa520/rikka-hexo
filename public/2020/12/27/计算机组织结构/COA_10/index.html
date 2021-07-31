@@ -1,0 +1,700 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>计算机组织结构(十) 内存管理 | 极东魔术昼寝结社</title><meta name="keywords" content="底层,计组"><meta name="author" content="Rikka"><meta name="copyright" content="Rikka"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="📚 文档目录合集-数的二进制表示-定点运算-BCD 码-浮点数四则运算-内置存储器-Cache-外存-纠错-RAID-内存管理-总线-指令集: 特征- 指令集:寻址方式和指令格式  过去, 只有操作系统和一个程序在内存中. 现在, 操作系统和多个程序都在内存中. 程序等待 I&#x2F;O 时, 为了避免处理器等待, 需要进行优化, 使得更多的程序可以加载入内存. 内存管理: 在多程序设计系统中, 内存的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机组织结构(十) 内存管理">
+<meta property="og:url" content="https://www.bilibilianime.com/2020/12/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E7%BB%87%E7%BB%93%E6%9E%84/COA_10/index.html">
+<meta property="og:site_name" content="极东魔术昼寝结社">
+<meta property="og:description" content="📚 文档目录合集-数的二进制表示-定点运算-BCD 码-浮点数四则运算-内置存储器-Cache-外存-纠错-RAID-内存管理-总线-指令集: 特征- 指令集:寻址方式和指令格式  过去, 只有操作系统和一个程序在内存中. 现在, 操作系统和多个程序都在内存中. 程序等待 I&#x2F;O 时, 为了避免处理器等待, 需要进行优化, 使得更多的程序可以加载入内存. 内存管理: 在多程序设计系统中, 内存的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/655087.webp">
+<meta property="article:published_time" content="2020-12-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-06-26T03:41:51.882Z">
+<meta property="article:author" content="Rikka">
+<meta property="article:tag" content="底层">
+<meta property="article:tag" content="计组">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/655087.webp"><link rel="shortcut icon" href="/image/favicon.png"><link rel="canonical" href="https://www.bilibilianime.com/2020/12/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E7%BB%87%E7%BB%93%E6%9E%84/COA_10/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/pwa/manifest.json"/><meta name="msapplication-TileColor" content="#fff"/><link rel="apple-touch-icon" sizes="180x180" href="/pwa/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/pwa/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/pwa/16.png"/><link rel="mask-icon" href="/pwa/safari-pinned-tab.svg" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"source/search/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"此文章发表于","messageNext":"天前，内容可能已经过时"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Rikka","link":"链接: ","source":"来源: 极东魔术昼寝结社","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '计算机组织结构(十) 内存管理',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-06-26 11:41:51'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><style type="text/css">.app-refresh{position:fixed;top:-2.2rem;left:0;right:0;z-index:99999;padding:0 1rem;font-size:15px;height:2.2rem;transition:all .3s ease}.app-refresh-wrap{display:flex;color:#fff;height:100%;align-items:center;justify-content:center}.app-refresh-wrap a{color:#fff;text-decoration:underline;cursor:pointer}</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/custom.css"  media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daodaoplus@1.0.4/static/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.0/dist/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "/img/404.jpg" data-lazy-src="/image/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">47</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/daodaoplus/"><i class="fa-fw fas fa-comment"></i><span> 闲话板砖</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comment"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/655087.webp')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">极东魔术昼寝结社</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/daodaoplus/"><i class="fa-fw fas fa-comment"></i><span> 闲话板砖</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comment"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">计算机组织结构(十) 内存管理</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-12-26T16:00:00.000Z" title="发表于 2020-12-27 00:00:00">2020-12-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-26T03:41:51.882Z" title="更新于 2021-06-26 11:41:51">2021-06-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/NJU-%E7%AC%94%E8%AE%B0/">NJU 笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="计算机组织结构(十) 内存管理"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><div class="note blue icon modern"><i class="note-icon fas fa-rocket"></i><p>📚 文档目录<br><a href="/2020/12/27/计算机组织结构/COA_00">合集</a>-<a href="/2020/12/27/计算机组织结构/COA_01">数的二进制表示</a>-<a href="/2020/12/27/计算机组织结构/COA_02">定点运算</a>-<a href="/2020/12/27/计算机组织结构/COA_03">BCD 码</a>-<a href="/2020/12/27/计算机组织结构/COA_04">浮点数四则运算</a>-<a href="/2020/12/27/计算机组织结构/COA_05">内置存储器</a>-<a href="/2020/12/27/计算机组织结构/COA_06">Cache</a>-<a href="/2020/12/27/计算机组织结构/COA_07">外存</a>-<a href="/2020/12/27/计算机组织结构/COA_08">纠错</a>-<a href="/2020/12/27/计算机组织结构/COA_09">RAID</a>-<a href="/2020/12/27/计算机组织结构/COA_10">内存管理</a>-<a href="/2020/12/27/计算机组织结构/COA_11">总线</a>-<a href="/2020/12/27/计算机组织结构/COA_12">指令集: 特征</a>-<a href="/2020/12/27/计算机组织结构/COA_13"> 指令集:寻址方式和指令格式</a></p>
+</div>
+<p>过去, 只有操作系统和一个程序在内存中.</p>
+<p>现在, 操作系统和多个程序都在内存中. 程序等待 I/O 时, 为了避免处理器等待, 需要进行优化, 使得更多的程序可以加载入内存.</p>
+<p><strong>内存管理:</strong> 在多程序设计系统中, 内存的 “用户部分” 应该被进一步划分以适应多个程序, 这是由系统动态决定的.</p>
+<h2 id="加载更多程序的途径"><a href="#加载更多程序的途径" class="headerlink" title="加载更多程序的途径"></a>加载更多程序的途径</h2><ul>
+<li><p>增大内存    </p>
+</li>
+<li><p>使用交换和重叠技术</p>
+<ul>
+<li><p>当没有程序就绪的时候, 系统载入程序</p>
+</li>
+<li><p><strong>分区</strong>和<strong>分页</strong></p>
+</li>
+</ul>
+</li>
+<li><p>虚拟内存</p>
+<ul>
+<li>请求分页</li>
+<li>虚拟地址</li>
+</ul>
+</li>
+</ul>
+<h2 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h2><h3 id="固定大小分区"><a href="#固定大小分区" class="headerlink" title="固定大小分区"></a>固定大小分区</h3><p>系统: 固定的大小</p>
+<p>用户程序: 固定的大小, 但各不相同. 当加载一个程序的时候, 将其载入刚好能够容纳下这个程序的最小的区中.</p>
+<p>缺点: 产生大量内部碎片.</p>
+<p><img src= "/img/404.jpg" data-lazy-src="data:image/webp;base64,iVBORw0KGgoAAAANSUhEUgAAAIMAAAFLCAYAAAD1UT8LAAAH8HRFWHRteGZpbGUAJTNDbXhmaWxlJTIwaG9zdCUzRCUyMjg5NzgzZWM2LWE1YTAtNDU3MC1iZjJlLTc3NTExYTYwMzBlMCUyMiUyMG1vZGlmaWVkJTNEJTIyMjAyMC0xMi0xM1QxNyUzQTIwJTNBNDkuMzE5WiUyMiUyMGFnZW50JTNEJTIyNS4wJTIwKFdpbmRvd3MlMjBOVCUyMDEwLjAlM0IlMjBXaW42NCUzQiUyMHg2NCklMjBBcHBsZVdlYktpdCUyRjUzNy4zNiUyMChLSFRNTCUyQyUyMGxpa2UlMjBHZWNrbyklMjBDb2RlJTJGMS41MS4xJTIwQ2hyb21lJTJGODMuMC40MTAzLjEyMiUyMEVsZWN0cm9uJTJGOS4zLjMlMjBTYWZhcmklMkY1MzcuMzYlMjIlMjB2ZXJzaW9uJTNEJTIyMTMuMTAuMCUyMiUyMGV0YWclM0QlMjJ4STNoWTM1V19zQkpFekZiRFZ3NCUyMiUyMHR5cGUlM0QlMjJlbWJlZCUyMiUzRSUzQ2RpYWdyYW0lMjBpZCUzRCUyMjlrUXY2NDRzaXYwYjJoX05FMVpjJTIyJTIwbmFtZSUzRCUyMlBhZ2UtMSUyMiUzRSUzQ214R3JhcGhNb2RlbCUyMGR4JTNEJTIyNDU4JTIyJTIwZHklM0QlMjI4MjklMjIlMjBncmlkJTNEJTIyMSUyMiUyMGdyaWRTaXplJTNEJTIyMTAlMjIlMjBndWlkZXMlM0QlMjIxJTIyJTIwdG9vbHRpcHMlM0QlMjIxJTIyJTIwY29ubmVjdCUzRCUyMjElMjIlMjBhcnJvd3MlM0QlMjIxJTIyJTIwZm9sZCUzRCUyMjElMjIlMjBwYWdlJTNEJTIyMSUyMiUyMHBhZ2VTY2FsZSUzRCUyMjElMjIlMjBwYWdlV2lkdGglM0QlMjI4MjclMjIlMjBwYWdlSGVpZ2h0JTNEJTIyMTE2OSUyMiUyMG1hdGglM0QlMjIwJTIyJTIwc2hhZG93JTNEJTIyMCUyMiUzRSUzQ3Jvb3QlM0UlM0NteENlbGwlMjBpZCUzRCUyMjAlMjIlMkYlM0UlM0NteENlbGwlMjBpZCUzRCUyMjElMjIlMjBwYXJlbnQlM0QlMjIwJTIyJTJGJTNFJTNDbXhDZWxsJTIwaWQlM0QlMjIzJTIyJTIwdmFsdWUlM0QlMjJPUyUyMiUyMHN0eWxlJTNEJTIycm91bmRlZCUzRDAlM0J3aGl0ZVNwYWNlJTNEd3JhcCUzQmh0bWwlM0QxJTNCJTIyJTIwdmVydGV4JTNEJTIyMSUyMiUyMHBhcmVudCUzRCUyMjElMjIlM0UlM0NteEdlb21ldHJ5JTIweCUzRCUyMjE2MCUyMiUyMHklM0QlMjIzNjAlMjIlMjB3aWR0aCUzRCUyMjEyMCUyMiUyMGhlaWdodCUzRCUyMjQwJTIyJTIwYXMlM0QlMjJnZW9tZXRyeSUyMiUyRiUzRSUzQyUyRm14Q2VsbCUzRSUzQ214Q2VsbCUyMGlkJTNEJTIyNCUyMiUyMHZhbHVlJTNEJTIyNjRLJTIyJTIwc3R5bGUlM0QlMjJyb3VuZGVkJTNEMCUzQndoaXRlU3BhY2UlM0R3cmFwJTNCaHRtbCUzRDElM0IlMjIlMjB2ZXJ0ZXglM0QlMjIxJTIyJTIwcGFyZW50JTNEJTIyMSUyMiUzRSUzQ214R2VvbWV0cnklMjB4JTNEJTIyMTYwJTIyJTIweSUzRCUyMjQwMCUyMiUyMHdpZHRoJTNEJTIyMTIwJTIyJTIwaGVpZ2h0JTNEJTIyNDAlMjIlMjBhcyUzRCUyMmdlb21ldHJ5JTIyJTJGJTNFJTNDJTJGbXhDZWxsJTNFJTNDbXhDZWxsJTIwaWQlM0QlMjI1JTIyJTIwdmFsdWUlM0QlMjIxMjhLJTIyJTIwc3R5bGUlM0QlMjJyb3VuZGVkJTNEMCUzQndoaXRlU3BhY2UlM0R3cmFwJTNCaHRtbCUzRDElM0IlMjIlMjB2ZXJ0ZXglM0QlMjIxJTIyJTIwcGFyZW50JTNEJTIyMSUyMiUzRSUzQ214R2VvbWV0cnklMjB4JTNEJTIyMTYwJTIyJTIweSUzRCUyMjQ0MCUyMiUyMHdpZHRoJTNEJTIyMTIwJTIyJTIwaGVpZ2h0JTNEJTIyODAlMjIlMjBhcyUzRCUyMmdlb21ldHJ5JTIyJTJGJTNFJTNDJTJGbXhDZWxsJTNFJTNDbXhDZWxsJTIwaWQlM0QlMjI2JTIyJTIwdmFsdWUlM0QlMjIyNTZLJTIyJTIwc3R5bGUlM0QlMjJyb3VuZGVkJTNE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" style="cursor:pointer;max-width:100%;" onclick="(function(img){if(img.wnd!=null&&!img.wnd.closed){img.wnd.focus();}else{var r=function(evt){if(evt.data=='ready'&&evt.source==img.wnd){img.wnd.postMessage(decodeURIComponent(img.getAttribute('src')),'*');window.removeEventListener('message',r);}};window.addEventListener('message',r);img.wnd=window.open('https://viewer.diagrams.net/?client=1&page=0&edit=_blank');}})(this);"/></p>
+<h3 id="可变大小分区"><a href="#可变大小分区" class="headerlink" title="可变大小分区"></a>可变大小分区</h3><p>系统: 固定的大小</p>
+<p>用户程序: 按需分配</p>
+<p>缺点: 产生大量外部碎片</p>
+<p><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/README.assets/03a8d63fbcb773d9b684288d894255ee5fa00838.webp" style="zoom:67%;" /></p>
+<h2 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h2><p>基本思想:</p>
+<ul>
+<li><p>将内存分为固定大小的块, 称为<strong>页框</strong>(页帧), 将程序分为固定大小的块, 称为<strong>页</strong></p>
+</li>
+<li><p>将页加载入页框中</p>
+</li>
+</ul>
+<p><strong>逻辑地址:</strong> 指令中的地址</p>
+<p><strong>物理地址:</strong>主存中的地址</p>
+<p><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/README.assets/cadfd03860469d165472ec6279b4aed1e349eea9.webp" style="zoom: 67%;" /></p>
+<h2 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h2><p>内存的大小是有限的，但是对内存的需求在不断增加</p>
+<p><strong>基本思想：</strong>请求分页，一个进程的页只有在需要的时候才被调入</p>
+<p>本质：</p>
+<ul>
+<li>在比内存大的逻辑地址空间中编程</li>
+<li>只调入需要的程序和数据</li>
+<li>通过硬件将逻辑地址转化为物理地址</li>
+<li>当发生页缺失的时候在内存和硬盘之间交换信息</li>
+</ul>
+<p><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/README.assets/a234581cc2a822f4f6f02684b41da95ca8950d73.webp" style="zoom:80%;" /></p>
+<h3 id="一些问题"><a href="#一些问题" class="headerlink" title="一些问题"></a>一些问题</h3><ul>
+<li>页的大小: 4KB, 8Kb…</li>
+<li>映射函数: 关联映射</li>
+<li>类型:<ul>
+<li>基于页的虚拟内存</li>
+<li>基于段的虚拟存储器</li>
+<li>基于段和页的虚拟内存</li>
+</ul>
+</li>
+<li>写策略: 写回</li>
+</ul>
+<h3 id="基于页的虚拟内存"><a href="#基于页的虚拟内存" class="headerlink" title="基于页的虚拟内存"></a>基于页的虚拟内存</h3><p>将主存和虚拟内存分成相同大小的页</p>
+<ul>
+<li>虚页(Virtual page)/逻辑页(Logical page): 虚拟内存中的页</li>
+<li>物理页(Physical page)/页框(page frame): 主存中的页</li>
+</ul>
+<p>页表:</p>
+<ul>
+<li>包含着所有虚页的信息, 包括位置, 有效位, 脏位, 可读写位</li>
+<li>存储在主存中</li>
+<li>虚拟地址 $&lt;-$ 虚页号 + 页内地址 (偏移量)</li>
+</ul>
+<p><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/README.assets/37719366f70bb69d22383fce2f2e421fe635940a.webp" alt="页表" style="zoom:67%;" /></p>
+<h3 id="快表-TLB"><a href="#快表-TLB" class="headerlink" title="快表 (TLB)"></a>快表 (TLB)</h3><p>页表的使用增加了主存的访问</p>
+<p>为了减少访问主存, 将最常用的页表项加载进 cache</p>
+<p><strong>TLB:</strong> 页表项被载入 cache </p>
+<ul>
+<li>全相联映射, 组关联映射</li>
+<li>随机替换策略</li>
+</ul>
+<p><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/README.assets/66ee27fdf8bb2574adf0f46387f468218d6602ca.webp" style="zoom:67%;" /></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>TLB</th>
+<th>page table</th>
+<th>cache</th>
+<th>possibility</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>hit \</td>
+<td>valid</td>
+<td>————-</td>
+<td>hit</td>
+<td>possible, in cache</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>hit \</td>
+<td>invalid</td>
+<td>————-</td>
+<td>hit</td>
+<td>impossible</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>hit \</td>
+<td>invalid</td>
+<td>————-</td>
+<td>miss</td>
+<td>impossible</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>hit \</td>
+<td>valid</td>
+<td>————-</td>
+<td>miss</td>
+<td>possible, in memory bu not in cache</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>miss</td>
+<td>valid</td>
+<td>hit</td>
+<td>possible, in cache</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>miss</td>
+<td>invalid</td>
+<td>hit</td>
+<td>impossible</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>miss</td>
+<td>valid</td>
+<td>miss</td>
+<td>possible, in memory bu not in cache</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>miss</td>
+<td>invalid</td>
+<td>miss</td>
+<td>possible, not in memory</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>ps: 快表中只有 valid 情况下才能算 hit</p>
+<p>分析: </p>
+<ul>
+<li>最好: 1,    未访问内存</li>
+<li>好      4, 5 只访问一次内存  </li>
+<li>坏      7      两次访问主存</li>
+<li>最坏   8      两次访问主存, 并访问硬盘</li>
+</ul>
+<h3 id="基于段的虚拟存储器"><a href="#基于段的虚拟存储器" class="headerlink" title="基于段的虚拟存储器"></a>基于段的虚拟存储器</h3><p>将程序和数据分成不同长度的段, 并将需要的段载入主存</p>
+<p><strong>虚拟地址</strong>: 段号 + 段内偏移量</p>
+<p>与基于页的虚拟内存相比:</p>
+<ul>
+<li>基于页的虚拟内存<ul>
+<li>优势: 简单, 成本低<ul>
+<li>劣势:指令和数据可能跨页</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>基于段的虚拟内存<ul>
+<li>优势: 数据和程序自然划分</li>
+<li>劣势: 长度并非固定</li>
+</ul>
+</li>
+</ul>
+<h3 id="基于段和页的虚拟内存"><a href="#基于段和页的虚拟内存" class="headerlink" title="基于段和页的虚拟内存"></a>基于段和页的虚拟内存</h3><p>将程序和数据划分为段, 并进一步将段划分为页, 每一个段都有它自己页表</p>
+<p><strong>虚拟地址</strong>: 段号 + 页号 + 偏移量</p>
+<p>优势: 程序在段中可以共享和保护</p>
+<p>劣势: 需要多次查表</p>
+<h2 id="补充-PA-中的内存管理部分"><a href="#补充-PA-中的内存管理部分" class="headerlink" title="补充 PA 中的内存管理部分"></a>补充 PA 中的内存管理部分</h2><h3 id="实模式"><a href="#实模式" class="headerlink" title="实模式"></a>实模式</h3><h4 id="8086的实模式"><a href="#8086的实模式" class="headerlink" title="8086的实模式"></a><strong>8086的实模式</strong></h4><ul>
+<li>寄存器长度：16 位<ul>
+<li>访问内存需要结合<strong>段寄存器</strong>(segment register)进行</li>
+</ul>
+</li>
+<li>地址线：20 根</li>
+<li>物理地址计算方式<ul>
+<li>physical address = (seg_reg&lt;&lt;4)+offset，offset 为 16 位的偏移量</li>
+<li>可寻址空间：$2^{20}$=1MB</li>
+</ul>
+</li>
+</ul>
+<h4 id="分段机制"><a href="#分段机制" class="headerlink" title="分段机制"></a>分段机制</h4><p>x86 的机器开机后首先进入实模式</p>
+<ul>
+<li>加载操作系统</li>
+<li>操作系统初始化段表</li>
+<li>拨动一个”开关”, 从实模式切换到保护模式</li>
+</ul>
+<p>进入保护模式后</p>
+<ul>
+<li>程序给出 48 位逻辑地址(16位段选择符 + 32 位有效地址)</li>
+<li>使用段选择符来查段表</li>
+<li>进行段级地址转换得到线性地址</li>
+</ul>
+<h4 id="分段机制-地址转换"><a href="#分段机制-地址转换" class="headerlink" title="分段机制(地址转换)"></a>分段机制(地址转换)</h4><p>80386 保护模式下的地址转换</p>
+<ul>
+<li><p>逻辑地址到线性地址的转换</p>
+<ul>
+<li><p><strong>逻辑地址</strong>: 48 位, 又叫虚拟地址,其中</p>
+<p><strong>段选择符</strong>: 16 位(sreg对应的段寄存器的内容)</p>
+<p><strong>段内偏移量</strong>(有效地址): 32 位(vaddr给出的32位地址)</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>  <img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/README.assets/a251a56b74772c80ebcd9fc2ea7361bc26c6ab9c.webp" style="zoom:67%;" /></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Rikka</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.bilibilianime.com/2020/12/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E7%BB%87%E7%BB%93%E6%9E%84/COA_10/">https://www.bilibilianime.com/2020/12/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E7%BB%87%E7%BB%93%E6%9E%84/COA_10/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.bilibilianime.com" target="_blank">极东魔术昼寝结社</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%BA%95%E5%B1%82/">底层</a><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%BB%84/">计组</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/655087.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/12/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E7%BB%87%E7%BB%93%E6%9E%84/COA_12/"><img class="prev-cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/Snipaste_2021-05-16_00-24-41.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">计算机组织结构(十二) 指令集: 特征</div></div></a></div><div class="next-post pull-right"><a href="/2020/12/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E7%BB%87%E7%BB%93%E6%9E%84/COA_13/"><img class="next-cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/真冬の標本.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">计算机组织结构(十三) 指令集:寻址方式和指令格式</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/12/27/计算机组织结构/COA_00/" title="计算机组织结构 合集"><img class="cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/655087.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-27</div><div class="title">计算机组织结构 合集</div></div></a></div><div><a href="/2020/12/27/计算机组织结构/COA_01/" title="计算机组织结构(一) 数的二进制表示"><img class="cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/wallhaven-714648~1.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-27</div><div class="title">计算机组织结构(一) 数的二进制表示</div></div></a></div><div><a href="/2020/12/27/计算机组织结构/COA_03/" title="计算机组织结构(三) BCD 码"><img class="cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/wallhaven-714648~1.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-27</div><div class="title">计算机组织结构(三) BCD 码</div></div></a></div><div><a href="/2020/12/27/计算机组织结构/COA_04/" title="计算机组织结构(四) 浮点数四则运算"><img class="cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/wallhaven-714648~1.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-27</div><div class="title">计算机组织结构(四) 浮点数四则运算</div></div></a></div><div><a href="/2020/12/27/计算机组织结构/COA_05/" title="计算机组织结构(五) 内置存储器"><img class="cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/erik-shoemaker-chaldea-matte-final2.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-27</div><div class="title">计算机组织结构(五) 内置存储器</div></div></a></div><div><a href="/2020/12/27/计算机组织结构/COA_06/" title="计算机组织结构(六) Cache"><img class="cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/rikka_1.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-27</div><div class="title">计算机组织结构(六) Cache</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "/img/404.jpg" data-lazy-src="/image/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Rikka</div><div class="author-info__description">邪王真眼是最强的</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">47</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ayasa520"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/ayasa520" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1103670381@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">Rikka 的 Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD%E6%9B%B4%E5%A4%9A%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%80%94%E5%BE%84"><span class="toc-text">加载更多程序的途径</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%8C%BA"><span class="toc-text">分区</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BA%E5%AE%9A%E5%A4%A7%E5%B0%8F%E5%88%86%E5%8C%BA"><span class="toc-text">固定大小分区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E5%8F%98%E5%A4%A7%E5%B0%8F%E5%88%86%E5%8C%BA"><span class="toc-text">可变大小分区</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E9%A1%B5"><span class="toc-text">分页</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98"><span class="toc-text">虚拟内存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="toc-text">一些问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E9%A1%B5%E7%9A%84%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98"><span class="toc-text">基于页的虚拟内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E8%A1%A8-TLB"><span class="toc-text">快表 (TLB)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%AE%B5%E7%9A%84%E8%99%9A%E6%8B%9F%E5%AD%98%E5%82%A8%E5%99%A8"><span class="toc-text">基于段的虚拟存储器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%AE%B5%E5%92%8C%E9%A1%B5%E7%9A%84%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98"><span class="toc-text">基于段和页的虚拟内存</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85-PA-%E4%B8%AD%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E9%83%A8%E5%88%86"><span class="toc-text">补充 PA 中的内存管理部分</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E6%A8%A1%E5%BC%8F"><span class="toc-text">实模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8086%E7%9A%84%E5%AE%9E%E6%A8%A1%E5%BC%8F"><span class="toc-text">8086的实模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E6%9C%BA%E5%88%B6"><span class="toc-text">分段机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E6%9C%BA%E5%88%B6-%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2"><span class="toc-text">分段机制(地址转换)</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/07/18/daodao-kai/" title="基于 Vercel 和 MongoDB 的叨叨·改"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/Snipaste_2021-05-16_00-24-41.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于 Vercel 和 MongoDB 的叨叨·改"/></a><div class="content"><a class="title" href="/2021/07/18/daodao-kai/" title="基于 Vercel 和 MongoDB 的叨叨·改">基于 Vercel 和 MongoDB 的叨叨·改</a><time datetime="2021-07-18T13:16:30.000Z" title="发表于 2021-07-18 21:16:30">2021-07-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/16/twikoo-img-zoom/" title="为 butterfly 主题的 twikoo 添加图片点击放大功能"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/rikka_1.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="为 butterfly 主题的 twikoo 添加图片点击放大功能"/></a><div class="content"><a class="title" href="/2021/07/16/twikoo-img-zoom/" title="为 butterfly 主题的 twikoo 添加图片点击放大功能">为 butterfly 主题的 twikoo 添加图片点击放大功能</a><time datetime="2021-07-15T17:09:38.000Z" title="发表于 2021-07-16 01:09:38">2021-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/06/auto-update-link/" title="自动添加 twikoo 评论中的友链"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/wallhaven-714648~1.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="自动添加 twikoo 评论中的友链"/></a><div class="content"><a class="title" href="/2021/07/06/auto-update-link/" title="自动添加 twikoo 评论中的友链">自动添加 twikoo 评论中的友链</a><time datetime="2021-07-05T18:38:38.000Z" title="发表于 2021-07-06 02:38:38">2021-07-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C_04/" title="计算机网络 4 -网络层"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/rikka_1.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络 4 -网络层"/></a><div class="content"><a class="title" href="/2021/06/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C_04/" title="计算机网络 4 -网络层">计算机网络 4 -网络层</a><time datetime="2021-06-28T16:00:00.000Z" title="发表于 2021-06-29 00:00:00">2021-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/25/jsDelivr/%E8%96%85%E7%BE%8A%E6%AF%9B/" title="将 mp4 视频切片成 ts 后使用 jsDelivr 加速制作 &quot;视频床&quot;"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/真冬の標本.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="将 mp4 视频切片成 ts 后使用 jsDelivr 加速制作 &quot;视频床&quot;"/></a><div class="content"><a class="title" href="/2021/06/25/jsDelivr/%E8%96%85%E7%BE%8A%E6%AF%9B/" title="将 mp4 视频切片成 ts 后使用 jsDelivr 加速制作 &quot;视频床&quot;">将 mp4 视频切片成 ts 后使用 jsDelivr 加速制作 &quot;视频床&quot;</a><time datetime="2021-06-24T16:00:00.000Z" title="发表于 2021-06-25 00:00:00">2021-06-25</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 By Rikka</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎来到极东魔术昼寝结社！</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>(()=>{
+  const $countDom = document.getElementById('twikoo-count')
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'comment-1a9b61',
+      region: '',
+      onCommentLoaded: function () {
+        if(typeof window.mediumZoom!='undefined'){
+          const zoomComment = mediumZoom(document.querySelectorAll('.tk-content :not(a)>img'))
+          zoomComment.on('open', e => {
+            const photoBg = document.documentElement.getAttribute('data-theme') === 'dark' ? '#121212' : '#fff'
+            zoomComment.update({
+              background: photoBg
+            })
+          })
+        }
+        if(GLOBAL_CONFIG.lightbox === 'fancybox'){
+            const addFancybox = function (ele) {
+              const runFancybox = (ele) => {
+                ele.each(function (i, o) {
+                  const $this = $(o)
+                  const lazyloadSrc = $this.attr('data-lazy-src') || $this.attr('src')
+                  const dataCaption = $this.attr('alt') || ''
+                  $this.wrap(`<a href="${lazyloadSrc}" data-fancybox="group" data-caption="${dataCaption}" class="fancybox"></a>`)
+                })
+
+                $().fancybox({
+                  selector: '[data-fancybox]',
+                  loop: true,
+                  transitionEffect: 'slide',
+                  protect: true,
+                  buttons: ['slideShow', 'fullScreen', 'thumbs', 'close'],
+                  hash: false
+                })
+              }
+
+              if (typeof $.fancybox === 'undefined') {
+                $('head').append(`<link rel="stylesheet" type="text/css" href="${GLOBAL_CONFIG.source.fancybox.css}">`)
+                $.getScript(`${GLOBAL_CONFIG.source.fancybox.js}`, function () {
+                  runFancybox($(ele))
+                })
+              } else {
+                runFancybox($(ele))
+              }
+            }
+          addFancybox(document.querySelectorAll('.tk-content :not(a)>img'))
+        }
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'comment-1a9b61',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      $countDom.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const loadTwikoo = (bool = false) => {
+    if (typeof twikoo === 'object') {
+      init()
+      bool && $countDom && setTimeout(getCount,0)
+    } else {
+      getScript('https://cdn.jsdelivr.net/gh/ayasa520/hexo@master/source/js/twikoo.all.js').then(()=> {
+        init()
+        bool && $countDom && setTimeout(getCount,0)
+      })
+    }
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo(true)
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'comment-1a9b61',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.jsdelivr.net/gh/ayasa520/hexo@master/source/js/twikoo.all.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script  src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script  defer src="https://cdn.jsdelivr.net/gh/graingert/wow@1.3.0/dist/wow.min.js"></script><script defer data-pjax src="/js/wow_init.js"></script><div class="app-refresh" id="app-refresh"> <div class="app-refresh-wrap"> <label>✨ 网站已更新最新版本 👉</label> <a href="javascript:void(0)" onclick="location.reload()">点击刷新</a> </div></div><script>function showNotification(){if(GLOBAL_CONFIG.Snackbar){var t="light"===document.documentElement.getAttribute("data-theme")?GLOBAL_CONFIG.Snackbar.bgLight:GLOBAL_CONFIG.Snackbar.bgDark,e=GLOBAL_CONFIG.Snackbar.position;Snackbar.show({text:"已更新最新版本",backgroundColor:t,duration:5e5,pos:e,actionText:"点击刷新",actionTextColor:"#fff",onActionClick:function(t){location.reload()}})}else{var o=`top: 0; background: ${"light"===document.documentElement.getAttribute("data-theme")?"#49b1f5":"#1f1f1f"};`;document.getElementById("app-refresh").style.cssText=o}}"serviceWorker"in navigator&&(navigator.serviceWorker.controller&&navigator.serviceWorker.addEventListener("controllerchange",function(){showNotification()}),window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")}));</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><div id="aplayer"></div><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script type="text/javascript"> document.write("<script src='/js/music.js?"+Math.random()+"'><\/script>"); </script>·<script defer src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@latest/source/js/issues.min.js"></script><script defer data-pjax src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.5.0/build/highlight.min.js"></script><script defer data-pjax>if (document.getElementsByClassName('dplayer').length>0){$.getScript('https://cdn.jsdelivr.net/hls.js/latest/hls.min.js').done(function(){ $.getScript('https://cdn.jsdelivr.net/gh/ayasa520/hexo/source/js/DPlayer.min.js').done(dplayer_init);});}</script><script defer data-pjax>if (document.getElementById('hpp_talk')){$.getScript('https://cdn.jsdelivr.net/gh/ayasa520/HexoPlusPlus@main/src/talk_user.js').done(hpp_talk_init);}</script><script async>console.log(" ____    ______   __  __   __  __   ______     \n/\\  _`\\ /\\__  _\\ /\\ \\/\\ \\ /\\ \\/\\ \\ /\\  _  \\    \n\\ \\ \\L\\ \\/_/\\ \\/ \\ \\ \\/'/'\\ \\ \\/'/'\\ \\ \\L\\ \\   \n \\ \\ ,  /  \\ \\ \\  \\ \\ , <  \\ \\ , <  \\ \\  __ \\  \n  \\ \\ \\\\ \\  \\_\\ \\__\\ \\ \\\\`\\ \\ \\ \\\\`\\ \\ \\ \\/\\ \\ \n   \\ \\_\\ \\_\\/\\_____\\\\ \\_\\ \\_\\\\ \\_\\ \\_\\\\ \\_\\ \\_\\\n    \\/_/\\/ /\\/_____/ \\/_/\\/_/ \\/_/\\/_/ \\/_/\\/_/")</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax',
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener toc scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script  src="https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.0/dist/js/main.js"></script><script data-pjax  src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script><script data-pjax>
+        function daodao_plus_injector_config(){
+            function ddSwiperInit(){
+                const ddSwiper =new DaodaoSwiper(daodao_url,bbpath,filter);
+                ddSwiper.init();
+            }
+            var daodao_url = "https://daodao.bilibilianime.com/api/query/20";
+            var bbpath = /daodaoplus/;
+            var filter = JSON.parse('["iframe","img","script","code"]');
+            var parent_div_git = document.getElementsByClassName('recent-posts')[0];
+            var item_html =  '<div class="recent-post-item" style="height: auto;width: 100%"><div class="bbTimeList container" id="bbTimeList" style="height: auto;width: 100%"><a class="bber-gotobb fas fa-bullhorn" href="/daodaoplus/" title="叨叨"></a><div class="swiper-container" id="bbtalk"><div class="swiper-wrapper" id="bber-talk"></div></div><a class="bber-gotobb fas fa-arrow-circle-right" href="/daodaoplus/" title="查看全文"></a></div></div>';
+            console.log('已挂载daodao_plus')
+            parent_div_git.insertAdjacentHTML("afterbegin",item_html) 
+            if (typeof DaodaoSwiper === 'function' && typeof Daodao==='function'){
+                ddSwiperInit();
+            }else{
+                let ddScripts = []
+                if(typeof DaodaoSwiper!=="function")
+                    ddScripts.push( getScript('https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.0/dist/js/main.js'))
+                if(typeof Daodao!=="function")
+                    ddScripts.push( getScript('https://cdn.jsdelivr.net/npm/daodaoplus@1.0.5/static/js/index.js'))
+                Promise.all(ddScripts).then(ddSwiperInit);
+            }
+
+        }
+        if( document.getElementsByClassName('recent-posts')[0] && (location.pathname ==='/')){
+                daodao_plus_injector_config()
+        }</script><!-- hexo injector body_end end --></body></html>

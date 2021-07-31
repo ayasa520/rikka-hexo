@@ -1,0 +1,607 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>数据科学基础(七) 假设检验 | 极东魔术昼寝结社</title><meta name="keywords" content="概率论,数学"><meta name="author" content="Rikka"><meta name="copyright" content="Rikka"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="📚 文档目录随机事件及其概率随机变量及其分布期望和方差大数定律与中心极限定理数理统计的基本概念参数估计假设检验多维回归分析和方差分析降维  7.1.  假设检验7.1.1. 假设检验问题 参数估计:讨论如何根据样本得到总体分布所含参数的优良估计. 假设检验:讨论怎样在样本的基础上观察上面所得到的估计值与真实值之间在统计意义上相拟合,从而做出一个有较大把握的结论. 例子: 设菜厂生产一种灯管，其寿">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据科学基础(七) 假设检验">
+<meta property="og:url" content="https://www.bilibilianime.com/2020/12/27/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80_07/index.html">
+<meta property="og:site_name" content="极东魔术昼寝结社">
+<meta property="og:description" content="📚 文档目录随机事件及其概率随机变量及其分布期望和方差大数定律与中心极限定理数理统计的基本概念参数估计假设检验多维回归分析和方差分析降维  7.1.  假设检验7.1.1. 假设检验问题 参数估计:讨论如何根据样本得到总体分布所含参数的优良估计. 假设检验:讨论怎样在样本的基础上观察上面所得到的估计值与真实值之间在统计意义上相拟合,从而做出一个有较大把握的结论. 例子: 设菜厂生产一种灯管，其寿">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/image.webp">
+<meta property="article:published_time" content="2020-12-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-06-26T03:41:09.119Z">
+<meta property="article:author" content="Rikka">
+<meta property="article:tag" content="概率论">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/image.webp"><link rel="shortcut icon" href="/image/favicon.png"><link rel="canonical" href="https://www.bilibilianime.com/2020/12/27/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80_07/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/pwa/manifest.json"/><meta name="msapplication-TileColor" content="#fff"/><link rel="apple-touch-icon" sizes="180x180" href="/pwa/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/pwa/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/pwa/16.png"/><link rel="mask-icon" href="/pwa/safari-pinned-tab.svg" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"source/search/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"此文章发表于","messageNext":"天前，内容可能已经过时"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Rikka","link":"链接: ","source":"来源: 极东魔术昼寝结社","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '数据科学基础(七) 假设检验',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-06-26 11:41:09'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><style type="text/css">.app-refresh{position:fixed;top:-2.2rem;left:0;right:0;z-index:99999;padding:0 1rem;font-size:15px;height:2.2rem;transition:all .3s ease}.app-refresh-wrap{display:flex;color:#fff;height:100%;align-items:center;justify-content:center}.app-refresh-wrap a{color:#fff;text-decoration:underline;cursor:pointer}</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/custom.css"  media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daodaoplus@1.0.4/static/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.0/dist/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "/img/404.jpg" data-lazy-src="/image/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">47</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/daodaoplus/"><i class="fa-fw fas fa-comment"></i><span> 闲话板砖</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comment"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/image.webp')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">极东魔术昼寝结社</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/daodaoplus/"><i class="fa-fw fas fa-comment"></i><span> 闲话板砖</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comment"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">数据科学基础(七) 假设检验</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-12-26T16:00:00.000Z" title="发表于 2020-12-27 00:00:00">2020-12-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-26T03:41:09.119Z" title="更新于 2021-06-26 11:41:09">2021-06-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/NJU-%E7%AC%94%E8%AE%B0/">NJU 笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="数据科学基础(七) 假设检验"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><div class="note blue icon modern"><i class="note-icon fas fa-rocket"></i><p>📚 文档目录<br><a href="/2020/12/27/数据科学基础/数据科学基础_01">随机事件及其概率</a><br><a href="/2020/12/27/数据科学基础/数据科学基础_02">随机变量及其分布</a><br><a href="/2020/12/27/数据科学基础/数据科学基础_03">期望和方差</a><br><a href="/2020/12/27/数据科学基础/数据科学基础_04">大数定律与中心极限定理</a><br><a href="/2020/12/27/数据科学基础/数据科学基础_05">数理统计的基本概念</a><br><a href="/2020/12/27/数据科学基础/数据科学基础_06">参数估计</a><br><a href="/2020/12/27/数据科学基础/数据科学基础_07">假设检验</a><br><a href="/2020/12/27/数据科学基础/数据科学基础_08">多维</a><br><a href="/2020/12/27/数据科学基础/数据科学基础_09">回归分析和方差分析</a><br><a href="/2020/12/27/数据科学基础/数据科学基础_10">降维</a></p>
+</div>
+<h2 id="7-1-假设检验"><a href="#7-1-假设检验" class="headerlink" title="7.1.  假设检验"></a>7.1.  假设检验</h2><h3 id="7-1-1-假设检验问题"><a href="#7-1-1-假设检验问题" class="headerlink" title="7.1.1. 假设检验问题"></a>7.1.1. 假设检验问题</h3><ul>
+<li><strong>参数估计</strong>:讨论如何根据样本得到总体分布所含参数的优良估计.</li>
+<li><strong>假设检验</strong>:讨论怎样在样本的基础上观察上面所得到的估计值与真实值之间在统计意义上相拟合,从而做出一个有较大把握的结论.</li>
+<li>例子: 设菜厂生产一种灯管，其寿命X $\sim \mathrm{N}(\mu, 40000),$ 从过去较长一段 时间的生产情况看，灯管的平均寿命为 1500 小时，现在使用了新工艺后，在所生产的灯管中抽取25只，测得的平均寿命为1675 小时，问：采用新工艺后，灯管的寿命是否有显著提高?<br>为了判别新产品的寿命是否显著提高,提出两个假设:<ul>
+<li>原假设 $H_0:$<ul>
+<li>新产品的寿命 $\mu=1500$</li>
+<li>接受 $H_0:$ 新产品寿命没有提高</li>
+</ul>
+</li>
+<li>备择假设 $H_1:$<ul>
+<li>新产品的寿命 $\mu &gt; 1500$</li>
+<li>拒绝 $H_0:$(接受$H_1$) 新产品的寿命有所提高.</li>
+</ul>
+</li>
+<li><strong>注意</strong>:一般情况下,将希望成立的假设设为 $H_1$ ,将其否定形式设为 $H_0$</li>
+</ul>
+</li>
+<li>假设检验问题的处理方法<ol>
+<li>作出参数或者分布的假设.</li>
+<li>根据样本值选择接受还是拒绝所作假设的结论.</li>
+</ol>
+</li>
+</ul>
+<h3 id="7-1-2-基本概念"><a href="#7-1-2-基本概念" class="headerlink" title="7.1.2. 基本概念"></a>7.1.2. 基本概念</h3><ul>
+<li>假设: 对总体分布的各种论断<ul>
+<li>参数假设: 对总体分布中参数的假设</li>
+<li>非参数假设: 不是关于总体分布中的参数的假设(如对分布的假设)</li>
+</ul>
+</li>
+<li>假设检验: 判断假设是否成立<ul>
+<li>参数假设检验</li>
+<li>非参数假设检验</li>
+</ul>
+</li>
+<li>假设检验问题<ul>
+<li>过程<ul>
+<li>对总体分布中的某些参数或对总体分布的类型做某种假设.</li>
+<li>根据样本值做出接受还是拒绝所作假设的结论.</li>
+</ul>
+</li>
+<li>分类<ul>
+<li>只提出一个假设,<strong>显著性检验问题</strong>.</li>
+<li>提出两个假设($H_0,H_1$),且两者必居其一,则称其中一个为<strong>基本假设</strong>,另一个为它的<strong>对立假设</strong>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="7-1-3-基本思想"><a href="#7-1-3-基本思想" class="headerlink" title="7.1.3 基本思想"></a>7.1.3 基本思想</h3><ul>
+<li>由样本构造用于检验 $H_0$ 的<strong>检验统计量</strong> $T$, 并且当 $H_0$ 成立的时候, $T$ 的分布已知.</li>
+<li><strong>检验法则</strong>的确定<ul>
+<li>$P\{|T| \geq {k}\} = \alpha$ 是一个小概率事件.若 $H_0$ 为真, 几乎不可能发生.</li>
+<li>若 $|T| \geq {k}$, 拒绝原假设 $H_0$,此时 $T$ 的取值范围被称为<strong>拒绝域</strong>.拒绝域的边界点为<strong>临界点</strong>.</li>
+<li>若 $|T| &lt; {k}$, 接受原假设 $H_0. $</li>
+</ul>
+</li>
+<li>一般步骤<ul>
+<li>第一步 根据问题的要求提出原假设 $H_{0}$ 和备择假没 $H_{1}$</li>
+<li>第二步 选取检验统计量 $T\left({X_{1}, X_{2}, \ldots, X_{n}}\right),$ 在 $H_{0}$ 成立的情形下确定 其分布.</li>
+<li>第三步 对于给定的显著性水平 $\alpha$,找到 $H_{0}$ 的拒绝域 $W$ 和接受域.</li>
+<li>第四步 根据样本值 $\left(x_{1}, x_{2}, \ldots, x_{n}\right)$ 求出检验统计值 $T,$ 如果 $\left(x_{1}, x_{2}, \ldots, x_{n}\right) \in \mathrm{W}\left(\right.$ 小概率事件发生了), 则拒绝 $\mathrm{H}_{0},$ 否则接受 $\mathrm{H}_{0}$</li>
+</ul>
+</li>
+<li><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/数据科学基础_7.assets/image.webp"></li>
+<li><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/数据科学基础_7.assets/image (1).webp"></li>
+<li><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/数据科学基础_7.assets/image (2).webp"  ></li>
+</ul>
+<h3 id="7-1-4-假设检验中的两类错误"><a href="#7-1-4-假设检验中的两类错误" class="headerlink" title="7.1.4. 假设检验中的两类错误"></a>7.1.4. 假设检验中的两类错误</h3><ul>
+<li>第一类错误: 弃真<ul>
+<li>$P\{ 拒绝 H_0|H_0 为真\}=\alpha$</li>
+</ul>
+</li>
+<li>第二类错误: 取伪<ul>
+<li>$P\{ 接受 H_0|H_0 为假 \}=\beta$</li>
+</ul>
+</li>
+</ul>
+<h2 id="7-2-参数假设检验"><a href="#7-2-参数假设检验" class="headerlink" title="7.2. 参数假设检验"></a>7.2. 参数假设检验</h2><h3 id="7-2-1-单总体-Z-检验"><a href="#7-2-1-单总体-Z-检验" class="headerlink" title="7.2.1 单总体 Z 检验"></a>7.2.1 单总体 Z 检验</h3><p>(1) 建立于均值的备择假设和原假设,选定合适的显著性水平$\alpha$。<br>(2)建立检验统计量乙,满足Z $\sim \mathrm{N}(0,1),$ 根据样本数据计算检验统计量数值Z。<br>(3)根据检验统计量数值 Z 和显著性水平$\alpha$,计算拒绝域。<br>(4)根据样本是否落入拒绝域作出判断, 有需要可以进一步输出 p 值(比样本观察更极端的概率)。</p>
+<p><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/数据科学基础_7.assets/image-20210502232014077.webp" alt="image-20210502232014077" style="zoom:80%;" /></p>
+<p>例题:</p>
+<p>一种机床加工的零件尺寸绝对平均误差为1.35mm。生产厂家现采用一种新的<br>行加工以期进一一步降低误差。为检验新机床加工的零件平均误差与旧机床相比<br>是否有显著降机床进尺寸的平均误差与旧机床相比是否有显著降低?<br>(a=0.01)尺寸的平均误差与旧机床相比是否有显著降低?($\alpha$=0.01) </p>
+<p><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/数据科学基础_7.assets/image-20210502232100827.webp" alt="image-20210502232100827" style="zoom:80%;" /></p>
+<p>解：<br>建立假设： $\quad H_{0}: \mu \geq 1.35, H_{1}: \mu&lt;1.35$<br>$\bar{x}=1.3152, s=0.365749, n=50,$ 计算检验统计量:</p>
+<script type="math/tex; mode=display">
+z=\frac{1.3152-1.35}{0.365749 / \sqrt{50}}=-2.6061<-z_{0.01}=-2.33</script><p>结论:拒绝 $\mathrm{H}_{0^{\circ}}$ 新机床加工的零件尺寸的平均误差与旧机床相比有显著降低。<br>计算p值</p>
+<script type="math/tex; mode=display">
+\text { p= } \Phi(-2.6061)=1-\Phi(2.6061)=0.004579<\alpha=0.01</script><p>根据p值和 我们可以得到同样的结论：拒绝H $_{0}$ 。</p>
+<p><strong>PS</strong>: 这道题中样本总体方差是未知的, 本来应该用 t 检验, 但是在样本容量大于 30 的时候可以用 Z 检验代替 t 检验, 所以此处直接用样本方差代替了总体方差.</p>
+<h3 id="7-2-2-双总体Z检验"><a href="#7-2-2-双总体Z检验" class="headerlink" title="7.2.2. 双总体Z检验"></a>7.2.2. 双总体Z检验</h3><p><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/数据科学基础_7.assets/image-20210502232152116.webp" alt="image-20210502232152116" style="zoom:80%;" /></p>
+<p>1.检验条件: 两个总体近似服从正态分布且两总体方差$\sigma_1^2 ,\sigma_2^2$ 均已知, 则构造的统计量$Z = \frac{(\bar{X}-\bar{Y})-\delta}{\sqrt{\sigma_1^2/n_1+\sigma_2^2/n_2}}\sim N(0,1)$</p>
+<p>2.检验条件：两个总体不服从正态分布，但来自两总体的样本的容量较大 $\left(n_{1}, n_{2} \geqslant 30\right)_{\circ}$ 则我们构造检验统计量Z如下: $\quad Z=\frac{(\bar{X}-\bar{Y})-\delta}{\sqrt{S_{1}^{2} / n_{1}+S_{2}^{2} / n_{2}}} \sim \mathrm{N}(0,1)$</p>
+<h3 id="7-2-3-单总体-t-检验"><a href="#7-2-3-单总体-t-检验" class="headerlink" title="7.2.3. 单总体 t 检验"></a>7.2.3. 单总体 t 检验</h3><p>t检验的基本步骤：<br>(1)建立关于均值的备择假设和原假设，选定合适的显著性水平$\alpha$。<br>(2)建立检验统计量t,满足t $\sim \mathrm{t}\left(n^{\prime}\right),$ 根据样本数据计算检验统计量数值t。<br>(3) 根据检验统计量数值t和显著性水平$\alpha$,计算拒绝域。<br>(4) 根据样本是否落入拒绝域作出判断，如有需要可以进一步输出值。</p>
+<p><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/数据科学基础_7.assets/image-20210502232429194.webp" alt="image-20210502232429194" style="zoom:67%;" /></p>
+<h3 id="7-2-4-双总体-t-检验"><a href="#7-2-4-双总体-t-检验" class="headerlink" title="7.2.4.双总体 t 检验"></a>7.2.4.双总体 t 检验</h3><p>公式参照参数估计</p>
+<h3 id="7-2-5-卡方检验"><a href="#7-2-5-卡方检验" class="headerlink" title="7.2.5. 卡方检验"></a>7.2.5. 卡方检验</h3><p>$\chi^{2}$ 检验的基本步骤：<br>（1) 进立关于方差的备择假设和原假设, 选定合适的显著性水平 $\alpha_{\circ}$<br>(2) 建立检验统计量 $\chi^{2},$ 满足 $\chi^{2} \sim \chi^{2}\left(n^{\prime}\right)^{1},$ 根据样本数据计算检验统计量数值 $\chi^{2}$ 。<br>(3) 根据检验统计量数值 $\chi^{2}$ 和显著性水平 $\alpha,$ 计算拒绝域。<br>(4) 根据样本是否落入拒绝域作出判断, 如有需要可以进一步输出 $p$ 值。</p>
+<script type="math/tex; mode=display">
+\chi^{2}=\frac{(n-1) S^{2}}{\sigma_{0}^{2}} \sim \chi^{2}(n-1)</script><p><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/数据科学基础_7.assets/image-20210502232345279.webp" alt="image-20210502232345279" style="zoom:80%;" /></p>
+<p>例题: 生产的某型号电池，其寿命服从方差 $\sigma^2=5000$ 的正态分布.随机取26个电池，测出样本方差为 $\mathrm{s}^{2}=9200,$ 问能否推断波动较以往显著变化 $(\alpha=0.02)$ ?</p>
+<h3 id="7-2-6-F检验"><a href="#7-2-6-F检验" class="headerlink" title="7.2.6. F检验"></a>7.2.6. F检验</h3><p>原理与上面的类似, 公式参照参数估计</p>
+<h2 id="7-3-非参数假设检验"><a href="#7-3-非参数假设检验" class="headerlink" title="7.3. 非参数假设检验"></a>7.3. 非参数假设检验</h2><h3 id="7-3-1-符号检验"><a href="#7-3-1-符号检验" class="headerlink" title="7.3.1 符号检验"></a>7.3.1 符号检验</h3><p>例: 某地 16 座预售楼盘均价如下表 ( 单位: 元/平方米 )</p>
+<p><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/数据科学基础_7.assets/image-20210502232502347.webp" alt="image-20210502232502347" style="zoom:80%;" /></p>
+<p>判断楼盘价格与媒体公布的 7900元/平方米是否相符($\alpha = 0.05$)</p>
+<p>若用 $t$ 检验来做, 是无法拒绝原假设 $H_0: \mu = 7900$ 的, 但是样本中只有 3 个大于 7900, 此时用平均值并不能很好地衡量总体, 因此考虑用中位数.</p>
+<p>建立假设:</p>
+<script type="math/tex; mode=display">
+H_0:M_e = 7900, H_1: M_e\ne 7900</script><p>$Mc$ 为总体中位数, $n_{+} , n_-$ 分别为大于小于 $7900$ 样本的个数. $H_0$ 若为真,  $n_+ , n_-$</p>
+<p>近似相等, 即$n_+$ 不能太大也不能太小. 因此对 $n_+$ 进行检验:</p>
+<p>$n_{+}=\sum_{i=1}^{n} Y_{i}.$ 中 $Y_{i} \sim B(1, p), n_{+} \sim B(n, p), p=P\{X_{i} \geq M_{e}\}$, 做如下假设:</p>
+<script type="math/tex; mode=display">
+H_{0}: p=0.5, H_{1}: p \neq 0.5</script><p>抽到样本 $n_{+} =3 $ 甚至更为极端的概率为:  </p>
+<script type="math/tex; mode=display">
+B(3 ; 16,0.5)=\sum_{i=0}^{3} C_{16}^{i}(0.5)^{i}(0.5)^{16-i}=0.0213</script><p>则 p 值就是 0.0213, 由$\mathrm {p} = 0.0213&lt;\alpha = 0.05$, 拒绝原假设, 认为总体中心与 7900 在统计意义上存在显著差异.</p>
+<h3 id="7-3-2-秩和检验"><a href="#7-3-2-秩和检验" class="headerlink" title="7.3.2 秩和检验"></a>7.3.2 秩和检验</h3><p>两个连续性总体的密度函数至多只差一个平移. 秩和检验可以用于判断两个样本是否来自同一总体.</p>
+<p>各项假设:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+H_0: \mu_1 = \mu_2,H_1: \mu_1<\mu_2\\
+H_0: \mu_1 = \mu_2,H_1: \mu_1\neq\mu_2\\
+H_0: \mu_1 = \mu_2,H_1: \mu_1>\mu_2\\
+\end{aligned}</script><p>步骤( 以双边检验为例 ):</p>
+<ul>
+<li><p>将两个样本的观察值按从小到大排序, 求出每个观察值的秩. (总是假定样本容量 $n_1 \leq n_2$)</p>
+</li>
+<li><p>将属于第 1 个样本的总体的秩总和记为 $R_1$ ,其余观察值的秩记为 $R_2$.</p>
+</li>
+<li><p>考虑统计量 $R_1$ , 查表得 $C_U(\frac \alpha 2)$ 和 $C_L(\frac \alpha 2)$ , 则拒绝域为 $R_1\leq C_U(\frac \alpha 2)$ 或者 $R_1\geq C_L(\frac \alpha 2)$</p>
+</li>
+</ul>
+<p>*若 $n_1,n_2 \geq 10$, 当 $H_0$ 为真的时候, 近似地有:</p>
+<script type="math/tex; mode=display">
+R_1 \sim N(\mu_{R_1},\sigma^2_{R_1}).</script><p>可以采用 $Z$ 检验.</p>
+<h3 id="7-3-3-偏度峰度检验"><a href="#7-3-3-偏度峰度检验" class="headerlink" title="7.3.3. 偏度峰度检验"></a>7.3.3. 偏度峰度检验</h3><h3 id="7-3-4-卡方拟合优度检验"><a href="#7-3-4-卡方拟合优度检验" class="headerlink" title="7.3.4.卡方拟合优度检验"></a>7.3.4.卡方拟合优度检验</h3><p>判断一组样本是否服从某种分布, 可进行卡方拟合优度检验, 首先 当然需要设置$H_0,H_1$.</p>
+<script type="math/tex; mode=display">
+\chi^2 = \sum^k_{i=1}\frac{(O_i-T_i)^2}{T_i} \sim \chi^2{(n-1)}</script><p>其中, 将样本分为 $k$ 个组, $T_i$是每组的理论频数, $T_i=nP_i$, $P_i$ 是每组的理论频率, $O_i$ 是每组观测的频数</p>
+<p>如果理论分布有 $r$ 个位置参数用估计量代替, 则$n-&gt; \infty, \chi^2\sim \chi^2(k-r-1)$</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Rikka</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.bilibilianime.com/2020/12/27/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80_07/">https://www.bilibilianime.com/2020/12/27/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80_07/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.bilibilianime.com" target="_blank">极东魔术昼寝结社</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/">概率论</a><a class="post-meta__tags" href="/tags/%E6%95%B0%E5%AD%A6/">数学</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/image.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/12/27/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80_10/"><img class="prev-cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/真冬の標本.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">数据科学基础(十) 降维</div></div></a></div><div class="next-post pull-right"><a href="/2020/12/27/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80_09/"><img class="next-cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/wallhaven-714648~1.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">数据科学基础(九) 回归分析和方差分析</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/12/27/数据科学基础/数据科学基础_01/" title="数据科学基础(一)  随机事件及其概率"><img class="cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/erik-shoemaker-chaldea-matte-final2.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-27</div><div class="title">数据科学基础(一)  随机事件及其概率</div></div></a></div><div><a href="/2020/12/27/数据科学基础/数据科学基础_03/" title="数据科学基础(三) 期望和方差"><img class="cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/erik-shoemaker-chaldea-matte-final2.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-27</div><div class="title">数据科学基础(三) 期望和方差</div></div></a></div><div><a href="/2020/12/27/数据科学基础/数据科学基础_02/" title="数据科学基础(二) 随机变量及其分布"><img class="cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/Snipaste_2021-05-16_00-24-41.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-27</div><div class="title">数据科学基础(二) 随机变量及其分布</div></div></a></div><div><a href="/2020/12/27/数据科学基础/数据科学基础_04/" title="数据科学基础(四) 大数定律与中心极限定理"><img class="cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/image.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-27</div><div class="title">数据科学基础(四) 大数定律与中心极限定理</div></div></a></div><div><a href="/2020/12/27/数据科学基础/数据科学基础_05/" title="数据科学基础(五) 数理统计的基本概念"><img class="cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/Snipaste_2021-05-16_00-24-41.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-27</div><div class="title">数据科学基础(五) 数理统计的基本概念</div></div></a></div><div><a href="/2020/12/27/数据科学基础/数据科学基础_08/" title="数据科学基础(八) 多维"><img class="cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/rikka_1.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-27</div><div class="title">数据科学基础(八) 多维</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "/img/404.jpg" data-lazy-src="/image/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Rikka</div><div class="author-info__description">邪王真眼是最强的</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">47</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ayasa520"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/ayasa520" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1103670381@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">Rikka 的 Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1-%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="toc-text">7.1.  假设检验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-1-%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C%E9%97%AE%E9%A2%98"><span class="toc-text">7.1.1. 假设检验问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-2-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">7.1.2. 基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-3-%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="toc-text">7.1.3 基本思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-4-%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C%E4%B8%AD%E7%9A%84%E4%B8%A4%E7%B1%BB%E9%94%99%E8%AF%AF"><span class="toc-text">7.1.4. 假设检验中的两类错误</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-2-%E5%8F%82%E6%95%B0%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="toc-text">7.2. 参数假设检验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-1-%E5%8D%95%E6%80%BB%E4%BD%93-Z-%E6%A3%80%E9%AA%8C"><span class="toc-text">7.2.1 单总体 Z 检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-2-%E5%8F%8C%E6%80%BB%E4%BD%93Z%E6%A3%80%E9%AA%8C"><span class="toc-text">7.2.2. 双总体Z检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-3-%E5%8D%95%E6%80%BB%E4%BD%93-t-%E6%A3%80%E9%AA%8C"><span class="toc-text">7.2.3. 单总体 t 检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-4-%E5%8F%8C%E6%80%BB%E4%BD%93-t-%E6%A3%80%E9%AA%8C"><span class="toc-text">7.2.4.双总体 t 检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-5-%E5%8D%A1%E6%96%B9%E6%A3%80%E9%AA%8C"><span class="toc-text">7.2.5. 卡方检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-6-F%E6%A3%80%E9%AA%8C"><span class="toc-text">7.2.6. F检验</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-3-%E9%9D%9E%E5%8F%82%E6%95%B0%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="toc-text">7.3. 非参数假设检验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-1-%E7%AC%A6%E5%8F%B7%E6%A3%80%E9%AA%8C"><span class="toc-text">7.3.1 符号检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-2-%E7%A7%A9%E5%92%8C%E6%A3%80%E9%AA%8C"><span class="toc-text">7.3.2 秩和检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-3-%E5%81%8F%E5%BA%A6%E5%B3%B0%E5%BA%A6%E6%A3%80%E9%AA%8C"><span class="toc-text">7.3.3. 偏度峰度检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-4-%E5%8D%A1%E6%96%B9%E6%8B%9F%E5%90%88%E4%BC%98%E5%BA%A6%E6%A3%80%E9%AA%8C"><span class="toc-text">7.3.4.卡方拟合优度检验</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/07/18/daodao-kai/" title="基于 Vercel 和 MongoDB 的叨叨·改"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/Snipaste_2021-05-16_00-24-41.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于 Vercel 和 MongoDB 的叨叨·改"/></a><div class="content"><a class="title" href="/2021/07/18/daodao-kai/" title="基于 Vercel 和 MongoDB 的叨叨·改">基于 Vercel 和 MongoDB 的叨叨·改</a><time datetime="2021-07-18T13:16:30.000Z" title="发表于 2021-07-18 21:16:30">2021-07-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/16/twikoo-img-zoom/" title="为 butterfly 主题的 twikoo 添加图片点击放大功能"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/rikka_1.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="为 butterfly 主题的 twikoo 添加图片点击放大功能"/></a><div class="content"><a class="title" href="/2021/07/16/twikoo-img-zoom/" title="为 butterfly 主题的 twikoo 添加图片点击放大功能">为 butterfly 主题的 twikoo 添加图片点击放大功能</a><time datetime="2021-07-15T17:09:38.000Z" title="发表于 2021-07-16 01:09:38">2021-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/06/auto-update-link/" title="自动添加 twikoo 评论中的友链"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/wallhaven-714648~1.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="自动添加 twikoo 评论中的友链"/></a><div class="content"><a class="title" href="/2021/07/06/auto-update-link/" title="自动添加 twikoo 评论中的友链">自动添加 twikoo 评论中的友链</a><time datetime="2021-07-05T18:38:38.000Z" title="发表于 2021-07-06 02:38:38">2021-07-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C_04/" title="计算机网络 4 -网络层"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/rikka_1.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络 4 -网络层"/></a><div class="content"><a class="title" href="/2021/06/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C_04/" title="计算机网络 4 -网络层">计算机网络 4 -网络层</a><time datetime="2021-06-28T16:00:00.000Z" title="发表于 2021-06-29 00:00:00">2021-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/25/jsDelivr/%E8%96%85%E7%BE%8A%E6%AF%9B/" title="将 mp4 视频切片成 ts 后使用 jsDelivr 加速制作 &quot;视频床&quot;"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/真冬の標本.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="将 mp4 视频切片成 ts 后使用 jsDelivr 加速制作 &quot;视频床&quot;"/></a><div class="content"><a class="title" href="/2021/06/25/jsDelivr/%E8%96%85%E7%BE%8A%E6%AF%9B/" title="将 mp4 视频切片成 ts 后使用 jsDelivr 加速制作 &quot;视频床&quot;">将 mp4 视频切片成 ts 后使用 jsDelivr 加速制作 &quot;视频床&quot;</a><time datetime="2021-06-24T16:00:00.000Z" title="发表于 2021-06-25 00:00:00">2021-06-25</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 By Rikka</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎来到极东魔术昼寝结社！</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>(()=>{
+  const $countDom = document.getElementById('twikoo-count')
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'comment-1a9b61',
+      region: '',
+      onCommentLoaded: function () {
+        if(typeof window.mediumZoom!='undefined'){
+          const zoomComment = mediumZoom(document.querySelectorAll('.tk-content :not(a)>img'))
+          zoomComment.on('open', e => {
+            const photoBg = document.documentElement.getAttribute('data-theme') === 'dark' ? '#121212' : '#fff'
+            zoomComment.update({
+              background: photoBg
+            })
+          })
+        }
+        if(GLOBAL_CONFIG.lightbox === 'fancybox'){
+            const addFancybox = function (ele) {
+              const runFancybox = (ele) => {
+                ele.each(function (i, o) {
+                  const $this = $(o)
+                  const lazyloadSrc = $this.attr('data-lazy-src') || $this.attr('src')
+                  const dataCaption = $this.attr('alt') || ''
+                  $this.wrap(`<a href="${lazyloadSrc}" data-fancybox="group" data-caption="${dataCaption}" class="fancybox"></a>`)
+                })
+
+                $().fancybox({
+                  selector: '[data-fancybox]',
+                  loop: true,
+                  transitionEffect: 'slide',
+                  protect: true,
+                  buttons: ['slideShow', 'fullScreen', 'thumbs', 'close'],
+                  hash: false
+                })
+              }
+
+              if (typeof $.fancybox === 'undefined') {
+                $('head').append(`<link rel="stylesheet" type="text/css" href="${GLOBAL_CONFIG.source.fancybox.css}">`)
+                $.getScript(`${GLOBAL_CONFIG.source.fancybox.js}`, function () {
+                  runFancybox($(ele))
+                })
+              } else {
+                runFancybox($(ele))
+              }
+            }
+          addFancybox(document.querySelectorAll('.tk-content :not(a)>img'))
+        }
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'comment-1a9b61',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      $countDom.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const loadTwikoo = (bool = false) => {
+    if (typeof twikoo === 'object') {
+      init()
+      bool && $countDom && setTimeout(getCount,0)
+    } else {
+      getScript('https://cdn.jsdelivr.net/gh/ayasa520/hexo@master/source/js/twikoo.all.js').then(()=> {
+        init()
+        bool && $countDom && setTimeout(getCount,0)
+      })
+    }
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo(true)
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'comment-1a9b61',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.jsdelivr.net/gh/ayasa520/hexo@master/source/js/twikoo.all.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script  src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script  defer src="https://cdn.jsdelivr.net/gh/graingert/wow@1.3.0/dist/wow.min.js"></script><script defer data-pjax src="/js/wow_init.js"></script><div class="app-refresh" id="app-refresh"> <div class="app-refresh-wrap"> <label>✨ 网站已更新最新版本 👉</label> <a href="javascript:void(0)" onclick="location.reload()">点击刷新</a> </div></div><script>function showNotification(){if(GLOBAL_CONFIG.Snackbar){var t="light"===document.documentElement.getAttribute("data-theme")?GLOBAL_CONFIG.Snackbar.bgLight:GLOBAL_CONFIG.Snackbar.bgDark,e=GLOBAL_CONFIG.Snackbar.position;Snackbar.show({text:"已更新最新版本",backgroundColor:t,duration:5e5,pos:e,actionText:"点击刷新",actionTextColor:"#fff",onActionClick:function(t){location.reload()}})}else{var o=`top: 0; background: ${"light"===document.documentElement.getAttribute("data-theme")?"#49b1f5":"#1f1f1f"};`;document.getElementById("app-refresh").style.cssText=o}}"serviceWorker"in navigator&&(navigator.serviceWorker.controller&&navigator.serviceWorker.addEventListener("controllerchange",function(){showNotification()}),window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")}));</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><div id="aplayer"></div><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script type="text/javascript"> document.write("<script src='/js/music.js?"+Math.random()+"'><\/script>"); </script>·<script defer src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@latest/source/js/issues.min.js"></script><script defer data-pjax src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.5.0/build/highlight.min.js"></script><script defer data-pjax>if (document.getElementsByClassName('dplayer').length>0){$.getScript('https://cdn.jsdelivr.net/hls.js/latest/hls.min.js').done(function(){ $.getScript('https://cdn.jsdelivr.net/gh/ayasa520/hexo/source/js/DPlayer.min.js').done(dplayer_init);});}</script><script defer data-pjax>if (document.getElementById('hpp_talk')){$.getScript('https://cdn.jsdelivr.net/gh/ayasa520/HexoPlusPlus@main/src/talk_user.js').done(hpp_talk_init);}</script><script async>console.log(" ____    ______   __  __   __  __   ______     \n/\\  _`\\ /\\__  _\\ /\\ \\/\\ \\ /\\ \\/\\ \\ /\\  _  \\    \n\\ \\ \\L\\ \\/_/\\ \\/ \\ \\ \\/'/'\\ \\ \\/'/'\\ \\ \\L\\ \\   \n \\ \\ ,  /  \\ \\ \\  \\ \\ , <  \\ \\ , <  \\ \\  __ \\  \n  \\ \\ \\\\ \\  \\_\\ \\__\\ \\ \\\\`\\ \\ \\ \\\\`\\ \\ \\ \\/\\ \\ \n   \\ \\_\\ \\_\\/\\_____\\\\ \\_\\ \\_\\\\ \\_\\ \\_\\\\ \\_\\ \\_\\\n    \\/_/\\/ /\\/_____/ \\/_/\\/_/ \\/_/\\/_/ \\/_/\\/_/")</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax',
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener toc scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script  src="https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.0/dist/js/main.js"></script><script data-pjax  src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script><script data-pjax>
+        function daodao_plus_injector_config(){
+            function ddSwiperInit(){
+                const ddSwiper =new DaodaoSwiper(daodao_url,bbpath,filter);
+                ddSwiper.init();
+            }
+            var daodao_url = "https://daodao.bilibilianime.com/api/query/20";
+            var bbpath = /daodaoplus/;
+            var filter = JSON.parse('["iframe","img","script","code"]');
+            var parent_div_git = document.getElementsByClassName('recent-posts')[0];
+            var item_html =  '<div class="recent-post-item" style="height: auto;width: 100%"><div class="bbTimeList container" id="bbTimeList" style="height: auto;width: 100%"><a class="bber-gotobb fas fa-bullhorn" href="/daodaoplus/" title="叨叨"></a><div class="swiper-container" id="bbtalk"><div class="swiper-wrapper" id="bber-talk"></div></div><a class="bber-gotobb fas fa-arrow-circle-right" href="/daodaoplus/" title="查看全文"></a></div></div>';
+            console.log('已挂载daodao_plus')
+            parent_div_git.insertAdjacentHTML("afterbegin",item_html) 
+            if (typeof DaodaoSwiper === 'function' && typeof Daodao==='function'){
+                ddSwiperInit();
+            }else{
+                let ddScripts = []
+                if(typeof DaodaoSwiper!=="function")
+                    ddScripts.push( getScript('https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.0/dist/js/main.js'))
+                if(typeof Daodao!=="function")
+                    ddScripts.push( getScript('https://cdn.jsdelivr.net/npm/daodaoplus@1.0.5/static/js/index.js'))
+                Promise.all(ddScripts).then(ddSwiperInit);
+            }
+
+        }
+        if( document.getElementsByClassName('recent-posts')[0] && (location.pathname ==='/')){
+                daodao_plus_injector_config()
+        }</script><!-- hexo injector body_end end --></body></html>

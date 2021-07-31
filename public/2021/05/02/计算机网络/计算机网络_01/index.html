@@ -1,0 +1,749 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>计算机网络 1 -因特网概述 | 极东魔术昼寝结社</title><meta name="keywords" content="计网"><meta name="author" content="Rikka"><meta name="copyright" content="Rikka"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="因特网概述 网络、互连（联）网和因特网 网络是由若干结点和连接这些结点的链路组成的多个网络可以通过路由器互连起来, 构成一个覆盖范围更大的网络, 即互联网">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络 1 -因特网概述">
+<meta property="og:url" content="https://www.bilibilianime.com/2021/05/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C_01/index.html">
+<meta property="og:site_name" content="极东魔术昼寝结社">
+<meta property="og:description" content="因特网概述 网络、互连（联）网和因特网 网络是由若干结点和连接这些结点的链路组成的多个网络可以通过路由器互连起来, 构成一个覆盖范围更大的网络, 即互联网">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBZ0wtcVlYV1Ftak1pR1RYdElwOXJ2eURnWHppP2U9VDBxR2Rr.webp">
+<meta property="article:published_time" content="2021-05-01T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-06-30T18:48:11.803Z">
+<meta property="article:author" content="Rikka">
+<meta property="article:tag" content="计网">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBZ0wtcVlYV1Ftak1pR1RYdElwOXJ2eURnWHppP2U9VDBxR2Rr.webp"><link rel="shortcut icon" href="/image/favicon.png"><link rel="canonical" href="https://www.bilibilianime.com/2021/05/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C_01/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/pwa/manifest.json"/><meta name="msapplication-TileColor" content="#fff"/><link rel="apple-touch-icon" sizes="180x180" href="/pwa/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/pwa/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/pwa/16.png"/><link rel="mask-icon" href="/pwa/safari-pinned-tab.svg" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"source/search/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"此文章发表于","messageNext":"天前，内容可能已经过时"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Rikka","link":"链接: ","source":"来源: 极东魔术昼寝结社","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '计算机网络 1 -因特网概述',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-07-01 02:48:11'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><style type="text/css">.app-refresh{position:fixed;top:-2.2rem;left:0;right:0;z-index:99999;padding:0 1rem;font-size:15px;height:2.2rem;transition:all .3s ease}.app-refresh-wrap{display:flex;color:#fff;height:100%;align-items:center;justify-content:center}.app-refresh-wrap a{color:#fff;text-decoration:underline;cursor:pointer}</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/custom.css"  media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daodaoplus@1.0.4/static/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.0/dist/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "/img/404.jpg" data-lazy-src="/image/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">47</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/daodaoplus/"><i class="fa-fw fas fa-comment"></i><span> 闲话板砖</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comment"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBZ0wtcVlYV1Ftak1pR1RYdElwOXJ2eURnWHppP2U9VDBxR2Rr.webp')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">极东魔术昼寝结社</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/daodaoplus/"><i class="fa-fw fas fa-comment"></i><span> 闲话板砖</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comment"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">计算机网络 1 -因特网概述</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-01T16:00:00.000Z" title="发表于 2021-05-02 00:00:00">2021-05-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-30T18:48:11.803Z" title="更新于 2021-07-01 02:48:11">2021-07-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/NJU-%E7%AC%94%E8%AE%B0/">NJU 笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="计算机网络 1 -因特网概述"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="网络、互连（联）网和因特网"><a href="#网络、互连（联）网和因特网" class="headerlink" title="网络、互连（联）网和因特网"></a>网络、互连（联）网和因特网</h2><ul>
+<li><strong>网络</strong> (Network)  是由若干<span style="color:red"><b>结点</b></span>和连接这些结点的<span style="color:red"><b>链路</b></span>组成的</li>
+<li>多个网络可以通过路由器互连起来, 构成一个覆盖范围更大的网络, 即互联网</li>
+<li><strong>因特网</strong> (Internet) 是世界上最大的互连网络</li>
+</ul>
+<h3 id="Internet-和-internet"><a href="#Internet-和-internet" class="headerlink" title="Internet 和 internet"></a>Internet 和 internet</h3><p>internet 是一个通用名词, 泛指多个计算机网络互连而成的网络. 在这些网络之间的通信协议可以是任意的</p>
+<p>Internet 是专有名词, 指当前全球最大的, 开放的, 由众多网络互相连接而成的特定计算机网络, 采用 TCP/IP 协议族作为通信规则, 前身是美国的 APRANET</p>
+<h2 id="因特网发展的三个阶段"><a href="#因特网发展的三个阶段" class="headerlink" title="因特网发展的三个阶段"></a>因特网发展的三个阶段</h2><p><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/计算机网络.assets/geD1NLXtMJlOxE2.webp" alt="image-20210308165413452"></p>
+<h3 id="因特网服务提供者ISP-Internet-Service-Provider"><a href="#因特网服务提供者ISP-Internet-Service-Provider" class="headerlink" title="因特网服务提供者ISP (Internet Service Provider)"></a><strong>因特网服务提供者</strong><span style="color:red"><b>ISP </b></span>(Internet Service Provider)</h3><p><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/计算机网络.assets/BZlDLwSoz7GNWjg.webp" alt="image-20210308170736565"></p>
+<p>ISP 从因特网管理机构申请到成块的 IP 地址, 同时拥有通信线路以及路由器等联网设备. 任何机构和个人只要向 ISP 交纳规定费用, 就可以从 ISP 得到需要的 IP 地址. </p>
+<p>我国主要的 ISP 就是三大运营商.</p>
+<h3 id="基于-ISP-的三层结构的因特网"><a href="#基于-ISP-的三层结构的因特网" class="headerlink" title="基于 ISP 的三层结构的因特网"></a>基于 ISP 的三层结构的因特网</h3><p><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/计算机网络.assets/JHxEb1VGp3iukSO.webp" alt="image-20210308171327190"></p>
+<ul>
+<li>第一层: 因特网主干网, 一般可以覆盖国际性区域范围, 拥有高速链路和交换设备. 第一层 ISP 直接互联.</li>
+<li>第二层: 第二层 ISP 和一些大公司是第一层 ISP 的用户, 具有区域性或者国家性覆盖规模, 与少数第一层 ISP 相连接.</li>
+<li>第三层: 本地 ISP 是第二层 ISP 的用户, 只拥有本地范围的网络, 一般的校园网, 企业网, 住宅用户是第三层 ISP 的用户.</li>
+</ul>
+<h2 id="数据-Data"><a href="#数据-Data" class="headerlink" title="数据 (Data)"></a>数据 (Data)</h2><ul>
+<li>数据以 0 1 序列发送.</li>
+<li>数据不是信息的本身.</li>
+<li>数据时信息的一种编码方式, 它通过电/光信号来传输.</li>
+</ul>
+<h2 id="数据包-Data-Packets"><a href="#数据包-Data-Packets" class="headerlink" title="数据包 (Data Packets)"></a>数据包 (Data Packets)</h2><ul>
+<li>数据被划分成易于传输的小单元.<ul>
+<li>在 OSI 中, 这些单元可以是 <strong>packets, frames, segments</strong></li>
+</ul>
+</li>
+<li>意义<ul>
+<li>加速传输 (不同进程或任务对于用户是同时运行的)</li>
+<li>丢包重传数据少</li>
+<li>数据可通过不同的路径到达</li>
+</ul>
+</li>
+</ul>
+<h2 id="因特网的标准化工作"><a href="#因特网的标准化工作" class="headerlink" title="因特网的标准化工作"></a>因特网的标准化工作</h2><ul>
+<li>因特网的标准化工作对因特网的发展起到了非常重要的作用</li>
+<li>因特网在制定其标准上的一个很大的特点是面向大众.</li>
+</ul>
+<h2 id="因特网的组成"><a href="#因特网的组成" class="headerlink" title="因特网的组成"></a>因特网的组成</h2><p><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/计算机网络.assets/3kJBlxQUycqeZho.webp" alt="image-20210308180218899"></p>
+<ul>
+<li>边缘部分<ul>
+<li>由所有链接在因特网上的<span style="color:red"><b>主机</b></span>组成. 这部分是<span style="color:red"><b>用户直接使用</b></span>的,用来进行通信(传送数据)和资源共享.</li>
+</ul>
+</li>
+<li>核心部分<ul>
+<li>由<span style="color:red"><b>大量网络</b></span>和连接这些网络的<span style="color:red"><b>路由器</b></span>组成. 这部分是为边缘部分提供服务的.</li>
+</ul>
+</li>
+</ul>
+<h2 id="三种交换方式"><a href="#三种交换方式" class="headerlink" title="三种交换方式"></a>三种交换方式</h2><h3 id="电路交换-Circuit-Switching"><a href="#电路交换-Circuit-Switching" class="headerlink" title="电路交换(Circuit Switching)"></a>电路交换(Circuit Switching)</h3><ul>
+<li><p>电话交换机接通电话线的方式称为电路交换</p>
+</li>
+<li><p>从通信资源呢分配角度来看, 交换(Switching) 是按照某种方式动态地分配传输线路的资源</p>
+</li>
+<li><p>步骤:</p>
+<p>1.建立连接 (分配通信资源)</p>
+<p>2.通话(一直占用通信资源)</p>
+<p>3.释放连接 (归还通信资源)</p>
+</li>
+</ul>
+<p>使用电路交换传送计算机地数据, 线路的传输效率会很低</p>
+<h3 id="分组交换-Packet-Switching"><a href="#分组交换-Packet-Switching" class="headerlink" title="分组交换 (Packet Switching)"></a>分组交换 (Packet Switching)</h3><h4 id="发送方"><a href="#发送方" class="headerlink" title="发送方"></a>发送方</h4><ul>
+<li><p>构造分组</p>
+<p>将较长的报文划分为等长的数据段, 并添加<strong>首部</strong>, 构成一个分组, 也可以简称为<strong>包</strong> (packets), 首部也可以称为<strong>包头</strong>. 首部包含了分组的目的地址.</p>
+</li>
+<li><p>发送分组</p>
+</li>
+</ul>
+<h4 id="路由器"><a href="#路由器" class="headerlink" title="路由器"></a>路由器</h4><ul>
+<li><p>缓存分组</p>
+</li>
+<li><p>转发分组</p>
+<p>检查首部中的目的地址, 进行查表转发</p>
+</li>
+</ul>
+<h4 id="接收方"><a href="#接收方" class="headerlink" title="接收方"></a>接收方</h4><ul>
+<li><p>接受分组</p>
+</li>
+<li><p>还原报文</p>
+<p>去掉首部还原出原始报文</p>
+</li>
+</ul>
+<p>下图展示了分组交换的两种情况:</p>
+<ul>
+<li>各分组从源站到目的站可以走不同的路径</li>
+<li>分组乱序</li>
+</ul>
+<p><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/计算机网络.assets/jr2mXCJlE4Au8OV.gif" alt=""></p>
+<h3 id="报文交换-过时"><a href="#报文交换-过时" class="headerlink" title="报文交换 (过时)"></a>报文交换 (过时)</h3><h3 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>交换方式</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>电路交换</td>
+<td>通信时延小, 有序传输, 没有冲突, 使用范围广,实时性强, 控制简单</td>
+<td>建立连接时间长, 线路独占传输效率低, 灵活性差, 难以规格化</td>
+</tr>
+<tr>
+<td>报文交换</td>
+<td>无需建立连接, 动态分配线路, 提高线路可靠性, 提高线路利用率, 提供多目标服务</td>
+<td>引起转发时延, 需要较大的存储缓存空间, 需要额外的信息量</td>
+</tr>
+<tr>
+<td>分组交换</td>
+<td>无需建立连接, 线路利用率高, 简化了存储管理, 加速传输(前一个分组的转发与后一个分组的存储同时进行), 减少出错概率和重发数据量</td>
+<td>引起转发时延, 需要额外的信息量,存在失序, 丢失重复分组的问题</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="计算机网络的定义"><a href="#计算机网络的定义" class="headerlink" title="计算机网络的定义"></a>计算机网络的定义</h2><h4 id="最简单定义-一些互连-自治的计算机集合"><a href="#最简单定义-一些互连-自治的计算机集合" class="headerlink" title="最简单定义: 一些互连, 自治的计算机集合"></a>最简单定义: 一些互连, 自治的计算机集合</h4><ul>
+<li>互连: 计算机之间可以通过有线或者无线的方式进行数据通信</li>
+<li>自治: 独立的计算机, 有自己的硬件和软件</li>
+<li>集合: 多台计算机</li>
+</ul>
+<h4 id="较好的定义"><a href="#较好的定义" class="headerlink" title="较好的定义:"></a>较好的定义:</h4><p>计算机网络主要是由一些<strong>通用的、可编程的硬件互连</strong>而成的,而这些硬件并非专门用来实现某一特定目的 (例如,传送数据或视频信号)。这些可编程的硬件能够用来<strong>传送多种不同类型的数据</strong>,并能<strong>支持广泛的和日益增长的应用</strong></p>
+<h2 id="计算机网络的分类"><a href="#计算机网络的分类" class="headerlink" title="计算机网络的分类"></a>计算机网络的分类</h2><h3 id="按交换技术"><a href="#按交换技术" class="headerlink" title="按交换技术"></a>按交换技术</h3><ul>
+<li>电路交换网络</li>
+<li>报文交换网络</li>
+<li>分组交换网络</li>
+</ul>
+<h3 id="按使用者"><a href="#按使用者" class="headerlink" title="按使用者"></a>按使用者</h3><ul>
+<li>公用网</li>
+<li>专用网</li>
+</ul>
+<h3 id="按传输介质"><a href="#按传输介质" class="headerlink" title="按传输介质"></a>按传输介质</h3><ul>
+<li>有线网络</li>
+<li>无线网络</li>
+</ul>
+<h3 id="按覆盖范围"><a href="#按覆盖范围" class="headerlink" title="按覆盖范围"></a>按覆盖范围</h3><ul>
+<li>广域网 WAN</li>
+<li>城域网 MAN</li>
+<li>局域网 LAN</li>
+<li>个域网 PAN</li>
+</ul>
+<h3 id="按拓扑结构分类"><a href="#按拓扑结构分类" class="headerlink" title="按拓扑结构分类"></a>按拓扑结构分类</h3><ul>
+<li>总线型网络</li>
+<li>星型网络</li>
+<li>环型网络</li>
+<li>网状型网络</li>
+</ul>
+<h2 id="计算机网络的性能指标"><a href="#计算机网络的性能指标" class="headerlink" title="计算机网络的性能指标"></a>计算机网络的性能指标</h2><h3 id="速率"><a href="#速率" class="headerlink" title="速率"></a>速率</h3><p>常用数据率单位:</p>
+<p>$1Mbps=1000kbps=10^6bps$</p>
+<p>一般在带宽, 速率中, 进率为 1000, 存储容量中进率为 1024. 当然也要看题目具体的说明.</p>
+<h3 id="带宽-Bandwidth"><a href="#带宽-Bandwidth" class="headerlink" title="带宽 (Bandwidth)"></a>带宽 (Bandwidth)</h3><h4 id="在模拟信号系统中"><a href="#在模拟信号系统中" class="headerlink" title="在模拟信号系统中"></a>在模拟信号系统中</h4><p>信号包含的各种不同频率所占据的<strong>频率范围</strong>, 单位 HZ</p>
+<h4 id="在计算机网络中"><a href="#在计算机网络中" class="headerlink" title="在计算机网络中"></a>在计算机网络中</h4><p>用来表示网络的通信线路所能传送数据的能力, 因此网络带宽表示<strong>最高速率</strong></p>
+<p>单位与速率相同.</p>
+<h3 id="吞吐量-Throughput"><a href="#吞吐量-Throughput" class="headerlink" title="吞吐量 (Throughput)"></a>吞吐量 (Throughput)</h3><p>单位时间内通过某个网络(或信道,接口)的数据量, 与带宽不同的是, 吞吐量是真实的通过测量得到的.</p>
+<h3 id="时延"><a href="#时延" class="headerlink" title="时延"></a>时延</h3><ul>
+<li>$\displaystyle\text{发送时延}=\frac {分组大小}{发送速率} $</li>
+<li>$\displaystyle传播时延 = \frac{信道长度}{电磁波传播速率}$</li>
+<li>处理时延 一般不便于计算</li>
+</ul>
+<h3 id="时延带宽积"><a href="#时延带宽积" class="headerlink" title="时延带宽积"></a>时延带宽积</h3><ul>
+<li><strong>传播时延</strong>和<strong>带宽</strong>的乘积</li>
+<li>若发送端连续发送数据, 则在所发送的第一个比特即将到达终点时, 发送端就已经发送了时延带宽积个比特</li>
+<li>又称为<strong>以比特为单位的链路长度</strong></li>
+</ul>
+<h3 id="往返时间-RTT"><a href="#往返时间-RTT" class="headerlink" title="往返时间 RTT"></a>往返时间 RTT</h3><ul>
+<li>因特网上的信息往往需要<strong>双向交互</strong></li>
+<li>有时需要知道双向交互一次的时间</li>
+</ul>
+<h3 id="利用率"><a href="#利用率" class="headerlink" title="利用率"></a>利用率</h3><ul>
+<li><p><strong>信道利用率</strong>: 某信道的时间利用率</p>
+</li>
+<li><p><strong>网络利用率</strong>: 全网络信道利用率的加权平均</p>
+</li>
+<li><p>利用率并非越高越好, 一条信道利用率和和时延有下面的关系:</p>
+<p>$D$ 表示网络当前时延, $D_0$ 表示网络空闲时的时延, $U$ 表示利用率</p>
+<script type="math/tex; mode=display">\displaystyle D=\frac {D_0}{1-U}</script><p>一些拥有较大主干网的 ISP 通常会控制信道利用率不超过 50%, 否则就要准备扩容, 增大带宽.</p>
+</li>
+<li><p>信道利用率太低会造成浪费, 可以根据情况动态调整输入到网络的通信量. </p>
+</li>
+</ul>
+<h3 id="丢包率"><a href="#丢包率" class="headerlink" title="丢包率"></a>丢包率</h3><ul>
+<li>即<strong>分组丢失率</strong></li>
+<li>原因:<ul>
+<li><strong>分组误码</strong></li>
+<li><strong>网络拥塞</strong>(结点交换机缓存队列满)</li>
+</ul>
+</li>
+</ul>
+<h2 id="计算机网络体系结构"><a href="#计算机网络体系结构" class="headerlink" title="计算机网络体系结构"></a>计算机网络体系结构</h2><h3 id="常见的计算机网络体系结构"><a href="#常见的计算机网络体系结构" class="headerlink" title="常见的计算机网络体系结构"></a>常见的计算机网络体系结构</h3><h4 id="开放系统互连参考模型-Open-System-Interconnection-OSI"><a href="#开放系统互连参考模型-Open-System-Interconnection-OSI" class="headerlink" title="开放系统互连参考模型 (Open System Interconnection,OSI)"></a>开放系统互连参考模型 (Open System Interconnection,OSI)</h4><ul>
+<li>法律上的国际标准 </li>
+<li>从下往上依次是: Physical, Data Link, Network, Transport, Session, Presentation, Application</li>
+</ul>
+<p><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/计算机网络.assets/fc8qBOxJy5ISEPU.webp" alt="image-20210310113453877"></p>
+<h4 id="TCP-IP-体系结构"><a href="#TCP-IP-体系结构" class="headerlink" title="TCP/IP 体系结构"></a>TCP/IP 体系结构</h4><ul>
+<li>事实上的国际标准 </li>
+</ul>
+<p><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/计算机网络.assets/84sXk1rdD5h7ENC.webp" alt="image-20210316193311111"></p>
+<h4 id="学习用模型"><a href="#学习用模型" class="headerlink" title="学习用模型"></a>学习用模型</h4><ul>
+<li>在学习时, 常把网络接口层分为物理层和数据链路层</li>
+</ul>
+<p><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/计算机网络.assets/2NGmnqkMAS5ayZo.webp" alt="image-20210316193333188"></p>
+<h3 id="计算机网络体系结构分层的必要性"><a href="#计算机网络体系结构分层的必要性" class="headerlink" title="计算机网络体系结构分层的必要性"></a>计算机网络体系结构分层的必要性</h3><ul>
+<li>减小复杂性</li>
+<li>标准化的接口: 各层之间相互请求并提供服务</li>
+<li>促进模块化工程</li>
+<li>确保内部可操作的计数</li>
+<li>促进发展</li>
+<li><p>简化教学</p>
+</li>
+<li><p><del>应用层: 通过应用进程交互实现特定网络应用</del></p>
+</li>
+<li><del>运输层: 进程间基于网络的通信问题</del></li>
+<li><del>网络层: 分组在多个网络上传输(路由)</del></li>
+<li><del>数据链路层: 分组在一个网络(或者一段链路)传输</del></li>
+<li><del>物理层: 用何种信号传输比特</del></li>
+</ul>
+<h3 id="计算机网络体系结构分层思想举例"><a href="#计算机网络体系结构分层思想举例" class="headerlink" title="计算机网络体系结构分层思想举例"></a>计算机网络体系结构分层思想举例</h3><h4 id="发送方-1"><a href="#发送方-1" class="headerlink" title="发送方"></a>发送方</h4><p>层层封装</p>
+<ul>
+<li>应用层: 构建一个 HTTP 请求报文</li>
+<li>运输层: 添加一个 TCP 首部, 形成 TCP 报文</li>
+<li>网络层: 添加一个 IP 首部, 形成 IP 报文</li>
+<li>数据链路层: 添加以太网帧首部和帧尾部<ul>
+<li>帧首部: 让帧能在一个网络或者一个链路上传输,能被相应主机接收</li>
+<li>帧尾部: 检查是否有误码</li>
+</ul>
+</li>
+<li>物理层: 添加前导码<ul>
+<li>让目的主机做好接收帧的准备</li>
+</ul>
+</li>
+</ul>
+<h4 id="路由器-1"><a href="#路由器-1" class="headerlink" title="路由器"></a>路由器</h4><p>一般只具有网络层, 链路层,和物理层</p>
+<p>层层解封, 通过 IP 数据报的首部确定转发端口</p>
+<h4 id="接收方-1"><a href="#接收方-1" class="headerlink" title="接收方"></a>接收方</h4><p>层层解封</p>
+<h3 id="计算机网络体系结构中的专业术语"><a href="#计算机网络体系结构中的专业术语" class="headerlink" title="计算机网络体系结构中的专业术语"></a>计算机网络体系结构中的专业术语</h3><h4 id="实体-Entity"><a href="#实体-Entity" class="headerlink" title="实体 (Entity)"></a>实体 (Entity)</h4><ul>
+<li>实体 (Entity): 任何可发送或者接收信息的<strong>硬件</strong>或<strong>软件进程</strong></li>
+<li>对等实体 (Peer-Entity): 收发双方<strong>相同层次的实体</strong></li>
+</ul>
+<p><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/计算机网络.assets/6tzBQ5wXVvPuEMG.webp" alt="image-20210316193425901"></p>
+<h4 id="协议-Protocol"><a href="#协议-Protocol" class="headerlink" title="协议 (Protocol)"></a>协议 (Protocol)</h4><p>控制两个对等实体进行逻辑通信的规则的集合</p>
+<ul>
+<li>逻辑通信实际上并不存在</li>
+</ul>
+<p>协议的三要素</p>
+<ul>
+<li><p>语法</p>
+<p>定义所交换信息的格式</p>
+</li>
+<li><p>语义</p>
+<p>定义收发双方所要完成的操作</p>
+</li>
+<li><p>同步</p>
+<p>定义收发双方的时序关系, 如 TCP 采用 “三报文握手” 建立连接的过程</p>
+</li>
+</ul>
+<p><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/计算机网络.assets/GoUWpMARmh4kn9T.webp" alt="image-20210310222600735"></p>
+<h4 id="服务"><a href="#服务" class="headerlink" title="服务"></a>服务</h4><ul>
+<li><p>在协议的控制下, 两个对等实体间的逻辑通信使得本层能够向上一层提供服务</p>
+</li>
+<li><p>要实现本层协议, 还需要使用下面一层提供的服务</p>
+</li>
+<li><p>协议是 “<strong>水平的</strong>“, 服务是”<strong>垂直的</strong>“</p>
+</li>
+<li><p>下层协议对上层是不可见的</p>
+</li>
+<li><p>服务访问点 同一系统<strong>相邻两层的实体交换信息的逻辑接口</strong>, 用于区分不同的服务类型</p>
+<ul>
+<li>数据链路层: 帧的”类型”字段</li>
+<li>网络层: IP 数据报的”协议”字段</li>
+<li>运输层: “端口号”</li>
+</ul>
+</li>
+<li><p>服务原语: 上层使用下层服务必须与下层<strong>交换一些命令</strong>, 就是服务原语</p>
+</li>
+<li><p>协议数据单元  (PDU): 对等层次之间传送的数据包</p>
+</li>
+<li><p>服务数据单元 (SDU): 同一系统内, <strong>层与层之间交换的数据包</strong></p>
+<p><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/计算机网络.assets/FvxbRoADwtGyPCc.webp" alt="image-20210316193459176"></p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Rikka</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.bilibilianime.com/2021/05/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C_01/">https://www.bilibilianime.com/2021/05/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C_01/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.bilibilianime.com" target="_blank">极东魔术昼寝结社</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%BD%91/">计网</a></div><div class="post_share"><div class="social-share" data-image="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBZ0wtcVlYV1Ftak1pR1RYdElwOXJ2eURnWHppP2U9VDBxR2Rr.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/05/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C_03/"><img class="prev-cover" src= "/img/404.jpg" data-lazy-src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBZ0wtcVlYV1Ftak1pR2J4YXpLRVFneGpkSjAwP2U9ZHptSkta.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">计算机网络 3 -数据链路层</div></div></a></div><div class="next-post pull-right"><a href="/2021/05/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C_02/"><img class="next-cover" src= "/img/404.jpg" data-lazy-src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBZ0wtcVlYV1Ftak1pR1VkRHVPT3BJSWRDb0gyP2U9WW9wd2Nm.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">计算机网络 2 -物理层</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/05/02/计算机网络/计算机网络_02/" title="计算机网络 2 -物理层"><img class="cover" src= "/img/404.jpg" data-lazy-src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBZ0wtcVlYV1Ftak1pR1VkRHVPT3BJSWRDb0gyP2U9WW9wd2Nm.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-02</div><div class="title">计算机网络 2 -物理层</div></div></a></div><div><a href="/2021/06/29/计算机网络/计算机网络_04/" title="计算机网络 4 -网络层"><img class="cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/rikka_1.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-06-29</div><div class="title">计算机网络 4 -网络层</div></div></a></div><div><a href="/2021/05/02/计算机网络/计算机网络_03/" title="计算机网络 3 -数据链路层"><img class="cover" src= "/img/404.jpg" data-lazy-src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBZ0wtcVlYV1Ftak1pR2J4YXpLRVFneGpkSjAwP2U9ZHptSkta.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-02</div><div class="title">计算机网络 3 -数据链路层</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "/img/404.jpg" data-lazy-src="/image/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Rikka</div><div class="author-info__description">邪王真眼是最强的</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">47</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ayasa520"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/ayasa520" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1103670381@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">Rikka 的 Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E3%80%81%E4%BA%92%E8%BF%9E%EF%BC%88%E8%81%94%EF%BC%89%E7%BD%91%E5%92%8C%E5%9B%A0%E7%89%B9%E7%BD%91"><span class="toc-text">网络、互连（联）网和因特网</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Internet-%E5%92%8C-internet"><span class="toc-text">Internet 和 internet</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%A0%E7%89%B9%E7%BD%91%E5%8F%91%E5%B1%95%E7%9A%84%E4%B8%89%E4%B8%AA%E9%98%B6%E6%AE%B5"><span class="toc-text">因特网发展的三个阶段</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%A0%E7%89%B9%E7%BD%91%E6%9C%8D%E5%8A%A1%E6%8F%90%E4%BE%9B%E8%80%85ISP-Internet-Service-Provider"><span class="toc-text">因特网服务提供者ISP (Internet Service Provider)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E-ISP-%E7%9A%84%E4%B8%89%E5%B1%82%E7%BB%93%E6%9E%84%E7%9A%84%E5%9B%A0%E7%89%B9%E7%BD%91"><span class="toc-text">基于 ISP 的三层结构的因特网</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE-Data"><span class="toc-text">数据 (Data)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%8C%85-Data-Packets"><span class="toc-text">数据包 (Data Packets)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%A0%E7%89%B9%E7%BD%91%E7%9A%84%E6%A0%87%E5%87%86%E5%8C%96%E5%B7%A5%E4%BD%9C"><span class="toc-text">因特网的标准化工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%A0%E7%89%B9%E7%BD%91%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-text">因特网的组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E7%A7%8D%E4%BA%A4%E6%8D%A2%E6%96%B9%E5%BC%8F"><span class="toc-text">三种交换方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%B5%E8%B7%AF%E4%BA%A4%E6%8D%A2-Circuit-Switching"><span class="toc-text">电路交换(Circuit Switching)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2-Packet-Switching"><span class="toc-text">分组交换 (Packet Switching)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E6%96%B9"><span class="toc-text">发送方</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8"><span class="toc-text">路由器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E6%94%B6%E6%96%B9"><span class="toc-text">接收方</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%A5%E6%96%87%E4%BA%A4%E6%8D%A2-%E8%BF%87%E6%97%B6"><span class="toc-text">报文交换 (过时)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E6%AF%94"><span class="toc-text">对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text">计算机网络的定义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E7%AE%80%E5%8D%95%E5%AE%9A%E4%B9%89-%E4%B8%80%E4%BA%9B%E4%BA%92%E8%BF%9E-%E8%87%AA%E6%B2%BB%E7%9A%84%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%9B%86%E5%90%88"><span class="toc-text">最简单定义: 一些互连, 自治的计算机集合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%83%E5%A5%BD%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text">较好的定义:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-text">计算机网络的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%89%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF"><span class="toc-text">按交换技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%89%E4%BD%BF%E7%94%A8%E8%80%85"><span class="toc-text">按使用者</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%89%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8"><span class="toc-text">按传输介质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%89%E8%A6%86%E7%9B%96%E8%8C%83%E5%9B%B4"><span class="toc-text">按覆盖范围</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%89%E6%8B%93%E6%89%91%E7%BB%93%E6%9E%84%E5%88%86%E7%B1%BB"><span class="toc-text">按拓扑结构分类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9A%84%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="toc-text">计算机网络的性能指标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9F%E7%8E%87"><span class="toc-text">速率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E5%AE%BD-Bandwidth"><span class="toc-text">带宽 (Bandwidth)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7%E7%B3%BB%E7%BB%9F%E4%B8%AD"><span class="toc-text">在模拟信号系统中</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%AD"><span class="toc-text">在计算机网络中</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%9E%E5%90%90%E9%87%8F-Throughput"><span class="toc-text">吞吐量 (Throughput)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E5%BB%B6"><span class="toc-text">时延</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E5%BB%B6%E5%B8%A6%E5%AE%BD%E7%A7%AF"><span class="toc-text">时延带宽积</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%80%E8%BF%94%E6%97%B6%E9%97%B4-RTT"><span class="toc-text">往返时间 RTT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E7%8E%87"><span class="toc-text">利用率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A2%E5%8C%85%E7%8E%87"><span class="toc-text">丢包率</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-text">计算机网络体系结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-text">常见的计算机网络体系结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%80%E6%94%BE%E7%B3%BB%E7%BB%9F%E4%BA%92%E8%BF%9E%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B-Open-System-Interconnection-OSI"><span class="toc-text">开放系统互连参考模型 (Open System Interconnection,OSI)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TCP-IP-%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-text">TCP&#x2F;IP 体系结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E7%94%A8%E6%A8%A1%E5%9E%8B"><span class="toc-text">学习用模型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E5%88%86%E5%B1%82%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7"><span class="toc-text">计算机网络体系结构分层的必要性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E5%88%86%E5%B1%82%E6%80%9D%E6%83%B3%E4%B8%BE%E4%BE%8B"><span class="toc-text">计算机网络体系结构分层思想举例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E6%96%B9-1"><span class="toc-text">发送方</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8-1"><span class="toc-text">路由器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E6%94%B6%E6%96%B9-1"><span class="toc-text">接收方</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E4%B8%AD%E7%9A%84%E4%B8%93%E4%B8%9A%E6%9C%AF%E8%AF%AD"><span class="toc-text">计算机网络体系结构中的专业术语</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E4%BD%93-Entity"><span class="toc-text">实体 (Entity)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%8F%E8%AE%AE-Protocol"><span class="toc-text">协议 (Protocol)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1"><span class="toc-text">服务</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/07/18/daodao-kai/" title="基于 Vercel 和 MongoDB 的叨叨·改"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/Snipaste_2021-05-16_00-24-41.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于 Vercel 和 MongoDB 的叨叨·改"/></a><div class="content"><a class="title" href="/2021/07/18/daodao-kai/" title="基于 Vercel 和 MongoDB 的叨叨·改">基于 Vercel 和 MongoDB 的叨叨·改</a><time datetime="2021-07-18T13:16:30.000Z" title="发表于 2021-07-18 21:16:30">2021-07-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/16/twikoo-img-zoom/" title="为 butterfly 主题的 twikoo 添加图片点击放大功能"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/rikka_1.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="为 butterfly 主题的 twikoo 添加图片点击放大功能"/></a><div class="content"><a class="title" href="/2021/07/16/twikoo-img-zoom/" title="为 butterfly 主题的 twikoo 添加图片点击放大功能">为 butterfly 主题的 twikoo 添加图片点击放大功能</a><time datetime="2021-07-15T17:09:38.000Z" title="发表于 2021-07-16 01:09:38">2021-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/06/auto-update-link/" title="自动添加 twikoo 评论中的友链"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/wallhaven-714648~1.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="自动添加 twikoo 评论中的友链"/></a><div class="content"><a class="title" href="/2021/07/06/auto-update-link/" title="自动添加 twikoo 评论中的友链">自动添加 twikoo 评论中的友链</a><time datetime="2021-07-05T18:38:38.000Z" title="发表于 2021-07-06 02:38:38">2021-07-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C_04/" title="计算机网络 4 -网络层"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/rikka_1.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络 4 -网络层"/></a><div class="content"><a class="title" href="/2021/06/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C_04/" title="计算机网络 4 -网络层">计算机网络 4 -网络层</a><time datetime="2021-06-28T16:00:00.000Z" title="发表于 2021-06-29 00:00:00">2021-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/25/jsDelivr/%E8%96%85%E7%BE%8A%E6%AF%9B/" title="将 mp4 视频切片成 ts 后使用 jsDelivr 加速制作 &quot;视频床&quot;"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/真冬の標本.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="将 mp4 视频切片成 ts 后使用 jsDelivr 加速制作 &quot;视频床&quot;"/></a><div class="content"><a class="title" href="/2021/06/25/jsDelivr/%E8%96%85%E7%BE%8A%E6%AF%9B/" title="将 mp4 视频切片成 ts 后使用 jsDelivr 加速制作 &quot;视频床&quot;">将 mp4 视频切片成 ts 后使用 jsDelivr 加速制作 &quot;视频床&quot;</a><time datetime="2021-06-24T16:00:00.000Z" title="发表于 2021-06-25 00:00:00">2021-06-25</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 By Rikka</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎来到极东魔术昼寝结社！</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>(()=>{
+  const $countDom = document.getElementById('twikoo-count')
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'comment-1a9b61',
+      region: '',
+      onCommentLoaded: function () {
+        if(typeof window.mediumZoom!='undefined'){
+          const zoomComment = mediumZoom(document.querySelectorAll('.tk-content :not(a)>img'))
+          zoomComment.on('open', e => {
+            const photoBg = document.documentElement.getAttribute('data-theme') === 'dark' ? '#121212' : '#fff'
+            zoomComment.update({
+              background: photoBg
+            })
+          })
+        }
+        if(GLOBAL_CONFIG.lightbox === 'fancybox'){
+            const addFancybox = function (ele) {
+              const runFancybox = (ele) => {
+                ele.each(function (i, o) {
+                  const $this = $(o)
+                  const lazyloadSrc = $this.attr('data-lazy-src') || $this.attr('src')
+                  const dataCaption = $this.attr('alt') || ''
+                  $this.wrap(`<a href="${lazyloadSrc}" data-fancybox="group" data-caption="${dataCaption}" class="fancybox"></a>`)
+                })
+
+                $().fancybox({
+                  selector: '[data-fancybox]',
+                  loop: true,
+                  transitionEffect: 'slide',
+                  protect: true,
+                  buttons: ['slideShow', 'fullScreen', 'thumbs', 'close'],
+                  hash: false
+                })
+              }
+
+              if (typeof $.fancybox === 'undefined') {
+                $('head').append(`<link rel="stylesheet" type="text/css" href="${GLOBAL_CONFIG.source.fancybox.css}">`)
+                $.getScript(`${GLOBAL_CONFIG.source.fancybox.js}`, function () {
+                  runFancybox($(ele))
+                })
+              } else {
+                runFancybox($(ele))
+              }
+            }
+          addFancybox(document.querySelectorAll('.tk-content :not(a)>img'))
+        }
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'comment-1a9b61',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      $countDom.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const loadTwikoo = (bool = false) => {
+    if (typeof twikoo === 'object') {
+      init()
+      bool && $countDom && setTimeout(getCount,0)
+    } else {
+      getScript('https://cdn.jsdelivr.net/gh/ayasa520/hexo@master/source/js/twikoo.all.js').then(()=> {
+        init()
+        bool && $countDom && setTimeout(getCount,0)
+      })
+    }
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo(true)
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'comment-1a9b61',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.jsdelivr.net/gh/ayasa520/hexo@master/source/js/twikoo.all.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script  src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script  defer src="https://cdn.jsdelivr.net/gh/graingert/wow@1.3.0/dist/wow.min.js"></script><script defer data-pjax src="/js/wow_init.js"></script><div class="app-refresh" id="app-refresh"> <div class="app-refresh-wrap"> <label>✨ 网站已更新最新版本 👉</label> <a href="javascript:void(0)" onclick="location.reload()">点击刷新</a> </div></div><script>function showNotification(){if(GLOBAL_CONFIG.Snackbar){var t="light"===document.documentElement.getAttribute("data-theme")?GLOBAL_CONFIG.Snackbar.bgLight:GLOBAL_CONFIG.Snackbar.bgDark,e=GLOBAL_CONFIG.Snackbar.position;Snackbar.show({text:"已更新最新版本",backgroundColor:t,duration:5e5,pos:e,actionText:"点击刷新",actionTextColor:"#fff",onActionClick:function(t){location.reload()}})}else{var o=`top: 0; background: ${"light"===document.documentElement.getAttribute("data-theme")?"#49b1f5":"#1f1f1f"};`;document.getElementById("app-refresh").style.cssText=o}}"serviceWorker"in navigator&&(navigator.serviceWorker.controller&&navigator.serviceWorker.addEventListener("controllerchange",function(){showNotification()}),window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")}));</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><div id="aplayer"></div><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script type="text/javascript"> document.write("<script src='/js/music.js?"+Math.random()+"'><\/script>"); </script>·<script defer src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@latest/source/js/issues.min.js"></script><script defer data-pjax src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.5.0/build/highlight.min.js"></script><script defer data-pjax>if (document.getElementsByClassName('dplayer').length>0){$.getScript('https://cdn.jsdelivr.net/hls.js/latest/hls.min.js').done(function(){ $.getScript('https://cdn.jsdelivr.net/gh/ayasa520/hexo/source/js/DPlayer.min.js').done(dplayer_init);});}</script><script defer data-pjax>if (document.getElementById('hpp_talk')){$.getScript('https://cdn.jsdelivr.net/gh/ayasa520/HexoPlusPlus@main/src/talk_user.js').done(hpp_talk_init);}</script><script async>console.log(" ____    ______   __  __   __  __   ______     \n/\\  _`\\ /\\__  _\\ /\\ \\/\\ \\ /\\ \\/\\ \\ /\\  _  \\    \n\\ \\ \\L\\ \\/_/\\ \\/ \\ \\ \\/'/'\\ \\ \\/'/'\\ \\ \\L\\ \\   \n \\ \\ ,  /  \\ \\ \\  \\ \\ , <  \\ \\ , <  \\ \\  __ \\  \n  \\ \\ \\\\ \\  \\_\\ \\__\\ \\ \\\\`\\ \\ \\ \\\\`\\ \\ \\ \\/\\ \\ \n   \\ \\_\\ \\_\\/\\_____\\\\ \\_\\ \\_\\\\ \\_\\ \\_\\\\ \\_\\ \\_\\\n    \\/_/\\/ /\\/_____/ \\/_/\\/_/ \\/_/\\/_/ \\/_/\\/_/")</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax',
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener toc scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script  src="https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.0/dist/js/main.js"></script><script data-pjax  src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script><script data-pjax>
+        function daodao_plus_injector_config(){
+            function ddSwiperInit(){
+                const ddSwiper =new DaodaoSwiper(daodao_url,bbpath,filter);
+                ddSwiper.init();
+            }
+            var daodao_url = "https://daodao.bilibilianime.com/api/query/20";
+            var bbpath = /daodaoplus/;
+            var filter = JSON.parse('["iframe","img","script","code"]');
+            var parent_div_git = document.getElementsByClassName('recent-posts')[0];
+            var item_html =  '<div class="recent-post-item" style="height: auto;width: 100%"><div class="bbTimeList container" id="bbTimeList" style="height: auto;width: 100%"><a class="bber-gotobb fas fa-bullhorn" href="/daodaoplus/" title="叨叨"></a><div class="swiper-container" id="bbtalk"><div class="swiper-wrapper" id="bber-talk"></div></div><a class="bber-gotobb fas fa-arrow-circle-right" href="/daodaoplus/" title="查看全文"></a></div></div>';
+            console.log('已挂载daodao_plus')
+            parent_div_git.insertAdjacentHTML("afterbegin",item_html) 
+            if (typeof DaodaoSwiper === 'function' && typeof Daodao==='function'){
+                ddSwiperInit();
+            }else{
+                let ddScripts = []
+                if(typeof DaodaoSwiper!=="function")
+                    ddScripts.push( getScript('https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.0/dist/js/main.js'))
+                if(typeof Daodao!=="function")
+                    ddScripts.push( getScript('https://cdn.jsdelivr.net/npm/daodaoplus@1.0.5/static/js/index.js'))
+                Promise.all(ddScripts).then(ddSwiperInit);
+            }
+
+        }
+        if( document.getElementsByClassName('recent-posts')[0] && (location.pathname ==='/')){
+                daodao_plus_injector_config()
+        }</script><!-- hexo injector body_end end --></body></html>
