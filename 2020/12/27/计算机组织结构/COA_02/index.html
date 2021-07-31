@@ -1,0 +1,870 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>计算机组织结构(二) 定点运算 | 极东魔术昼寝结社</title><meta name="keywords" content="底层,计组"><meta name="author" content="Rikka"><meta name="copyright" content="Rikka"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="📚 文档目录合集-数的二进制表示-定点运算-BCD 码-浮点数四则运算-内置存储器-Cache-外存-纠错-RAID-内存管理-总线-指令集: 特征- 指令集:寻址方式和指令格式  1. 移位运算1.算数移位 符号位不变, 左移相当于乘以 2, 右移相当于除以 2(左侧全补符号位).  2. 逻辑移位 无符号数的移位, 右移时永远在高位填 0.  2. 加法运算1. 全加器 $𝑆𝑖&#x3D;𝑋𝑖">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机组织结构(二) 定点运算">
+<meta property="og:url" content="https://www.bilibilianime.com/2020/12/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E7%BB%87%E7%BB%93%E6%9E%84/COA_02/index.html">
+<meta property="og:site_name" content="极东魔术昼寝结社">
+<meta property="og:description" content="📚 文档目录合集-数的二进制表示-定点运算-BCD 码-浮点数四则运算-内置存储器-Cache-外存-纠错-RAID-内存管理-总线-指令集: 特征- 指令集:寻址方式和指令格式  1. 移位运算1.算数移位 符号位不变, 左移相当于乘以 2, 右移相当于除以 2(左侧全补符号位).  2. 逻辑移位 无符号数的移位, 右移时永远在高位填 0.  2. 加法运算1. 全加器 $𝑆𝑖&#x3D;𝑋𝑖">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/erik-shoemaker-chaldea-matte-final2.webp">
+<meta property="article:published_time" content="2020-12-27T00:00:00.000Z">
+<meta property="article:modified_time" content="2021-07-31T11:30:54.886Z">
+<meta property="article:author" content="Rikka">
+<meta property="article:tag" content="底层">
+<meta property="article:tag" content="计组">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/erik-shoemaker-chaldea-matte-final2.webp"><link rel="shortcut icon" href="/image/favicon.png"><link rel="canonical" href="https://www.bilibilianime.com/2020/12/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E7%BB%87%E7%BB%93%E6%9E%84/COA_02/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/pwa/manifest.json"/><meta name="msapplication-TileColor" content="#fff"/><link rel="apple-touch-icon" sizes="180x180" href="/pwa/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/pwa/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/pwa/16.png"/><link rel="mask-icon" href="/pwa/safari-pinned-tab.svg" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"source/search/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"此文章发表于","messageNext":"天前，内容可能已经过时"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Rikka","link":"链接: ","source":"来源: 极东魔术昼寝结社","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '计算机组织结构(二) 定点运算',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-07-31 11:30:54'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><style type="text/css">.app-refresh{position:fixed;top:-2.2rem;left:0;right:0;z-index:99999;padding:0 1rem;font-size:15px;height:2.2rem;transition:all .3s ease}.app-refresh-wrap{display:flex;color:#fff;height:100%;align-items:center;justify-content:center}.app-refresh-wrap a{color:#fff;text-decoration:underline;cursor:pointer}</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/custom.css"  media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daodaoplus@1.0.4/static/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.0/dist/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "/img/404.jpg" data-lazy-src="/image/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">47</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/daodaoplus/"><i class="fa-fw fas fa-comment"></i><span> 闲话板砖</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comment"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/erik-shoemaker-chaldea-matte-final2.webp')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">极东魔术昼寝结社</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/daodaoplus/"><i class="fa-fw fas fa-comment"></i><span> 闲话板砖</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comment"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">计算机组织结构(二) 定点运算</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-12-27T00:00:00.000Z" title="发表于 2020-12-27 00:00:00">2020-12-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-07-31T11:30:54.886Z" title="更新于 2021-07-31 11:30:54">2021-07-31</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/NJU-%E7%AC%94%E8%AE%B0/">NJU 笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="计算机组织结构(二) 定点运算"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><div class="note blue icon modern"><i class="note-icon fas fa-rocket"></i><p>📚 文档目录<br><a href="/2020/12/27/计算机组织结构/COA_00">合集</a>-<a href="/2020/12/27/计算机组织结构/COA_01">数的二进制表示</a>-<a href="/2020/12/27/计算机组织结构/COA_02">定点运算</a>-<a href="/2020/12/27/计算机组织结构/COA_03">BCD 码</a>-<a href="/2020/12/27/计算机组织结构/COA_04">浮点数四则运算</a>-<a href="/2020/12/27/计算机组织结构/COA_05">内置存储器</a>-<a href="/2020/12/27/计算机组织结构/COA_06">Cache</a>-<a href="/2020/12/27/计算机组织结构/COA_07">外存</a>-<a href="/2020/12/27/计算机组织结构/COA_08">纠错</a>-<a href="/2020/12/27/计算机组织结构/COA_09">RAID</a>-<a href="/2020/12/27/计算机组织结构/COA_10">内存管理</a>-<a href="/2020/12/27/计算机组织结构/COA_11">总线</a>-<a href="/2020/12/27/计算机组织结构/COA_12">指令集: 特征</a>-<a href="/2020/12/27/计算机组织结构/COA_13"> 指令集:寻址方式和指令格式</a></p>
+</div>
+<h2 id="1-移位运算"><a href="#1-移位运算" class="headerlink" title="1. 移位运算"></a>1. 移位运算</h2><h3 id="1-算数移位"><a href="#1-算数移位" class="headerlink" title="1.算数移位"></a>1.算数移位</h3><ul>
+<li><strong>符号位不变</strong>, 左移相当于乘以 2, 右移相当于除以 2(左侧全补符号位).</li>
+</ul>
+<h3 id="2-逻辑移位"><a href="#2-逻辑移位" class="headerlink" title="2. 逻辑移位"></a>2. 逻辑移位</h3><ul>
+<li><strong>无符号数的移位</strong>, 右移时永远在高位填 0.</li>
+</ul>
+<h2 id="2-加法运算"><a href="#2-加法运算" class="headerlink" title="2. 加法运算"></a>2. 加法运算</h2><h3 id="1-全加器"><a href="#1-全加器" class="headerlink" title="1. 全加器"></a>1. 全加器</h3><ul>
+<li>$𝑆<em>𝑖=𝑋</em>𝑖⊕𝑌<em>𝑖⊕𝐶</em>{𝑖−1}$</li>
+<li>$𝐶<em>𝑖=𝑋</em>𝑖𝐶<em>{𝑖−1}+𝑌</em>𝑖𝐶<em>{𝑖−1}+𝑋</em>𝑖𝑌_𝑖$</li>
+</ul>
+<h3 id="2-Serial-Carry-Adder"><a href="#2-Serial-Carry-Adder" class="headerlink" title="2. Serial Carry Adder"></a>2. Serial Carry Adder</h3><iframe frameborder="0" style="width:100%;height:200%;" src="https://app.diagrams.net/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1#R7VpLc9owEP41HJvxS9g%2BJpC0h3amMxxKjipWsDrGYmwRIL%2B%2BMpZfWiAE%2FMAMF8ZaybL0fatvd20G5mix%2BR7hpf%2BLeSQYGJq3GZjjgWG4riF%2BE8M2NdjITA3ziHqpSS8ME%2FpBpFGT1hX1SFwZyBkLOF1WjTMWhmTGKzYcRWxdHfbGgupTl3hOgGEywwG0%2FqEe91OrY9iF%2FQehcz97sj50054FzgbLncQ%2B9ti6ZDKfB%2BYoYoynV4vNiAQJdhku6X0vB3rzhUUk5KfcYMslx3ybbY54Yq%2ByySLuszkLcfBcWJ8itgo9ksygiVYx5idjS2HUhfEf4XwricMrzoTJ54tA9pIN5VN5e3L9mlw%2FINkab0pd461spOtMFndwq9IUs1U0k6NsPQdVOCNhC8KjrRgTkQBz%2Bl6dC0u3mOfj8lt%2FMyqeYmjSgy1T8icdWM%2Fa2RQcR3PC5V0F%2FuKitIzCtGNlP0Ou3gVDV4U2UtA2GgPblmt7x8FKrvblEeC%2F9iknkyXebXstFK6KHY6Xqei80U3CgQTznUScbI7DCaHLHM6tQpA11yX5kSa%2FpDyOdhjrCkzHMDEAJtAjQ%2B8x0VXRmgU4julMOfCheOi03Cgd%2BaRZnPld6%2BuHPvWB425YAgvtASuzXeitw%2BEn2pCeGOCu0O3VifTm%2FN4EHI80wLJwX664ekDnYUK6oINEwpA4ORWB8lF2LKjnpYpEYvqB%2F%2B6mSphdJqve7QM9DdA4mUuIUJzqkV7PoRlqCoCaDU6NuccRVH0569S4PZJttOcMDS%2BU8lOBcrrJQNoVJNRMFqKfl4WAiUz7PMkSmo%2B3pWHyUF%2BoRehKY7BhdRaDHbNHanKpchxw9tYy7nQDV%2BiAutadA2owQYCFSd8SBAt1lyA4FkQ07D2iQ6c7QB0AKBTNok4JWZiA5OHY32mkfp72dVVlmE5NVUaLrzIc90sMHa8ktQcjT9Zey503VEoiJcHLg%2BCXS0k1etqNkezCSHF9JHdGKKqLUDVyNUioAQid9D%2F0q%2B8UEcylmgpULnzZMu0%2FoJaL9rt2G4jCXOq1%2F4gis0NEERTt6yk4ay8uDSWbOvELw6fzuKfJ%2BzmqDIvUe5jNaRjWFGbViZoMs%2Fad0MPVjlYToepETRIK69FJ%2BK3%2FYcmwrQqEezInq6moBAvI6U1Aah1w7xYwzV8qlpOnmwBVjemtgnrV%2F9qoPX%2FSVQc%2BM39S52kuf9I1WNbe423Og1FTvFUnajDe6hqsq%2B%2BM5kTUlRKrEzXKKKzrJ%2F3%2FRqKKXIuvnnQNflyf3gCih8qDViCFlfjrDUB6QkpaE6SiWfzhOZWJ4l%2Fj5vN%2F"></iframe>
+
+<ul>
+<li>缺点: 速度慢.</li>
+<li>延时(OR AND 1ty, XOR 3ty)<ul>
+<li>Cn: 2n ty</li>
+<li>Sn: 2n+1 ty</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-Carry-Look-Ahead-Adder"><a href="#3-Carry-Look-Ahead-Adder" class="headerlink" title="3. Carry Look Ahead Adder"></a>3. Carry Look Ahead Adder</h3><p><strong>注意</strong>：这里的+均为“或”</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+𝐶_𝑖&=𝑋_𝑖𝐶_{𝑖−1}+𝑌_𝑖𝐶_{𝑖−1}+𝑋_𝑖𝑌_i\\
+\\
+C_1&=𝑋_1𝑌_1+(𝑋_1+𝑌_1)𝐶_0\\
+𝐶_2&=𝑋_2𝑌_2+(𝑋_2+𝑌_2)𝑋_1𝑌_1+(𝑋_2+𝑌_2)(𝑋_1+𝑌_1)𝐶_0\\
+𝐶_3&=𝑋_3𝑌_3+𝑋_3+𝑌_3𝑋_2𝑌_2+𝑋_3+𝑌_3𝑋_2+𝑌_2𝑋_1𝑌_1
++(𝑋_3+𝑌_3)(𝑋_2+𝑌_2)(𝑋_1+𝑌_1)𝐶_0\\
+C_4 &=...
+\end{aligned}</script><p>可见,$Ci$ 仅与最初的X Y和 $C<em>0$有关.<br>令$𝑃</em>𝑖=𝑋<em>𝑖+𝑌</em>𝑖, 𝐺<em>𝑖=𝑋</em>𝑖𝑌_i$<br>则:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\\
+𝐶_1&=𝐺_1+𝑃_1𝐶_0\\
+𝐶_2&=𝐺_2+𝑃_2𝐺_1+𝑃_2𝑃_1𝐶_0\\
+𝐶_3&=𝐺_3+𝑃_3𝐺_2+𝑃_3𝑃_2𝐺_1+𝑃_3𝑃_2𝑃_1𝐶_0\\
+𝐶_4&=...
+\end{aligned}</script><p>总结得:$C<em>{i+1} = G</em>{i+1}+P_{i+1}C_i$, 超前进位加法器采用的是将低一位的逻辑代数代入高一位, 依此类推最终每一个进位输出仅考虑 $C_0, X_i, Y_i$几个信号, 于是所有的进位都能同时计算.</p>
+<ul>
+<li>缺点:复杂</li>
+<li>延时: 1 ty+ 2ty + 3 ty = 6 ty</li>
+</ul>
+<h3 id="4-Partial-Carry-Look-Ahead-Adder"><a href="#4-Partial-Carry-Look-Ahead-Adder" class="headerlink" title="4. Partial Carry Look Ahead Adder"></a>4. Partial Carry Look Ahead Adder</h3><p>   结合两者  </p>
+<h3 id="5-溢出判断"><a href="#5-溢出判断" class="headerlink" title="5. 溢出判断"></a>5. 溢出判断</h3><ul>
+<li>$C<em>n\oplus C</em>{n-1} =1$, 即符号位进位与最高有效位进位不同时,发生溢出.</li>
+<li>$𝑋<em>𝑛 𝑌</em>𝑛 \overline{𝑆<em>𝑛}+\overline{𝑋</em>𝑛𝑌<em>𝑛}𝑆</em>𝑛=1$,则溢出,与上面等价.</li>
+</ul>
+<h3 id="3-减法运算"><a href="#3-减法运算" class="headerlink" title="3. 减法运算"></a>3. 减法运算</h3><p>减法运算大致与加法相同,只需要将减数取反加一然后按加法算即可, <strong>注意加一的操作是令 $C_0 = 1$</strong>.</p>
+<h3 id="4-乘法运算"><a href="#4-乘法运算" class="headerlink" title="4. 乘法运算"></a>4. 乘法运算</h3><h4 id="1-无符号整数乘法"><a href="#1-无符号整数乘法" class="headerlink" title="1. 无符号整数乘法"></a>1. 无符号整数乘法</h4><p>通过<strong>加法和移位实现</strong>,与竖式乘法极其类似,但是计算机很难像人类那样一次性把各位乘的结果一次性相加,因此采用部分积的方式:<br>例:$0111\times0110$</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><font color=#FF0000>部分积</font></th>
+<th style="text-align:center">乘数</th>
+<th style="text-align:center">得到当前行的操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><font color=#FF0000>0000</font></td>
+<td style="text-align:center">0110</td>
+<td style="text-align:center">部分积+乘数末位$\times 0111$</td>
+</tr>
+<tr>
+<td style="text-align:center"><font color=#FF0000>0000</font></td>
+<td style="text-align:center"><font color=#FF0000>0</font>011</td>
+<td style="text-align:center">右移</td>
+</tr>
+<tr>
+<td style="text-align:center"><font color=#FF0000>0111</font></td>
+<td style="text-align:center"><font color=#FF0000>0</font>011</td>
+<td style="text-align:center">部分积+乘数末位$\times 0111$</td>
+</tr>
+<tr>
+<td style="text-align:center"><font color=#FF0000>0011</font></td>
+<td style="text-align:center"><font color=#FF0000>10</font>01</td>
+<td style="text-align:center">右移</td>
+</tr>
+<tr>
+<td style="text-align:center"><font color=#FF0000>1010</font></td>
+<td style="text-align:center"><font color=#FF0000>10</font>01</td>
+<td style="text-align:center">部分积+乘数末位$\times 0111$</td>
+</tr>
+<tr>
+<td style="text-align:center"><font color=#FF0000>0101</font></td>
+<td style="text-align:center"><font color=#FF0000>010</font>0</td>
+<td style="text-align:center">右移</td>
+</tr>
+<tr>
+<td style="text-align:center"><font color=#FF0000>0101</font></td>
+<td style="text-align:center"><font color=#FF0000>010</font>0</td>
+<td style="text-align:center">部分积+乘数末位$\times 0111$</td>
+</tr>
+<tr>
+<td style="text-align:center"><font color=#FF0000>0010</font></td>
+<td style="text-align:center"><font color=#FF0000>1010</font></td>
+<td style="text-align:center">右移</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>乘数末位决定被乘数是否加到部分积,然后部分积和乘数均<strong>右移</strong>,部分积低位保存到乘数高位.</li>
+<li><strong>被乘数只与部分积高位相加</strong></li>
+</ul>
+<p>原理:</p>
+<script type="math/tex; mode=display">\begin{aligned}
+XY &= XY_nY_{n-1}...Y_2Y_1\\&=X(Y_n\times2^{n-1}+Y_n\times2^{n-2}+...+Y_2\times2^1+Y_1\times2^0)\\&=2^n(XY_n\times2^{-1}+XY_{n-1}\times2^{-2}+...+XY_1\times2^{-n})\\
+&=2^nP_{n},其中P_{n} = 2^{-1}\times(XY_{n}+P_{n-1}),n\gt1.\end{aligned}</script><h4 id="2-补码整数乘法"><a href="#2-补码整数乘法" class="headerlink" title="2. 补码整数乘法"></a>2. 补码整数乘法</h4><p>根据上面无符号整数的原理, 可以将二进制补码整数相乘变形如下:</p>
+<script type="math/tex; mode=display">\begin{aligned}XY& = XY_nY_{n-1}...Y_2Y_1\\&=X(-Y_n\times2^{n-1}+Y_n\times2^{n-2}+...+Y_2\times2^1+Y_1\times2^0)\\&=2^nX((Y_{n-1}-Y_n)\times2^{-1}+(Y_{n-2}-Y_{n-1})\times2^{-2}+...+(Y_0-Y_1)\times2^{-n})\\&
+=2^nP_{n},其中Y_0=0,P_{n} = 2^{-1}\times(X(Y_{n-1}-Y_{n})+P_{n-1}),n\gt1.\end{aligned}</script><p>形式上还原了,只是每次乘的<strong>不是乘数的末位数</strong>, 且注意是<strong>算数右移</strong>,需要补符号位,<br>例: $-7\times-6 = 42,即 1001\times1010=00101010$</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><font color=#FF0000>部分积</font></th>
+<th style="text-align:center">乘数</th>
+<th style="text-align:center">得到当前行的操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><font color=#FF0000>0000</font></td>
+<td style="text-align:center">1010<font color=#0000FF>0</font></td>
+<td style="text-align:center">部分积+$(Y_0-Y_1)\times 1001$</td>
+</tr>
+<tr>
+<td style="text-align:center"><font color=#FF0000>0000</font></td>
+<td style="text-align:center"><font color=#FF0000>0</font>1010</td>
+<td style="text-align:center">右移</td>
+</tr>
+<tr>
+<td style="text-align:center"><font color=#FF0000>0111</font></td>
+<td style="text-align:center"><font color=#FF0000>0</font>1010</td>
+<td style="text-align:center">部分积+$(Y_1-Y_2)\times 1001$</td>
+</tr>
+<tr>
+<td style="text-align:center"><font color=#FF0000>0011</font></td>
+<td style="text-align:center"><font color=#FF0000>10</font>101</td>
+<td style="text-align:center">右移</td>
+</tr>
+<tr>
+<td style="text-align:center"><font color=#FF0000>1100</font></td>
+<td style="text-align:center"><font color=#FF0000>10</font>101</td>
+<td style="text-align:center">部分积+$(Y_2-Y_3)\times 1001$</td>
+</tr>
+<tr>
+<td style="text-align:center"><font color=#FF0000>1110</font></td>
+<td style="text-align:center"><font color=#FF0000>010</font>10</td>
+<td style="text-align:center">右移</td>
+</tr>
+<tr>
+<td style="text-align:center"><font color=#FF0000>0101</font></td>
+<td style="text-align:center"><font color=#FF0000>010</font>10</td>
+<td style="text-align:center">部分积+$(Y_3-Y_4)\times 1001$</td>
+</tr>
+<tr>
+<td style="text-align:center"><font color=#FF0000>0010</font></td>
+<td style="text-align:center"><font color=#FF0000>1010</font>1</td>
+<td style="text-align:center">右移</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="5-除法运算"><a href="#5-除法运算" class="headerlink" title="5. 除法运算"></a>5. 除法运算</h3><h4 id="1-unsigned"><a href="#1-unsigned" class="headerlink" title="1. unsigned"></a>1. unsigned</h4><p>1.人的计算:除数右移, 2n位</p>
+<ul>
+<li>竖式计算:<br><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/README.assets/8216b980b855f3139a28932f6883a053a6e04f1f.webp" style="zoom:50%;" /></li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">余数</th>
+<th style="text-align:center"><font color=#0000FF>除数</font></th>
+<th style="text-align:center">商</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">00000111</td>
+<td style="text-align:center"><font color=#0000FF>00110000</font></td>
+<td style="text-align:center">0000</td>
+</tr>
+<tr>
+<td style="text-align:center">00000111</td>
+<td style="text-align:center">0<font color=#0000FF>0011000</font></td>
+<td style="text-align:center">0000</td>
+</tr>
+<tr>
+<td style="text-align:center">00000111</td>
+<td style="text-align:center">0<font color=#0000FF>0011000</font></td>
+<td style="text-align:center">000<font color=#FF0000>0</font></td>
+</tr>
+<tr>
+<td style="text-align:center">00000111</td>
+<td style="text-align:center">00<font color=#0000FF>001100</font></td>
+<td style="text-align:center">000<font color=#FF0000>0</font></td>
+</tr>
+<tr>
+<td style="text-align:center">00000111</td>
+<td style="text-align:center">00<font color=#0000FF>001100</font></td>
+<td style="text-align:center">00<font color=#FF0000>00</font></td>
+</tr>
+<tr>
+<td style="text-align:center">00000111</td>
+<td style="text-align:center">000<font color=#0000FF>00110</font></td>
+<td style="text-align:center">00<font color=#FF0000>00</font></td>
+</tr>
+<tr>
+<td style="text-align:center">00000001</td>
+<td style="text-align:center">000<font color=#0000FF>00110</font></td>
+<td style="text-align:center">0<font color=#FF0000>001</font></td>
+</tr>
+<tr>
+<td style="text-align:center">00000001</td>
+<td style="text-align:center">0000<font color=#0000FF>0011</font></td>
+<td style="text-align:center">0<font color=#FF0000>001</font></td>
+</tr>
+<tr>
+<td style="text-align:center">00000001</td>
+<td style="text-align:center">0000<font color=#0000FF>0011</font></td>
+<td style="text-align:center"><font color=#FF0000>0010</font></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol>
+<li>计算机的计算: <strong>余数左移</strong>, n位</li>
+</ol>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><font color=#0000FF>余数</font></th>
+<th style="text-align:center"><font color=#FF0000>商</font></th>
+<th style="text-align:center">除数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><font color=#0000FF>0000</font></td>
+<td style="text-align:center"><font color=#0000FF>0111</font></td>
+<td style="text-align:center">0011</td>
+</tr>
+<tr>
+<td style="text-align:center"><font color=#0000FF>0000</font></td>
+<td style="text-align:center"><font color=#0000FF>111</font></td>
+<td style="text-align:center">0011</td>
+</tr>
+<tr>
+<td style="text-align:center"><font color=#0000FF>0000</font></td>
+<td style="text-align:center"><font color=#0000FF>111</font><font color=#FF0000>0</font></td>
+<td style="text-align:center">0011</td>
+</tr>
+<tr>
+<td style="text-align:center"><font color=#0000FF>0001</font></td>
+<td style="text-align:center"><font color=#0000FF>11</font><font color=#FF0000>0</font></td>
+<td style="text-align:center">0011</td>
+</tr>
+<tr>
+<td style="text-align:center"><font color=#0000FF>0001</font></td>
+<td style="text-align:center"><font color=#0000FF>11</font><font color=#FF0000>00</font></td>
+<td style="text-align:center">0011</td>
+</tr>
+<tr>
+<td style="text-align:center"><font color=#0000FF>0011</font></td>
+<td style="text-align:center"><font color=#0000FF>1</font><font color=#FF0000>00</font></td>
+<td style="text-align:center">0011</td>
+</tr>
+<tr>
+<td style="text-align:center"><font color=#0000FF>0000</font></td>
+<td style="text-align:center"><font color=#0000FF>1</font><font color=#FF0000>001</font></td>
+<td style="text-align:center">0011</td>
+</tr>
+<tr>
+<td style="text-align:center"><font color=#0000FF>0001</font></td>
+<td style="text-align:center"><font color=#FF0000>001</font></td>
+<td style="text-align:center">0011</td>
+</tr>
+<tr>
+<td style="text-align:center"><font color=#0000FF>0001</font></td>
+<td style="text-align:center"><font color=#FF0000>0010</font></td>
+<td style="text-align:center">0011</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="2-带有符号的除法"><a href="#2-带有符号的除法" class="headerlink" title="2. 带有符号的除法"></a>2. 带有符号的除法</h4><ul>
+<li>如何判断余数(的绝对值)是否大于除数(的绝对值)?<ul>
+<li>同号则减, 异号则加. 与结果符号相同的那个数绝对值大</li>
+</ul>
+</li>
+</ul>
+<table style="border-collapse:collapse;margin-left:52.305pt" cellspacing="0"><tbody><tr style="height:29pt"><td style="width:94pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" rowspan="2"><p class="s116" style="padding-top: 2pt;padding-left: 6pt;padding-right: 5pt;text-indent: 0pt;line-height: 22pt;text-align: center;">remainder</p><p class="s116" style="padding-left: 6pt;padding-right: 5pt;text-indent: 0pt;line-height: 22pt;text-align: center;">sign</p></td><td style="width:74pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" rowspan="2"><p class="s116" style="padding-top: 2pt;padding-left: 10pt;padding-right: 9pt;text-indent: 0pt;line-height: 22pt;text-align: center;">Divisor</p><p class="s116" style="padding-left: 10pt;padding-right: 9pt;text-indent: 0pt;line-height: 22pt;text-align: center;">sign</p></td><td style="width:211pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="2"><p class="s116" style="padding-top: 2pt;padding-left: 62pt;text-indent: 0pt;text-align: left;">Subtraction</p></td><td style="width:216pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="2"><p class="s116" style="padding-top: 2pt;padding-left: 74pt;padding-right: 73pt;text-indent: 0pt;text-align: center;">Addition</p></td></tr><tr style="height:29pt"><td style="width:106pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s116" style="padding-top: 2pt;text-indent: 0pt;text-align: center;">0</p></td><td style="width:105pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s116" style="padding-top: 2pt;text-indent: 0pt;text-align: center;">1</p></td><td style="width:111pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s116" style="padding-top: 2pt;text-indent: 0pt;text-align: center;">0</p></td><td style="width:105pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s116" style="padding-top: 2pt;text-indent: 0pt;text-align: center;">1</p></td></tr><tr style="height:29pt"><td style="width:94pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s117" style="padding-top: 2pt;text-indent: 0pt;text-align: center;">0</p></td><td style="width:74pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s117" style="padding-top: 2pt;text-indent: 0pt;text-align: center;">0</p></td><td style="width:106pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s117" style="padding-top: 2pt;padding-left: 8pt;padding-right: 7pt;text-indent: 0pt;text-align: center;">Enough</p></td><td style="width:105pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s117" style="padding-top: 2pt;padding-left: 8pt;padding-right: 7pt;text-indent: 0pt;text-align: center;">Not enough</p></td><td style="width:111pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s117" style="padding-top: 2pt;padding-left: 11pt;padding-right: 10pt;text-indent: 0pt;text-align: center;">----</p></td><td style="width:105pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s117" style="padding-top: 2pt;padding-left: 8pt;padding-right: 7pt;text-indent: 0pt;text-align: center;">----</p></td></tr><tr style="height:29pt"><td style="width:94pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s117" style="padding-top: 2pt;text-indent: 0pt;text-align: center;">0</p></td><td style="width:74pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s117" style="padding-top: 2pt;text-indent: 0pt;text-align: center;">1</p></td><td style="width:106pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s117" style="padding-top: 2pt;padding-left: 8pt;padding-right: 7pt;text-indent: 0pt;text-align: center;">----</p></td><td style="width:105pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s117" style="padding-top: 2pt;padding-left: 8pt;padding-right: 7pt;text-indent: 0pt;text-align: center;">----</p></td><td style="width:111pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s117" style="padding-top: 2pt;padding-left: 11pt;padding-right: 10pt;text-indent: 0pt;text-align: center;">Enough</p></td><td style="width:105pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s117" style="padding-top: 2pt;padding-left: 8pt;padding-right: 7pt;text-indent: 0pt;text-align: center;">Not enough</p></td></tr><tr style="height:29pt"><td style="width:94pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s117" style="padding-top: 2pt;text-indent: 0pt;text-align: center;">1</p></td><td style="width:74pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s117" style="padding-top: 2pt;text-indent: 0pt;text-align: center;">0</p></td><td style="width:106pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s117" style="padding-top: 2pt;padding-left: 8pt;padding-right: 7pt;text-indent: 0pt;text-align: center;">----</p></td><td style="width:105pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s117" style="padding-top: 2pt;padding-left: 8pt;padding-right: 7pt;text-indent: 0pt;text-align: center;">----</p></td><td style="width:111pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s117" style="padding-top: 2pt;padding-left: 11pt;padding-right: 10pt;text-indent: 0pt;text-align: center;">Not enough</p></td><td style="width:105pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s117" style="padding-top: 2pt;padding-left: 8pt;padding-right: 7pt;text-indent: 0pt;text-align: center;">Enough</p></td></tr><tr style="height:29pt"><td style="width:94pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s117" style="padding-top: 2pt;text-indent: 0pt;text-align: center;">1</p></td><td style="width:74pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s117" style="padding-top: 2pt;text-indent: 0pt;text-align: center;">1</p></td><td style="width:106pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s117" style="padding-top: 2pt;padding-left: 8pt;padding-right: 7pt;text-indent: 0pt;text-align: center;">Not enough</p></td><td style="width:105pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s117" style="padding-top: 2pt;padding-left: 8pt;padding-right: 7pt;text-indent: 0pt;text-align: center;">Enough</p></td><td style="width:111pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s117" style="padding-top: 2pt;padding-left: 11pt;padding-right: 10pt;text-indent: 0pt;text-align: center;">----</p></td><td style="width:105pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s117" style="padding-top: 2pt;padding-left: 8pt;padding-right: 7pt;text-indent: 0pt;text-align: center;">----</p></td></tr></tbody></table>
+
+<p><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/README.assets/aadda87e9086a37cb714b2970fa7596c0721f939.webp" width = "30%" /></p>
+<ol>
+<li><p><strong>恢复余数法</strong> 在下面的步骤中,余数和除数的和是存储在余数寄存器里面的,判断完成后,还要恢复原来的余数(即减去余数).之前的不带符号位除法<strong>也都是恢复余数法</strong>,只是没有表示出来.</p>
+   <table>
+   <thead>
+   <tr>
+   <th style="text-align:center"><font color="#0000FF">余数</font></th>
+   <th style="text-align:center"><font color="#FF0000">商</font></th>
+   <th style="text-align:center">除数</th>
+   <th style="text-align:center">得到本步操作</th>
+   </tr>
+   </thead>
+   <tbody>
+   <tr>
+   <td style="text-align:center"><font color="#0000FF">1111</font></td>
+   <td style="text-align:center"><font color="#0000FF">1001</font></td>
+   <td style="text-align:center">0011</td>
+   <td style="text-align:center">-</td>
+   </tr>
+   <tr>
+   <td style="text-align:center"><font color="#0000FF">1111</font></td>
+   <td style="text-align:center"><font color="#0000FF">001</font></td>
+   <td style="text-align:center">0011</td>
+   <td style="text-align:center">左移</td>
+   </tr>
+   <tr>
+   <td style="text-align:center"><font color="#0000FF">1111</font></td>
+   <td style="text-align:center"><font color="#0000FF">001</font><font color="#FF0000">0</font></td>
+   <td style="text-align:center">0011</td>
+   <td style="text-align:center">1111+0011 =0010,not enough</td>
+   </tr>
+   <tr>
+   <td style="text-align:center"><font color="#0000FF">1110</font></td>
+   <td style="text-align:center"><font color="#0000FF">01</font><font color="#FF0000">0</font></td>
+   <td style="text-align:center">0011</td>
+   <td style="text-align:center">左移</td>
+   </tr>
+   <tr>
+   <td style="text-align:center"><font color="#0000FF">1110</font></td>
+   <td style="text-align:center"><font color="#0000FF">01</font><font color="#FF0000">00</font></td>
+   <td style="text-align:center">0011</td>
+   <td style="text-align:center">1110+0011=0001, not enough</td>
+   </tr>
+   <tr>
+   <td style="text-align:center"><font color="#0000FF">1100</font></td>
+   <td style="text-align:center"><font color="#0000FF">1</font><font color="#FF0000">00</font></td>
+   <td style="text-align:center">0011</td>
+   <td style="text-align:center">左移</td>
+   </tr>
+   <tr>
+   <td style="text-align:center"><font color="#0000FF">1111</font></td>
+   <td style="text-align:center"><font color="#0000FF">1</font><font color="#FF0000">001</font></td>
+   <td style="text-align:center">0011</td>
+   <td style="text-align:center">1100+0011=1111, enough</td>
+   </tr>
+   <tr>
+   <td style="text-align:center"><font color="#0000FF">1111</font></td>
+   <td style="text-align:center"><font color="#FF0000">001</font></td>
+   <td style="text-align:center">0011</td>
+   <td style="text-align:center">左移</td>
+   </tr>
+   <tr>
+   <td style="text-align:center"><font color="#0000FF">1111</font></td>
+   <td style="text-align:center"><font color="#FF0000">0010</font></td>
+   <td style="text-align:center">0011</td>
+   <td style="text-align:center">1111+0011=0010,not enough</td>
+   </tr>
+   </tbody>
+   </table>
+
+<p><strong>最后,结果取 <font color=#FF0000>0010</font> 的补码整数 <font color=#FF0000>1110 </font>为最终结果.</strong></p>
+<ul>
+<li>缺点:Problem: recover remainder is high cost</li>
+<li>解决方案:使用不恢复余数法(加减相消法)</li>
+</ul>
+</li>
+<li><p>加减相消法.</p>
+<ul>
+<li>规则<ul>
+<li>将被除数符号拓展 n 位后存储在余数和商寄存器.</li>
+<li>如果被除数与除数符号相同, 作减法; 若符号位不同, 作加法.<ul>
+<li>若新的<strong>余数与除数符号相同, 上商 1</strong>; 否则上商 0.</li>
+</ul>
+</li>
+<li>新的余数(指左移前的余数)与除数符号位相同, 则 $R<em>{i+1}= 2R_i-Y$, 即<code>余数=余数&lt;&lt;1-除数</code>;否则$R</em>{i+1}= 2R_i+Y$</li>
+</ul>
+</li>
+<li>商的修正:<ul>
+<li><strong>商左移一位. 若被除数和除数异号(即商为负), 商加一</strong></li>
+<li>若余数与被除数符号不同:<ul>
+<li>若被除数和除数同号,余数加除数</li>
+<li>若被除数和除数异号,余数减除数</li>
+</ul>
+</li>
+<li>注意：若做完如上修正后，余数为除数相反数，需要将余数置为0，同时商减一</li>
+</ul>
+</li>
+<li>示例:<br><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/README.assets/35ad64b739a0dbd5d9908dcf33a496f7bd10bac0.webp" ></li>
+</ul>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Rikka</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.bilibilianime.com/2020/12/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E7%BB%87%E7%BB%93%E6%9E%84/COA_02/">https://www.bilibilianime.com/2020/12/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E7%BB%87%E7%BB%93%E6%9E%84/COA_02/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.bilibilianime.com" target="_blank">极东魔术昼寝结社</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%BA%95%E5%B1%82/">底层</a><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%BB%84/">计组</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/erik-shoemaker-chaldea-matte-final2.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/12/27/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80_06/"><img class="prev-cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/image.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">数据科学基础(六) 参数估计</div></div></a></div><div class="next-post pull-right"><a href="/2020/12/27/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80_01/"><img class="next-cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/image.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">数据科学基础(一)  随机事件及其概率</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/12/27/计算机组织结构/COA_07/" title="计算机组织结构(七) 外存"><img class="cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/wallhaven-714648~1.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-27</div><div class="title">计算机组织结构(七) 外存</div></div></a></div><div><a href="/2020/12/27/计算机组织结构/COA_00/" title="计算机组织结构 合集"><img class="cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/wallhaven-714648~1.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-27</div><div class="title">计算机组织结构 合集</div></div></a></div><div><a href="/2020/12/27/计算机组织结构/COA_03/" title="计算机组织结构(三) BCD 码"><img class="cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/真冬の標本.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-27</div><div class="title">计算机组织结构(三) BCD 码</div></div></a></div><div><a href="/2020/12/27/计算机组织结构/COA_04/" title="计算机组织结构(四) 浮点数四则运算"><img class="cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/wallhaven-714648~1.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-27</div><div class="title">计算机组织结构(四) 浮点数四则运算</div></div></a></div><div><a href="/2020/12/27/计算机组织结构/COA_05/" title="计算机组织结构(五) 内置存储器"><img class="cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/erik-shoemaker-chaldea-matte-final2.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-27</div><div class="title">计算机组织结构(五) 内置存储器</div></div></a></div><div><a href="/2020/12/27/计算机组织结构/COA_06/" title="计算机组织结构(六) Cache"><img class="cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/erik-shoemaker-chaldea-matte-final2.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-27</div><div class="title">计算机组织结构(六) Cache</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "/img/404.jpg" data-lazy-src="/image/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Rikka</div><div class="author-info__description">邪王真眼是最强的</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">47</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ayasa520"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/ayasa520" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1103670381@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">Rikka 的 Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97"><span class="toc-text">1. 移位运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%AE%97%E6%95%B0%E7%A7%BB%E4%BD%8D"><span class="toc-text">1.算数移位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%80%BB%E8%BE%91%E7%A7%BB%E4%BD%8D"><span class="toc-text">2. 逻辑移位</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%8A%A0%E6%B3%95%E8%BF%90%E7%AE%97"><span class="toc-text">2. 加法运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%85%A8%E5%8A%A0%E5%99%A8"><span class="toc-text">1. 全加器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Serial-Carry-Adder"><span class="toc-text">2. Serial Carry Adder</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Carry-Look-Ahead-Adder"><span class="toc-text">3. Carry Look Ahead Adder</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Partial-Carry-Look-Ahead-Adder"><span class="toc-text">4. Partial Carry Look Ahead Adder</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%BA%A2%E5%87%BA%E5%88%A4%E6%96%AD"><span class="toc-text">5. 溢出判断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%87%8F%E6%B3%95%E8%BF%90%E7%AE%97"><span class="toc-text">3. 减法运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%B9%98%E6%B3%95%E8%BF%90%E7%AE%97"><span class="toc-text">4. 乘法运算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%97%A0%E7%AC%A6%E5%8F%B7%E6%95%B4%E6%95%B0%E4%B9%98%E6%B3%95"><span class="toc-text">1. 无符号整数乘法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%A1%A5%E7%A0%81%E6%95%B4%E6%95%B0%E4%B9%98%E6%B3%95"><span class="toc-text">2. 补码整数乘法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E9%99%A4%E6%B3%95%E8%BF%90%E7%AE%97"><span class="toc-text">5. 除法运算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-unsigned"><span class="toc-text">1. unsigned</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%B8%A6%E6%9C%89%E7%AC%A6%E5%8F%B7%E7%9A%84%E9%99%A4%E6%B3%95"><span class="toc-text">2. 带有符号的除法</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/07/31/tools/window-to-top/" title="Python 实现窗口保持置顶"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/真冬の標本.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Python 实现窗口保持置顶"/></a><div class="content"><a class="title" href="/2021/07/31/tools/window-to-top/" title="Python 实现窗口保持置顶">Python 实现窗口保持置顶</a><time datetime="2021-07-31T11:30:54.882Z" title="发表于 2021-07-31 11:30:54">2021-07-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/31/Java%20%E5%9F%BA%E7%A1%80/Java_abc_06/" title="Java 基础(六) Object 类"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/rikka_1.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 基础(六) Object 类"/></a><div class="content"><a class="title" href="/2021/07/31/Java%20%E5%9F%BA%E7%A1%80/Java_abc_06/" title="Java 基础(六) Object 类">Java 基础(六) Object 类</a><time datetime="2021-07-31T11:30:54.874Z" title="发表于 2021-07-31 11:30:54">2021-07-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/31/Java%20%E5%9F%BA%E7%A1%80/Java_abc_02/" title="Java 基础(二) 类变量和类函数"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/erik-shoemaker-chaldea-matte-final2.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 基础(二) 类变量和类函数"/></a><div class="content"><a class="title" href="/2021/07/31/Java%20%E5%9F%BA%E7%A1%80/Java_abc_02/" title="Java 基础(二) 类变量和类函数">Java 基础(二) 类变量和类函数</a><time datetime="2021-07-31T11:30:54.874Z" title="发表于 2021-07-31 11:30:54">2021-07-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/31/Java%20%E5%9F%BA%E7%A1%80/Java_abc_03/" title="Java 基础(三) 对象数组"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/wallhaven-714648~1.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 基础(三) 对象数组"/></a><div class="content"><a class="title" href="/2021/07/31/Java%20%E5%9F%BA%E7%A1%80/Java_abc_03/" title="Java 基础(三) 对象数组">Java 基础(三) 对象数组</a><time datetime="2021-07-31T11:30:54.874Z" title="发表于 2021-07-31 11:30:54">2021-07-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/31/Java%20%E5%9F%BA%E7%A1%80/Java_abc_08/" title="Java 基础(八) 抽象"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/erik-shoemaker-chaldea-matte-final2.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 基础(八) 抽象"/></a><div class="content"><a class="title" href="/2021/07/31/Java%20%E5%9F%BA%E7%A1%80/Java_abc_08/" title="Java 基础(八) 抽象">Java 基础(八) 抽象</a><time datetime="2021-07-31T11:30:54.874Z" title="发表于 2021-07-31 11:30:54">2021-07-31</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 By Rikka</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎来到极东魔术昼寝结社！</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>(()=>{
+  const $countDom = document.getElementById('twikoo-count')
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'comment-1a9b61',
+      region: '',
+      onCommentLoaded: function () {
+        if(typeof window.mediumZoom!='undefined'){
+          const zoomComment = mediumZoom(document.querySelectorAll('.tk-content :not(a)>img'))
+          zoomComment.on('open', e => {
+            const photoBg = document.documentElement.getAttribute('data-theme') === 'dark' ? '#121212' : '#fff'
+            zoomComment.update({
+              background: photoBg
+            })
+          })
+        }
+        if(GLOBAL_CONFIG.lightbox === 'fancybox'){
+            const addFancybox = function (ele) {
+              const runFancybox = (ele) => {
+                ele.each(function (i, o) {
+                  const $this = $(o)
+                  const lazyloadSrc = $this.attr('data-lazy-src') || $this.attr('src')
+                  const dataCaption = $this.attr('alt') || ''
+                  $this.wrap(`<a href="${lazyloadSrc}" data-fancybox="group" data-caption="${dataCaption}" class="fancybox"></a>`)
+                })
+
+                $().fancybox({
+                  selector: '[data-fancybox]',
+                  loop: true,
+                  transitionEffect: 'slide',
+                  protect: true,
+                  buttons: ['slideShow', 'fullScreen', 'thumbs', 'close'],
+                  hash: false
+                })
+              }
+
+              if (typeof $.fancybox === 'undefined') {
+                $('head').append(`<link rel="stylesheet" type="text/css" href="${GLOBAL_CONFIG.source.fancybox.css}">`)
+                $.getScript(`${GLOBAL_CONFIG.source.fancybox.js}`, function () {
+                  runFancybox($(ele))
+                })
+              } else {
+                runFancybox($(ele))
+              }
+            }
+          addFancybox(document.querySelectorAll('.tk-content :not(a)>img'))
+        }
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'comment-1a9b61',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      $countDom.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const loadTwikoo = (bool = false) => {
+    if (typeof twikoo === 'object') {
+      init()
+      bool && $countDom && setTimeout(getCount,0)
+    } else {
+      getScript('https://cdn.jsdelivr.net/gh/ayasa520/hexo@master/source/js/twikoo.all.js').then(()=> {
+        init()
+        bool && $countDom && setTimeout(getCount,0)
+      })
+    }
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo(true)
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'comment-1a9b61',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.jsdelivr.net/gh/ayasa520/hexo@master/source/js/twikoo.all.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script  src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script  defer src="https://cdn.jsdelivr.net/gh/graingert/wow@1.3.0/dist/wow.min.js"></script><script defer data-pjax src="/js/wow_init.js"></script><div class="app-refresh" id="app-refresh"> <div class="app-refresh-wrap"> <label>✨ 网站已更新最新版本 👉</label> <a href="javascript:void(0)" onclick="location.reload()">点击刷新</a> </div></div><script>function showNotification(){if(GLOBAL_CONFIG.Snackbar){var t="light"===document.documentElement.getAttribute("data-theme")?GLOBAL_CONFIG.Snackbar.bgLight:GLOBAL_CONFIG.Snackbar.bgDark,e=GLOBAL_CONFIG.Snackbar.position;Snackbar.show({text:"已更新最新版本",backgroundColor:t,duration:5e5,pos:e,actionText:"点击刷新",actionTextColor:"#fff",onActionClick:function(t){location.reload()}})}else{var o=`top: 0; background: ${"light"===document.documentElement.getAttribute("data-theme")?"#49b1f5":"#1f1f1f"};`;document.getElementById("app-refresh").style.cssText=o}}"serviceWorker"in navigator&&(navigator.serviceWorker.controller&&navigator.serviceWorker.addEventListener("controllerchange",function(){showNotification()}),window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")}));</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><div id="aplayer"></div><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script type="text/javascript"> document.write("<script src='/js/music.js?"+Math.random()+"'><\/script>"); </script>·<script defer src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@latest/source/js/issues.min.js"></script><script defer data-pjax src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.5.0/build/highlight.min.js"></script><script defer data-pjax>if (document.getElementsByClassName('dplayer').length>0){$.getScript('https://cdn.jsdelivr.net/hls.js/latest/hls.min.js').done(function(){ $.getScript('https://cdn.jsdelivr.net/gh/ayasa520/hexo/source/js/DPlayer.min.js').done(dplayer_init);});}</script><script defer data-pjax>if (document.getElementById('hpp_talk')){$.getScript('https://cdn.jsdelivr.net/gh/ayasa520/HexoPlusPlus@main/src/talk_user.js').done(hpp_talk_init);}</script><script async>console.log(" ____    ______   __  __   __  __   ______     \n/\\  _`\\ /\\__  _\\ /\\ \\/\\ \\ /\\ \\/\\ \\ /\\  _  \\    \n\\ \\ \\L\\ \\/_/\\ \\/ \\ \\ \\/'/'\\ \\ \\/'/'\\ \\ \\L\\ \\   \n \\ \\ ,  /  \\ \\ \\  \\ \\ , <  \\ \\ , <  \\ \\  __ \\  \n  \\ \\ \\\\ \\  \\_\\ \\__\\ \\ \\\\`\\ \\ \\ \\\\`\\ \\ \\ \\/\\ \\ \n   \\ \\_\\ \\_\\/\\_____\\\\ \\_\\ \\_\\\\ \\_\\ \\_\\\\ \\_\\ \\_\\\n    \\/_/\\/ /\\/_____/ \\/_/\\/_/ \\/_/\\/_/ \\/_/\\/_/")</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax',
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener toc scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script  src="https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.0/dist/js/main.js"></script><script data-pjax  src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script><script data-pjax>
+        function daodao_plus_injector_config(){
+            function ddSwiperInit(){
+                const ddSwiper =new DaodaoSwiper(daodao_url,bbpath,filter);
+                ddSwiper.init();
+            }
+            var daodao_url = "https://daodao.bilibilianime.com/api/query/20";
+            var bbpath = /daodaoplus/;
+            var filter = JSON.parse('["iframe","img","script","code"]');
+            var parent_div_git = document.getElementsByClassName('recent-posts')[0];
+            var item_html =  '<div class="recent-post-item" style="height: auto;width: 100%"><div class="bbTimeList container" id="bbTimeList" style="height: auto;width: 100%"><a class="bber-gotobb fas fa-bullhorn" href="/daodaoplus/" title="叨叨"></a><div class="swiper-container" id="bbtalk"><div class="swiper-wrapper" id="bber-talk"></div></div><a class="bber-gotobb fas fa-arrow-circle-right" href="/daodaoplus/" title="查看全文"></a></div></div>';
+            console.log('已挂载daodao_plus')
+            parent_div_git.insertAdjacentHTML("afterbegin",item_html) 
+            if (typeof DaodaoSwiper === 'function' && typeof Daodao==='function'){
+                ddSwiperInit();
+            }else{
+                let ddScripts = []
+                if(typeof DaodaoSwiper!=="function")
+                    ddScripts.push( getScript('https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.0/dist/js/main.js'))
+                if(typeof Daodao!=="function")
+                    ddScripts.push( getScript('https://cdn.jsdelivr.net/npm/daodaoplus@1.0.5/static/js/index.js'))
+                Promise.all(ddScripts).then(ddSwiperInit);
+            }
+
+        }
+        if( document.getElementsByClassName('recent-posts')[0] && (location.pathname ==='/')){
+                daodao_plus_injector_config()
+        }</script><!-- hexo injector body_end end --></body></html>

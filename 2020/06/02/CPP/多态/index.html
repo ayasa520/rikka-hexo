@@ -1,0 +1,606 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>C++ 多态的实现机制 | 极东魔术昼寝结社</title><meta name="keywords" content="C++"><meta name="author" content="Rikka"><meta name="copyright" content="Rikka"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="若无特殊说明, 以下所有操作均在 32 位环境下进行   本篇举例子用的类: 123456789101112131415161718192021222324252627class Animal&amp;#123;public:    Animal() &amp;#123;&amp;#125;;    virtual void eat() &amp;#123; cout &lt;&lt; &quot;Animal::eat()&amp;q">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++ 多态的实现机制">
+<meta property="og:url" content="https://www.bilibilianime.com/2020/06/02/CPP/%E5%A4%9A%E6%80%81/index.html">
+<meta property="og:site_name" content="极东魔术昼寝结社">
+<meta property="og:description" content="若无特殊说明, 以下所有操作均在 32 位环境下进行   本篇举例子用的类: 123456789101112131415161718192021222324252627class Animal&amp;#123;public:    Animal() &amp;#123;&amp;#125;;    virtual void eat() &amp;#123; cout &lt;&lt; &quot;Animal::eat()&amp;q">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/655087.webp">
+<meta property="article:published_time" content="2020-06-02T00:00:00.000Z">
+<meta property="article:modified_time" content="2021-07-31T11:30:54.866Z">
+<meta property="article:author" content="Rikka">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/655087.webp"><link rel="shortcut icon" href="/image/favicon.png"><link rel="canonical" href="https://www.bilibilianime.com/2020/06/02/CPP/%E5%A4%9A%E6%80%81/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/pwa/manifest.json"/><meta name="msapplication-TileColor" content="#fff"/><link rel="apple-touch-icon" sizes="180x180" href="/pwa/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/pwa/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/pwa/16.png"/><link rel="mask-icon" href="/pwa/safari-pinned-tab.svg" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"source/search/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"此文章发表于","messageNext":"天前，内容可能已经过时"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Rikka","link":"链接: ","source":"来源: 极东魔术昼寝结社","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'C++ 多态的实现机制',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-07-31 11:30:54'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><style type="text/css">.app-refresh{position:fixed;top:-2.2rem;left:0;right:0;z-index:99999;padding:0 1rem;font-size:15px;height:2.2rem;transition:all .3s ease}.app-refresh-wrap{display:flex;color:#fff;height:100%;align-items:center;justify-content:center}.app-refresh-wrap a{color:#fff;text-decoration:underline;cursor:pointer}</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/custom.css"  media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daodaoplus@1.0.4/static/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.0/dist/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "/img/404.jpg" data-lazy-src="/image/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">47</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/daodaoplus/"><i class="fa-fw fas fa-comment"></i><span> 闲话板砖</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comment"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/655087.webp')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">极东魔术昼寝结社</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/daodaoplus/"><i class="fa-fw fas fa-comment"></i><span> 闲话板砖</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comment"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">C++ 多态的实现机制</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-06-02T00:00:00.000Z" title="发表于 2020-06-02 00:00:00">2020-06-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-07-31T11:30:54.866Z" title="更新于 2021-07-31 11:30:54">2021-07-31</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%97%A5%E5%B8%B8%E6%80%BB%E7%BB%93/">日常总结</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="C++ 多态的实现机制"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><div class="note info flat"><p>若无特殊说明, 以下所有操作均在 32 位环境下进行 </p>
+</div>
+<p>本篇举例子用的类:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Animal</span>() &#123;&#125;;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span> </span>&#123; cout &lt;&lt; <span class="string">&quot;Animal::eat()&quot;</span> &lt;&lt; endl; &#125;;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">bark</span><span class="params">()</span> </span>&#123; cout &lt;&lt; <span class="string">&quot;bark()&quot;</span> &lt;&lt; endl; &#125;;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">Animal</span>() &#123;&#125;;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">growUp</span><span class="params">()</span> </span>&#123; age += <span class="number">1</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="keyword">int</span> age = <span class="number">10</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> :</span> <span class="keyword">public</span> Animal</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Dog</span>() &#123; age = <span class="number">20</span>; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">wag</span><span class="params">()</span> </span>&#123;&#125;;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;Dog::eat()&quot;</span> &lt;&lt; <span class="string">&quot; tail=&quot;</span> &lt;&lt; tail &lt;&lt; <span class="string">&quot;cm&quot;</span> &lt;&lt; endl;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> tail = <span class="number">90</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><p>首先验证一件事, 任何一个类只要有了虚函数 (Virtual Function) 就会大一点. </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Animal* a = <span class="keyword">new</span> Animal;</span><br><span class="line"><span class="keyword">int</span>* p = (<span class="keyword">int</span>*)a;</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; <span class="built_in"><span class="keyword">sizeof</span></span>(*a) &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; *p &lt;&lt; endl;</span><br><span class="line">p += <span class="number">1</span>;</span><br><span class="line">cout &lt;&lt; *p &lt;&lt; endl;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>输出的结果为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">8</span><br><span class="line">14588724</span><br><span class="line">10</span><br></pre></td></tr></table></figure>
+<p>可以看到, a 所指的对象大小为 8 个字节, 并且直接把 a 当成 <code>int*</code> 去访问所得到的<strong>不是成员变量 i</strong>,  而 <code>p++</code> 后 (此处地址实际增加了 4), p 指向了成员变量 i </p>
+<p>此时 a 所指的对象如下图:</p>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="121px" viewBox="-0.5 -0.5 121 106" content="&lt;mxfile host=&quot;app.diagrams.net&quot; modified=&quot;2021-05-19T19:09:22.066Z&quot; agent=&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.57 Safari/537.36 Edg/91.0.864.27&quot; etag=&quot;BUyCiz07XpiV64KJhOeM&quot; version=&quot;14.6.13&quot;&gt;&lt;diagram id=&quot;h0ERZKRE8EeoDrHTSB4W&quot; name=&quot;Page-1&quot;&gt;zZTBboMwDIafJsdNIaGlPZaObodNO1Rbd42ISzIFgtIwaJ9+YQQoqiq1t0kcnM+OY/+2QHSdN8+GleJNc1CIYN4g+oQICUJCUPthfuzIAnuQGcl90Ai28gQeYk8ryeEwCbRaKyvLKUx1UUBqJ4wZo+tp2F6r6asly+ACbFOmLulOcit8FyQa+QvITPQvB/Nl58lZH+w7OQjGdX2GaILo2mhtOytv1qBa8XpdunubK96hMAOFveXC18frN8v2sf0sIrlTlX0np4c+zQ9Tle9Y+nLtsdfA6Krg0KbBiMa1kBa2JUtbb+2m7piwuXKnwJk+HxgLzdVKg6F/tzigc7Dm6EL6C71kfmfI0p/rcQJDjDhTf+YZ80PPhtSjLs7w0twjE76QCSUztArRKmqNGKPFBiUhihcoXrXZXKf/TkY6eyThjUqGj9H8bjHdcdznP9/ZX4Emvw==&lt;/diagram&gt;&lt;/mxfile&gt;" onclick="(function(svg){var src=window.event.target||window.event.srcElement;while (src!=null&amp;&amp;src.nodeName.toLowerCase()!='a'){src=src.parentNode;}if(src==null){if(svg.wnd!=null&amp;&amp;!svg.wnd.closed){svg.wnd.focus();}else{var r=function(evt){if(evt.data=='ready'&amp;&amp;evt.source==svg.wnd){svg.wnd.postMessage(decodeURIComponent(svg.getAttribute('content')),'*');window.removeEventListener('message',r);}};window.addEventListener('message',r);svg.wnd=window.open('https://viewer.diagrams.net/?client=1&amp;page=0&amp;edit=_blank');}}})(this);" style="cursor:pointer;max-width:100%;max-height:106px;"><defs/><g><rect x="0" y="55" width="120" height="50" fill="#ffffff" stroke="#000000" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 80px; margin-left: 1px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; "><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">i</div></div></div></foreignObject><text x="60" y="84" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">age</text></switch></g><rect x="0" y="0.24" width="120" height="54.76" fill="#ffffff" stroke="#000000" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 28px; margin-left: 1px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; "><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">大小为 int</div></div></div></foreignObject><text x="60" y="31" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">大小为 int</text></switch></g></g><switch><g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/><a transform="translate(0,-5)" xlink:href="https://www.diagrams.net/doc/faq/svg-export-text-problems" target="_blank"><text text-anchor="middle" font-size="10px" x="50%" y="100%">Viewer does not support full SVG 1.1</text></a></switch></svg>
+
+<p>上面的其实就是<strong>虚函数表指针 vptr</strong>, 下面才是成员变量 i</p>
+<p>vptr 指向<strong>虚函数表(Vtable)</strong>, 虚函数表中存储的是<strong>该类中所有的 virtual function 的指针</strong>, 也就是说, 每个类只有一张虚函数表, 可以验证一下这件事</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Animal a, b;</span><br><span class="line">cout &lt;&lt; *(<span class="keyword">int</span>*)(&amp;a) &lt;&lt; endl;<span class="comment">// 打印出 vptr 所指向的地址</span></span><br><span class="line">cout &lt;&lt; *(<span class="keyword">int</span>*)(&amp;b) &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+<p>输出结果:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4295476</span><br><span class="line">4295476</span><br></pre></td></tr></table></figure>
+<p>两个对象的 vptr 指向了同一张虚函数表.</p>
+<p>以本篇开头的 Animal 类为例, 若实例化一个 Animal 类的对象 , 则这个对象在内存中的组织形式为:</p>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="471px" viewBox="-0.5 -0.5 471 108" content="&lt;mxfile host=&quot;app.diagrams.net&quot; modified=&quot;2021-05-20T09:20:50.229Z&quot; agent=&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.57 Safari/537.36 Edg/91.0.864.27&quot; etag=&quot;NT_T4InIQ_K9PAUMkzbf&quot; version=&quot;14.6.13&quot;&gt;&lt;diagram id=&quot;kqWCheUJdv6XPKkfyIvA&quot; name=&quot;Page-1&quot;&gt;7ZjbTuMwEIafptLuBascmlAu29I9SLBCdAHtpYndxKrjiRz3xNPvuHGapCFQEKi7K6RcxH/Gh5n57Knb88fp+psiWXIJlIme59B1zz/veZ7b97yeeRy6KZSBY4VYcWqNKmHKH5gVHasuOGV5w1ADCM2zphiBlCzSDY0oBaum2QxEc9aMxKwlTCMi2uodpzqxXninlf6d8TgpZ3bDs+JLSkpj60meEAqrmuRPev5YAejiLV2PmTDBK+NS9Pva8XW3MMWkPqTD75P5rxtYPcxPlj9u3fPJ3XDy88QNi2GWRCysx0NsDiVPibDr1psyGPmKp4JIbI1mIPXUfnGxTQSPJb5HuBqmUFgypTnGcWg/aMhQjRIu6AXZwMKsOdckmpetUQKKP+CwOHExJn5W2iLhOw2LqemJslEVy9HmqgyEuyddknXD8ILk2goRCEGynN/v3EiJirkcgdaQWiPN1nq4752NGvrI1p35cHdZxu3BIGVabdDEdtiBYXeGX7ZXFWduaLWkxtjA7iBi0Y53Q+9mu8atQGSMblXT9Q+YznlkOi9sTkcEhkASzUawkDSvM4cvNU8raUviS6g8bVG5zLRq8WhSs+VEwZyNQYDa6v7Au/fD0FDKhajpNGAD2j+c1jwjEZfxBZuZWPQr5dqGx0iAfWdiu7MTTimThjTQRJMCK8NQBlzqbfyCET4Y5bHzJegFuKgxtt2qjY8xV3oMEv0ifAsTQ2ZXzHB7GHlP7PU2jyUQB+K3z0MdvwYIL876WSvr5nA+KOkSilOplm8rfaS6neogPHKqS0fqZceWHOe2iOZfVHu88Fi15w3KTOC/ssy4Tv+9su91Zd8f4kM1qE+fu/b9f3ikd9ev158AXVRsmjv7eCdA/0kG7omadzPwUfDfgoHAOzYDj1w+agwworsR+IcT+nJ63w2B08GxERi0EGhlnEk6NDd5k21B8pxHphzrtCzVLRSKERht3ez3aibOAgsVsWdvIu341QIWPBKvUlNMEM2XzXU8cW+7MpRVtdsP92r3wGkOUazf9qrf/fcGav0ICM6aA+GvnZjp1kDPX+iwWf2FUZhXfwT5kz8=&lt;/diagram&gt;&lt;/mxfile&gt;" onclick="(function(svg){var src=window.event.target||window.event.srcElement;while (src!=null&amp;&amp;src.nodeName.toLowerCase()!='a'){src=src.parentNode;}if(src==null){if(svg.wnd!=null&amp;&amp;!svg.wnd.closed){svg.wnd.focus();}else{var r=function(evt){if(evt.data=='ready'&amp;&amp;evt.source==svg.wnd){svg.wnd.postMessage(decodeURIComponent(svg.getAttribute('content')),'*');window.removeEventListener('message',r);}};window.addEventListener('message',r);svg.wnd=window.open('https://viewer.diagrams.net/?client=1&amp;page=0&amp;edit=_blank');}}})(this);" style="cursor:pointer;max-width:100%;max-height:108px;"><defs><clipPath id="mx-clip-4-35-152-26-0"><rect x="4" y="35" width="152" height="26"/></clipPath><clipPath id="mx-clip-4-61-152-26-0"><rect x="4" y="61" width="152" height="26"/></clipPath><clipPath id="mx-clip-314-31-152-26-0"><rect x="314" y="31" width="152" height="26"/></clipPath><clipPath id="mx-clip-314-57-152-26-0"><rect x="314" y="57" width="152" height="26"/></clipPath><clipPath id="mx-clip-314-83-152-26-0"><rect x="314" y="83" width="152" height="26"/></clipPath></defs><g><path d="M 0 30 L 0 0 L 160 0 L 160 30" fill="#ffffff" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 0 30 L 0 82 L 160 82 L 160 30" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 0 30 L 160 30" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="Helvetica" font-weight="bold" pointer-events="none" text-anchor="middle" font-size="12px"><text x="79.5" y="17.5">A Animal</text></g><rect x="0" y="30" width="160" height="26" fill="#d5e8d4" stroke="#82b366" pointer-events="none"/><g fill="#000000" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-4-35-152-26-0)" text-anchor="middle" font-size="12px"><text x="79.5" y="47.5">vptr</text></g><g fill="#000000" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-4-61-152-26-0)" text-anchor="middle" font-size="12px"><text x="79.5" y="73.5">age</text></g><path d="M 310 26 L 310 0 L 470 0 L 470 26" fill="#ffffff" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 310 26 L 310 104 L 470 104 L 470 26" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 310 26 L 470 26" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="Helvetica" font-weight="bold" pointer-events="none" text-anchor="middle" font-size="12px"><text x="389.5" y="17.5">Animal Vtable</text></g><rect x="310" y="26" width="160" height="26" fill="#d5e8d4" stroke="#82b366" pointer-events="none"/><g fill="#000000" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-314-31-152-26-0)" text-anchor="middle" font-size="12px"><text x="389.5" y="43.5">Animal::dtor()</text></g><rect x="310" y="52" width="160" height="26" fill="#d5e8d4" stroke="#82b366" pointer-events="none"/><g fill="#000000" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-314-57-152-26-0)" text-anchor="middle" font-size="12px"><text x="389.5" y="69.5">Animal::bark()</text></g><rect x="310" y="78" width="160" height="26" fill="#d5e8d4" stroke="#82b366" pointer-events="none"/><g fill="#000000" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-314-83-152-26-0)" text-anchor="middle" font-size="12px"><text x="389.5" y="95.5">Animal::eat()</text></g><path d="M 160 41.61 L 303.63 39.11" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 308.88 39.02 L 301.94 42.64 L 303.63 39.11 L 301.82 35.64 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/></g></svg>
+
+<p>任何一个 Animal 的对象都会有一个指向 <strong>Animal Vtable</strong> 的虚函数指针</p>
+<p>而派生类 Dog 的对象如下:</p>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="471px" viewBox="-0.5 -0.5 471 112" content="&lt;mxfile host=&quot;app.diagrams.net&quot; modified=&quot;2021-05-22T02:36:33.684Z&quot; agent=&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.69 Safari/537.36 Edg/91.0.864.33&quot; etag=&quot;Wcxjx654K8i-MXn583rs&quot; version=&quot;14.7.0&quot; type=&quot;browser&quot;&gt;&lt;diagram id=&quot;kqWCheUJdv6XPKkfyIvA&quot; name=&quot;Page-1&quot;&gt;7Vhbb5swFP41kbaHTFwCoY8kzbpJ7VQ1W7s9OtiAFWMj41x//exgAsRJS6d22apKPODPx5dzvu/41nPH2fqKgzy9YRCRnmPBdc+97DmOPXCcnvosuCmRwNJAwjHURjUwxVukQUujCwxR0TIUjBGB8zYYMUpRJFoY4Jyt2mYxI+1Rc5AgA5hGgJjoA4Yi1V44wxr/gnCSViPb/kVZk4HKWHtSpACyVQNyJz13zBkT5V+2HiOiglfFpWz3+UTtfmIcUdGlwa/+/PsPttrO+8uv9/bl5CGcfOu7g7KbJSAL7XEoi5cs0ZMWmyoSxQpnBFBZGsWMiqmusWUZEJxQ+R/JqSAugSXiAssghrpCsFyiUYoJvAYbtlATLgSI5lVplDKOt7JbQHSfspoLrQfXallMVUsJK5SjQtrcVlGwD6AbsG4ZXoNCaCBihIC8wLO9GxngCaYjJgTLtJFAaxEeemdGXpOh3EbrBqSZuEIsQ4JvpImu3etbp4Xn6vKqFpntayxtCswKtLi1sJN93/vh7mQiAJpIv+rxBu3xXOfIeNaR8Ry/PRwgMgYUCDRiCwqLpuLkT8PVGtrp8Dma9AxNLnPBDUEqbnZC4WyOxowwvsPdwJm5vq9kiglp4NBDARx0l2uRgwjT5BrFKhaDGrnT4VEQk21jssvrFEOIqJIaE0CAUldKRDnDVOzi543kJ6M8tj55PU9OaizLdl2WnzLnYsyo9AvgncCQFO0KKeEekd7jaf20ICtBdNTfoR6a8msJ4dms+wbramnuRDpl5bLU4FtD71SbVHv+36N6atNkGfxM4m0aL+dhPg1j2LcNpgXApHN++1GAZvGR/AYoiKO3QLrBZWcdnCQ9cM6d30OD9d0pw7ovQ/kPHTcc/1zHjRc4WXjOH58sBq9FfXCUejeUHxSMf/h4KvffYIafXs66JvqwsyQ27Zw+X+5fmLcMijOVfEoDM8DnpzXwfr57CQ14517/qwvIsUUAAXGa//+YzecfXV6N/2Fwbv7NU5/BOKIwVG82im0CigKrkKQiqzZpQwon98uCLXiEHougvmQi2Hr/MePXCJh3JF4VxhEBAi/br0aP3NFvlcrqXdv1DnbtC6vdRemQbtV85TnoyNj+q/eoqiN5zkmQMDp6+vIui/VjVWleP/m5k98=&lt;/diagram&gt;&lt;/mxfile&gt;" onclick="(function(svg){var src=window.event.target||window.event.srcElement;while (src!=null&amp;&amp;src.nodeName.toLowerCase()!='a'){src=src.parentNode;}if(src==null){if(svg.wnd!=null&amp;&amp;!svg.wnd.closed){svg.wnd.focus();}else{var r=function(evt){if(evt.data=='ready'&amp;&amp;evt.source==svg.wnd){svg.wnd.postMessage(decodeURIComponent(svg.getAttribute('content')),'*');window.removeEventListener('message',r);}};window.addEventListener('message',r);svg.wnd=window.open('https://viewer.diagrams.net/?client=1&amp;page=0&amp;edit=_blank');}}})(this);" style="cursor:pointer;max-width:100%;max-height:112px;"><defs><clipPath id="mx-clip-4-35-152-26-0"><rect x="4" y="35" width="152" height="26"/></clipPath><clipPath id="mx-clip-4-61-152-26-0"><rect x="4" y="61" width="152" height="26"/></clipPath><clipPath id="mx-clip-4-87-152-26-0"><rect x="4" y="87" width="152" height="26"/></clipPath><clipPath id="mx-clip-314-31-152-26-0"><rect x="314" y="31" width="152" height="26"/></clipPath><clipPath id="mx-clip-314-57-152-26-0"><rect x="314" y="57" width="152" height="26"/></clipPath><clipPath id="mx-clip-314-83-152-26-0"><rect x="314" y="83" width="152" height="26"/></clipPath></defs><g><path d="M 0 30 L 0 0 L 160 0 L 160 30" fill="#ffffff" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 0 30 L 0 108 L 160 108 L 160 30" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 0 30 L 160 30" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="Helvetica" font-weight="bold" pointer-events="none" text-anchor="middle" font-size="12px"><text x="79.5" y="17.5">A Dog</text></g><rect x="0" y="30" width="160" height="26" fill="#d5e8d4" stroke="#82b366" pointer-events="none"/><g fill="#000000" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-4-35-152-26-0)" text-anchor="middle" font-size="12px"><text x="79.5" y="47.5">vptr</text></g><g fill="#000000" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-4-61-152-26-0)" text-anchor="middle" font-size="12px"><text x="79.5" y="73.5">age</text></g><rect x="0" y="82" width="160" height="26" fill="#dae8fc" stroke="#6c8ebf" pointer-events="none"/><g fill="#000000" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-4-87-152-26-0)" text-anchor="middle" font-size="12px"><text x="79.5" y="99.5">tail</text></g><path d="M 310 26 L 310 0 L 470 0 L 470 26" fill="#ffffff" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 310 26 L 310 104 L 470 104 L 470 26" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 310 26 L 470 26" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="Helvetica" font-weight="bold" pointer-events="none" text-anchor="middle" font-size="12px"><text x="389.5" y="17.5">Dog Vtable</text></g><rect x="310" y="26" width="160" height="26" fill="#dae8fc" stroke="#6c8ebf" pointer-events="none"/><g fill="#000000" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-314-31-152-26-0)" text-anchor="middle" font-size="12px"><text x="389.5" y="43.5">Dog::dtor()</text></g><rect x="310" y="52" width="160" height="26" fill="#d5e8d4" stroke="#82b366" pointer-events="none"/><g fill="#000000" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-314-57-152-26-0)" text-anchor="middle" font-size="12px"><text x="389.5" y="69.5">Animal::bark()</text></g><rect x="310" y="78" width="160" height="26" fill="#dae8fc" stroke="#6c8ebf" pointer-events="none"/><g fill="#000000" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-314-83-152-26-0)" text-anchor="middle" font-size="12px"><text x="389.5" y="95.5">Dog::eat()</text></g><path d="M 160 41.61 L 303.63 39.11" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 308.88 39.02 L 301.94 42.64 L 303.63 39.11 L 301.82 35.64 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/></g></svg>
+
+<p>这个对象也有一个 vptr, 但是它指向的不是 Animal 类的虚函数表, 而是自己类的.</p>
+<p>需要注意的一点是, 派生类的虚函数表和基类的结构是一致的, 其中析构函数和 eat() 是自己的, bark() 沿用了 Animal 的 (析构函数编译器自动制造一个). 如果派生类中新增了虚函数, 虚函数表中会在原来的基础上新增.</p>
+<h2 id="如果做点邪恶的事情"><a href="#如果做点邪恶的事情" class="headerlink" title="如果做点邪恶的事情"></a>如果做点邪恶的事情</h2><p>将一个 Animal 的指针指向一个 Dog 的对象, 通过指针调用 <code>eat()</code> 函数, 会调用 Dog::eat()</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Animal a;</span><br><span class="line">Dog b;</span><br><span class="line">Animal* p = &amp;b;</span><br><span class="line">p-&gt;eat();</span><br></pre></td></tr></table></figure>
+<p>输出如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Dog::eat() tail=30cm</span><br></pre></td></tr></table></figure>
+<p>这是一般用法. 对象没有发生任何的变化, 仅仅是让一个基类的指针指向了派生类的对象.</p>
+<p>如果把派生类的对象赋值给基类的对象会发生什么?</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Animal a;</span><br><span class="line">Dog b;</span><br><span class="line">a = b;</span><br><span class="line">a.<span class="built_in">eat</span>();</span><br></pre></td></tr></table></figure>
+<p>输出如下: </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Animal::eat()</span><br></pre></td></tr></table></figure>
+<p>这叫做<strong>sliced off</strong>, 只有继承自基类的部分会被拷贝给 a, 其余的部分就被 “切掉了”.</p>
+<p>只有通过<strong>指针或者引用调用</strong>才会是动态绑定, 此处当然在 <code>a=b;</code> 后, 即使通过指向 a 的指针调用也不会是动态绑定的, 这是因为, 在进行对象的赋值操作时, 虚函数表指针 vptr 并不会随着赋给 a, a 调用的还是 Animal 类内的函数.</p>
+<p>是否可以做一些邪恶的事情呢 ?手动将 b 的 vptr 赋值给 a 会怎样?</p>
+<div class="note warning flat"><p>千万不要在实际写代码中这样做! 这仅仅是为了研究 virtual function 实现的原理</p>
+</div>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不同的编译器可能不一样, 此处为 cl 编译器 32 位环境. 若需要在 64 位下查看, 应该把 1 均改为 2, 2 均改为 4. </span></span><br><span class="line"><span class="comment">//我在 g++ 下编译需要将 *(p+1) 改为 *(p+2), 原来的 *(p+2) 改为 *(p+3) 我暂时先不去研究了</span></span><br><span class="line"><span class="comment">//若无法得到预期的结果, 将 Animal 和 Dog 的 protected 以及 private 设为 public 根据它们的地址调整偏移量</span></span><br><span class="line">Animal a;</span><br><span class="line">Dog b;</span><br><span class="line">Animal* pa = &amp;a;</span><br><span class="line"></span><br><span class="line">pa-&gt;<span class="built_in">eat</span>();<span class="comment">//调用 Animal::eat(), 这是正常的用法</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//cout &lt;&lt; &amp;b.age &lt;&lt; &quot; &quot; &lt;&lt; &amp;b.tail &lt;&lt; endl;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span>* p = (<span class="keyword">int</span>*)&amp;a;</span><br><span class="line"><span class="keyword">int</span>* q = (<span class="keyword">int</span>*)&amp;b;</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; <span class="string">&quot;a vtable 的地址&quot;</span> &lt;&lt; *p &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;age &quot;</span> &lt;&lt; *(p + <span class="number">1</span>) &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;b vtable 的地址&quot;</span> &lt;&lt; *q &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;age &quot;</span> &lt;&lt; *(q + <span class="number">1</span>) &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;tail &quot;</span> &lt;&lt; *(q +<span class="number">2</span>) &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">*p = *q;<span class="comment">//仅将 Dog 的vptr 赋给 a</span></span><br><span class="line"></span><br><span class="line">cout &lt;&lt; <span class="string">&quot;a vtable 的地址&quot;</span> &lt;&lt; *p &lt;&lt; endl;<span class="comment">//可以观察到a 的 vtable 的地址已经与 b 一致</span></span><br><span class="line">cout &lt;&lt; <span class="string">&quot;age &quot;</span> &lt;&lt; *(p + <span class="number">1</span>) &lt;&lt; endl;<span class="comment">//其他的没有变化</span></span><br><span class="line">cout &lt;&lt; <span class="string">&quot;b vtable 的地址&quot;</span> &lt;&lt; *q &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;age &quot;</span> &lt;&lt; *(q + <span class="number">1</span>) &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;tail &quot;</span> &lt;&lt; *(q + <span class="number">2</span>) &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">pa-&gt;<span class="built_in">eat</span>();<span class="comment">//调用 Dog::eat()</span></span><br></pre></td></tr></table></figure>
+<p>输出结果:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Animal::eat()</span><br><span class="line">a vtable 的地址12229428</span><br><span class="line">age 10</span><br><span class="line">b vtable 的地址12229464</span><br><span class="line">age 20</span><br><span class="line">tail 90</span><br><span class="line">a vtable 的地址12229464</span><br><span class="line">age 10</span><br><span class="line">b vtable 的地址12229464</span><br><span class="line">age 20</span><br><span class="line">tail 90</span><br><span class="line">Dog::eat() tail=-858993460cm</span><br></pre></td></tr></table></figure>
+<p>手动将 vptr 赋值后, a 的 vptr 不再指向 Animal 的虚函数表, 而是指向 Dog 的虚函数表, 所以调用 <code>eat()</code> 的时候会调用 <code>Dog::eat()</code> . 同时可以看到, 最后打印了一个奇怪的值, 因为 Dog 类中新增了一个成员变量 tail (可以看到尽管 tail 是private 也<strong>并非没有办法去访问甚至修改</strong>), 而在基类 Animal 中是不存在的. 所以 <code>Dog::eat()</code> 会把 <code>a.age</code> 下面的那块内存当成 <code>a.tail</code> 来打印.</p>
+<h2 id="虚拟析构函数-Virtual-destructors"><a href="#虚拟析构函数-Virtual-destructors" class="headerlink" title="虚拟析构函数 (Virtual destructors)"></a>虚拟析构函数 (Virtual destructors)</h2><p>关于析构函数, 若类中存在虚函数, 则必须将该类的析构函数也设为 virtual, 否则会有麻烦, 因为如果不是 virtual, 在析构时发生的是静态绑定, 派生类的析构就被丢掉了.</p>
+<h2 id="重写-Overridding"><a href="#重写-Overridding" class="headerlink" title="重写 (Overridding)"></a>重写 (Overridding)</h2><p>C++ 中, Overidding 重定义了 virtual function 的函数体, 发生 overriding 之后, 若要调用基类中的同名的 virtual function, 需要用 <code>Base::func();</code> 这样的语法</p>
+<p>构成 overridding 的条件:</p>
+<ul>
+<li><p>函数名一致</p>
+</li>
+<li><p>函数参数一致</p>
+</li>
+<li><p>函数返回值一致 (若返回类型具有协变的关系, 也是可以的, 如下面代码)</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Expr</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> Expr* <span class="title">newExpr</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> Expr&amp; <span class="title">clone</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> Expr <span class="title">self</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BinaryExpr</span> :</span> <span class="keyword">public</span> Expr&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> BinaryExpr* <span class="title">newExpr</span><span class="params">()</span></span>;	<span class="comment">//OK</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> BinaryExpr&amp; <span class="title">clone</span><span class="params">()</span></span>;	<span class="comment">//OK</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> BinaryExpr <span class="title">self</span><span class="params">()</span></span>;		<span class="comment">//ERROR</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="重载与虚函数-Overloading-and-virtuals"><a href="#重载与虚函数-Overloading-and-virtuals" class="headerlink" title="重载与虚函数 (Overloading and virtuals)"></a>重载与虚函数 (Overloading and virtuals)</h2><ul>
+<li><p>Overloading 添加了多种签名</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span>)</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>若对基类中的重载函数 (overloaded function)进行重写 (override), 必须保证重写所有的重载</p>
+<ul>
+<li>若只重写一部分, 其余的基类中的同名函数将会发生 name hiding.</li>
+</ul>
+</li>
+</ul>
+<h2 id="通过函数指针调用-virtual-function-的尝试"><a href="#通过函数指针调用-virtual-function-的尝试" class="headerlink" title="通过函数指针调用 virtual function 的尝试"></a>通过函数指针调用 virtual function 的尝试</h2><p>既然已经能够得到虚函数表的地址, 那么自然想要尝试用函数指针的方式来调用, 但是这并没有想象中的那么简单, 以下内容来自本人的尝试, 非常感谢 czg 同学的帮助.</p>
+<div class="note info disabled"><p>测试平台的配置信息:<br>    系统: Windows 10<br>    编译器: cl (x86)/g++ (x64)<br>若在 64 位下编译, 需要将所有的 1 改为 2, 2 改为 4</p>
+</div>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">void</span><span class="params">(*Fun)</span><span class="params">()</span></span>;</span><br><span class="line">Animal* a = <span class="keyword">new</span> <span class="built_in">Animal</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span>* p = (<span class="keyword">int</span>*)a;<span class="comment">//*p 是一个指针, 指向虚函数表</span></span><br><span class="line"><span class="keyword">int</span>* q = (<span class="keyword">int</span>*)*p;<span class="comment">//q 的值与 *p 相同, 指向虚函数表第一项 , *q 是函数指针</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//调用 Animal::eat(), 等价于 ((void(*)())(*(int*)*(int*)a))();</span></span><br><span class="line">((Fun)*q)();</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用bark(), 等价于 ((void(*)())*((int*)*(int*)a+1))();</span></span><br><span class="line">((Fun)*(q+<span class="number">1</span>))();</span><br></pre></td></tr></table></figure>
+<p>输出结果: </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Animal::eat()</span><br><span class="line">bark()</span><br></pre></td></tr></table></figure>
+<p>通过函数指针确实成功地调用了函数, 接下来尝试验证动态绑定, 使指针 a 指向一个 Dog 类型的对象:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">void</span><span class="params">(*Fun)</span><span class="params">()</span></span>;</span><br><span class="line">Animal* a = <span class="keyword">new</span> <span class="built_in">Dog</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span>* p = (<span class="keyword">int</span>*)a;<span class="comment">//*p 是一个指针, 指向虚函数表</span></span><br><span class="line"><span class="keyword">int</span>* q = (<span class="keyword">int</span>*)*p;<span class="comment">//q 的值与 *p 相同, 指向虚函数表第一项 , *q 是函数指针</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//调用 Dog::eat(), 等价于 ((void(*)())(*(int*)*(int*)a))();</span></span><br><span class="line">((Fun)*q)();</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用bark(), 等价于 ((void(*)())*((int*)*(int*)a+1))();</span></span><br><span class="line">((Fun)*(q+<span class="number">1</span>))();</span><br></pre></td></tr></table></figure>
+<p>输出结果:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Dog::eat() tail=-1779892224cm</span><br><span class="line">bark()</span><br></pre></td></tr></table></figure>
+<p>成功地调用了 <code>Dog::eat()</code> , 不过 <code>Dog::eat()</code> 并没有成功地获取到成员变量 tail 的值.</p>
+<p>如何才能让虚函数绑定到具体的对象? 很自然的想法是将函数指针<code>Fun</code> 声明为 <code>typedef void(*Fun)(Animal*);</code>, 然后通过传参将 “this 指针” (实际上是指向对象的指针) 传给函数, 以期待函数将这个参数像 this 指针 那般使用.</p>
+<span class='p red bold'>然后问题出现了:</span>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">void</span><span class="params">(*Fun)</span><span class="params">(Animal*)</span></span>;</span><br><span class="line">Animal* a = <span class="keyword">new</span> <span class="built_in">Dog</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span>* p = (<span class="keyword">int</span>*)a;<span class="comment">//*p 是一个指针, 指向虚函数表</span></span><br><span class="line"><span class="keyword">int</span>* q = (<span class="keyword">int</span>*)*p;<span class="comment">//q 的值与 *p 相同, 指向虚函数表第一项 , *q 是函数指针</span></span><br><span class="line"></span><br><span class="line">((<span class="built_in"><span class="keyword">void</span></span>(*)(Animal*))(*(<span class="keyword">int</span>*)*(<span class="keyword">int</span>*)a))(a);   <span class="comment">//OK</span></span><br><span class="line"></span><br><span class="line">((Fun)(*(<span class="keyword">int</span>*)*(<span class="keyword">int</span>*)a))(a);                <span class="comment">//OK</span></span><br><span class="line"></span><br><span class="line">((Fun)(*(<span class="keyword">int</span>*)*p))(a);                      <span class="comment">//OK</span></span><br><span class="line"></span><br><span class="line">((Fun)(*q))(a);                             <span class="comment">//tail 的值不正确</span></span><br></pre></td></tr></table></figure>
+<p>输出结果(截图):</p>
+<p><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io@master/image/多态.assets//image-20210521000428670.png" alt="image-20210521000428670"></p>
+<p>可是, <code>*(int*)*p)</code> 的值与 <code>*q</code> 是完全一致的, 问题到底出在哪里?</p>
+<p>换到 g++ 编译器上, 再试试看:</p>
+<p><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io@master/image/多态.assets//image-20210521000634740.png" alt="image-20210521000634740"></p>
+<p>尽管编译器给出了不少 waring ,但这确实是预期的结果. 在 czg 同学的帮助下, 我查看了汇编代码以及微软 Argument Passing and Naming Conventions (传参与命名公约)文档</p>
+<div class="tag link"><a class="link-card" title="Argument Passing and Naming Conventions" target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/argument-passing-and-naming-conventions?view=msvc-160"><div class="left"><img src= "/img/404.jpg" data-lazy-src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31"/></div><div class="right"><p class="text">Argument Passing and Naming Conventions</p><p class="url">https://docs.microsoft.com/en-us/cpp/cpp/argument-passing-and-naming-conventions?view=msvc-160</p></div></a></div>
+<p>The following calling conventions are supported by the Visual C/C++ compiler.</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Keyword</th>
+<th style="text-align:left">Stack cleanup</th>
+<th style="text-align:left">Parameter passing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/cdecl?view=msvc-160">__cdecl</a></td>
+<td style="text-align:left">Caller</td>
+<td style="text-align:left">Pushes parameters on the stack, in reverse order (right to left)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/clrcall?view=msvc-160">__clrcall</a></td>
+<td style="text-align:left">n/a</td>
+<td style="text-align:left">Load parameters onto CLR expression stack in order (left to right).</td>
+</tr>
+<tr>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/stdcall?view=msvc-160">__stdcall</a></td>
+<td style="text-align:left">Callee</td>
+<td style="text-align:left">Pushes parameters on the stack, in reverse order (right to left)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/fastcall?view=msvc-160">__fastcall</a></td>
+<td style="text-align:left">Callee</td>
+<td style="text-align:left">Stored in registers, then pushed on stack</td>
+</tr>
+<tr>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/thiscall?view=msvc-160">__thiscall</a></td>
+<td style="text-align:left">Callee</td>
+<td style="text-align:left">Pushed on stack; <strong><code>this</code></strong> pointer stored in ECX</td>
+</tr>
+<tr>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/vectorcall?view=msvc-160">__vectorcall</a></td>
+<td style="text-align:left">Callee</td>
+<td style="text-align:left">Stored in registers, then pushed on stack in reverse order (right to left)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>在调用成员函数时是 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/thiscall?view=msvc-160">__thiscall</a> , 将 <code>this</code> 指针存入 ECX 寄存器, 而通过传参的方式 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/cpp/cdecl?view=msvc-160">__cdecl</a> 是将参数压入栈中, 因此, 此处出问题是成员函数 <code>Dog::eat()</code> 想从 ECX 寄存器得到 <code>this</code> 指针, 但是 <code>this</code> 并不在哪里, 所以得到的 tail 值就是错误的.</p>
+<p>至于为什么前几个看似工作正常, 是由于函数执行期间恰好将 a 的值 move 进了 ECX 寄存器.</p>
+<p>可以看一下相应的汇编代码</p>
+<p><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io@master/image/多态.assets//image-20210521002412609.png" alt="image-20210521002412609"></p>
+<p>在 Visual Studio x86 编译下出现的这种情况是可以复现的, g++ 编译却没有出现过. 这件事情和不同的平台, 不同的编译器都有关系, 因此只需了解虚函数实现多态的原理即可, 不必强求用代码实现.</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Rikka</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.bilibilianime.com/2020/06/02/CPP/%E5%A4%9A%E6%80%81/">https://www.bilibilianime.com/2020/06/02/CPP/%E5%A4%9A%E6%80%81/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.bilibilianime.com" target="_blank">极东魔术昼寝结社</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/C/">C++</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/655087.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2020/09/01/Java%20%E5%9F%BA%E7%A1%80/Java_abc_04/"><img class="next-cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/655087.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Java 基础(四) 容器与泛型</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "/img/404.jpg" data-lazy-src="/image/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Rikka</div><div class="author-info__description">邪王真眼是最强的</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">47</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ayasa520"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/ayasa520" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1103670381@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">Rikka 的 Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-text">工作原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E6%9E%9C%E5%81%9A%E7%82%B9%E9%82%AA%E6%81%B6%E7%9A%84%E4%BA%8B%E6%83%85"><span class="toc-text">如果做点邪恶的事情</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0-Virtual-destructors"><span class="toc-text">虚拟析构函数 (Virtual destructors)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E5%86%99-Overridding"><span class="toc-text">重写 (Overridding)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E8%BD%BD%E4%B8%8E%E8%99%9A%E5%87%BD%E6%95%B0-Overloading-and-virtuals"><span class="toc-text">重载与虚函数 (Overloading and virtuals)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88%E8%B0%83%E7%94%A8-virtual-function-%E7%9A%84%E5%B0%9D%E8%AF%95"><span class="toc-text">通过函数指针调用 virtual function 的尝试</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/07/31/tools/window-to-top/" title="Python 实现窗口保持置顶"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/真冬の標本.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Python 实现窗口保持置顶"/></a><div class="content"><a class="title" href="/2021/07/31/tools/window-to-top/" title="Python 实现窗口保持置顶">Python 实现窗口保持置顶</a><time datetime="2021-07-31T11:30:54.882Z" title="发表于 2021-07-31 11:30:54">2021-07-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/31/Java%20%E5%9F%BA%E7%A1%80/Java_abc_06/" title="Java 基础(六) Object 类"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/rikka_1.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 基础(六) Object 类"/></a><div class="content"><a class="title" href="/2021/07/31/Java%20%E5%9F%BA%E7%A1%80/Java_abc_06/" title="Java 基础(六) Object 类">Java 基础(六) Object 类</a><time datetime="2021-07-31T11:30:54.874Z" title="发表于 2021-07-31 11:30:54">2021-07-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/31/Java%20%E5%9F%BA%E7%A1%80/Java_abc_02/" title="Java 基础(二) 类变量和类函数"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/erik-shoemaker-chaldea-matte-final2.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 基础(二) 类变量和类函数"/></a><div class="content"><a class="title" href="/2021/07/31/Java%20%E5%9F%BA%E7%A1%80/Java_abc_02/" title="Java 基础(二) 类变量和类函数">Java 基础(二) 类变量和类函数</a><time datetime="2021-07-31T11:30:54.874Z" title="发表于 2021-07-31 11:30:54">2021-07-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/31/Java%20%E5%9F%BA%E7%A1%80/Java_abc_03/" title="Java 基础(三) 对象数组"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/wallhaven-714648~1.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 基础(三) 对象数组"/></a><div class="content"><a class="title" href="/2021/07/31/Java%20%E5%9F%BA%E7%A1%80/Java_abc_03/" title="Java 基础(三) 对象数组">Java 基础(三) 对象数组</a><time datetime="2021-07-31T11:30:54.874Z" title="发表于 2021-07-31 11:30:54">2021-07-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/31/Java%20%E5%9F%BA%E7%A1%80/Java_abc_08/" title="Java 基础(八) 抽象"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/erik-shoemaker-chaldea-matte-final2.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 基础(八) 抽象"/></a><div class="content"><a class="title" href="/2021/07/31/Java%20%E5%9F%BA%E7%A1%80/Java_abc_08/" title="Java 基础(八) 抽象">Java 基础(八) 抽象</a><time datetime="2021-07-31T11:30:54.874Z" title="发表于 2021-07-31 11:30:54">2021-07-31</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 By Rikka</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎来到极东魔术昼寝结社！</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>(()=>{
+  const $countDom = document.getElementById('twikoo-count')
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'comment-1a9b61',
+      region: '',
+      onCommentLoaded: function () {
+        if(typeof window.mediumZoom!='undefined'){
+          const zoomComment = mediumZoom(document.querySelectorAll('.tk-content :not(a)>img'))
+          zoomComment.on('open', e => {
+            const photoBg = document.documentElement.getAttribute('data-theme') === 'dark' ? '#121212' : '#fff'
+            zoomComment.update({
+              background: photoBg
+            })
+          })
+        }
+        if(GLOBAL_CONFIG.lightbox === 'fancybox'){
+            const addFancybox = function (ele) {
+              const runFancybox = (ele) => {
+                ele.each(function (i, o) {
+                  const $this = $(o)
+                  const lazyloadSrc = $this.attr('data-lazy-src') || $this.attr('src')
+                  const dataCaption = $this.attr('alt') || ''
+                  $this.wrap(`<a href="${lazyloadSrc}" data-fancybox="group" data-caption="${dataCaption}" class="fancybox"></a>`)
+                })
+
+                $().fancybox({
+                  selector: '[data-fancybox]',
+                  loop: true,
+                  transitionEffect: 'slide',
+                  protect: true,
+                  buttons: ['slideShow', 'fullScreen', 'thumbs', 'close'],
+                  hash: false
+                })
+              }
+
+              if (typeof $.fancybox === 'undefined') {
+                $('head').append(`<link rel="stylesheet" type="text/css" href="${GLOBAL_CONFIG.source.fancybox.css}">`)
+                $.getScript(`${GLOBAL_CONFIG.source.fancybox.js}`, function () {
+                  runFancybox($(ele))
+                })
+              } else {
+                runFancybox($(ele))
+              }
+            }
+          addFancybox(document.querySelectorAll('.tk-content :not(a)>img'))
+        }
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'comment-1a9b61',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      $countDom.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const loadTwikoo = (bool = false) => {
+    if (typeof twikoo === 'object') {
+      init()
+      bool && $countDom && setTimeout(getCount,0)
+    } else {
+      getScript('https://cdn.jsdelivr.net/gh/ayasa520/hexo@master/source/js/twikoo.all.js').then(()=> {
+        init()
+        bool && $countDom && setTimeout(getCount,0)
+      })
+    }
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo(true)
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'comment-1a9b61',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.jsdelivr.net/gh/ayasa520/hexo@master/source/js/twikoo.all.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script  src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script  defer src="https://cdn.jsdelivr.net/gh/graingert/wow@1.3.0/dist/wow.min.js"></script><script defer data-pjax src="/js/wow_init.js"></script><div class="app-refresh" id="app-refresh"> <div class="app-refresh-wrap"> <label>✨ 网站已更新最新版本 👉</label> <a href="javascript:void(0)" onclick="location.reload()">点击刷新</a> </div></div><script>function showNotification(){if(GLOBAL_CONFIG.Snackbar){var t="light"===document.documentElement.getAttribute("data-theme")?GLOBAL_CONFIG.Snackbar.bgLight:GLOBAL_CONFIG.Snackbar.bgDark,e=GLOBAL_CONFIG.Snackbar.position;Snackbar.show({text:"已更新最新版本",backgroundColor:t,duration:5e5,pos:e,actionText:"点击刷新",actionTextColor:"#fff",onActionClick:function(t){location.reload()}})}else{var o=`top: 0; background: ${"light"===document.documentElement.getAttribute("data-theme")?"#49b1f5":"#1f1f1f"};`;document.getElementById("app-refresh").style.cssText=o}}"serviceWorker"in navigator&&(navigator.serviceWorker.controller&&navigator.serviceWorker.addEventListener("controllerchange",function(){showNotification()}),window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")}));</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><div id="aplayer"></div><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script type="text/javascript"> document.write("<script src='/js/music.js?"+Math.random()+"'><\/script>"); </script>·<script defer src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@latest/source/js/issues.min.js"></script><script defer data-pjax src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.5.0/build/highlight.min.js"></script><script defer data-pjax>if (document.getElementsByClassName('dplayer').length>0){$.getScript('https://cdn.jsdelivr.net/hls.js/latest/hls.min.js').done(function(){ $.getScript('https://cdn.jsdelivr.net/gh/ayasa520/hexo/source/js/DPlayer.min.js').done(dplayer_init);});}</script><script defer data-pjax>if (document.getElementById('hpp_talk')){$.getScript('https://cdn.jsdelivr.net/gh/ayasa520/HexoPlusPlus@main/src/talk_user.js').done(hpp_talk_init);}</script><script async>console.log(" ____    ______   __  __   __  __   ______     \n/\\  _`\\ /\\__  _\\ /\\ \\/\\ \\ /\\ \\/\\ \\ /\\  _  \\    \n\\ \\ \\L\\ \\/_/\\ \\/ \\ \\ \\/'/'\\ \\ \\/'/'\\ \\ \\L\\ \\   \n \\ \\ ,  /  \\ \\ \\  \\ \\ , <  \\ \\ , <  \\ \\  __ \\  \n  \\ \\ \\\\ \\  \\_\\ \\__\\ \\ \\\\`\\ \\ \\ \\\\`\\ \\ \\ \\/\\ \\ \n   \\ \\_\\ \\_\\/\\_____\\\\ \\_\\ \\_\\\\ \\_\\ \\_\\\\ \\_\\ \\_\\\n    \\/_/\\/ /\\/_____/ \\/_/\\/_/ \\/_/\\/_/ \\/_/\\/_/")</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax',
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener toc scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script  src="https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.0/dist/js/main.js"></script><script data-pjax  src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script><script data-pjax>
+        function daodao_plus_injector_config(){
+            function ddSwiperInit(){
+                const ddSwiper =new DaodaoSwiper(daodao_url,bbpath,filter);
+                ddSwiper.init();
+            }
+            var daodao_url = "https://daodao.bilibilianime.com/api/query/20";
+            var bbpath = /daodaoplus/;
+            var filter = JSON.parse('["iframe","img","script","code"]');
+            var parent_div_git = document.getElementsByClassName('recent-posts')[0];
+            var item_html =  '<div class="recent-post-item" style="height: auto;width: 100%"><div class="bbTimeList container" id="bbTimeList" style="height: auto;width: 100%"><a class="bber-gotobb fas fa-bullhorn" href="/daodaoplus/" title="叨叨"></a><div class="swiper-container" id="bbtalk"><div class="swiper-wrapper" id="bber-talk"></div></div><a class="bber-gotobb fas fa-arrow-circle-right" href="/daodaoplus/" title="查看全文"></a></div></div>';
+            console.log('已挂载daodao_plus')
+            parent_div_git.insertAdjacentHTML("afterbegin",item_html) 
+            if (typeof DaodaoSwiper === 'function' && typeof Daodao==='function'){
+                ddSwiperInit();
+            }else{
+                let ddScripts = []
+                if(typeof DaodaoSwiper!=="function")
+                    ddScripts.push( getScript('https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.0/dist/js/main.js'))
+                if(typeof Daodao!=="function")
+                    ddScripts.push( getScript('https://cdn.jsdelivr.net/npm/daodaoplus@1.0.5/static/js/index.js'))
+                Promise.all(ddScripts).then(ddSwiperInit);
+            }
+
+        }
+        if( document.getElementsByClassName('recent-posts')[0] && (location.pathname ==='/')){
+                daodao_plus_injector_config()
+        }</script><!-- hexo injector body_end end --></body></html>
