@@ -1,0 +1,40 @@
+{
+  "name": "hexo_rikka",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "_fsevents@1.2.13@fsevents": "^1.2.13",
+    "_fsevents@2.3.2@fsevents": "^2.3.2",
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-remove-strict-mode": "^0.0.2",
+    "babel-preset-es2015": "^6.24.1",
+    "compress": "^0.99.0",
+    "fsevents": "^2.3.2",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-htmlclean": "^2.7.22",
+    "gulp-imagemin": "^7.1.0",
+    "hexo-butterfly-envelope": "^1.0.5",
+    "hexo-daodao-plus": "^2.1.1",
+    "hexo-deployer-git": "^3.0.0",
+    "hexo-generator-search": "^2.4.2",
+    "hexo-tag-aplayer": "^3.0.4",
+    "regenerator-runtime": "^0.13.7",
+    "workbox-build": "^6.1.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayasa520/hexo.git"
+  },
+  "author": "Rikka",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ayasa520/hexo/issues"
+  },
+  "homepage": "https://github.com/ayasa520/hexo#readme"
+}
