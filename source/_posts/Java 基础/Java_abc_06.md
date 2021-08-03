@@ -2,6 +2,7 @@
 title: "Java 基础(六) Object 类"
 tag: 'Java'
 category: 教程
+date: 2020-12-27
 ---
 
 几乎在所有的 oop 语言中，都有一个“**根**”的存在。在 Java 中，这个“根”就是 **Object** 类。

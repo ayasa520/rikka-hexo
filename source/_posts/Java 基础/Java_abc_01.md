@@ -2,6 +2,7 @@
 title: "Java 基础(一) 开放的访问属性(见 Display 项目)"
 tag: 'Java'
 category: 教程
+date: 2020-12-27
 ---
 
 - public 意味着任何人都可以自由地使用

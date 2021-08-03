@@ -2,6 +2,7 @@
 title: "Java 基础(二) 类变量和类函数"
 tag: 'Java'
 category: 教程
+date: 2020-12-27
 ---
 
 ```java

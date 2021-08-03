@@ -2,6 +2,7 @@
 title: "Java 基础(五) 继承(以实现一个存放 CD 、DVD 的 Database 为例)"
 tag: 'Java'
 category: 教程
+date: 2020-12-27
 ---
 
 在 Database.java 文件中实现了一个 Database 的类，其中含有 ArrayList<Item> 类型的成员变量 list 来存放数据。此外还有对 list 进行增添和遍历的```add(Item newItem)```和```list()```方法。

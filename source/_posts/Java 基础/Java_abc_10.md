@@ -2,6 +2,7 @@
 title: "Java 基础(十)  接口( Interface )以狐狸和兔子为例子"
 tag: 'Java'
 category: 教程
+date: 2020-12-27
 ---
 ## 1. 接口
 

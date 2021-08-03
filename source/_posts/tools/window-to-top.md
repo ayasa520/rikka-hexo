@@ -3,6 +3,7 @@ title: Python 实现窗口保持置顶
 tag: 'Python'
 categories: 无用小工具
 highlight_shrink: false
+date: 2021-06-24
 ---
 
 {% note info modern %}今天一边看视频一边用 Typora 记笔记的时候发现一个问题, Typora 自带的 `保持窗口在最前端`不知何故会失效, 所以我就想用 Python 写一个可以让窗口强制指定的工具, 毕竟在查阅文档的时候还是有些用处的.{% endnote %}
