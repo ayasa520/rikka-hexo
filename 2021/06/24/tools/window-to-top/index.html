@@ -1,0 +1,510 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Python 实现窗口保持置顶 | 极东魔术昼寝结社</title><meta name="keywords" content="Python"><meta name="author" content="Rikka"><meta name="copyright" content="Rikka"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="今天一边看视频一边用 Typora 记笔记的时候发现一个问题, Typora 自带的 保持窗口在最前端不知何故会失效, 所以我就想用 Python 写一个可以让窗口强制指定的工具, 毕竟在查阅文档的时候还是有些用处的.  使用的模块 win32gui  keyboard  win32con  pyinstaller   使用的函数及其原型 SetWindowPos  1WINUSERAPI BOO">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 实现窗口保持置顶">
+<meta property="og:url" content="https://www.bilibilianime.com/2021/06/24/tools/window-to-top/index.html">
+<meta property="og:site_name" content="极东魔术昼寝结社">
+<meta property="og:description" content="今天一边看视频一边用 Typora 记笔记的时候发现一个问题, Typora 自带的 保持窗口在最前端不知何故会失效, 所以我就想用 Python 写一个可以让窗口强制指定的工具, 毕竟在查阅文档的时候还是有些用处的.  使用的模块 win32gui  keyboard  win32con  pyinstaller   使用的函数及其原型 SetWindowPos  1WINUSERAPI BOO">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/wallhaven-714648~1.webp">
+<meta property="article:published_time" content="2021-06-24T00:00:00.000Z">
+<meta property="article:modified_time" content="2021-08-03T08:34:17.035Z">
+<meta property="article:author" content="Rikka">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/wallhaven-714648~1.webp"><link rel="shortcut icon" href="/image/favicon.png"><link rel="canonical" href="https://www.bilibilianime.com/2021/06/24/tools/window-to-top/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/pwa/manifest.json"/><meta name="msapplication-TileColor" content="#fff"/><link rel="apple-touch-icon" sizes="180x180" href="/pwa/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/pwa/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/pwa/16.png"/><link rel="mask-icon" href="/pwa/safari-pinned-tab.svg" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"source/search/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"此文章发表于","messageNext":"天前，内容可能已经过时"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Rikka","link":"链接: ","source":"来源: 极东魔术昼寝结社","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Python 实现窗口保持置顶',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-08-03 08:34:17'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><style type="text/css">.app-refresh{position:fixed;top:-2.2rem;left:0;right:0;z-index:99999;padding:0 1rem;font-size:15px;height:2.2rem;transition:all .3s ease}.app-refresh-wrap{display:flex;color:#fff;height:100%;align-items:center;justify-content:center}.app-refresh-wrap a{color:#fff;text-decoration:underline;cursor:pointer}</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/custom.css"  media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daodaoplus@1.0.4/static/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.2/dist/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "/img/404.jpg" data-lazy-src="/image/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">46</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/daodaoplus/"><i class="fa-fw fas fa-comment"></i><span> 闲话板砖</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comment"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/wallhaven-714648~1.webp')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">极东魔术昼寝结社</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/daodaoplus/"><i class="fa-fw fas fa-comment"></i><span> 闲话板砖</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comment"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Python 实现窗口保持置顶</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-06-24T00:00:00.000Z" title="发表于 2021-06-24 00:00:00">2021-06-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-08-03T08:34:17.035Z" title="更新于 2021-08-03 08:34:17">2021-08-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%97%A0%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7/">无用小工具</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Python 实现窗口保持置顶"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><div class="note info modern"><p>今天一边看视频一边用 Typora 记笔记的时候发现一个问题, Typora 自带的 <code>保持窗口在最前端</code>不知何故会失效, 所以我就想用 Python 写一个可以让窗口强制指定的工具, 毕竟在查阅文档的时候还是有些用处的.</p>
+</div>
+<h2 id="使用的模块"><a href="#使用的模块" class="headerlink" title="使用的模块"></a>使用的模块</h2><ol>
+<li>win32gui </li>
+<li>keyboard </li>
+<li>win32con </li>
+<li>pyinstaller </li>
+</ol>
+<h2 id="使用的函数及其原型"><a href="#使用的函数及其原型" class="headerlink" title="使用的函数及其原型"></a>使用的函数及其原型</h2><ol>
+<li><p><code>SetWindowPos</code> </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">WINUSERAPI BOOL WINAPI <span class="title">SetWindowPos</span><span class="params">(HWND hWnd,HWND hWndInsertAfter,<span class="keyword">int</span> X,<span class="keyword">int</span> Y,<span class="keyword">int</span> cx, <span class="keyword">int</span> cy, UINT uFlags)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>用于设置窗口的 Z 序号</p>
+<p>参数解释如下:</p>
+<ul>
+<li><code>hwnd</code>: 被修改的窗口的句柄</li>
+<li><code>hWndlnsertAfter</code>: 用于标识 Z 顺序, 可设为以下值:<ul>
+<li><code>HWND_BOTTOM</code>: 值为 1, 置底</li>
+<li><code>HWND_NOTOPMOST</code>: 值为 -2, 置于非置顶窗口之上</li>
+<li><code>HWND_TOP</code> : 值为 0, 置顶</li>
+<li><code>HWND_TOPMOST</code>: 值为 -1, 置顶 (在<code>HWND_TOP</code>之上)</li>
+</ul>
+</li>
+<li><code>X</code>, <code>Y</code>, <code>cx</code>,<code>cy</code> 确定了新窗口的位置和宽高</li>
+<li><code>uFlags</code>: 窗口尺寸和定位的标识, 部分值如下:<ul>
+<li><code>SWP_NOOWNERZORDER</code>: 不改变 Z 序中所有者窗口的位置</li>
+<li><code>SWP_NOSIZE</code>: 不改变窗口大小</li>
+<li><code>SWP_NOMOVE</code>: 不移动窗口</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>GetForegroundWindow</code> </p>
+<p>用于获取当前激活的窗口 (鼠标焦点所在窗口)的句柄</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">HWND <span class="title">GetForegroundWindow</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>keyboard.addhotkey</code> 和<code>keyboard.wait</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">keyboard.add_hotkey(<span class="string">&#x27;alt + t&#x27;</span>, fun)</span><br><span class="line"><span class="keyword">while</span> true:</span><br><span class="line">	keyboard.wait()</span><br></pre></td></tr></table></figure>
+<p><code>add_hotkey</code> 可以设置热键和检测到热键按下后执行的方法,  <code>wait</code>是阻塞方法, 便于检测组合键</p>
+</li>
+</ol>
+<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> win32gui</span><br><span class="line"><span class="keyword">import</span> keyboard</span><br><span class="line"><span class="keyword">import</span> win32con</span><br><span class="line"><span class="keyword">import</span> atexit</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">totop</span>:</span></span><br><span class="line">    flag = <span class="literal">False</span></span><br><span class="line">    hw = <span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">force_focus</span>(<span class="params">self, hwnd</span>):</span></span><br><span class="line">        win32gui.SetWindowPos(hwnd, win32con.HWND_TOPMOST, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>,</span><br><span class="line">                              win32con.SWP_NOOWNERZORDER | win32con.SWP_NOSIZE | win32con.SWP_NOMOVE)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;置顶&quot;</span>, hwnd, win32gui.GetWindowText(hwnd))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cancel_focus</span>(<span class="params">self, hwnd</span>):</span></span><br><span class="line">        win32gui.SetWindowPos(hwnd, win32con.HWND_NOTOPMOST, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>,</span><br><span class="line">                              win32con.SWP_SHOWWINDOW | win32con.SWP_NOSIZE | win32con.SWP_NOMOVE)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;取消置顶&quot;</span>, hwnd, win32gui.GetWindowText(hwnd))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">handler</span>(<span class="params">self, op, hwnd</span>):</span></span><br><span class="line">        op(hwnd)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_key</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">fun</span>():</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> self.flag <span class="keyword">and</span> win32gui.GetForegroundWindow() != <span class="string">&#x27;&#x27;</span>:</span><br><span class="line">                self.hd = win32gui.GetForegroundWindow()</span><br><span class="line">                self.handler(self.force_focus, self.hd)</span><br><span class="line">                self.flag = <span class="literal">True</span></span><br><span class="line">            <span class="keyword">elif</span> self.flag <span class="keyword">and</span> win32gui.GetForegroundWindow() != <span class="string">&#x27;&#x27;</span>:</span><br><span class="line">                <span class="keyword">if</span> self.hd == win32gui.GetForegroundWindow():</span><br><span class="line">                    self.handler(self.cancel_focus, win32gui.GetForegroundWindow())</span><br><span class="line">                    self.flag = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">        keyboard.add_hotkey(<span class="string">&#x27;alt+t&#x27;</span>, fun)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            keyboard.wait()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    zd = totop()</span><br><span class="line">    zd.get_key()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Rikka</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.bilibilianime.com/2021/06/24/tools/window-to-top/">https://www.bilibilianime.com/2021/06/24/tools/window-to-top/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.bilibilianime.com" target="_blank">极东魔术昼寝结社</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Python/">Python</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/wallhaven-714648~1.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/06/12/%E6%95%B0%E6%8D%AE%E5%BA%93/database_design/"><img class="prev-cover" src= "/img/404.jpg" data-lazy-src="/image/cover/0000.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">数据库设计</div></div></a></div><div class="next-post pull-right"><a href="/2021/06/25/jsDelivr/%E8%96%85%E7%BE%8A%E6%AF%9B/"><img class="next-cover" src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/655087.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">将 mp4 视频切片成 ts 后使用 jsDelivr 加速制作 &quot;视频床&quot;</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "/img/404.jpg" data-lazy-src="/image/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Rikka</div><div class="author-info__description">邪王真眼是最强的</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">46</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ayasa520"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/ayasa520" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1103670381@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">Rikka 的 Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A8%A1%E5%9D%97"><span class="toc-text">使用的模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%9A%84%E5%87%BD%E6%95%B0%E5%8F%8A%E5%85%B6%E5%8E%9F%E5%9E%8B"><span class="toc-text">使用的函数及其原型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BA%90%E7%A0%81"><span class="toc-text">源码</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/07/18/daodao-kai/" title="基于 Vercel 和 MongoDB 的叨叨·改"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/Snipaste_2021-05-16_00-24-41.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于 Vercel 和 MongoDB 的叨叨·改"/></a><div class="content"><a class="title" href="/2021/07/18/daodao-kai/" title="基于 Vercel 和 MongoDB 的叨叨·改">基于 Vercel 和 MongoDB 的叨叨·改</a><time datetime="2021-07-18T21:16:30.000Z" title="发表于 2021-07-18 21:16:30">2021-07-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/16/twikoo-img-zoom/" title="为 butterfly 主题的 twikoo 添加图片点击放大功能"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/rikka_1.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="为 butterfly 主题的 twikoo 添加图片点击放大功能"/></a><div class="content"><a class="title" href="/2021/07/16/twikoo-img-zoom/" title="为 butterfly 主题的 twikoo 添加图片点击放大功能">为 butterfly 主题的 twikoo 添加图片点击放大功能</a><time datetime="2021-07-16T01:09:38.000Z" title="发表于 2021-07-16 01:09:38">2021-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/06/auto-update-link/" title="自动添加 twikoo 评论中的友链"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/image.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="自动添加 twikoo 评论中的友链"/></a><div class="content"><a class="title" href="/2021/07/06/auto-update-link/" title="自动添加 twikoo 评论中的友链">自动添加 twikoo 评论中的友链</a><time datetime="2021-07-06T02:38:38.000Z" title="发表于 2021-07-06 02:38:38">2021-07-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C_04/" title="计算机网络 4 -网络层"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/真冬の標本.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络 4 -网络层"/></a><div class="content"><a class="title" href="/2021/06/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C_04/" title="计算机网络 4 -网络层">计算机网络 4 -网络层</a><time datetime="2021-06-29T00:00:00.000Z" title="发表于 2021-06-29 00:00:00">2021-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/25/jsDelivr/%E8%96%85%E7%BE%8A%E6%AF%9B/" title="将 mp4 视频切片成 ts 后使用 jsDelivr 加速制作 &quot;视频床&quot;"><img src= "/img/404.jpg" data-lazy-src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/cover/655087.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="将 mp4 视频切片成 ts 后使用 jsDelivr 加速制作 &quot;视频床&quot;"/></a><div class="content"><a class="title" href="/2021/06/25/jsDelivr/%E8%96%85%E7%BE%8A%E6%AF%9B/" title="将 mp4 视频切片成 ts 后使用 jsDelivr 加速制作 &quot;视频床&quot;">将 mp4 视频切片成 ts 后使用 jsDelivr 加速制作 &quot;视频床&quot;</a><time datetime="2021-06-25T00:00:00.000Z" title="发表于 2021-06-25 00:00:00">2021-06-25</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 By Rikka</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎来到极东魔术昼寝结社！</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>(()=>{
+  const $countDom = document.getElementById('twikoo-count')
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'comment-1a9b61',
+      region: '',
+      onCommentLoaded: function () {
+        if(typeof window.mediumZoom!='undefined'){
+          const zoomComment = mediumZoom(document.querySelectorAll('.tk-content :not(a)>img'))
+          zoomComment.on('open', e => {
+            const photoBg = document.documentElement.getAttribute('data-theme') === 'dark' ? '#121212' : '#fff'
+            zoomComment.update({
+              background: photoBg
+            })
+          })
+        }
+        if(GLOBAL_CONFIG.lightbox === 'fancybox'){
+            const addFancybox = function (ele) {
+              const runFancybox = (ele) => {
+                ele.each(function (i, o) {
+                  const $this = $(o)
+                  const lazyloadSrc = $this.attr('data-lazy-src') || $this.attr('src')
+                  const dataCaption = $this.attr('alt') || ''
+                  $this.wrap(`<a href="${lazyloadSrc}" data-fancybox="group" data-caption="${dataCaption}" class="fancybox"></a>`)
+                })
+
+                $().fancybox({
+                  selector: '[data-fancybox]',
+                  loop: true,
+                  transitionEffect: 'slide',
+                  protect: true,
+                  buttons: ['slideShow', 'fullScreen', 'thumbs', 'close'],
+                  hash: false
+                })
+              }
+
+              if (typeof $.fancybox === 'undefined') {
+                $('head').append(`<link rel="stylesheet" type="text/css" href="${GLOBAL_CONFIG.source.fancybox.css}">`)
+                $.getScript(`${GLOBAL_CONFIG.source.fancybox.js}`, function () {
+                  runFancybox($(ele))
+                })
+              } else {
+                runFancybox($(ele))
+              }
+            }
+          addFancybox(document.querySelectorAll('.tk-content :not(a)>img'))
+        }
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'comment-1a9b61',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      $countDom.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const loadTwikoo = (bool = false) => {
+    if (typeof twikoo === 'object') {
+      init()
+      bool && $countDom && setTimeout(getCount,0)
+    } else {
+      getScript('https://cdn.jsdelivr.net/gh/ayasa520/hexo@master/source/js/twikoo.all.js').then(()=> {
+        init()
+        bool && $countDom && setTimeout(getCount,0)
+      })
+    }
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo(true)
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'comment-1a9b61',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.jsdelivr.net/gh/ayasa520/hexo@master/source/js/twikoo.all.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script  src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script  defer src="https://cdn.jsdelivr.net/gh/graingert/wow@1.3.0/dist/wow.min.js"></script><script defer data-pjax src="/js/wow_init.js"></script><div class="app-refresh" id="app-refresh"> <div class="app-refresh-wrap"> <label>✨ 网站已更新最新版本 👉</label> <a href="javascript:void(0)" onclick="location.reload()">点击刷新</a> </div></div><script>function showNotification(){if(GLOBAL_CONFIG.Snackbar){var t="light"===document.documentElement.getAttribute("data-theme")?GLOBAL_CONFIG.Snackbar.bgLight:GLOBAL_CONFIG.Snackbar.bgDark,e=GLOBAL_CONFIG.Snackbar.position;Snackbar.show({text:"已更新最新版本",backgroundColor:t,duration:5e5,pos:e,actionText:"点击刷新",actionTextColor:"#fff",onActionClick:function(t){location.reload()}})}else{var o=`top: 0; background: ${"light"===document.documentElement.getAttribute("data-theme")?"#49b1f5":"#1f1f1f"};`;document.getElementById("app-refresh").style.cssText=o}}"serviceWorker"in navigator&&(navigator.serviceWorker.controller&&navigator.serviceWorker.addEventListener("controllerchange",function(){showNotification()}),window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")}));</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><div id="aplayer"></div><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script type="text/javascript"> document.write("<script src='/js/music.js?"+Math.random()+"'><\/script>"); </script>·<script defer src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@latest/source/js/issues.min.js"></script><script defer data-pjax src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.5.0/build/highlight.min.js"></script><script defer data-pjax>if (document.getElementsByClassName('dplayer').length>0){$.getScript('https://cdn.jsdelivr.net/hls.js/latest/hls.min.js').done(function(){ $.getScript('https://cdn.jsdelivr.net/gh/ayasa520/hexo/source/js/DPlayer.min.js').done(dplayer_init);});}</script><script defer data-pjax>if (document.getElementById('hpp_talk')){$.getScript('https://cdn.jsdelivr.net/gh/ayasa520/HexoPlusPlus@main/src/talk_user.js').done(hpp_talk_init);}</script><script async>console.log(" ____    ______   __  __   __  __   ______     \n/\\  _`\\ /\\__  _\\ /\\ \\/\\ \\ /\\ \\/\\ \\ /\\  _  \\    \n\\ \\ \\L\\ \\/_/\\ \\/ \\ \\ \\/'/'\\ \\ \\/'/'\\ \\ \\L\\ \\   \n \\ \\ ,  /  \\ \\ \\  \\ \\ , <  \\ \\ , <  \\ \\  __ \\  \n  \\ \\ \\\\ \\  \\_\\ \\__\\ \\ \\\\`\\ \\ \\ \\\\`\\ \\ \\ \\/\\ \\ \n   \\ \\_\\ \\_\\/\\_____\\\\ \\_\\ \\_\\\\ \\_\\ \\_\\\\ \\_\\ \\_\\\n    \\/_/\\/ /\\/_____/ \\/_/\\/_/ \\/_/\\/_/ \\/_/\\/_/")</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax',
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener toc scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script  src="https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.2/dist/js/main.js"></script><script data-pjax  src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script><script data-pjax>
+        function daodao_plus_injector_config(){
+            function ddSwiperInit(){
+                const ddSwiper =new DaodaoSwiper(daodao_url,bbpath,filter);
+                ddSwiper.init();
+            }
+            var daodao_url = "https://daodao.bilibilianime.com/api/query/20";
+            var bbpath = /daodaoplus/;
+            var filter = JSON.parse('["iframe","img","script","code"]');
+            var parent_div_git = document.getElementsByClassName('recent-posts')[0];
+            var item_html =  '<div class="recent-post-item" style="height: auto;width: 100%"><div class="bbTimeList container" id="bbTimeList" style="height: auto;width: 100%"><a class="bber-gotobb fas fa-bullhorn" href="/daodaoplus/" title="叨叨"></a><div class="swiper-container" id="bbtalk"><div class="swiper-wrapper" id="bber-talk"></div></div><a class="bber-gotobb fas fa-arrow-circle-right" href="/daodaoplus/" title="查看全文"></a></div></div>';
+            console.log('已挂载daodao_plus')
+            parent_div_git.insertAdjacentHTML("afterbegin",item_html) 
+            if (typeof DaodaoSwiper === 'function' && typeof Daodao==='function'){
+                ddSwiperInit();
+            }else{
+                let ddScripts = []
+                if(typeof DaodaoSwiper!=="function")
+                    ddScripts.push( getScript('https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.2/dist/js/main.js'))
+                if(typeof Daodao!=="function")
+                    ddScripts.push( getScript('https://cdn.jsdelivr.net/npm/daodaoplus@1.0.5/static/js/index.js'))
+                Promise.all(ddScripts).then(ddSwiperInit);
+            }
+
+        }
+        if( document.getElementsByClassName('recent-posts')[0] && (location.pathname ==='/')){
+                daodao_plus_injector_config()
+        }</script><!-- hexo injector body_end end --></body></html>
