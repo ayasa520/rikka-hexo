@@ -12,6 +12,30 @@ date: 2021-07-18 21:16:30
 >
 >A: 叨叨·改已经插件化, 项目地址: [ayasa520/hexo-daodao-plus: 适用于 hexo 的"叨叨·改"插件 (github.com)](https://github.com/ayasa520/hexo-daodao-plus). 后端项目地址: [ayasa520/daodao-kai: 叨叨改，用 flask 重写叨叨的后端 (github.com)](https://github.com/ayasa520/daodao-kai)
 
+## 使用
+
+- 登录
+
+点击下方"登录"按钮, 在表单中输入用户名和密码
+
+![](https://onedrive.bilibilianime.com/e55T/image/Snipaste_2021-08-03_21-15-27.png)
+
+![](https://onedrive.bilibilianime.com/e55T/image/Snipaste_2021-08-03_21-16-38.png)
+
+- 删除
+
+登录后直接点击右侧的 x
+
+![](https://onedrive.bilibilianime.com/e55T/image/Snipaste_2021-08-03_21-09-31.png)
+
+- 发送
+
+登录后点击下方"新建"按钮, 在文本框中输入内容. 支持 Markdown.
+
+![](https://onedrive.bilibilianime.com/e55T/image/Snipaste_2021-08-03_21-12-27.png)
+
+![](https://onedrive.bilibilianime.com/e55T/image/Snipaste_2021-08-03_21-12-39.png)
+
 ## 后端部署
 
 ### Vercel 部署
@@ -54,23 +78,9 @@ date: 2021-07-18 21:16:30
 
    ![image](https://cdn.jsdelivr.net/gh/ayasa520/img@main/cd0db9b6fda534a1e2c351098271b46a.png)
 
-
-
-3. 在 `/login` 下输入环境变量配置的用户名和密码
-
-   ![image](https://cdn.jsdelivr.net/gh/ayasa520/img@main/f2c1782589a35e72194ef3f625a8e45c.png)
-
-3. 登录后, 在 `/create` 下发内容
-
-   ![image](https://cdn.jsdelivr.net/gh/ayasa520/img@main/8ee4167234f1311369485baaa567b35c.png)
-
-3. 在首页可以看到刚才发的内容, 说明配置成功了
-
-   ![image](https://cdn.jsdelivr.net/gh/ayasa520/img@main/39f898cf2ed551f5ca6f8c621a0dd738.png)
-
 ## 前端部署
 
-### 不使用插件 (不推荐)
+### 不使用插件 (不适用于当前最新版本)
 
 以这种方式添加没有首页的滚动组件
 
@@ -159,8 +169,8 @@ daodao_plus:
     title: 闲话板砖
     comments: true
   CDN: 
-    js: https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.1/dist/js/main.js
-    css: https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.1/dist/css/main.css
+    js: https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.2/dist/js/main.js
+    css: https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.2/dist/css/main.css
 ```
 
 配置项说明
