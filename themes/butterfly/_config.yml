@@ -1027,6 +1027,6 @@ daodao_plus:
     title: 闲话板砖
     comments: true
   CDN: 
-    js: https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.3/dist/js/main.js # daodaomain.js
+    js: https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.4/dist/js/main.js # daodaomain.js
     css: https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.2/dist/css/main.css
 
