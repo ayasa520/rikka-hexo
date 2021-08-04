@@ -31,7 +31,7 @@ date: 2020-12-27
 
 缺点: 数字的大小被限制为地址字段的大小
 
-![](https://unpkg.zhimg.com/rikka-os@latest/img/COA_13.assets/image%20(2).jpg)
+![](https://unpkg.zhimg.com/rikka-os@1.0.3/img/COA_13.assets/image%20(2).jpg)
 
 ## 直接寻址 (Direct Addressing)
 
@@ -45,7 +45,7 @@ date: 2020-12-27
 
 缺点: 只能提供有限的地址空间
 
-![](https://unpkg.zhimg.com/rikka-os@latest/img/COA_13.assets/8ff6aaf8a8134196fe5e560e0b8b8105b51e453a.jpg)
+![](https://unpkg.zhimg.com/rikka-os@1.0.3/img/COA_13.assets/8ff6aaf8a8134196fe5e560e0b8b8105b51e453a.jpg)
 
 ## 间接寻址(Indirect Addressing)
 
@@ -62,7 +62,7 @@ date: 2020-12-27
 
 评价: 一次能够引用的不同地址数存在限制
 
-![](https://unpkg.zhimg.com/rikka-os@latest/img/COA_13.assets/image (2).jpg)
+![](https://unpkg.zhimg.com/rikka-os@1.0.3/img/COA_13.assets/image (2).jpg)
 
 ### 寄存器寻址 (Register Addressing)
 
@@ -81,7 +81,7 @@ date: 2020-12-27
 
 注意: 只有寄存器得到了有效的使用才有意义
 
-![](https://unpkg.zhimg.com/rikka-os@latest/img/COA_13.assets/image.jpg)
+![](https://unpkg.zhimg.com/rikka-os@1.0.3/img/COA_13.assets/image.jpg)
 
 ### 寄存器间接寻址(Register Indirect Addressing)
 
@@ -96,7 +96,7 @@ date: 2020-12-27
 
 劣势: ?
 
-![](https://unpkg.zhimg.com/rikka-os@latest/img/COA_13.assets/image (1).jpg)
+![](https://unpkg.zhimg.com/rikka-os@1.0.3/img/COA_13.assets/image (1).jpg)
 
 ### 偏移寻址(Displacement Addressing)
 

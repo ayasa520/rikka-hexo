@@ -2,7 +2,6 @@
 title: "Java 基础(四) 容器与泛型"
 tag: 'Java'
 category: 教程
-date: 2020-09-01
 date: 2020-12-27
 ---
 
@@ -10,7 +9,7 @@ date: 2020-12-27
 ## 常用容器
 + 常用 Collections
 
-![](https://unpkg.zhimg.com/rikka-os@latest/img/Java_abc_06.assets/4ac92fdadbf8ac65a744814e500225e6382ebb55.webp)
+![](https://unpkg.zhimg.com/rikka-os@1.0.3/img/Java_abc_06.assets/4ac92fdadbf8ac65a744814e500225e6382ebb55.webp)
 ### 1. ArrayList
 类似于 c++ 中 Vector 的存在
 ```Java

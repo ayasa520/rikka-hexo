@@ -37,5 +37,5 @@ public Fox extends Animal implements Cell {
 }
 ```
 
-![几个类和接口之间的关系](https://unpkg.zhimg.com/rikka-os@latest/img/Java_abc_06.assets/75df19d5fd2d358edc3da30398bb01a43fdd895b.webp "几个类和接口之间的关系")
+![几个类和接口之间的关系](https://unpkg.zhimg.com/rikka-os@1.0.3/img/Java_abc_06.assets/75df19d5fd2d358edc3da30398bb01a43fdd895b.webp "几个类和接口之间的关系")
 其中 Fox 和 Rabbit 都是继承自 Animal, 而 Field 作为容器, 接受的是 Cell, 由于 Java 不支持多继承, 所以将 Cell 做成接口, 在 Fox 和 Rabbit 内部分别实现这个接口, 就能把 FOX 和 Rabbit 赋给 Cell 的变量传给 Field 了.

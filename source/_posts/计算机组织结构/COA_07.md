@@ -36,7 +36,7 @@ date: 2020-12-27
 
 ### 物理特性
 
-<img src="https://unpkg.zhimg.com/rikka-os@latest/img/README.assets/3e4cbe481f534268d23e2afca86fc7c67241ab98.webp" style="zoom:80%;" />
+<img src="https://unpkg.zhimg.com/rikka-os@1.0.3/img/README.assets/3e4cbe481f534268d23e2afca86fc7c67241ab98.webp" style="zoom:80%;" />
 
 + 采用可移动磁头,每面只有一个读-写头.磁头固定在支架上,支架可以伸缩,使磁头可以定位到任意磁道.
 + 任何时候,所有的磁头都定位在磁道上,所有的磁道都是同心圆.
@@ -44,7 +44,7 @@ date: 2020-12-27
 
 ### 读写机制
 
-<img src="https://unpkg.zhimg.com/rikka-os@latest/img/README.assets/e05df25e7ef8c81a42d80706580c0351ca98ce24.webp" style="zoom:80%;" />
+<img src="https://unpkg.zhimg.com/rikka-os@1.0.3/img/README.assets/e05df25e7ef8c81a42d80706580c0351ca98ce24.webp" style="zoom:80%;" />
 
 + 读-写是通过一个叫做**磁头**的导电线圈进行的.
 + 读写期间,磁头静止不动,盘片高速旋转
@@ -78,7 +78,7 @@ date: 2020-12-27
 
 ### 数据组织和格式化
 
-<img src="https://unpkg.zhimg.com/rikka-os@latest/img/README.assets/fca4b3384798d7895a61507b0374a7cd767c1c06.webp" style="zoom:80%;" />
+<img src="https://unpkg.zhimg.com/rikka-os@1.0.3/img/README.assets/fca4b3384798d7895a61507b0374a7cd767c1c06.webp" style="zoom:80%;" />
 
 + 盘上的数据组织呈现为一组同心圆环,圆环被称为**磁道**(track).
 + 数据以**扇区**(sectors)为单位传入或者传出磁盘.通常大小为 512 字节
@@ -91,7 +91,7 @@ date: 2020-12-27
   + 可以用磁道号和扇区号直接寻址.
 + 缺点:
 + 外围长磁道与内圈短磁道存储的数据一样多.
-  <img src="https://unpkg.zhimg.com/rikka-os@latest/img/README.assets/4adceca11695a8e1f1a09320d9146fed93c63b56.webp"/>
+  <img src="https://unpkg.zhimg.com/rikka-os@1.0.3/img/README.assets/4adceca11695a8e1f1a09320d9146fed93c63b56.webp"/>
 
 #### 多重区域记录
 
@@ -101,7 +101,7 @@ date: 2020-12-27
 
 #### 格式化
 
-<img src="https://unpkg.zhimg.com/rikka-os@latest/img/README.assets/8f96c47ff22976a116674aba9e61d84bd1fdb87a.webp"/>
+<img src="https://unpkg.zhimg.com/rikka-os@1.0.3/img/README.assets/8f96c47ff22976a116674aba9e61d84bd1fdb87a.webp"/>
 
 + 磁道必须有一些起始点和辨识每个扇区的起点及终点的方法.
 + 格式: 附加一些仅被磁盘驱动器使用而不被用户存取的额外数据.
@@ -113,7 +113,7 @@ date: 2020-12-27
 
 ### 磁盘性能参数
 
-<img src="https://unpkg.zhimg.com/rikka-os@latest/img/README.assets/dffc832d9baadeeeae29a68f40aed1b8868f484e.jpg">
+<img src="https://unpkg.zhimg.com/rikka-os@1.0.3/img/README.assets/dffc832d9baadeeeae29a68f40aed1b8868f484e.jpg">
 
 #### 寻道时间
 
@@ -161,7 +161,7 @@ $$T = T_S + \frac{1}{2r} + \frac{b}{rN}$$
 
 ### CD 和 CD-ROM
 
-<img src="https://unpkg.zhimg.com/rikka-os@latest/img/README.assets/7fb8c174c901eee86e22e7ba055ac09d454ae5c6.jpg">
+<img src="https://unpkg.zhimg.com/rikka-os@1.0.3/img/README.assets/7fb8c174c901eee86e22e7ba055ac09d454ae5c6.jpg">
 
 + 生产
   + 用精密聚焦的高强度激光制造母盘.
@@ -198,7 +198,7 @@ $$T = T_S + \frac{1}{2r} + \frac{b}{rN}$$
 
 ### DVD
 
-<img src = "https://unpkg.zhimg.com/rikka-os@latest/img/README.assets/d44806d7159cd21cf86706a28d258d64997d5484.webp">
+<img src = "https://unpkg.zhimg.com/rikka-os@1.0.3/img/README.assets/d44806d7159cd21cf86706a28d258d64997d5484.webp">
 
 + 与CD相比 
   + 位组装更加紧密.

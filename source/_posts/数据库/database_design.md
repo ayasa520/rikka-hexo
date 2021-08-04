@@ -2,7 +2,7 @@
 title: "数据库设计"
 tag: '数据库'
 categories: "NJU 笔记"
-cover: https://unpkg.zhimg.com/rikka-os@latest/img/cover/0000.webp
+cover: https://unpkg.zhimg.com/rikka-os@1.0.3/img/cover/0000.webp
 date: 2021-06-12
 ---
 

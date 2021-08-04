@@ -30,7 +30,7 @@ date: 2020-12-27
 
 ## 半导体存储器类型
 
-<img src="https://unpkg.zhimg.com/rikka-os@latest/img/README.assets/3ee2f36bb8d10c7aa8595477a7d7bc38efd76b3d.jpg" alt="半导体存储器类型" style="zoom:80%;" />
+<img src="https://unpkg.zhimg.com/rikka-os@1.0.3/img/README.assets/3ee2f36bb8d10c7aa8595477a7d7bc38efd76b3d.jpg" alt="半导体存储器类型" style="zoom:80%;" />
 
 ## RAM
 
@@ -52,7 +52,7 @@ date: 2020-12-27
 + 需要定期刷新来维持数据,因为电容器有放电的趋势
 + 本质是模拟设备,因为电容可以存储一定范围内的任何电荷值,因此需要使用一个阈值来确定保存的是1还是0.
 
-<img src="https://unpkg.zhimg.com/rikka-os@latest/img/README.assets/3d8110ac2957078f247f7fc6725310962f39e43b.jpg" alt="DRAM" style="zoom:80%;" />
+<img src="https://unpkg.zhimg.com/rikka-os@1.0.3/img/README.assets/3d8110ac2957078f247f7fc6725310962f39e43b.jpg" alt="DRAM" style="zoom:80%;" />
           
 
 ### SRAM
@@ -60,7 +60,7 @@ date: 2020-12-27
 + 用传统的触发逻辑门配置存储数据
   + 处理器中使用了相同的逻辑单元
 + 只要供应电力就能一直保存数据(无需刷新)
-  <img src="https://unpkg.zhimg.com/rikka-os@latest/img/README.assets/83a86f458af7b30ca04aca27502cbe704f02e2be.jpg" alt="SRAM" style="zoom:80%;" />
+  <img src="https://unpkg.zhimg.com/rikka-os@1.0.3/img/README.assets/83a86f458af7b30ca04aca27502cbe704f02e2be.jpg" alt="SRAM" style="zoom:80%;" />
 
 ### DRAM 和 SRAM 之间的比较
 
@@ -89,7 +89,7 @@ date: 2020-12-27
   + 经过一段延时后,DRAM写入或读出数据.在这段时间内,DRAM 执行各种内部功能，如激活行地址线或列地址线的高电容， 读取数据，以及通过输出缓冲将数据输出,而处理器只是等待,降低了性能.
   + SDRAM 与处理器交换数据同步于外部时钟信号,可以以处理器/存储器总线全速运行,而不必等待.
   + 由于SDRAM随系统时钟移动数据,CPU 知道数据何时能够准备好.
-    <img src="https://unpkg.zhimg.com/rikka-os@latest/img/README.assets/pqxwjrSud5agc4m.jpg" alt="SDRAM" style="zoom:67%;" />
+    <img src="https://unpkg.zhimg.com/rikka-os@1.0.3/img/README.assets/pqxwjrSud5agc4m.jpg" alt="SDRAM" style="zoom:67%;" />
 
 
 ### DDR SDRAM
@@ -99,7 +99,7 @@ date: 2020-12-27
 + DDR 技术的更迭
   + 提升操作频率
   + 提升预取缓冲器位数
-    <img src="https://unpkg.zhimg.com/rikka-os@latest/img/README.assets/3308197023c32a8fa15623c9601b5a9039fd8d96.webp" alt="DDR" style="zoom:67%;" />
+    <img src="https://unpkg.zhimg.com/rikka-os@1.0.3/img/README.assets/3308197023c32a8fa15623c9601b5a9039fd8d96.webp" alt="DDR" style="zoom:67%;" />
 
 ## ROM
 
@@ -179,7 +179,7 @@ date: 2020-12-27
   + 字
 + **存储阵列**(Memory array)
   + 由许多存储单元组成(如下图中有$2048\times 2048$个存储单元)
-    <img src="https://unpkg.zhimg.com/rikka-os@latest/img/README.assets/7efdd71a9827da9b5f3a4d6854acdea6ecdc13a3.webp" alt="RAM" style="zoom:67%;" />
+    <img src="https://unpkg.zhimg.com/rikka-os@1.0.3/img/README.assets/7efdd71a9827da9b5f3a4d6854acdea6ecdc13a3.webp" alt="RAM" style="zoom:67%;" />
 
 ## 刷新(Refreshing)
 

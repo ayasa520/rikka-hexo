@@ -26,7 +26,7 @@ date: 2020-12-27
 + <font color=FF0000>Check </font>:当处理器试图读取内存中的一个字的时候,会先检查该字是否在 Cache 中.
 + <font color=00FF00>Hit </font>: 如果确实在, 这个字被传送给处理器.
 + <font color=0000ff>Miss </font>: 否则,由一定数量的字组成的**一块( block )主存中的数据** 被读入 Cache ,然后传给处理器.
-  <img src="https://unpkg.zhimg.com/rikka-os@latest/img/README.assets/1f77f889fe21b537409937de54e977f1790a1262.jpg" style="zoom:67%;" />
+  <img src="https://unpkg.zhimg.com/rikka-os@1.0.3/img/README.assets/1f77f889fe21b537409937de54e977f1790a1262.jpg" style="zoom:67%;" />
 
 + 时间局部性:
   未来将要使用的信息(指令和数据), 可能是现在正在使用的信息.
@@ -41,7 +41,7 @@ date: 2020-12-27
 
 ## 移动"块"而不是字
 
-<img src="https://unpkg.zhimg.com/rikka-os@latest/img/README.assets/10d416f2051d0ff9ed1a4d60861da6582a74da44.webp" style="zoom:67%;" >
+<img src="https://unpkg.zhimg.com/rikka-os@1.0.3/img/README.assets/10d416f2051d0ff9ed1a4d60861da6582a74da44.webp" style="zoom:67%;" >
 
 ## 证明 Cache 机制能够提高性能
 
