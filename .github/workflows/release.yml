@@ -15,6 +15,8 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 14.16.1
+      - run: git config --global user.email "1103670381@qq.com"
+      - run: git config --global user.name "ayasa520"
       - run: npm init -y
       - run: $info
       - run: info=`npm view rikka-hexo`
