@@ -15,9 +15,11 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 14.16.1
-      - run: npm init
-
-      
+      - run: npm init -y
+      - run: $info
+      - run: info=`npm view rikka-hexo`
+      - run: npm version $info
+      - run: npm version patch
     
       # 这里使用了JS-DevTools/npm-publish这个action
       - uses: JS-DevTools/npm-publish@v1
