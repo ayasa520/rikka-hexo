@@ -2,7 +2,7 @@
 
 name: CI
 
-name: NPM-PUBLISH
+name: NPM-PUBLISH——RIKKA
 on:
   push:
     branches:
