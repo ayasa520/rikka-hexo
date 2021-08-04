@@ -21,7 +21,7 @@ Java 中用```try{}```来包裹可能出现异常的代码块, 并用 ```catch(T
 
 ### 流程图
 
-![](https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/Java_abc_06.assets/5f17000f52d00a439d9ffaba08d4bc6a9a1fb3a4.webp)
+![](https://unpkg.zhimg.com/rikka-os@latest/img/Java_abc_06.assets/5f17000f52d00a439d9ffaba08d4bc6a9a1fb3a4.webp)
 
 ## 2. 捕捉到的异常
 

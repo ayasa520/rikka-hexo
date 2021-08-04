@@ -69,7 +69,7 @@ flask run
 {% endtabs %}
 
 默认端口为 5000, 访问 localhost:5000 就可以看到 `Hello, World!`
-![image](https://cdn.jsdelivr.net/gh/ayasa520/img@main/0727e9038331753410eed8905d17ba09.png)
+![image](https://unpkg.zhimg.com/rikka-os@latest/img/0727e9038331753410eed8905d17ba09.png)
 
 要处理 post 请求, 只需要在 `@app.route` 装饰器里添加 `methods=['post']`, 这样这个路由就只能以 post 方式访问. `request.get_data` 可以接收 post 请求的负载.
 
@@ -82,7 +82,7 @@ def hello_world():
 
 点击发送按钮, twikoo 会发起一个 post 请求, Request PayLoad 的内容如下:
 
-![image](https://cdn.jsdelivr.net/gh/ayasa520/img@main/d755b87a44f31fdaed248c9795f21026.png)
+![image](https://unpkg.zhimg.com/rikka-os@latest/img/d755b87a44f31fdaed248c9795f21026.png)
 
 从图可以看出只需要解析其中的 `comment` 字段.
 
@@ -216,7 +216,7 @@ gunicorn -w 2 -b :5000 flask_web:app # 绑定到 5000 端口. flask_web 是 py �
 
 在 https://postwoman.com.cn/ 可以快速地进行测试:
 
-![image](https://cdn.jsdelivr.net/gh/ayasa520/img@main/175859218616ca729eee8d82d46dd594.png)
+![image](https://unpkg.zhimg.com/rikka-os@latest/img/175859218616ca729eee8d82d46dd594.png)
 
 
 ### 更改 twikoo.all.js
@@ -238,7 +238,7 @@ $.ajax({
 ```
 
 如图所示:
-![image](https://cdn.jsdelivr.net/gh/ayasa520/img@main/491e5e1a170b16a5327352522fa2bc1e.png?123)
+![image](https://unpkg.zhimg.com/rikka-os@latest/img/491e5e1a170b16a5327352522fa2bc1e.png?123)
 
 将主题 _config.yml 内 twikoo 的 CDN 修改为更改后的. 所有的工作就完成了
 

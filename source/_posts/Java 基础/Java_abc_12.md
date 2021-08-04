@@ -143,7 +143,7 @@ BufferedWriter writer = new BufferedWriter(new FileWriter("a.txt"));
 
 + Stream/Reader/Scanner 的选择
 
-    ![](https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/Java_abc_06.assets/6af82e48946153dcbf2593e2e75c78e90fd2c556.webp)
+    ![](https://unpkg.zhimg.com/rikka-os@latest/img/Java_abc_06.assets/6af82e48946153dcbf2593e2e75c78e90fd2c556.webp)
 
 ## 5. 对象序列化
 

@@ -33,7 +33,7 @@ date: 2020-12-27
 + 高速率数据传输
 + 高速 I/O 请求
 
-<img src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/README.assets/5c640fb591dd2ac5f4fb02edd077ebdc49f6e700.jpg" style="zoom:67%;" />
+<img src="https://unpkg.zhimg.com/rikka-os@latest/img/README.assets/5c640fb591dd2ac5f4fb02edd077ebdc49f6e700.jpg" style="zoom:67%;" />
 
 与单个的大容量磁盘相比: 
 
@@ -41,7 +41,7 @@ date: 2020-12-27
 
 ​	**缺点**: 若数据跨盘, 只要其中的一块硬盘坏了, 所有的都不能读取.
 
-<img src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/README.assets/b1cdc3c889a42b58f7db4790cdaadd03a1480418.jpg" style="zoom:67%;" />
+<img src="https://unpkg.zhimg.com/rikka-os@latest/img/README.assets/b1cdc3c889a42b58f7db4790cdaadd03a1480418.jpg" style="zoom:67%;" />
 
 ## RAID 1
 
@@ -58,7 +58,7 @@ date: 2020-12-27
 + 若请求的大部分是读取, RAID 1 可以实现较高的 I/O 请求率, 性能几乎是 RAID 0 的两倍.
 + 若大部分是写请求, 性能没有显著的优势.
 
-<img src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/README.assets/cebac2dff8b13ac60b2d07856d55b1d8daee2029.jpg" style="zoom:67%;" />
+<img src="https://unpkg.zhimg.com/rikka-os@latest/img/README.assets/cebac2dff8b13ac60b2d07856d55b1d8daee2029.jpg" style="zoom:67%;" />
 
 
 
@@ -87,7 +87,7 @@ date: 2020-12-27
 + I/O 响应慢,  同时只能处理一个 I/O
 + 成本过高, 因为磁盘可靠性已经得到了极大提高, 不容易出现大量错误
 
-<img src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/README.assets/25f37c6b45723246e13639184a33eda269778c1a.jpg" style="zoom:67%;" />
+<img src="https://unpkg.zhimg.com/rikka-os@latest/img/README.assets/25f37c6b45723246e13639184a33eda269778c1a.jpg" style="zoom:67%;" />
 
 
 
@@ -105,7 +105,7 @@ date: 2020-12-27
   $$
   b_0 = P(b)\ \oplus b_1 \oplus b_2 \oplus b_3
   $$
-  <img src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/README.assets/c14185b2896bf704dbdffd8eb15818f8a4ab3f5d.jpg" style="zoom:67%;" />
+  <img src="https://unpkg.zhimg.com/rikka-os@latest/img/README.assets/c14185b2896bf704dbdffd8eb15818f8a4ab3f5d.jpg" style="zoom:67%;" />
 
   
 
@@ -137,17 +137,17 @@ date: 2020-12-27
 
 + 冗余盘不能同时进行多个 I/O 操作, 成为写的瓶颈.
 
-<img src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/README.assets/82cb8a6c55db2048f293916b87988b3e9e419f7e.jpg" style="zoom:67%;" />
+<img src="https://unpkg.zhimg.com/rikka-os@latest/img/README.assets/82cb8a6c55db2048f293916b87988b3e9e419f7e.jpg" style="zoom:67%;" />
 
 ## RAID 5
 
 与 RAID 4 相类似, 但是没有专门的冗余盘, 而是分散到各个盘, 减少了 I/O 瓶颈.
 
-<img src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/README.assets/baf3a2e585eaa2a9c04472f81049dc165ad591fc.jpg" style="zoom:67%;" />
+<img src="https://unpkg.zhimg.com/rikka-os@latest/img/README.assets/baf3a2e585eaa2a9c04472f81049dc165ad591fc.jpg" style="zoom:67%;" />
 
 ## RAID 6
 
 多一块磁盘, 两种纠错码相互印证.
 
-<img src="https://cdn.jsdelivr.net/gh/ayasa520/ayasa520.github.io/image/README.assets/329222880f592d912c0168da0ee8dd5d85a0c895.jpg" style="zoom:67%;" />
+<img src="https://unpkg.zhimg.com/rikka-os@latest/img/README.assets/329222880f592d912c0168da0ee8dd5d85a0c895.jpg" style="zoom:67%;" />
 
