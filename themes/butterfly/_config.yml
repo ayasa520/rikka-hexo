@@ -887,7 +887,7 @@ inject:
     - '<style type="text/css">.app-refresh{position:fixed;top:-2.2rem;left:0;right:0;z-index:99999;padding:0 1rem;font-size:15px;height:2.2rem;transition:all .3s ease}.app-refresh-wrap{display:flex;color:#fff;height:100%;align-items:center;justify-content:center}.app-refresh-wrap a{color:#fff;text-decoration:underline;cursor:pointer}</style>'
     - <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'">
     - <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-animate@1.0.0/animate.min.css" media="defer" onload="this.media='all'">
-    - <link rel="stylesheet" href="/css/custom.css"  media="defer" onload="this.media='all'">
+    - <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/css/custom.min.css"  media="defer" onload="this.media='all'">
 
   bottom:
     - <script  src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
@@ -916,10 +916,10 @@ inject:
 # 非必要請不要修改
 CDN:
   # main
-  main_css: /css/index.css
+  main_css: https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/css/index.min.css
   jquery: https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js
-  main: /js/main.js
-  utils: /js/utils.js
+  main: https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/js/main.min.js
+  utils: https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/js/utils.min.js
 
   # pjax
   pjax: https://cdn.jsdelivr.net/npm/pjax/pjax.min.js
@@ -1027,6 +1027,6 @@ daodao_plus:
     title: 闲话板砖
     comments: true
   CDN: 
-    js: https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.4/dist/js/main.js # daodaomain.js
-    css: https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.2/dist/css/main.css
+    js: https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.4/dist/js/main.min.js # daodaomain.js
+    css: https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.2/dist/css/main.min.css
 

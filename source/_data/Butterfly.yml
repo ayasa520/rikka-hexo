@@ -879,8 +879,8 @@ CDN:
   sharejs_css: https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css
 
   # search
-  local_search: /js/search/local-search.js
-  algolia_js: /js/search/algolia.js
+  local_search: https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/js/search/local-search.min.js
+  algolia_js: /js/search/algolia.min.js
   algolia_search: https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js
   algolia_search_css: https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css
 
