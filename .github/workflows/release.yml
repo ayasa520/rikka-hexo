@@ -21,7 +21,7 @@ jobs:
       - run: $info
       - run: info=`npm view rikka-hexo version`
       - run: echo $info
-      - run: npm version $info
+      - run: npm version 1.0.1
       - run: npm version patch
     
       # 这里使用了JS-DevTools/npm-publish这个action
