@@ -19,7 +19,7 @@ jobs:
       - run: git config --global user.name "ayasa520"
       - run: npm init -y
       - run: $info
-      - run: info=`npm view rikka-hexo`
+      - run: info=`npm view rikka-hexo version`
       - run: npm version $info
       - run: npm version patch
     
