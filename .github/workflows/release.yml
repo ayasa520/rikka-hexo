@@ -20,6 +20,7 @@ jobs:
       - run: npm init -y
       - run: $info
       - run: info=`npm view rikka-hexo version`
+      - run: echo $info
       - run: npm version $info
       - run: npm version patch
     
