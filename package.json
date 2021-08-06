@@ -47,6 +47,6 @@
     "gulp-terser": "^2.0.1",
     "gulp-uglify": "^3.0.2",
     "install": "^0.13.0",
-    "workbox-build": "^6.1.5"
+    "workbox-build": "^6.2.0"
   }
 }
