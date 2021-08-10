@@ -916,7 +916,7 @@ inject:
 # 非必要請不要修改
 CDN:
   # main
-  main_css: https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/css/index.min.css
+  main_css: https://cdn.jsdelivr.net/npm/rikka-os@1.0.4/css/index.min.css
   jquery: https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js
   main: https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/js/main.min.js
   utils: https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/js/utils.min.js
