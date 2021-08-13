@@ -887,7 +887,7 @@ inject:
     - '<style type="text/css">.app-refresh{position:fixed;top:-2.2rem;left:0;right:0;z-index:99999;padding:0 1rem;font-size:15px;height:2.2rem;transition:all .3s ease}.app-refresh-wrap{display:flex;color:#fff;height:100%;align-items:center;justify-content:center}.app-refresh-wrap a{color:#fff;text-decoration:underline;cursor:pointer}</style>'
     - <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'">
     - <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-animate@1.0.0/animate.min.css" media="defer" onload="this.media='all'">
-    - <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/css/custom.min.css"  media="defer" onload="this.media='all'">
+    - <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/rikka-os@1.0.5/css/custom.min.css"  media="defer" onload="this.media='all'">
 
   bottom:
     - <script  src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
@@ -1028,7 +1028,7 @@ daodao_plus:
     comments: true
   CDN: 
     dd_js: https://cdn.jsdelivr.net/npm/daodaoplus@1.1.1/static/js/index.min.js # daodao-kai 避免单纯的改动也要使 hexo-daodao-plus 重新发布
-    dd_css: https://cdn.jsdelivr.net/npm/daodaoplus@1.1.4/static/css/index.min.css
+    dd_css: https://cdn.jsdelivr.net/npm/daodaoplus@1.1.6/static/css/index.min.css
     js: https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.4/dist/js/main.min.js # hexo-daodao-plus 主要涉及首页 swiper以及前端页面模板
     css: https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.2/dist/css/main.min.css
 
