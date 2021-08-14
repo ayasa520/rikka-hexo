@@ -1,9 +1,9 @@
-const workboxVersion = '6.1.5';
+const workboxVersion = '5.1.3';
 
-importScripts(`/js/workbox-sw.js`);
+importScripts(`https://storage.googleapis.com/workbox-cdn/releases/${workboxVersion}/workbox-sw.js`);
 
 workbox.core.setCacheNameDetails({
-    prefix: "hexo"
+    prefix: "rikka-blog"
 });
 
 workbox.core.skipWaiting();
@@ -91,4 +91,3 @@ workbox.routing.registerRoute(
 );
 
 workbox.googleAnalytics.initialize();
-
