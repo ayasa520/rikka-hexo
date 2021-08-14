@@ -27,7 +27,7 @@ INFO
                             3.8.0-b3                       
   ===================================================================
 INFO  Start processing
-INFO  Files loaded in 9.94 s
+INFO  Files loaded in 9.51 s
 INFO  Generated: css/custom.css
 INFO  Generated: js/daodao_main.js
 INFO  Generated: pwa/manifest.json
@@ -42,9 +42,9 @@ INFO  Generated: categories/index.html
 INFO  Generated: daodao/asd.html
 INFO  Generated: link/index.html
 INFO  Generated: tags/index.html
+INFO  Generated: 404.html
 INFO  Generated: comments/index.html
 INFO  Generated: daodaoplus/index.html
-INFO  Generated: 404.html
 INFO  Generated: archives/index.html
 INFO  Generated: archives/2020/index.html
 INFO  Generated: archives/2020/06/index.html
@@ -90,10 +90,10 @@ INFO  Generated: pwaicons/34.png
 INFO  Generated: pwaicons/48.png
 INFO  Generated: pwaicons/72.png
 INFO  Generated: search/t_search.xml
-INFO  Generated: index.html
-INFO  Generated: search/search.xml
 INFO  Generated: js/search/algolia.js
 INFO  Generated: css/var.css
+INFO  Generated: index.html
+INFO  Generated: search/search.xml
 INFO  Generated: archives/page/2/index.html
 INFO  Generated: archives/2020/page/2/index.html
 INFO  Generated: archives/2020/12/page/2/index.html
@@ -103,7 +103,11 @@ INFO  Generated: tags/Java/page/2/index.html
 INFO  Generated: tags/底层/page/2/index.html
 INFO  Generated: tags/计组/page/2/index.html
 INFO  Generated: pwaicons/192.png
+INFO  Generated: js/utils.js
+INFO  Generated: js/search/local-search.js
 INFO  Generated: js/talk.js
+INFO  Generated: page/2/index.html
+INFO  Generated: img/friend_404.gif
 INFO  Generated: archives/page/3/index.html
 INFO  Generated: archives/page/4/index.html
 INFO  Generated: archives/page/5/index.html
@@ -112,15 +116,11 @@ INFO  Generated: archives/2020/page/4/index.html
 INFO  Generated: archives/2020/12/page/3/index.html
 INFO  Generated: archives/2020/12/page/4/index.html
 INFO  Generated: categories/NJU-笔记/page/3/index.html
-INFO  Generated: js/search/local-search.js
-INFO  Generated: js/utils.js
-INFO  Generated: page/2/index.html
-INFO  Generated: img/friend_404.gif
+INFO  Generated: js/main.js
+INFO  Generated: js/tw_cn.js
 INFO  Generated: page/3/index.html
 INFO  Generated: page/4/index.html
 INFO  Generated: page/5/index.html
-INFO  Generated: js/main.js
-INFO  Generated: js/tw_cn.js
 INFO  Generated: 2021/07/18/daodao-kai/index.html
 INFO  Generated: 2021/06/29/计算机网络/计算机网络_04/index.html
 INFO  Generated: 2021/06/25/jsDelivr/薅羊毛/index.html
@@ -133,12 +133,13 @@ INFO  Generated: 2020/12/27/Java 基础/Java_abc_01/index.html
 INFO  Generated: 2021/06/12/数据库/database_design/index.html
 INFO  Generated: 2021/07/06/auto-update-link/index.html
 INFO  Generated: 2021/05/02/计算机网络/计算机网络_02/index.html
-INFO  Generated: 2020/06/02/CPP/多态/index.html
-INFO  Generated: 2020/12/27/数据科学基础/数据科学基础_01/index.html
-INFO  Generated: 2020/12/27/计算机组织结构/COA_00/index.html
 INFO  Generated: 2020/12/27/Java 基础/Java_abc_02/index.html
 INFO  Generated: 2020/12/27/Java 基础/Java_abc_03/index.html
 INFO  Generated: 2020/12/27/Java 基础/Java_abc_06/index.html
+INFO  Generated: 2020/06/02/CPP/多态/index.html
+INFO  Generated: 2020/12/27/数据科学基础/数据科学基础_01/index.html
+INFO  Generated: 2020/12/27/计算机组织结构/COA_00/index.html
+INFO  Generated: 2020/12/27/Java 基础/Java_abc_05/index.html
 INFO  Generated: 2020/12/27/Java 基础/Java_abc_07/index.html
 INFO  Generated: 2020/12/27/Java 基础/Java_abc_09/index.html
 INFO  Generated: 2020/12/27/Java 基础/Java_abc_10/index.html
@@ -148,7 +149,8 @@ INFO  Generated: 2020/12/27/计算机组织结构/COA_01/index.html
 INFO  Generated: 2020/12/27/计算机组织结构/COA_03/index.html
 INFO  Generated: 2020/12/27/计算机组织结构/COA_08/index.html
 INFO  Generated: 2020/12/27/计算机组织结构/COA_12/index.html
-INFO  Generated: 2020/12/27/Java 基础/Java_abc_05/index.html
+INFO  Generated: 2021/05/02/计算机网络/计算机网络_03/index.html
+INFO  Generated: 2020/12/27/Java 基础/Java_abc_04/index.html
 INFO  Generated: 2020/12/27/Java 基础/Java_abc_08/index.html
 INFO  Generated: 2020/12/27/Java 基础/Java_abc_12/index.html
 INFO  Generated: 2020/12/27/数据科学基础/数据科学基础_02/index.html
@@ -166,22 +168,20 @@ INFO  Generated: 2020/12/27/计算机组织结构/COA_09/index.html
 INFO  Generated: 2020/12/27/计算机组织结构/COA_10/index.html
 INFO  Generated: 2020/12/27/计算机组织结构/COA_11/index.html
 INFO  Generated: 2020/12/27/计算机组织结构/COA_13/index.html
-INFO  Generated: 2021/05/02/计算机网络/计算机网络_03/index.html
-INFO  Generated: 2020/12/27/Java 基础/Java_abc_04/index.html
+INFO  Generated: css/index.css
 INFO  Generated: 2020/12/27/数据科学基础/数据科学基础_06/index.html
 INFO  Generated: 2020/12/27/计算机组织结构/COA_02/index.html
-INFO  Generated: css/index.css
 INFO  Generated: source/search/search.xml
 INFO  Generated: js/twikoo.all.js
-INFO  145 files generated in 4.72 s
-[18:10:52] Using gulpfile /var/hexo_source/hexo/gulpfile.js
-[18:10:52] Starting 'default'...
-[18:10:52] Starting 'generate-service-worker'...
-[18:10:52] Finished 'generate-service-worker' after 151 ms
-[18:10:52] Starting 'compress'...
-[18:10:52] Starting 'minify-html'...
-[18:10:52] Starting 'minify-css'...
-[18:10:52] Starting 'minify-images'...
-[18:10:52] Finished 'minify-images' after 19 ms
-[18:10:53] The following tasks did not complete: default, <parallel>, compress, minify-html, minify-css
-[18:10:53] Did you forget to signal async completion?
+INFO  145 files generated in 4.82 s
+[21:05:50] Using gulpfile /var/hexo_source/hexo/gulpfile.js
+[21:05:50] Starting 'default'...
+[21:05:50] Starting 'generate-service-worker'...
+[21:05:50] Finished 'generate-service-worker' after 140 ms
+[21:05:50] Starting 'compress'...
+[21:05:50] Starting 'minify-html'...
+[21:05:50] Starting 'minify-css'...
+[21:05:50] Starting 'minify-images'...
+[21:05:50] Finished 'minify-images' after 16 ms
+[21:05:50] The following tasks did not complete: default, <parallel>, compress, minify-html, minify-css
+[21:05:50] Did you forget to signal async completion?
