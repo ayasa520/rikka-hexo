@@ -18,23 +18,23 @@ date: 2021-07-18 21:16:30
 
 点击下方"登录"按钮, 在表单中输入用户名和密码
 
-![](https://onedrive.bilibilianime.com/e55T/image/Snipaste_2021-08-03_21-15-27.png)
+![](https://onedrive.bilibilianime.com/ali/image/Snipaste_2021-08-03_21-15-27.png)
 
-![](https://onedrive.bilibilianime.com/e55T/image/Snipaste_2021-08-03_21-16-38.png)
+![](https://onedrive.bilibilianime.com/ali/image/Snipaste_2021-08-03_21-16-38.png)
 
 - 删除
 
 登录后直接点击右侧的 x
 
-![](https://onedrive.bilibilianime.com/e55T/image/Snipaste_2021-08-03_21-09-31.png)
+![](https://onedrive.bilibilianime.com/ali/image/Snipaste_2021-08-03_21-09-31.png)
 
 - 发送
 
 登录后点击下方"新建"按钮, 在文本框中输入内容. 支持 Markdown.
 
-![](https://onedrive.bilibilianime.com/e55T/image/Snipaste_2021-08-03_21-12-27.png)
+![](https://onedrive.bilibilianime.com/ali/image/Snipaste_2021-08-03_21-12-27.png)
 
-![](https://onedrive.bilibilianime.com/e55T/image/Snipaste_2021-08-03_21-12-39.png)
+![](https://onedrive.bilibilianime.com/ali/image/Snipaste_2021-08-03_21-12-39.png)
 
 ## 后端部署
 
@@ -158,19 +158,22 @@ npm install hexo-daodao-plus --save
 
 ```yml
 daodao_plus:
+  priority: 0 
   enable: 
-    page: true
-    card: true
-  priority: 0
+    page: true 
+    card: true 
   filter: 
-  url: https://daodao-kai.vercel.app/
-  path: daodaoplus 
+  url: https://daodao.bilibilianime.com 
+  path: daodaoplus
   front_matter: 
     title: 闲话板砖
     comments: true
   CDN: 
-    js: https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.2/dist/js/main.js
-    css: https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.1.2/dist/css/main.css
+    dd_js: https://cdn.jsdelivr.net/npm/daodaoplus@1.1.7/static/js/index.min.js 
+    dd_css: https://cdn.jsdelivr.net/npm/daodaoplus@1.1.7/static/css/index.min.css
+    js: https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.2.4/dist/js/main.min.js 
+    css: https://cdn.jsdelivr.net/npm/hexo-daodao-plus@2.2.4/dist/css/main.min.css
+
 ```
 
 配置项说明
