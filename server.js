@@ -1,6 +1,6 @@
 var http = require('http')
 var createHandler = require('/www/server/nvm/versions/node/v14.17.1/lib/node_modules/github-webhook-handler') //更换自己gitwebhook目录
-var handler = createHandler({ path: '/', secret: 'cuide5942b' }) 
+var handler = createHandler({ path: '/', secret: '19911019' }) 
 // 上面的 secret 保持和 GitHub 后台设置的一致
 function run_cmd(cmd, args, callback) {
   var spawn = require('child_process').spawn;
