@@ -504,11 +504,75 @@ ADD						 # COPY 文件，自动解压 tar
 WORKDIR /path/to/workdir # 制定当前的工作目录
 VOLUME ["/data"]		 # 设置卷，挂载到容器目录，可以用 -v 修改挂载点
 EXPOSE <port> [<port>/<protocol>...] # 暴露端口，随机映射 -P 会用到此处指定的端口
-CMD <command> 			 # 容器启动时需要运行的命令。外部可替换
-ENTRYPOINT <command>     # 容器启动时要运行的命令。外部可追加
+CMD <command> 			 # 容器启动时运行的命令
+ENTRYPOINT <command>     # 容器启动时运行的命令
 ONBUILD <command>		 # 本次不执行。当该镜像被 FROM 时执行
 ENV <key> <value>
 ENV <key>=<value1> <key2>=<value2> # 指定环境变量
+```
+
+**`CMD` 与 `ENTRYPOINT` 的不同：**
+
+`CMD` 的具体用法：
+
+```dockerfile
+CMD <command> 						# 执行 shell 命令
+CMD ["<command>","<param1>","<param2>",...] # 推荐写法
+CMD ["<param1>","<param2>",...] 	# 该写法是为 ENTRYPOINT 指令指定的程序提供默认参数
+```
+
+dockerfile 中存在多个 `CMD` 时，只会执行最后一个。可以被 `docker run` 的命令行参数**覆盖**。
+
+`ENTRYPOINT` 的具体用法：
+
+```dockerfile
+ENTRYPOINT ["<executeable>","<param1>","<param2>",...]
+```
+
+与 `CMD` 类似，但是不会被 `docker run` 的命令行参数覆盖，而是会将 `docker run` 的命令行参数传给 `ENTRYPOINT` 。可以与 `CMD` 搭配使用。
+
+举个例子：
+
+```dockerfile
+FROM nginx
+
+ENTRYPOINT ["nginx", "-c"]
+CMD ["/etc/nginx/nginx.conf"]
+```
+
+- 不传参运行
+
+  ```bash
+  docker run nginx:test
+  ```
+
+  容器内执行
+
+  ```bash
+  nginx -c /etc/nginx/nginx.conf
+  ```
+
+- 传参执行
+
+  ```bash
+  docker run nginx:test -c /etc/nginx/new.conf
+  ```
+
+  容器内执行
+
+  ```bash
+  nginx -c /etc/nginx/n.conf
+  ```
+
+  
+
+
+
+
+写好 dockerfile 后，用 `docker build` 构建一个叫做 `my-centos` 的镜像：
+
+```
+docker build -f Dockerfile -t my-centos:0.1 .
 ```
 
 
