@@ -20,9 +20,9 @@ hexo.extend.tag.register('psw', function(args) {
   return `<psw>${args.join(' ')}</psw>`;
 });
 hexo.extend.tag.register('blur', function(args) {
-  return `<span>${args.join(' ')}</span>`;
+  return `<span class="blur">${args.join(' ')}</span>`;
 });
 hexo.extend.tag.register('heimu', function(args) {
-  return `<span>${args.join(' ')}</span>`;
+  return `<span class="heimu">${args.join(' ')}</span>`;
 });
 

@@ -1,7 +1,7 @@
 ---
 title: Docker 入门笔记
-date: 2021-08-21 11:02:12
-description: Docker 基础知识。框架来源于 BV1og4y1q7M4，部分内容翻译自 docs.docker.com
+date: 2021-08-21 11:02:13
+description: Docker 基础知识.框架来源于 BV1og4y1q7M4,部分内容翻译自 docs.docker.com
 tag: ['docker']
 categories: "教程"
 ---
@@ -17,7 +17,7 @@ Docker 将环境打包在一起
 - 更便捷的升级和扩缩容
   - 打包镜像, 轻易扩展
 - 更简单的系统运维
-  - 开发测试环境一致
+  - 开发测试环境一致 {% blur 明明在我的电脑上能运行的! %}
 - 更高效的计算资源利用
   - 内核级别虚拟化, 压榨性能
 
@@ -493,20 +493,20 @@ CMD echo "---end---"					# 打印一些信息
 3. \# 表示注释,
 4. 每一个指令都会创建并提交一个新的镜像层. 
 
-### DockerFiler 指令
+### Dockerfiler 指令
 
 ```dockerfile
 FROM ImageName			 # 指定基础镜像
-MAINTAINER <name>		 # 维护者，已过时，应使用 LABEL
+MAINTAINER <name>		 # 维护者,已过时,应使用 LABEL
 RUN <command>			 # 镜像构建的时候运行的命令
-COPY [--chown=<user>:<group>] <src>... <dest>	# 官方推荐使用，类似于 ADD
-ADD						 # COPY 文件，自动解压 tar
+COPY [--chown=<user>:<group>] <src>... <dest>	# 官方推荐使用,类似于 ADD
+ADD						 # COPY 文件,自动解压 tar
 WORKDIR /path/to/workdir # 制定当前的工作目录
-VOLUME ["/data"]		 # 设置卷，挂载到容器目录，可以用 -v 修改挂载点
-EXPOSE <port> [<port>/<protocol>...] # 暴露端口，随机映射 -P 会用到此处指定的端口
+VOLUME ["/data"]		 # 设置卷,挂载到容器目录,可以用 -v 修改挂载点
+EXPOSE <port> [<port>/<protocol>...] # 暴露端口,随机映射 -P 会用到此处指定的端口
 CMD <command> 			 # 容器启动时运行的命令
 ENTRYPOINT <command>     # 容器启动时运行的命令
-ONBUILD <command>		 # 本次不执行。当该镜像被 FROM 时执行
+ONBUILD <command>		 # 本次不执行.当该镜像被 FROM 时执行
 ENV <key> <value>
 ENV <key>=<value1> <key2>=<value2> # 指定环境变量
 ```
@@ -521,7 +521,7 @@ CMD ["<command>","<param1>","<param2>",...] # 推荐写法
 CMD ["<param1>","<param2>",...] 	# 该写法是为 ENTRYPOINT 指令指定的程序提供默认参数
 ```
 
-dockerfile 中存在多个 `CMD` 时，只会执行最后一个。可以被 `docker run` 的命令行参数**覆盖**。
+dockerfile 中存在多个 `CMD` 时,只会执行最后一个.可以被 `docker run` 的命令行参数**覆盖**.
 
 `ENTRYPOINT` 的具体用法：
 
@@ -529,7 +529,7 @@ dockerfile 中存在多个 `CMD` 时，只会执行最后一个。可以被 `doc
 ENTRYPOINT ["<executeable>","<param1>","<param2>",...]
 ```
 
-与 `CMD` 类似，但是不会被 `docker run` 的命令行参数覆盖，而是会将 `docker run` 的命令行参数传给 `ENTRYPOINT` 。可以与 `CMD` 搭配使用。
+与 `CMD` 类似,但是不会被 `docker run` 的命令行参数覆盖,而是会将 `docker run` 的命令行参数传给 `ENTRYPOINT` .可以与 `CMD` 搭配使用.
 
 举个例子：
 
@@ -567,9 +567,7 @@ CMD ["/etc/nginx/nginx.conf"]
   
 
 
-
-
-写好 dockerfile 后，用 `docker build` 构建一个叫做 `my-centos` 的镜像：
+写好 dockerfile 后,用 `docker build` 构建一个叫做 `my-centos` 的镜像：
 
 ```
 docker build -f Dockerfile -t my-centos:0.1 .
@@ -577,11 +575,39 @@ docker build -f Dockerfile -t my-centos:0.1 .
 
 
 
+一个具体的 Dockerfile
+
+```dockerfile
+FROM centos
+MAINTAINER rikka@rikka.com
+
+COPY README.md /usr/local/README.md
+
+ADD ./jdk-8u301-linux-x64.tar.gz /usr/local/
+ADD ./apache-tomcat-9.0.52.tar.gz /usr/local/
 
 
+RUN yum -y install vim
 
+ENV MYPATH /usr/local
+ENV JAVA_HOME /usr/local/jdk1.8.0_301
+ENV CATALINA_HOME /usr/local/apache-tomcat-9.0.52
+ENV CATALINA_BASE /usr/local/apache-tomcat-9.0.52
+ENV PATH $PATH:$JAVA_HOME/bin:$CATALINA_HOME/lib:$CATALINA_HOME/bin
 
+WORKDIR $MYPATH
 
+EXPOSE 8080
+
+CMD $MYPATH/apache-tomcat-9.0.52/bin/startup.sh && tail -F $MYPATH/apache-tomcat-9.0.52/logs/catalina.out
+```
+
+```bash
+docker build -t mytomcat:0.1			# 构建镜像
+docker run -d -p 8080:8080 --name tomcat -v test:/usr/local/ apache-tomcat-9.0.52/webapps/test mytomcat:0.1	       # 运行容器
+```
+
+Docker 自动创建一个叫做 `test` 的 volume 挂载到容器内的 `test` 目录, 在 `test` 内放入 web 项目即可通过 ip:8080 访问.
 
 
 
