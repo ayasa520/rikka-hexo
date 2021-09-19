@@ -4,6 +4,7 @@ date: 2021-08-21 11:02:13
 description: Docker 基础知识.框架来源于 BV1og4y1q7M4,部分内容翻译自 docs.docker.com
 tag: ['docker']
 categories: "教程"
+
 ---
 
 ## Docker 概述
@@ -56,64 +57,65 @@ docker 命令 --help
 
 1. docker images
 
-    ```bash
-    ❯ docker images
-    REPOSITORY                TAG             IMAGE ID       CREATED        SIZE
-    hagb/docker-easyconnect   cli             f3c06cd4a55c   4 weeks ago    117MB
-    hagb/docker-easyconnect   vncless-7.6.3   e9d950d9c373   4 weeks ago    373MB
-    hello-world               latest          d1165f221234   5 months ago   13.3kB
-    ```
-	```bash
-    # 可选项
-        -a, --all # 显示所有的镜像
-        -q, --quiet # 只显示 id
-    ```
-    
-    
-    
+   ```bash
+   ❯ docker images
+   REPOSITORY                TAG             IMAGE ID       CREATED        SIZE
+   hagb/docker-easyconnect   cli             f3c06cd4a55c   4 weeks ago    117MB
+   hagb/docker-easyconnect   vncless-7.6.3   e9d950d9c373   4 weeks ago    373MB
+   hello-world               latest          d1165f221234   5 months ago   13.3kB
+   ```
+
+   ```bash
+   # 可选项
+       -a, --all # 显示所有的镜像
+       -q, --quiet # 只显示 id
+   ```
+
+   
+
 2. docker search 搜索镜像
 
-    ```bash
-    --filter # 过滤
-    ```
+   ```bash
+   --filter # 过滤
+   ```
 
-    
+   
 
 3. docker pull 下载镜像
 
-    ```bash
-    # docker pull 镜像名[:tag] 默认下载最新版
-    ❯ docker pull mysql:5.7
-    5.7: Pulling from library/mysql
-    e1acddbe380c: Pull complete 		# 分层次下载, 如果已经存在则不需要重新下载, 节省内存
-    bed879327370: Pull complete 
-    03285f80bafd: Pull complete 
-    ccc17412a00a: Pull complete 
-    1f556ecc09d1: Pull complete 
-    adc5528e468d: Pull complete 
-    1afc286d5d53: Pull complete 
-    4d2d9261e3ad: Pull complete 
-    ac609d7b31f8: Pull complete 
-    53ee1339bc3a: Pull complete 
-    b0c0a831a707: Pull complete 
-    Digest: sha256:7cf2e7d7ff876f93c8601406a5aa17484e6623875e64e7acc71432ad8e0a3d7e
-    Status: Downloaded newer image for mysql:5.7
-    docker.io/library/mysql:5.7			# 真实地址
-    ```
+   ```bash
+   # docker pull 镜像名[:tag] 默认下载最新版
+   ❯ docker pull mysql:5.7
+   5.7: Pulling from library/mysql
+   e1acddbe380c: Pull complete 		# 分层次下载, 如果已经存在则不需要重新下载, 节省内存
+   bed879327370: Pull complete 
+   03285f80bafd: Pull complete 
+   ccc17412a00a: Pull complete 
+   1f556ecc09d1: Pull complete 
+   adc5528e468d: Pull complete 
+   1afc286d5d53: Pull complete 
+   4d2d9261e3ad: Pull complete 
+   ac609d7b31f8: Pull complete 
+   53ee1339bc3a: Pull complete 
+   b0c0a831a707: Pull complete 
+   Digest: sha256:7cf2e7d7ff876f93c8601406a5aa17484e6623875e64e7acc71432ad8e0a3d7e
+   Status: Downloaded newer image for mysql:5.7
+   docker.io/library/mysql:5.7			# 真实地址
+   ```
 
 4. docker rmi 删除
 
-    ```bash
-    docker rmi -f $(docker images -aq) 	# 删除所有镜像
-    ```
+   ```bash
+   docker rmi -f $(docker images -aq) 	# 删除所有镜像
+   ```
 
 5. docker commit 提交容器
 
-    ```bash
-    docker commit -m="message" -a="author" CONTAINER NAME[:TAG] # 将容器保存为新的副本
-    ```
+   ```bash
+   docker commit -m="message" -a="author" CONTAINER NAME[:TAG] # 将容器保存为新的副本
+   ```
 
-    
+   
 
 ### 容器命令 
 
@@ -126,18 +128,7 @@ docker pull centos
 1. 新建容器并启动
 
    ```bash
-   docker run [可选] image
-   
-   # 参数说明
-   --name="Name"	# 容器名字
-   -d				# 后台方式运行. 如果没有前台进程, docker 会自动停止后台应用
-   -it				# 使用交互方式运行, 进入容器查看内容
-   -p				# 指定容器的端口 
-   	-p ip 主机端口:容器端口
-   	-p 主机端口:容器端口(常用)
-   	-p 容器端口
-   	容器端口
-   -P				# 随机指定端口
+   docker run [可选] image# 参数说明--name="Name"	# 容器名字-d				# 后台方式运行. 如果没有前台进程, docker 会自动停止后台应用-it				# 使用交互方式运行, 进入容器查看内容-p				# 指定容器的端口 	-p ip 主机端口:容器端口	-p 主机端口:容器端口(常用)	-p 容器端口	容器端口-P				# 随机指定端口
    ```
 
    举例:
@@ -147,11 +138,7 @@ docker pull centos
 2. 列出所有运行的容器
 
    ```bash
-   docker ps [OPTIONS]
-   Options: 
-   	-a: 列出所有容器(默认是正在运行的)
-   	-n=?: 显示最近创建的容器
-   	-q: 只显示容器的编号
+   docker ps [OPTIONS]Options: 	-a: 列出所有容器(默认是正在运行的)	-n=?: 显示最近创建的容器	-q: 只显示容器的编号
    ```
 
    
@@ -159,25 +146,19 @@ docker pull centos
 3. 退出容器
 
    ```bash
-   exit # 停止运行并退出容器
-   Ctrl+P+Q # 不停止退出容器
+   exit # 停止运行并退出容器Ctrl+P+Q # 不停止退出容器
    ```
 
 4. 删除容器
 
    ```bash
-   docker rm 容器id
-   docker rm -f $(docker ps -aq)
-   docker ps -aq | xargs docker rm
+   docker rm 容器iddocker rm -f $(docker ps -aq)docker ps -aq | xargs docker rm
    ```
 
 5. 启动和停止容器
 
    ```bash
-   docker start id
-   docker restart id
-   docker stop id
-   docker kill id
+   docker start iddocker restart iddocker stop iddocker kill id
    ```
 
    
@@ -185,47 +166,37 @@ docker pull centos
 6. 其他
 
    ```bash
-   docker exec -it ID /bin/bash 	# 进入正在运行的容器, 开启新的终端
-   docker attach ID				# 进入正在执行的终端, 不开启新的
-   docker logs	ID	 			 	# 查看日志
-   docker top ID 				 	# 查看容器内进程 
-   docker inspect ID   			# 查看容器元数据
-   docker cp ID:SRC_PATH DEST_PATH # 拷贝文件
+   docker exec -it ID /bin/bash 	# 进入正在运行的容器, 开启新的终端docker attach ID				# 进入正在执行的终端, 不开启新的docker logs	ID	 			 	# 查看日志docker top ID 				 	# 查看容器内进程 docker inspect ID   			# 查看容器元数据docker cp ID:SRC_PATH DEST_PATH # 拷贝文件
    ```
-   
+
    ### 练习
-   
+
    1. 部署 nginx
-   
+
       ```bash
-      docker pull nginx 
-      docker run -d --name nginx01 -p 3344:80 nginx	# 后台运行, 80端口映射到宿主机 3344 端口
-      docker exec -it nginx01 /bin/bash 				# 进入容器内部
+      docker pull nginx docker run -d --name nginx01 -p 3344:80 nginx	# 后台运行, 80端口映射到宿主机 3344 端口docker exec -it nginx01 /bin/bash 				# 进入容器内部
       ```
-   
+
       每次改配置文件, 都要进如容器很麻烦——使用<a href="#%E5%AE%B9%E5%99%A8%E6%95%B0%E6%8D%AE%E5%8D%B7">**数据卷** </a>
-   
+
    2. 部署 tomcat
-   
+
       ```bash
       docker run -it --name   tomcat01 -p 3355:8080  tomcat 
       ```
-   
+
       从宿主机的 3355 端口访问可以看到
-   
+
       ![image-20210823212242546](https://onedrive.bilibilianime.com/ali/image/image-20210823212242546.png)
-   
+
       3. 部署 elasticsearch + kibana
-   
+
          ```bash
-         docker run -d --name es -p 9200:9200 -p 9300:9300  -e "discovery.types=single-node" -e ES_JAVA_OPS="-Xms64m -Xmx512m" elasticsearch
-         Unable to find image 'elasticsearch:latest' locally # 限制最小最大内存
-         docker stats # 查看 CPU 和内存占用
-         
+         docker run -d --name es -p 9200:9200 -p 9300:9300  -e "discovery.types=single-node" -e ES_JAVA_OPS="-Xms64m -Xmx512m" elasticsearchUnable to find image 'elasticsearch:latest' locally # 限制最小最大内存docker stats # 查看 CPU 和内存占用
          ```
-   
+
          两个服务部署在两个容器, 如何对接?
-   
+
          
 
 ### 可视化
@@ -331,16 +302,7 @@ docker volume inspect my-vol
 ```
 
 ```
-[
-    {
-        "Driver": "local",
-        "Labels": {},
-        "Mountpoint": "/var/lib/docker/volumes/my-vol/_data",
-        "Name": "my-vol",
-        "Options": {},
-        "Scope": "local"
-    }
-]
+[    {        "Driver": "local",        "Labels": {},        "Mountpoint": "/var/lib/docker/volumes/my-vol/_data",        "Name": "my-vol",        "Options": {},        "Scope": "local"    }]
 ```
 
 **删除一个卷:**
@@ -357,39 +319,26 @@ docker volume rm my-vol
 
 {% tabs code %}
 <!-- tab --mount-->
+
 ```bash
-docker run -d \
-  --name devtest \
-  --mount source=myvol2,target=/app \
-  nginx:latest
+docker run -d \  --name devtest \  --mount source=myvol2,target=/app \  nginx:latest
 ```
+
 <!-- endtab -->
 
 <!-- tab -v-->
+
 ```bash
-docker run -d \
-  --name devtest \
-  -v myvol2:/app \
-  nginx:latest
+docker run -d \  --name devtest \  -v myvol2:/app \  nginx:latest
 ```
+
 <!-- endtab -->
 {% endtabs %}
 
 使用 `docker inspect devtest` 来确认卷被正确地创建和挂载了, 看下面的 `Mounts` 部分:
 
 ```bash
-"Mounts": [
-    {
-        "Type": "volume",
-        "Name": "myvol2",
-        "Source": "/var/lib/docker/volumes/myvol2/_data",
-        "Destination": "/app",
-        "Driver": "local",
-        "Mode": "",
-        "RW": true,
-        "Propagation": ""
-    }
-]
+"Mounts": [    {        "Type": "volume",        "Name": "myvol2",        "Source": "/var/lib/docker/volumes/myvol2/_data",        "Destination": "/app",        "Driver": "local",        "Mode": "",        "RW": true,        "Propagation": ""    }]
 ```
 
 这表明挂载的是一个卷, 显示了正确的源和目标, 并且挂载是可读可写的.
@@ -397,11 +346,7 @@ docker run -d \
 停止容器并移除卷. 移除卷是单独的步骤:
 
 ```bash
-docker container stop devtest
-
-docker container rm devtest
-
-docker volume rm myvol2
+docker container stop devtestdocker container rm devtestdocker volume rm myvol2
 ```
 
 ### 使用只读卷
@@ -411,49 +356,32 @@ docker volume rm myvol2
 
 {% tabs code %}
 <!-- tab --mount-->
+
 ```bash
-docker run -d \
-  --name=nginxtest \
-  --mount source=nginx-vol,destination=/usr/share/nginx/html,readonly \
-  nginx:latest
+docker run -d \  --name=nginxtest \  --mount source=nginx-vol,destination=/usr/share/nginx/html,readonly \  nginx:latest
 ```
+
 <!-- endtab -->
 
 <!-- tab -v-->
+
 ```bash
-docker run -d \
-  --name=nginxtest \
-  -v nginx-vol:/usr/share/nginx/html:ro \
-  nginx:latest
+docker run -d \  --name=nginxtest \  -v nginx-vol:/usr/share/nginx/html:ro \  nginx:latest
 ```
+
 <!-- endtab -->
 {% endtabs %}
 
 查看元数据 `docker inspect nginxtes` 的 `Mounts` 部分:
 
 ```
-"Mounts": [
-    {
-        "Type": "volume",
-        "Name": "nginx-vol",
-        "Source": "/var/lib/docker/volumes/nginx-vol/_data",
-        "Destination": "/usr/share/nginx/html",
-        "Driver": "local",
-        "Mode": "",
-        "RW": false,
-        "Propagation": ""
-    }
-],
+"Mounts": [    {        "Type": "volume",        "Name": "nginx-vol",        "Source": "/var/lib/docker/volumes/nginx-vol/_data",        "Destination": "/usr/share/nginx/html",        "Driver": "local",        "Mode": "",        "RW": false,        "Propagation": ""    }],
 ```
 
 停止容器并移除卷:
 
 ```bash
-docker container stop nginxtest
-
-docker container rm nginxtest
-
-docker volume rm nginx-vol
+docker container stop nginxtestdocker container rm nginxtestdocker volume rm nginx-vol
 ```
 
 ### 数据卷容器
@@ -461,9 +389,7 @@ docker volume rm nginx-vol
 通过数据卷容器来共享数据. `--volumes-from` 可以从其他已经挂载卷的容器挂载数据卷, 但不可对挂载位置, 读写权限进行修改. 同一个容器可以指定多个 `--volumes-from`.
 
 ```bash
-docker run -d -v /app --name test nginx		# 创建数据卷容器
-
-docker run -d --volumes-from test --name test01 nginx	
+docker run -d -v /app --name test nginx		# 创建数据卷容器docker run -d --volumes-from test --name test01 nginx	
 ```
 
 ### 备份, 恢复或迁移数据卷
@@ -479,11 +405,7 @@ Dockerfile 是用来构建 docker 镜像的构建文件, 里面写脚本. 每个
 例子:
 
 ```bash
-FROM centos
-
-VOLUME ["/volume01","/volume02"]		#  创建两个匿名的数据卷挂载到 volume01 和 volume0
-
-CMD echo "---end---"					# 打印一些信息
+FROM centosVOLUME ["/volume01","/volume02"]		#  创建两个匿名的数据卷挂载到 volume01 和 volume0CMD echo "---end---"					# 打印一些信息
 ```
 
 ### 基础知识
@@ -496,19 +418,7 @@ CMD echo "---end---"					# 打印一些信息
 ### Dockerfiler 指令
 
 ```dockerfile
-FROM ImageName			 # 指定基础镜像
-MAINTAINER <name>		 # 维护者,已过时,应使用 LABEL
-RUN <command>			 # 镜像构建的时候运行的命令
-COPY [--chown=<user>:<group>] <src>... <dest>	# 官方推荐使用,类似于 ADD
-ADD						 # COPY 文件,自动解压 tar
-WORKDIR /path/to/workdir # 制定当前的工作目录
-VOLUME ["/data"]		 # 设置卷,挂载到容器目录,可以用 -v 修改挂载点
-EXPOSE <port> [<port>/<protocol>...] # 暴露端口,随机映射 -P 会用到此处指定的端口
-CMD <command> 			 # 容器启动时运行的命令
-ENTRYPOINT <command>     # 容器启动时运行的命令
-ONBUILD <command>		 # 本次不执行.当该镜像被 FROM 时执行
-ENV <key> <value>
-ENV <key>=<value1> <key2>=<value2> # 指定环境变量
+FROM ImageName			 # 指定基础镜像MAINTAINER <name>		 # 维护者,已过时,应使用 LABELRUN <command>			 # 镜像构建的时候运行的命令COPY [--chown=<user>:<group>] <src>... <dest>	# 官方推荐使用,类似于 ADDADD						 # COPY 文件,自动解压 tarWORKDIR /path/to/workdir # 制定当前的工作目录VOLUME ["/data"]		 # 设置卷,挂载到容器目录,可以用 -v 修改挂载点EXPOSE <port> [<port>/<protocol>...] # 暴露端口,随机映射 -P 会用到此处指定的端口CMD <command> 			 # 容器启动时运行的命令ENTRYPOINT <command>     # 容器启动时运行的命令ONBUILD <command>		 # 本次不执行.当该镜像被 FROM 时执行ENV <key> <value>ENV <key>=<value1> <key2>=<value2> # 指定环境变量
 ```
 
 **`CMD` 与 `ENTRYPOINT` 的不同：**
@@ -516,9 +426,7 @@ ENV <key>=<value1> <key2>=<value2> # 指定环境变量
 `CMD` 的具体用法：
 
 ```dockerfile
-CMD <command> 						# 执行 shell 命令
-CMD ["<command>","<param1>","<param2>",...] # 推荐写法
-CMD ["<param1>","<param2>",...] 	# 该写法是为 ENTRYPOINT 指令指定的程序提供默认参数
+CMD <command> 						# 执行 shell 命令CMD ["<command>","<param1>","<param2>",...] # 推荐写法CMD ["<param1>","<param2>",...] 	# 该写法是为 ENTRYPOINT 指令指定的程序提供默认参数
 ```
 
 dockerfile 中存在多个 `CMD` 时,只会执行最后一个.可以被 `docker run` 的命令行参数**覆盖**.
@@ -534,10 +442,7 @@ ENTRYPOINT ["<executeable>","<param1>","<param2>",...]
 举个例子：
 
 ```dockerfile
-FROM nginx
-
-ENTRYPOINT ["nginx", "-c"]
-CMD ["/etc/nginx/nginx.conf"]
+FROM nginxENTRYPOINT ["nginx", "-c"]CMD ["/etc/nginx/nginx.conf"]
 ```
 
 - 不传参运行
@@ -578,38 +483,101 @@ docker build -f Dockerfile -t my-centos:0.1 .
 一个具体的 Dockerfile
 
 ```dockerfile
-FROM centos
-MAINTAINER rikka@rikka.com
-
-COPY README.md /usr/local/README.md
-
-ADD ./jdk-8u301-linux-x64.tar.gz /usr/local/
-ADD ./apache-tomcat-9.0.52.tar.gz /usr/local/
-
-
-RUN yum -y install vim
-
-ENV MYPATH /usr/local
-ENV JAVA_HOME /usr/local/jdk1.8.0_301
-ENV CATALINA_HOME /usr/local/apache-tomcat-9.0.52
-ENV CATALINA_BASE /usr/local/apache-tomcat-9.0.52
-ENV PATH $PATH:$JAVA_HOME/bin:$CATALINA_HOME/lib:$CATALINA_HOME/bin
-
-WORKDIR $MYPATH
-
-EXPOSE 8080
-
-CMD $MYPATH/apache-tomcat-9.0.52/bin/startup.sh && tail -F $MYPATH/apache-tomcat-9.0.52/logs/catalina.out
+FROM centosMAINTAINER rikka@rikka.comCOPY README.md /usr/local/README.mdADD ./jdk-8u301-linux-x64.tar.gz /usr/local/ADD ./apache-tomcat-9.0.52.tar.gz /usr/local/RUN yum -y install vimENV MYPATH /usr/localENV JAVA_HOME /usr/local/jdk1.8.0_301ENV CATALINA_HOME /usr/local/apache-tomcat-9.0.52ENV CATALINA_BASE /usr/local/apache-tomcat-9.0.52ENV PATH $PATH:$JAVA_HOME/bin:$CATALINA_HOME/lib:$CATALINA_HOME/binWORKDIR $MYPATHEXPOSE 8080CMD $MYPATH/apache-tomcat-9.0.52/bin/startup.sh && tail -F $MYPATH/apache-tomcat-9.0.52/logs/catalina.out
 ```
 
 ```bash
-docker build -t mytomcat:0.1			# 构建镜像
-docker run -d -p 8080:8080 --name tomcat -v test:/usr/local/ apache-tomcat-9.0.52/webapps/test mytomcat:0.1	       # 运行容器
+docker build -t mytomcat:0.1			# 构建镜像docker run -d -p 8080:8080 --name tomcat -v test:/usr/local/ apache-tomcat-9.0.52/webapps/test mytomcat:0.1	       # 运行容器
 ```
 
 Docker 自动创建一个叫做 `test` 的 volume 挂载到容器内的 `test` 目录, 在 `test` 内放入 web 项目即可通过 ip:8080 访问.
 
+## Docker 小结
+
+![查看源图像](https://static001.geekbang.org/infoq/73/731fc8043e0f71aab7851ad87427bdd6.png)
 
 
 
+## Docker 网络
+
+问题：宿主机是否可以 ping 通容器内 eth0 的 ip？容器之间能 ping 通吗
+
+答：都可以, 试一下就知道
+
+每启动一个容器, docker 就会给容器分配一个 ip, 只要安装了 docker, 就会有一个网卡 docker0 桥接模式, 使用 veth-pair 技术.
+
+>veth-pair 是成对出现的一种虚拟网络设备接口, 一端连着网络协议栈, 一端彼此相连. 它充当一个桥梁, 连接各种虚拟设备
+>
+>![http://blog.daocloud.io/wp-content/uploads/2017/02/e5.png](http://blog.daocloud.io/wp-content/uploads/2017/02/e5.png "http://blog.daocloud.io/wp-content/uploads/2017/02/e5.png")
+>
+>{% blur 我知道这里说得很简略, 但现在不是深入了解 docker 网络的时候, 仅仅是做个了解 %}
+
+![image-20210913223445243](/home/rikka/.config/Typora/typora-user-images/image-20210913223445243.png)
+
+
+
+**过时的**: 在 `docker run` 的时候指定 `--link`, 即可将指定容器的容器名及其 ip 写入新容器的 hosts, 这样 `ping 容器名` 就可以 ping 通.
+
+现在应该使用 **自定义网络**
+
+### 自定义网络
+
+- 查看所有的 docker 网络
+
+  ```bash
+  dockr network ls
+  ```
+
+  ![image-20210919145853620](/home/rikka/.config/Typora/typora-user-images/image-20210919145853620.png)
+
+  
+
+  | 网络模式  |                        |
+  | :-------: | :--------------------: |
+  |  bridge   |     桥接模式(默认)     |
+  |   none    |       不配置网络       |
+  |   host    |     和主机共享网络     |
+  | container | 容器内网络联通(不常用) |
+
+
+​    
+
+- 创建一个网络, 桥接模式, 用 16 位表示主机号, 默认网关 192.168.0.1, 名称 mynet
+
+  ```bash
+  docker network create --driver bridge --subnet 192.168.0.0/24 --gateway 192.168.0.1 mynet
+  ```
+
+- inpect
+
+  ```bash
+  docker network inspect mynet
+  ```
+
+  ![image-20210919184556447](/home/rikka/.config/Typora/typora-user-images/image-20210919184556447.png)
+
+- 将服务放在自己的网络中
+
+  ```bash
+  docker run -d -P --name tomcat-mynet01 --net mynet tomcat
+  ```
+
+  好处: 
+
+  - 使用自定义网络在容器内可以直接 ping 另一个容器名
+  - 隔离不同服务使用的子网
+
+- 网络连通
+
+  刚才创建了一个 mynet 网络, 使用 mynet 的容器是 ping 不通使用 docker0 的容器的. 所以需要用到 connet.
+
+  如, 将 docker0 上的容器 tomcat01连接到 mynet:
+
+  ```bash
+  docker network connect mynet tomcat01
+  ```
+
+  此后, 容器 tomcat01 就拥有了两个不同的 ip 地址. 
+
+  
 
