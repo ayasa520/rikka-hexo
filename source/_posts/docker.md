@@ -704,7 +704,7 @@ Docker 自动创建一个叫做 `test` 的 volume 挂载到容器内的 `test` �
   docker network connect mynet tomcat01
   ```
 
-  此后, 容器 tomcat01 同时有两个 ip
+  此后, 容器 tomcat01 同时有两个 ip.
 
   
 
