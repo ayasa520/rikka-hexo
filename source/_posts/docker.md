@@ -128,7 +128,18 @@ docker pull centos
 1. 新建容器并启动
 
    ```bash
-   docker run [可选] image# 参数说明--name="Name"	# 容器名字-d				# 后台方式运行. 如果没有前台进程, docker 会自动停止后台应用-it				# 使用交互方式运行, 进入容器查看内容-p				# 指定容器的端口 	-p ip 主机端口:容器端口	-p 主机端口:容器端口(常用)	-p 容器端口	容器端口-P				# 随机指定端口
+   docker run [可选] image
+   
+   # 参数说明
+   --name="Name"	# 容器名字
+   -d				# 后台方式运行. 如果没有前台进程, docker 会自动停止后台应用
+   -it				# 使用交互方式运行, 进入容器查看内容
+   -p				# 指定容器的端口 
+   	-p ip 主机端口:容器端口
+   	-p 主机端口:容器端口(常用)
+   	-p 容器端口
+   	容器端口
+   -P				# 随机指定端口
    ```
 
    举例:
@@ -138,7 +149,11 @@ docker pull centos
 2. 列出所有运行的容器
 
    ```bash
-   docker ps [OPTIONS]Options: 	-a: 列出所有容器(默认是正在运行的)	-n=?: 显示最近创建的容器	-q: 只显示容器的编号
+   docker ps [OPTIONS]
+   Options: 
+   	-a: 列出所有容器(默认是正在运行的)
+   	-n=?: 显示最近创建的容器
+   	-q: 只显示容器的编号
    ```
 
    
@@ -146,19 +161,25 @@ docker pull centos
 3. 退出容器
 
    ```bash
-   exit # 停止运行并退出容器Ctrl+P+Q # 不停止退出容器
+   exit # 停止运行并退出容器
+   Ctrl+P+Q # 不停止退出容器
    ```
 
 4. 删除容器
 
    ```bash
-   docker rm 容器iddocker rm -f $(docker ps -aq)docker ps -aq | xargs docker rm
+   docker rm 容器id
+   docker rm -f $(docker ps -aq)
+   docker ps -aq | xargs docker rm
    ```
 
 5. 启动和停止容器
 
    ```bash
-   docker start iddocker restart iddocker stop iddocker kill id
+   docker start id
+   docker restart id
+   docker stop id
+   docker kill id
    ```
 
    
@@ -166,7 +187,12 @@ docker pull centos
 6. 其他
 
    ```bash
-   docker exec -it ID /bin/bash 	# 进入正在运行的容器, 开启新的终端docker attach ID				# 进入正在执行的终端, 不开启新的docker logs	ID	 			 	# 查看日志docker top ID 				 	# 查看容器内进程 docker inspect ID   			# 查看容器元数据docker cp ID:SRC_PATH DEST_PATH # 拷贝文件
+   docker exec -it ID /bin/bash 	# 进入正在运行的容器, 开启新的终端
+   docker attach ID				# 进入正在执行的终端, 不开启新的
+   docker logs	ID	 			 	# 查看日志
+   docker top ID 				 	# 查看容器内进程 
+   docker inspect ID   			# 查看容器元数据
+   docker cp ID:SRC_PATH DEST_PATH # 拷贝文件
    ```
 
    ### 练习
@@ -174,7 +200,9 @@ docker pull centos
    1. 部署 nginx
 
       ```bash
-      docker pull nginx docker run -d --name nginx01 -p 3344:80 nginx	# 后台运行, 80端口映射到宿主机 3344 端口docker exec -it nginx01 /bin/bash 				# 进入容器内部
+      docker pull nginx 
+      docker run -d --name nginx01 -p 3344:80 nginx	# 后台运行, 80端口映射到宿主机 3344 端口
+      docker exec -it nginx01 /bin/bash 				# 进入容器内部
       ```
 
       每次改配置文件, 都要进如容器很麻烦——使用<a href="#%E5%AE%B9%E5%99%A8%E6%95%B0%E6%8D%AE%E5%8D%B7">**数据卷** </a>
@@ -192,7 +220,10 @@ docker pull centos
       3. 部署 elasticsearch + kibana
 
          ```bash
-         docker run -d --name es -p 9200:9200 -p 9300:9300  -e "discovery.types=single-node" -e ES_JAVA_OPS="-Xms64m -Xmx512m" elasticsearchUnable to find image 'elasticsearch:latest' locally # 限制最小最大内存docker stats # 查看 CPU 和内存占用
+         docker run -d --name es -p 9200:9200 -p 9300:9300  -e "discovery.types=single-node" -e ES_JAVA_OPS="-Xms64m -Xmx512m" elasticsearch
+         Unable to find image 'elasticsearch:latest' locally # 限制最小最大内存
+         docker stats # 查看 CPU 和内存占用
+         
          ```
 
          两个服务部署在两个容器, 如何对接?
@@ -302,7 +333,16 @@ docker volume inspect my-vol
 ```
 
 ```
-[    {        "Driver": "local",        "Labels": {},        "Mountpoint": "/var/lib/docker/volumes/my-vol/_data",        "Name": "my-vol",        "Options": {},        "Scope": "local"    }]
+[
+    {
+        "Driver": "local",
+        "Labels": {},
+        "Mountpoint": "/var/lib/docker/volumes/my-vol/_data",
+        "Name": "my-vol",
+        "Options": {},
+        "Scope": "local"
+    }
+]
 ```
 
 **删除一个卷:**
@@ -321,7 +361,10 @@ docker volume rm my-vol
 <!-- tab --mount-->
 
 ```bash
-docker run -d \  --name devtest \  --mount source=myvol2,target=/app \  nginx:latest
+docker run -d \
+  --name devtest \
+  --mount source=myvol2,target=/app \
+  nginx:latest
 ```
 
 <!-- endtab -->
@@ -329,7 +372,10 @@ docker run -d \  --name devtest \  --mount source=myvol2,target=/app \  nginx:la
 <!-- tab -v-->
 
 ```bash
-docker run -d \  --name devtest \  -v myvol2:/app \  nginx:latest
+docker run -d \
+  --name devtest \
+  -v myvol2:/app \
+  nginx:latest
 ```
 
 <!-- endtab -->
@@ -338,7 +384,18 @@ docker run -d \  --name devtest \  -v myvol2:/app \  nginx:latest
 使用 `docker inspect devtest` 来确认卷被正确地创建和挂载了, 看下面的 `Mounts` 部分:
 
 ```bash
-"Mounts": [    {        "Type": "volume",        "Name": "myvol2",        "Source": "/var/lib/docker/volumes/myvol2/_data",        "Destination": "/app",        "Driver": "local",        "Mode": "",        "RW": true,        "Propagation": ""    }]
+"Mounts": [
+    {
+        "Type": "volume",
+        "Name": "myvol2",
+        "Source": "/var/lib/docker/volumes/myvol2/_data",
+        "Destination": "/app",
+        "Driver": "local",
+        "Mode": "",
+        "RW": true,
+        "Propagation": ""
+    }
+]
 ```
 
 这表明挂载的是一个卷, 显示了正确的源和目标, 并且挂载是可读可写的.
@@ -346,7 +403,11 @@ docker run -d \  --name devtest \  -v myvol2:/app \  nginx:latest
 停止容器并移除卷. 移除卷是单独的步骤:
 
 ```bash
-docker container stop devtestdocker container rm devtestdocker volume rm myvol2
+docker container stop devtest
+
+docker container rm devtest
+
+docker volume rm myvol2
 ```
 
 ### 使用只读卷
@@ -358,7 +419,10 @@ docker container stop devtestdocker container rm devtestdocker volume rm myvol2
 <!-- tab --mount-->
 
 ```bash
-docker run -d \  --name=nginxtest \  --mount source=nginx-vol,destination=/usr/share/nginx/html,readonly \  nginx:latest
+docker run -d \
+  --name=nginxtest \
+  --mount source=nginx-vol,destination=/usr/share/nginx/html,readonly \
+  nginx:latest
 ```
 
 <!-- endtab -->
@@ -366,7 +430,10 @@ docker run -d \  --name=nginxtest \  --mount source=nginx-vol,destination=/usr/s
 <!-- tab -v-->
 
 ```bash
-docker run -d \  --name=nginxtest \  -v nginx-vol:/usr/share/nginx/html:ro \  nginx:latest
+docker run -d \
+  --name=nginxtest \
+  -v nginx-vol:/usr/share/nginx/html:ro \
+  nginx:latest
 ```
 
 <!-- endtab -->
@@ -375,13 +442,28 @@ docker run -d \  --name=nginxtest \  -v nginx-vol:/usr/share/nginx/html:ro \  ng
 查看元数据 `docker inspect nginxtes` 的 `Mounts` 部分:
 
 ```
-"Mounts": [    {        "Type": "volume",        "Name": "nginx-vol",        "Source": "/var/lib/docker/volumes/nginx-vol/_data",        "Destination": "/usr/share/nginx/html",        "Driver": "local",        "Mode": "",        "RW": false,        "Propagation": ""    }],
+"Mounts": [
+    {
+        "Type": "volume",
+        "Name": "nginx-vol",
+        "Source": "/var/lib/docker/volumes/nginx-vol/_data",
+        "Destination": "/usr/share/nginx/html",
+        "Driver": "local",
+        "Mode": "",
+        "RW": false,
+        "Propagation": ""
+    }
+],
 ```
 
 停止容器并移除卷:
 
 ```bash
-docker container stop nginxtestdocker container rm nginxtestdocker volume rm nginx-vol
+docker container stop nginxtest
+
+docker container rm nginxtest
+
+docker volume rm nginx-vol
 ```
 
 ### 数据卷容器
@@ -389,7 +471,9 @@ docker container stop nginxtestdocker container rm nginxtestdocker volume rm ngi
 通过数据卷容器来共享数据. `--volumes-from` 可以从其他已经挂载卷的容器挂载数据卷, 但不可对挂载位置, 读写权限进行修改. 同一个容器可以指定多个 `--volumes-from`.
 
 ```bash
-docker run -d -v /app --name test nginx		# 创建数据卷容器docker run -d --volumes-from test --name test01 nginx	
+docker run -d -v /app --name test nginx		# 创建数据卷容器
+
+docker run -d --volumes-from test --name test01 nginx	
 ```
 
 ### 备份, 恢复或迁移数据卷
@@ -405,7 +489,11 @@ Dockerfile 是用来构建 docker 镜像的构建文件, 里面写脚本. 每个
 例子:
 
 ```bash
-FROM centosVOLUME ["/volume01","/volume02"]		#  创建两个匿名的数据卷挂载到 volume01 和 volume0CMD echo "---end---"					# 打印一些信息
+FROM centos
+
+VOLUME ["/volume01","/volume02"]		#  创建两个匿名的数据卷挂载到 volume01 和 volume0
+
+CMD echo "---end---"					# 打印一些信息
 ```
 
 ### 基础知识
@@ -418,7 +506,19 @@ FROM centosVOLUME ["/volume01","/volume02"]		#  创建两个匿名的数据卷�
 ### Dockerfiler 指令
 
 ```dockerfile
-FROM ImageName			 # 指定基础镜像MAINTAINER <name>		 # 维护者,已过时,应使用 LABELRUN <command>			 # 镜像构建的时候运行的命令COPY [--chown=<user>:<group>] <src>... <dest>	# 官方推荐使用,类似于 ADDADD						 # COPY 文件,自动解压 tarWORKDIR /path/to/workdir # 制定当前的工作目录VOLUME ["/data"]		 # 设置卷,挂载到容器目录,可以用 -v 修改挂载点EXPOSE <port> [<port>/<protocol>...] # 暴露端口,随机映射 -P 会用到此处指定的端口CMD <command> 			 # 容器启动时运行的命令ENTRYPOINT <command>     # 容器启动时运行的命令ONBUILD <command>		 # 本次不执行.当该镜像被 FROM 时执行ENV <key> <value>ENV <key>=<value1> <key2>=<value2> # 指定环境变量
+FROM ImageName			 # 指定基础镜像
+MAINTAINER <name>		 # 维护者,已过时,应使用 LABEL
+RUN <command>			 # 镜像构建的时候运行的命令
+COPY [--chown=<user>:<group>] <src>... <dest>	# 官方推荐使用,类似于 ADD
+ADD						 # COPY 文件,自动解压 tar
+WORKDIR /path/to/workdir # 制定当前的工作目录
+VOLUME ["/data"]		 # 设置卷,挂载到容器目录,可以用 -v 修改挂载点
+EXPOSE <port> [<port>/<protocol>...] # 暴露端口,随机映射 -P 会用到此处指定的端口
+CMD <command> 			 # 容器启动时运行的命令
+ENTRYPOINT <command>     # 容器启动时运行的命令
+ONBUILD <command>		 # 本次不执行.当该镜像被 FROM 时执行
+ENV <key> <value>
+ENV <key>=<value1> <key2>=<value2> # 指定环境变量
 ```
 
 **`CMD` 与 `ENTRYPOINT` 的不同：**
@@ -426,7 +526,9 @@ FROM ImageName			 # 指定基础镜像MAINTAINER <name>		 # 维护者,已过时,
 `CMD` 的具体用法：
 
 ```dockerfile
-CMD <command> 						# 执行 shell 命令CMD ["<command>","<param1>","<param2>",...] # 推荐写法CMD ["<param1>","<param2>",...] 	# 该写法是为 ENTRYPOINT 指令指定的程序提供默认参数
+CMD <command> 						# 执行 shell 命令
+CMD ["<command>","<param1>","<param2>",...] # 推荐写法
+CMD ["<param1>","<param2>",...] 	# 该写法是为 ENTRYPOINT 指令指定的程序提供默认参数
 ```
 
 dockerfile 中存在多个 `CMD` 时,只会执行最后一个.可以被 `docker run` 的命令行参数**覆盖**.
@@ -442,7 +544,10 @@ ENTRYPOINT ["<executeable>","<param1>","<param2>",...]
 举个例子：
 
 ```dockerfile
-FROM nginxENTRYPOINT ["nginx", "-c"]CMD ["/etc/nginx/nginx.conf"]
+FROM nginx
+
+ENTRYPOINT ["nginx", "-c"]
+CMD ["/etc/nginx/nginx.conf"]
 ```
 
 - 不传参运行
@@ -483,11 +588,33 @@ docker build -f Dockerfile -t my-centos:0.1 .
 一个具体的 Dockerfile
 
 ```dockerfile
-FROM centosMAINTAINER rikka@rikka.comCOPY README.md /usr/local/README.mdADD ./jdk-8u301-linux-x64.tar.gz /usr/local/ADD ./apache-tomcat-9.0.52.tar.gz /usr/local/RUN yum -y install vimENV MYPATH /usr/localENV JAVA_HOME /usr/local/jdk1.8.0_301ENV CATALINA_HOME /usr/local/apache-tomcat-9.0.52ENV CATALINA_BASE /usr/local/apache-tomcat-9.0.52ENV PATH $PATH:$JAVA_HOME/bin:$CATALINA_HOME/lib:$CATALINA_HOME/binWORKDIR $MYPATHEXPOSE 8080CMD $MYPATH/apache-tomcat-9.0.52/bin/startup.sh && tail -F $MYPATH/apache-tomcat-9.0.52/logs/catalina.out
+FROM centos
+MAINTAINER rikka@rikka.com
+
+COPY README.md /usr/local/README.md
+
+ADD ./jdk-8u301-linux-x64.tar.gz /usr/local/
+ADD ./apache-tomcat-9.0.52.tar.gz /usr/local/
+
+
+RUN yum -y install vim
+
+ENV MYPATH /usr/local
+ENV JAVA_HOME /usr/local/jdk1.8.0_301
+ENV CATALINA_HOME /usr/local/apache-tomcat-9.0.52
+ENV CATALINA_BASE /usr/local/apache-tomcat-9.0.52
+ENV PATH $PATH:$JAVA_HOME/bin:$CATALINA_HOME/lib:$CATALINA_HOME/bin
+
+WORKDIR $MYPATH
+
+EXPOSE 8080
+
+CMD $MYPATH/apache-tomcat-9.0.52/bin/startup.sh && tail -F $MYPATH/apache-tomcat-9.0.52/logs/catalina.out
 ```
 
 ```bash
-docker build -t mytomcat:0.1			# 构建镜像docker run -d -p 8080:8080 --name tomcat -v test:/usr/local/ apache-tomcat-9.0.52/webapps/test mytomcat:0.1	       # 运行容器
+docker build -t mytomcat:0.1			# 构建镜像
+docker run -d -p 8080:8080 --name tomcat -v test:/usr/local/ apache-tomcat-9.0.52/webapps/test mytomcat:0.1	       # 运行容器
 ```
 
 Docker 自动创建一个叫做 `test` 的 volume 挂载到容器内的 `test` 目录, 在 `test` 内放入 web 项目即可通过 ip:8080 访问.
@@ -512,7 +639,7 @@ Docker 自动创建一个叫做 `test` 的 volume 挂载到容器内的 `test` �
 >
 >{% blur 我知道这里说得很简略, 但现在不是深入了解 docker 网络的时候, 仅仅是做个了解 %}
 
-![image-20210913223445243](/home/rikka/.config/Typora/typora-user-images/image-20210913223445243.png)
+![image-20210913223445243](https://cdn.jsdelivr.net/npm/rikka-os2/img/image-20210913223445243.png)
 
 
 
@@ -528,7 +655,7 @@ Docker 自动创建一个叫做 `test` 的 volume 挂载到容器内的 `test` �
   dockr network ls
   ```
 
-  ![image-20210919145853620](/home/rikka/.config/Typora/typora-user-images/image-20210919145853620.png)
+  ![image-20210919145853620](https://cdn.jsdelivr.net/npm/rikka-os2/img/image-20210919145853620.png)
 
   
 
@@ -554,7 +681,7 @@ Docker 自动创建一个叫做 `test` 的 volume 挂载到容器内的 `test` �
   docker network inspect mynet
   ```
 
-  ![image-20210919184556447](/home/rikka/.config/Typora/typora-user-images/image-20210919184556447.png)
+  ![image-20210919184556447](https://cdn.jsdelivr.net/npm/rikka-os2/img/image-20210919184556447.png)
 
 - 将服务放在自己的网络中
 
@@ -577,7 +704,7 @@ Docker 自动创建一个叫做 `test` 的 volume 挂载到容器内的 `test` �
   docker network connect mynet tomcat01
   ```
 
-  此后, 容器 tomcat01 就拥有了两个不同的 ip 地址. 
+  此后, 容器 tomcat01 
 
   
 
