@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>解决 Linux 下 IntelliJ 系列软件的 IDE 中输入框位置不正确</title>
+      <link href="2021/11/14/fcitx5-IntelliJ/"/>
+      <url>2021/11/14/fcitx5-IntelliJ/</url>
+      
+        <content type="html"><![CDATA[<p>问题如这个 issue 所示 <a href="https://github.com/fcitx/fcitx5/issues/79">https://github.com/fcitx/fcitx5/issues/79</a> , 解决方法很简单, 替换默认的 IDE runtime 就行 <sup><a href="#fn_1" id="reffn_1">1</a></sup>.</p><ol><li><p>前往  <a href="https://github.com/RikudouPatrickstar/JetBrainsRuntime-for-Linux-x64/releases">https://github.com/RikudouPatrickstar/JetBrainsRuntime-for-Linux-x64/releases</a> 下载 jbr 并解压到任意目录. (我解压在了 <code>/usr/lib/jvm/</code>)</p></li><li><p>打开 IntelliJ 系列的 IDE, 按 <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>A</kbd>, 输入 <code>Choose Boot Iava Runtime for the IDE...</code>, 并进入</p></li><li><p>选择刚才解压好的 JBR 就好了</p><p> <img src="https://unpkg.zhimg.com/rikka-os2@1.0.4/img/setjbr.png" alt=""></p></li></ol><p>效果</p><p><img src="https://unpkg.zhimg.com/rikka-os2@1.0.4/img/haole.png" alt=""></p><hr><blockquote id="fn_1"><sup>1</sup>. <a href="https://wiki.archlinux.org/title/Fcitx5_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#IntelliJ_%E7%B3%BB%E5%88%97%E8%BD%AF%E4%BB%B6%E7%9A%84_IDE_%E4%B8%AD%E8%BE%93%E5%85%A5%E6%A1%86%E4%BD%8D%E7%BD%AE%E4%B8%8D%E6%AD%A3%E7%A1%AE">https://wiki.archlinux.org/title/Fcitx5_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#IntelliJ_%E7%B3%BB%E5%88%97%E8%BD%AF%E4%BB%B6%E7%9A%84_IDE_%E4%B8%AD%E8%BE%93%E5%85%A5%E6%A1%86%E4%BD%8D%E7%BD%AE%E4%B8%8D%E6%AD%A3%E7%A1%AE</a><a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> fcitx5 </tag>
+            
+            <tag> 输入法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux 版本 WPS 缩放问题导致字体模糊的解决方法</title>
       <link href="2021/09/10/wps-scale/"/>
       <url>2021/09/10/wps-scale/</url>
@@ -21,6 +50,10 @@
         <tags>
             
             <tag> Linux </tag>
+            
+            <tag> fcitx5 </tag>
+            
+            <tag> 输入法 </tag>
             
             <tag> WPS </tag>
             
