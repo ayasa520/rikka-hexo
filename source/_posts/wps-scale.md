@@ -2,7 +2,7 @@
 title: Linux 版本 WPS 缩放问题导致字体模糊的解决方法
 date: 2021-09-10 12:24:13
 description: 终于有原生 WPS 了, 打开一看却发现字体糊成一团,就好像没有抗锯齿
-tag: ['Linux','WPS','缩放']
+tag: ['Linux','WPS','缩放','fcitx5','输入法']
 categories: "教程"
 ---
 
