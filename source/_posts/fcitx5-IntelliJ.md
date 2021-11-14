@@ -10,7 +10,7 @@ categories: "教程"
 
 1. 前往  https://github.com/RikudouPatrickstar/JetBrainsRuntime-for-Linux-x64/releases 下载 jbr 并解压到任意目录. (我解压在了 `/usr/lib/jvm/`)
 
-2. 打开 IntelliJ 系列的 IDE, 按 {% kbd Ctrl%} + {% kbd Shift%} + {% kbd A%}, 输入 `Choose Boot Iava Runtime for the IDE...`, 并进入
+2. 打开 IntelliJ 系列的 IDE, 按 {% kbd Ctrl%} + {% kbd Shift%} + {% kbd A%}, 输入 `Choose Boot Java Runtime for the IDE...`, 并进入
 
 3. 选择刚才解压好的 JBR 就好了
 
