@@ -1,5 +1,5 @@
 ---
-title: 使用 Neovim 和 VimTeX 攥写 LaTeX (Lua 配置)
+title: 使用 Neovim 和 VimTeX 撰写 LaTeX (Lua 配置)
 date: 2021-11-19 18:16:01
 description: 使用 Vim 或者 Neovim 来作为攥写 $\LaTeX$ 工具的教程屡见不鲜, 但是大都是基于 VimScript, 很少见到有使用 Lua 配置的
 tag: ['Linux','LaTeX','VimTex','折腾','TeXLive']
