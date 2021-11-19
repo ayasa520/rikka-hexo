@@ -154,18 +154,18 @@ pip3 install neovim-remote
 
     ```json
     {
-    "name": "snippets",
-    "engines": {
-        "vscode": "^1.11.0"
+        "name": "snippets",
+        "engines": {
+            "vscode": "^1.11.0"
     },
-    "contributes": {
-        "snippets": [
-        {
-            "language": "tex",
-            "path": "./tex.json"
+        "contributes": {
+            "snippets": [
+            {
+                "language": "tex",
+                "path": "./tex.json"
+            }
+            ]
         }
-        ]
-    }
     }
 
     ```
