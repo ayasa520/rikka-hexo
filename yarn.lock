@@ -4259,6 +4259,13 @@
   dependencies:
     "pug" "^3.0.0"
 
+"hexo-butterfly-footer-beautify@^1.0.4":
+  "integrity" "sha1-YC50oqIkBfG0xNcu2ie6ifihXoU="
+  "resolved" "https://registry.npmmirror.com/hexo-butterfly-footer-beautify/download/hexo-butterfly-footer-beautify-1.0.4.tgz"
+  "version" "1.0.4"
+  dependencies:
+    "pug" "^3.0.0"
+
 "hexo-cli@^4.0.0":
   "integrity" "sha512-NJQYKnD41KUlNZzEyi8wDzPeGhrjwLLTa05dtkwq+lJch+j9idZTh4dgn3w/82o6Q/zygn+ibO1XvihMfFdSfw=="
   "resolved" "https://registry.npmjs.org/hexo-cli/-/hexo-cli-4.2.0.tgz"
