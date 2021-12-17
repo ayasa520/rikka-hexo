@@ -6,7 +6,6 @@ tag: ['NodeJS','前端']
 categories: "项目"
 ---
 
-
 使用前后端分离，前端文件位于 front_end 文件夹
 
 配置在 `config/default.js` ，当然可以在具体文件配置，但是这儿方便一点
