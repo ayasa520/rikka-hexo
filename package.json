@@ -40,7 +40,7 @@
     "regenerator-runtime": "^0.13.7"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.2",
+    "@babel/core": "^7.17.0",
     "@babel/preset-env": "^7.14.2",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
