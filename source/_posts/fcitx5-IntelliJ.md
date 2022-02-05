@@ -14,12 +14,12 @@ categories: "教程"
 
 3. 选择刚才解压好的 JBR 就好了
 
-    ![](https://unpkg.zhimg.com/rikka-os2@1.0.4/img/setjbr.png)
+    ![](https://cdn.jsdelivr.net/npm/rikka-os2@1.0.4/img/setjbr.png)
 
 
 效果
 
-![](https://unpkg.zhimg.com/rikka-os2@1.0.4/img/haole.png)
+![](https://cdn.jsdelivr.net/npm/rikka-os2@1.0.4/img/haole.png)
 
 ----------------
 [^1]: https://wiki.archlinux.org/title/Fcitx5_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#IntelliJ_%E7%B3%BB%E5%88%97%E8%BD%AF%E4%BB%B6%E7%9A%84_IDE_%E4%B8%AD%E8%BE%93%E5%85%A5%E6%A1%86%E4%BD%8D%E7%BD%AE%E4%B8%8D%E6%AD%A3%E7%A1%AE

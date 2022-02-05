@@ -44,23 +44,23 @@ date: 2021-07-18 21:16:30
 
 1. 在 [MongoDB Atlas | MongoDB](https://www.mongodb.com/cloud/atlas/register) 申请 MongoDB 帐号
 
-   选免费的, 其他全默认选项![image](https://unpkg.zhimg.com/rikka-os@1.0.3/img/7f02ecd79beb8edbf548f18e1c1b0896.png)
+   选免费的, 其他全默认选项![image](https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/7f02ecd79beb8edbf548f18e1c1b0896.png)
 
-1. 点击 connect![image](https://unpkg.zhimg.com/rikka-os@1.0.3/img/bfbc7980d4f8f6f80fd15f8a51d65100.png)
+1. 点击 connect![image](https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/bfbc7980d4f8f6f80fd15f8a51d65100.png)
 
 1. 选择 `Allow Access From Anywhere ` 并确认
 
-   ![image](https://unpkg.zhimg.com/rikka-os@1.0.3/img/ed561893c173a331c2e2b43fec082179.png)
+   ![image](https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/ed561893c173a331c2e2b43fec082179.png)
 
-   ![image](https://unpkg.zhimg.com/rikka-os@1.0.3/img/57ab88e29758199532e92a1a2e666d51.png)
+   ![image](https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/57ab88e29758199532e92a1a2e666d51.png)
 
 1. 输入数据库的用户名和密码, 不要带有特殊字符, 因为我的后端没有做转义
 
-   ![image](https://unpkg.zhimg.com/rikka-os@1.0.3/img/ab4e876949ec84be0dac7474991bb782.png) 
+   ![image](https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/ab4e876949ec84be0dac7474991bb782.png) 
 
-1. 选择 `Connect your application`![image](https://unpkg.zhimg.com/rikka-os@1.0.3/img/a87a877734d4a5d99b9c34cff06ed9c6.png)
+1. 选择 `Connect your application`![image](https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/a87a877734d4a5d99b9c34cff06ed9c6.png)
 
-6. 复制数据库的连接字符串, **注意手动将 `<password>` 换成刚刚输入的密码**![image](https://unpkg.zhimg.com/rikka-os@1.0.3/img/6389c289443f4af0fdc00ab64fb2e4d9.png)
+6. 复制数据库的连接字符串, **注意手动将 `<password>` 换成刚刚输入的密码**![image](https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/6389c289443f4af0fdc00ab64fb2e4d9.png)
 
 #### 配置 Vercel
 
@@ -70,13 +70,13 @@ date: 2021-07-18 21:16:30
    {% cell 点击部署, https://vercel.com/import/project?template=https://github.com/ayasa520/daodao-kai,/image/image.svg %}
    {% endbtns %}
 
-   ![image](https://unpkg.zhimg.com/rikka-os@1.0.3/img/079a98929983abc78d1f3089e0dfd47a.png)
+   ![image](https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/079a98929983abc78d1f3089e0dfd47a.png)
 
-   ![image](https://unpkg.zhimg.com/rikka-os@1.0.3/img/c1d708feeacb44a67069694dd8ea022e.png)
+   ![image](https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/c1d708feeacb44a67069694dd8ea022e.png)
 
 1. 部署好后, 添加三个环境变量 `MONGODB` : 刚才复制的数据库连接字符串; `USERNAME`: 自定义叨叨·改登录名; `PASSWORD`: 自定义叨叨·改登陆密码. 由于刚才部署的时候还没有配置环境变量, 此时配置好后需要 **重新部署**
 
-   ![image](https://unpkg.zhimg.com/rikka-os@1.0.3/img/cd0db9b6fda534a1e2c351098271b46a.png)
+   ![image](https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/cd0db9b6fda534a1e2c351098271b46a.png)
 
 ## 前端部署
 
@@ -140,7 +140,7 @@ date: 2021-05-27 18:24:04
 
 然后就能看到了:
 
-![image](https://unpkg.zhimg.com/rikka-os@1.0.3/img/f3d51a5a94b4e167afb84e1c63c43f5d.png)
+![image](https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/f3d51a5a94b4e167afb84e1c63c43f5d.png)
 
 ### npm 插件 (推荐)
 
@@ -191,6 +191,6 @@ daodao_plus:
 
 #### 截图
 
-![image](https://unpkg.zhimg.com/rikka-os@1.0.3/img/0469b9627d2384e678b0a72872f0e0f0.png)
+![image](https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/0469b9627d2384e678b0a72872f0e0f0.png)
 
-![image](https://unpkg.zhimg.com/rikka-os@1.0.3/img/3c049c61ec20f85ec6b29ba9275b5161.png)
+![image](https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/3c049c61ec20f85ec6b29ba9275b5161.png)

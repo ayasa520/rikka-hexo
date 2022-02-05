@@ -52,7 +52,7 @@ date: 2020-12-27
 
 缺点: 产生大量外部碎片
 
-<img src="https://unpkg.zhimg.com/rikka-os@1.0.3/img/README.assets/03a8d63fbcb773d9b684288d894255ee5fa00838.webp" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/README.assets/03a8d63fbcb773d9b684288d894255ee5fa00838.webp" style="zoom:67%;" />
 
 ## 分页
 
@@ -66,7 +66,7 @@ date: 2020-12-27
 
 **物理地址:**主存中的地址
 
-<img src="https://unpkg.zhimg.com/rikka-os@1.0.3/img/README.assets/cadfd03860469d165472ec6279b4aed1e349eea9.webp" style="zoom: 67%;" />
+<img src="https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/README.assets/cadfd03860469d165472ec6279b4aed1e349eea9.webp" style="zoom: 67%;" />
 
 ## 虚拟内存
 
@@ -81,7 +81,7 @@ date: 2020-12-27
 + 通过硬件将逻辑地址转化为物理地址
 + 当发生页缺失的时候在内存和硬盘之间交换信息
 
-<img src="https://unpkg.zhimg.com/rikka-os@1.0.3/img/README.assets/a234581cc2a822f4f6f02684b41da95ca8950d73.webp" style="zoom:80%;" />
+<img src="https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/README.assets/a234581cc2a822f4f6f02684b41da95ca8950d73.webp" style="zoom:80%;" />
 
 ### 一些问题
 
@@ -106,7 +106,7 @@ date: 2020-12-27
 + 存储在主存中
 + 虚拟地址 $<-$ 虚页号 + 页内地址 (偏移量)
 
-<img src="https://unpkg.zhimg.com/rikka-os@1.0.3/img/README.assets/37719366f70bb69d22383fce2f2e421fe635940a.webp" alt="页表" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/README.assets/37719366f70bb69d22383fce2f2e421fe635940a.webp" alt="页表" style="zoom:67%;" />
 
 ### 快表 (TLB)
 
@@ -119,7 +119,7 @@ date: 2020-12-27
 + 全相联映射, 组关联映射
 + 随机替换策略
 
-<img src="https://unpkg.zhimg.com/rikka-os@1.0.3/img/README.assets/66ee27fdf8bb2574adf0f46387f468218d6602ca.webp" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/README.assets/66ee27fdf8bb2574adf0f46387f468218d6602ca.webp" style="zoom:67%;" />
 
 | No.  | TLB            | page table | cache | possibility                         |      |
 | ---- | -------------- | ---------- | ----- | ----------------------------------- | ---- |
@@ -207,7 +207,7 @@ x86 的机器开机后首先进入实模式
 
     
 
-  <img src="https://unpkg.zhimg.com/rikka-os@1.0.3/img/README.assets/a251a56b74772c80ebcd9fc2ea7361bc26c6ab9c.webp" style="zoom:67%;" />
+  <img src="https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/README.assets/a251a56b74772c80ebcd9fc2ea7361bc26c6ab9c.webp" style="zoom:67%;" />
 
 
 
