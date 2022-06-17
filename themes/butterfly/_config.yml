@@ -887,7 +887,7 @@ inject:
     - <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?8b756ff0c1eac5d9321ed3718fd97b84";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
     - '<style type="text/css">.app-refresh{position:fixed;top:-2.2rem;left:0;right:0;z-index:99999;padding:0 1rem;font-size:15px;height:2.2rem;transition:all .3s ease}.app-refresh-wrap{display:flex;color:#fff;height:100%;align-items:center;justify-content:center}.app-refresh-wrap a{color:#fff;text-decoration:underline;cursor:pointer}</style>'
     - <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'">
-    - <link rel="stylesheet" href="https://npm.elemecdn.com/hexo-animate@1.0.0/animate.min.css" media="defer" onload="this.media='all'">
+    - <link rel="stylesheet" href="https://npm.elemecdn.com/hexo-animate@1.0.0/animate.css" media="defer" onload="this.media='all'">
     - <link rel="stylesheet" href="https://npm.elemecdn.com/rikka-os@1.0.5/css/custom.css"  media="defer" onload="this.media='all'">
 
   bottom:
@@ -901,7 +901,7 @@ inject:
     - <div id="aplayer"></div>
     - <script src="https://npm.elemecdn.com/aplayer/dist/APlayer.min.js"></script>
     - <script type="text/javascript"> document.write("<script src='/js/music.js?"+Math.random()+"'><\/script>"); </script>· 
-    - <script defer src="https://npm.elemecdn.com/hexo-theme-volantis@latest/source/js/issues.min.js"></script>
+    - <script defer src="https://npm.elemecdn.com/hexo-theme-volantis@4.3.1/source/js/issues.js"></script>
     - <script defer data-pjax src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.5.0/build/highlight.min.js"></script>
     # - <script data-pjax defer onload="try{hpp_talk_init()}catch(error){}" src="https://cdn.jsdelivr.net/gh/HexoPlusPlus/HexoPlusPlus@1.2.0/talk_user.js"></script> 
     # - <script defer data-pjax onload="try{dplayer_init()}catch(error){}" src="https://cdn.jsdelivr.net/gh/ayasa520/hexo/source/js/DPlayer.min.js"></script>
@@ -961,7 +961,7 @@ CDN:
   canvas_nest: https://npm.elemecdn.com/butterfly-extsrc@1/dist/canvas-nest.min.js
 
   lazyload: https://npm.elemecdn.com/vanilla-lazyload/dist/lazyload.iife.min.js
-  instantpage: https://npm.elemecdn.com/instant.page/instantpage.min.js
+  instantpage: https://npm.elemecdn.com/instant.page/instantpage.js
   typed: https://npm.elemecdn.com/typed.js/lib/typed.min.js
   pangu: https://npm.elemecdn.com/pangu/dist/browser/pangu.min.js
 
@@ -1028,10 +1028,10 @@ daodao_plus:
     title: 闲话板砖
     comments: true
   CDN: 
-    dd_js: https://npm.elemecdn.com/daodaoplus@1.1.8/static/js/index.min.js # daodao-kai 避免单纯的改动也要使 hexo-daodao-plus 重新发布
-    dd_css: https://npm.elemecdn.com/daodaoplus@1.1.8/static/css/index.min.css
-    js: https://npm.elemecdn.com/hexo-daodao-plus@2.2.4/dist/js/main.min.js # hexo-daodao-plus 主要涉及首页 swiper以及前端页面模板
-    css: https://npm.elemecdn.com/hexo-daodao-plus@2.2.4/dist/css/main.min.css
+    dd_js: https://npm.elemecdn.com/daodaoplus@1.1.8/static/js/index.js # daodao-kai 避免单纯的改动也要使 hexo-daodao-plus 重新发布
+    dd_css: https://npm.elemecdn.com/daodaoplus@1.1.8/static/css/index.css
+    js: https://npm.elemecdn.com/hexo-daodao-plus@2.2.4/dist/js/main.js # hexo-daodao-plus 主要涉及首页 swiper以及前端页面模板
+    css: https://npm.elemecdn.com/hexo-daodao-plus@2.2.4/dist/css/main.css
 
 # footer_beautify
 # 页脚计时器：[Native JS Timer](https://akilar.top/posts/b941af/)
@@ -1060,4 +1060,4 @@ footer_beautify:
       message: 晋ICP备2021010168号-1 #徽标提示语
   swiper_css: https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css
   swiper_js: https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js
-  swiperbdage_init_js: https://npm.elemecdn.com/hexo-butterfly-footer-beautify/lib/swiperbdage_init_js.min.js
+  swiperbdage_init_js: https://npm.elemecdn.com/hexo-butterfly-footer-beautify/lib/swiperbdage_init.min.js
