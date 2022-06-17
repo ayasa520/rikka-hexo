@@ -888,7 +888,7 @@ inject:
     - '<style type="text/css">.app-refresh{position:fixed;top:-2.2rem;left:0;right:0;z-index:99999;padding:0 1rem;font-size:15px;height:2.2rem;transition:all .3s ease}.app-refresh-wrap{display:flex;color:#fff;height:100%;align-items:center;justify-content:center}.app-refresh-wrap a{color:#fff;text-decoration:underline;cursor:pointer}</style>'
     - <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'">
     - <link rel="stylesheet" href="https://npm.elemecdn.com/hexo-animate@1.0.0/animate.min.css" media="defer" onload="this.media='all'">
-    - <link rel="stylesheet" href="https://npm.elemecdn.com/rikka-os@1.0.5/css/custom.min.css"  media="defer" onload="this.media='all'">
+    - <link rel="stylesheet" href="https://npm.elemecdn.com/rikka-os@1.0.5/css/custom.css"  media="defer" onload="this.media='all'">
 
   bottom:
     - <script  src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script>
@@ -917,7 +917,7 @@ inject:
 # 非必要請不要修改
 CDN:
   # main
-  main_css: https://npm.elemecdn.com/rikka-os2@1.0.2/css/index.min.css
+  main_css: https://npm.elemecdn.com/rikka-os2@1.0.2/css/index.css
   jquery: https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js
   main: https://npm.elemecdn.com/rikka-os@1.0.3/js/main.js
   utils: https://npm.elemecdn.com/rikka-os@1.0.3/js/utils.js
