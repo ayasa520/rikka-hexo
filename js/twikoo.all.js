@@ -18127,7 +18127,7 @@ factory = function() {
                     value: !0
                 }),
                 t["default"] = void 0;
-                var r, o, i = "https://cdn.jsdelivr.net/npm/prismjs@1.23.0", a = function(e) {
+                var r, o, i = "https://npm.elemecdn.com/prismjs@1.23.0", a = function(e) {
                     var t = document.getElementById("twikoo");
                     o && t.contains(o) || !e || "none" === e || ((o = document.createElement("link")).href = "default" === e ? "".concat(i, "/themes/prism.css") : "".concat(i, "/themes/prism-").concat(e, ".css"),
                     o.rel = "stylesheet",
