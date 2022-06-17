@@ -32,7 +32,7 @@
       # siteshot: https://cdn.jsdelivr.net/gh/Akilarlxh/ScreenShot@gh-pages/akilar.top.jpg
     - name: 小嘉的部落格               # 站點名稱
       link: https://blog.imzjw.cn    # 站點鏈接
-      avatar: https://cdn.jsdelivr.net/npm/nanshen/avatar.jpg  # 站點頭像
+      avatar: https://npm.elemecdn.com/nanshen/avatar.jpg  # 站點頭像
       descr: 好记性不如烂笔头          # 站點描述
 
     - name: 清粥的小站

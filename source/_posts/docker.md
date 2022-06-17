@@ -639,7 +639,7 @@ Docker 自动创建一个叫做 `test` 的 volume 挂载到容器内的 `test` �
 >
 >{% blur 我知道这里说得很简略, 但现在不是深入了解 docker 网络的时候, 仅仅是做个了解 %}
 
-![image-20210913223445243](https://cdn.jsdelivr.net/npm/rikka-os2/img/image-20210913223445243.png)
+![image-20210913223445243](https://npm.elemecdn.com/rikka-os2/img/image-20210913223445243.png)
 
 
 
@@ -655,7 +655,7 @@ Docker 自动创建一个叫做 `test` 的 volume 挂载到容器内的 `test` �
   dockr network ls
   ```
 
-  ![image-20210919145853620](https://cdn.jsdelivr.net/npm/rikka-os2/img/image-20210919145853620.png)
+  ![image-20210919145853620](https://npm.elemecdn.com/rikka-os2/img/image-20210919145853620.png)
 
   
 
@@ -681,7 +681,7 @@ Docker 自动创建一个叫做 `test` 的 volume 挂载到容器内的 `test` �
   docker network inspect mynet
   ```
 
-  ![image-20210919184556447](https://cdn.jsdelivr.net/npm/rikka-os2/img/image-20210919184556447.png)
+  ![image-20210919184556447](https://npm.elemecdn.com/rikka-os2/img/image-20210919184556447.png)
 
 - 将服务放在自己的网络中
 

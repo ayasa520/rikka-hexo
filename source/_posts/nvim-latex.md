@@ -85,12 +85,12 @@ pip3 install neovim-remote
 
 上一步仅仅实现了正向检索, 即从 tex 文件定位到 PDF 文件. 要实现反向检索, 需要在 `Okular 设置->配置 Okular->编辑器` 中设置自定义编辑器, 填入 `nvr --remote-silent +%l %f`.
 
-![](https://cdn.jsdelivr.net/npm/rikka-os2@1.0.5/img/2021-11-19_19-36.png)
+![](https://npm.elemecdn.com/rikka-os2@1.0.5/img/2021-11-19_19-36.png)
 
 这样, 在 PDF 预览界面 {% kbd Shift %} + LeftClick 即可定位到 tex 文件的对应行. 注意 Okular 必须是在 **预览模式** 才有效, 即鼠标指针为手的形状. 而在其他的 PDF 预览软件 (如 zathura )是 {% kbd Ctrl %} + LeftClick
 
 
-![反向检索演示](https://cdn.jsdelivr.net/npm/rikka-os2@1.0.5/img/h1k1e-i5388.gif)
+![反向检索演示](https://npm.elemecdn.com/rikka-os2@1.0.5/img/h1k1e-i5388.gif)
 
 ## 常用的命令
 
@@ -113,7 +113,7 @@ pip3 install neovim-remote
 
 当然, 所有的命令均可以通过 `:help vimtex` 在 `vimtex-commands` 块下找到, 可以根据需要设置快捷键
 
-![](https://cdn.jsdelivr.net/npm/rikka-os2@1.0.5/img/ahdnuihg)
+![](https://npm.elemecdn.com/rikka-os2@1.0.5/img/ahdnuihg)
 
 ## [可选] 使用 snippet 和 lsp 补全
 
@@ -171,11 +171,11 @@ pip3 install neovim-remote
     ```
     整体的结构:
 
-    ![结构](https://cdn.jsdelivr.net/npm/rikka-os2@1.0.5/img/结构.png "结构")
+    ![结构](https://npm.elemecdn.com/rikka-os2@1.0.5/img/结构.png "结构")
 
     在 tex 文件中试一下:
 
-    ![](https://cdn.jsdelivr.net/npm/rikka-os2@1.0.5/img/yihr4-c9ea6.gif) 
+    ![](https://npm.elemecdn.com/rikka-os2@1.0.5/img/yihr4-c9ea6.gif) 
 
     更方便的做法是使用[rafamadriz/friendly-snippets](https://github.com/rafamadriz/friendly-snippets) 这类现成的插件.
 
