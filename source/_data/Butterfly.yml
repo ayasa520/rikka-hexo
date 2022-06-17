@@ -879,7 +879,7 @@ CDN:
   sharejs_css: https://npm.elemecdn.com/social-share.js/dist/css/share.min.css
 
   # search
-  local_search: https://npm.elemecdn.com/rikka-os@1.0.3/js/search/local-search.min.js
+  local_search: https://npm.elemecdn.com/rikka-os@1.0.3/js/search/local-search.js
   algolia_js: /js/search/algolia.min.js
   algolia_search: https://npm.elemecdn.com/instantsearch.js@2.10.5/dist/instantsearch.min.js
   algolia_search_css: https://npm.elemecdn.com/instantsearch.js@2.10.5/dist/instantsearch.min.css

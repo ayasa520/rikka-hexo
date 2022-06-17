@@ -169,10 +169,10 @@ daodao_plus:
     title: 闲话板砖
     comments: true
   CDN: 
-    dd_js: https://npm.elemecdn.com/daodaoplus@1.1.7/static/js/index.min.js 
-    dd_css: https://npm.elemecdn.com/daodaoplus@1.1.7/static/css/index.min.css
-    js: https://npm.elemecdn.com/hexo-daodao-plus@2.2.4/dist/js/main.min.js 
-    css: https://npm.elemecdn.com/hexo-daodao-plus@2.2.4/dist/css/main.min.css
+    dd_js: https://npm.elemecdn.com/daodaoplus@1.1.7/static/js/index.js 
+    dd_css: https://npm.elemecdn.com/daodaoplus@1.1.7/static/css/index.css
+    js: https://npm.elemecdn.com/hexo-daodao-plus@2.2.4/dist/js/main.js 
+    css: https://npm.elemecdn.com/hexo-daodao-plus@2.2.4/dist/css/main.css
 
 ```
 
