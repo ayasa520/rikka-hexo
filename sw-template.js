@@ -90,4 +90,20 @@ workbox.routing.registerRoute(
     })
 );
 
+workbox.routing.registerRoute(
+    /^https:\/\/npm\.elemecdn\.com/,
+    new workbox.strategies.CacheFirst({
+        cacheName: "static-libs-1",
+        plugins: [
+            new workbox.expiration.ExpirationPlugin({
+                maxEntries: 1000,
+                maxAgeSeconds: 60 * 60 * 24 * 30
+            }),
+            new workbox.cacheableResponse.CacheableResponsePlugin({
+                statuses: [0, 200]
+            })
+        ]
+    })
+);
+
 workbox.googleAnalytics.initialize();

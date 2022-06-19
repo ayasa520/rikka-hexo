@@ -848,7 +848,7 @@ pangu:
 lazyload:
   enable: true
   field: site # site/post
-  placeholder: /img/404.jpg
+  placeholder: /img/loading.gif
   blur: true
 
 
@@ -858,12 +858,12 @@ lazyload:
 # ---------------
 pwa:
   enable: true
-  manifest: /pwa/manifest.json
+  manifest: /manifest.json
   theme_color: "#fff"
-  apple_touch_icon: /pwa/apple-touch-icon.png
-  favicon_32_32: /pwa/32.png
-  favicon_16_16: /pwa/16.png
-  mask_icon: /pwa/safari-pinned-tab.svg
+  apple_touch_icon: /img/siteicon/apple-touch-icon.png
+  favicon_32_32: /img/siteicon/32.png
+  favicon_16_16: /img/siteicon/16.png
+  mask_icon: /img/siteicon/safari-pinned-tab.svg
 
 # Open graph meta tags
 # https://developers.facebook.com/docs/sharing/webmasters/
@@ -896,7 +896,6 @@ inject:
     # - <div class="aplayer no-destroy" data-id="6741525088" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="list" data-preload="auto" data-autoplay="false" muted></div>
     - <script  defer src="https://cdn.jsdelivr.net/gh/graingert/wow@1.3.0/dist/wow.min.js"></script>
     - <script defer data-pjax src="https://npm.elemecdn.com/rikka-os@1.0.3/js/wow_init.js"></script>
-    - '<div class="app-refresh" id="app-refresh"> <div class="app-refresh-wrap"> <label>✨ 网站已更新最新版本 👉</label> <a href="javascript:void(0)" onclick="location.reload()">点击刷新</a> </div></div><script>function showNotification(){if(GLOBAL_CONFIG.Snackbar){var t="light"===document.documentElement.getAttribute("data-theme")?GLOBAL_CONFIG.Snackbar.bgLight:GLOBAL_CONFIG.Snackbar.bgDark,e=GLOBAL_CONFIG.Snackbar.position;Snackbar.show({text:"已更新最新版本",backgroundColor:t,duration:5e5,pos:e,actionText:"点击刷新",actionTextColor:"#fff",onActionClick:function(t){location.reload()}})}else{var o=`top: 0; background: ${"light"===document.documentElement.getAttribute("data-theme")?"#49b1f5":"#1f1f1f"};`;document.getElementById("app-refresh").style.cssText=o}}"serviceWorker"in navigator&&(navigator.serviceWorker.controller&&navigator.serviceWorker.addEventListener("controllerchange",function(){showNotification()}),window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")}));</script>'
     - <link rel="stylesheet" href="https://npm.elemecdn.com/aplayer/dist/APlayer.min.css">
     - <div id="aplayer"></div>
     - <script src="https://npm.elemecdn.com/aplayer/dist/APlayer.min.js"></script>
@@ -906,7 +905,6 @@ inject:
     # - <script data-pjax defer onload="try{hpp_talk_init()}catch(error){}" src="https://cdn.jsdelivr.net/gh/HexoPlusPlus/HexoPlusPlus@1.2.0/talk_user.js"></script> 
     # - <script defer data-pjax onload="try{dplayer_init()}catch(error){}" src="https://cdn.jsdelivr.net/gh/ayasa520/hexo/source/js/DPlayer.min.js"></script>
     - <script defer data-pjax>if (document.getElementsByClassName('dplayer').length>0){$.getScript('https://cdn.jsdelivr.net/hls.js/latest/hls.min.js').done(function(){ $.getScript('https://cdn.jsdelivr.net/gh/ayasa520/hexo/source/js/DPlayer.min.js').done(dplayer_init);});}</script>
-    - <script defer data-pjax>if (document.getElementById('hpp_talk')){$.getScript('https://cdn.jsdelivr.net/gh/ayasa520/HexoPlusPlus@main/src/talk_user.js').done(hpp_talk_init);}</script>
     - <script async>console.log(" ____    ______   __  __   __  __   ______     \n/\\  _`\\ /\\__  _\\ /\\ \\/\\ \\ /\\ \\/\\ \\ /\\  _  \\    \n\\ \\ \\L\\ \\/_/\\ \\/ \\ \\ \\/'/'\\ \\ \\/'/'\\ \\ \\L\\ \\   \n \\ \\ ,  /  \\ \\ \\  \\ \\ , <  \\ \\ , <  \\ \\  __ \\  \n  \\ \\ \\\\ \\  \\_\\ \\__\\ \\ \\\\`\\ \\ \\ \\\\`\\ \\ \\ \\/\\ \\ \n   \\ \\_\\ \\_\\/\\_____\\\\ \\_\\ \\_\\\\ \\_\\ \\_\\\\ \\_\\ \\_\\\n    \\/_/\\/ /\\/_____/ \\/_/\\/_/ \\/_/\\/_/ \\/_/\\/_/")</script>
     # - <script defer data-pjax>if (document.getElementsByClassName('dplayer').length>0){jQuery.ajax({async:false,type:'GET',url:'https://cdn.jsdelivr.net/gh/ayasa520/hexo/source/js/DPlayer.min.js',data:null,success:dplayer_init,dataType:'script'});}</script>
     # - <script defer data-pjax>if (document.getElementsByClassName('dplayer').length>0){var script = document.createElement("script"); script.type = "text/javascript"; script.src = 'https://cdn.jsdelivr.net/gh/ayasa520/hexo/source/js/DPlayer.min.js'; script.onload = dplayer_init;  document.body.appendChild(script);}</script>
@@ -1053,7 +1051,7 @@ footer_beautify:
   runtime_js: https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.js
   runtime_css: https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css
   # 徽标部分配置项
-  swiperpara: 3 #若非0，则开启轮播功能，每行徽标个数
+  swiperpara: 0 #若非0，则开启轮播功能，每行徽标个数
   bdageitem:
     - link: https://beian.miit.gov.cn/#/Integrated/index #徽标指向网站链接
       shields: https://npm.elemecdn.com/rikka-os2@1.0.7/img/bwan.svg
