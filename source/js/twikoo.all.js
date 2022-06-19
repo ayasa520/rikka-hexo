@@ -5783,7 +5783,7 @@ factory = function() {
                         
                         $.ajax({
                             // 这个域名指向 5000 端口, 换成自己的
-                            url:'https://update-friend.bilibilianime.com/',
+                            url:'https://update-friend.jaoushingan.com/',
                             type:'POST',
                             dataType:'json',
                             contentType:'application/json;charset=UTF-8',

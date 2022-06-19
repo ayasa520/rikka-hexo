@@ -144,7 +144,7 @@ docker pull centos
 
    举例:
 
-   ![image-20210822002154977](https://onedrive.bilibilianime.com/ali/image/image-20210822002154977.png)
+   ![image-20210822002154977](https://onedrive.jaoushingan.com/ali/image/image-20210822002154977.png)
 
 2. 列出所有运行的容器
 
@@ -215,7 +215,7 @@ docker pull centos
 
       从宿主机的 3355 端口访问可以看到
 
-      ![image-20210823212242546](https://onedrive.bilibilianime.com/ali/image/image-20210823212242546.png)
+      ![image-20210823212242546](https://onedrive.jaoushingan.com/ali/image/image-20210823212242546.png)
 
       3. 部署 elasticsearch + kibana
 

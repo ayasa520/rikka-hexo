@@ -18,23 +18,23 @@ date: 2021-07-18 21:16:30
 
 点击下方"登录"按钮, 在表单中输入用户名和密码
 
-![](https://onedrive.bilibilianime.com/ali/image/Snipaste_2021-08-03_21-15-27.png)
+![](https://onedrive.jaoushingan.com/ali/image/Snipaste_2021-08-03_21-15-27.png)
 
-![](https://onedrive.bilibilianime.com/ali/image/Snipaste_2021-08-03_21-16-38.png)
+![](https://onedrive.jaoushingan.com/ali/image/Snipaste_2021-08-03_21-16-38.png)
 
 - 删除
 
 登录后直接点击右侧的 x
 
-![](https://onedrive.bilibilianime.com/ali/image/Snipaste_2021-08-03_21-09-31.png)
+![](https://onedrive.jaoushingan.com/ali/image/Snipaste_2021-08-03_21-09-31.png)
 
 - 发送
 
 登录后点击下方"新建"按钮, 在文本框中输入内容. 支持 Markdown.
 
-![](https://onedrive.bilibilianime.com/ali/image/Snipaste_2021-08-03_21-12-27.png)
+![](https://onedrive.jaoushingan.com/ali/image/Snipaste_2021-08-03_21-12-27.png)
 
-![](https://onedrive.bilibilianime.com/ali/image/Snipaste_2021-08-03_21-12-39.png)
+![](https://onedrive.jaoushingan.com/ali/image/Snipaste_2021-08-03_21-12-39.png)
 
 ## 后端部署
 
@@ -163,7 +163,7 @@ daodao_plus:
     page: true 
     card: true 
   filter: 
-  url: https://daodao.bilibilianime.com 
+  url: https://daodao.jaoushingan.com 
   path: daodaoplus
   front_matter: 
     title: 闲话板砖

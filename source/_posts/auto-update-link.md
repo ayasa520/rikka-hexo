@@ -110,7 +110,7 @@ def hello_world():
     data = json.loads(request.get_data(as_text=True))
     data = json.loads(data['request_data'])
     # 检查来源, 换成自己的
-    if "comment" in data and data['href'] == 'https://www.bilibilianime.com/link/':
+    if "comment" in data and data['href'] == 'https://www.jaoushingan.com/link/':
         with open('/var/hexo_source/hexo/source/_data/link.yml','a+')as f:
             # f.write(str(data))
             dom = etree.HTML(str(data['comment']))
@@ -175,7 +175,7 @@ CORS(app, supports_credentials=True)
 def hello_world():
     data = json.loads(request.get_data(as_text=True))
     data = json.loads(data['request_data'])
-    if "comment" in data and data['href'] == 'https://www.bilibilianime.com/link/':
+    if "comment" in data and data['href'] == 'https://www.jaoushingan.com/link/':
         dom = etree.HTML(str(data['comment']))
         info = []
         try:
@@ -226,7 +226,7 @@ gunicorn -w 2 -b :5000 flask_web:app # 绑定到 5000 端口. flask_web 是 py �
 ```js
 $.ajax({
     // 这个域名指向 5000 端口, 换成自己的
-    url:'https://update-friend.bilibilianime.com/',
+    url:'https://update-friend.jaoushingan.com/',
     type:'POST',
     dataType:'json',
     contentType:'application/json;charset=UTF-8',

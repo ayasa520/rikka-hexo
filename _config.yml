@@ -14,7 +14,7 @@ timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://www.bilibilianime.com/
+url: https://www.jaoushingan.com/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -131,5 +131,18 @@ offline:
     - urlPattern: /* # 如果你需要加载CDN资源，请配置该选项，如果没有，可以不配置。
       handler: cacheFirst
       options:
-        origin: https://www.bilibilianime.com/ # 可替换成你的 url
+        origin: https://www.jaoushingan.com/ # 可替换成你的 url
 
+feed:
+  enable: true
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date
+  icon: icon.png
+  autodiscovery: true
+  template:
