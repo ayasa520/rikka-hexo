@@ -20,7 +20,7 @@
     "express": "^4.17.1",
     "gulp-html-minifier-terser": "^6.0.1",
     "gulp-imagemin": "^7.1.0",
-    "hexo": "^5.0.0",
+    "hexo": "^6.2.0",
     "hexo-butterfly-envelope": "^1.0.5",
     "hexo-butterfly-footer-beautify": "^1.0.4",
     "hexo-daodao-plus": "^2.2.4",
