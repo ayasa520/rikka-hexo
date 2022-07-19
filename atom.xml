@@ -6,7 +6,7 @@
   <link href="https://www.jaoushingan.com/atom.xml" rel="self"/>
   
   <link href="https://www.jaoushingan.com/"/>
-  <updated>2022-07-10T06:00:50.580Z</updated>
+  <updated>2022-07-19T12:52:13.060Z</updated>
   <id>https://www.jaoushingan.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://www.jaoushingan.com/2022/06/17/spark/"/>
     <id>https://www.jaoushingan.com/2022/06/17/spark/</id>
     <published>2022-06-17T17:06:07.000Z</published>
-    <updated>2022-07-10T06:00:50.580Z</updated>
+    <updated>2022-07-19T12:52:13.060Z</updated>
     
     
     <summary type="html">用 docker 搭建 spark 非常快捷</summary>
@@ -40,7 +40,7 @@
     <link href="https://www.jaoushingan.com/2022/02/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/B-Tree/"/>
     <id>https://www.jaoushingan.com/2022/02/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/B-Tree/</id>
     <published>2022-02-01T18:30:41.000Z</published>
-    <updated>2022-07-10T06:00:50.580Z</updated>
+    <updated>2022-07-19T12:52:13.064Z</updated>
     
     
       
@@ -70,7 +70,7 @@
     <link href="https://www.jaoushingan.com/2022/02/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Hash/"/>
     <id>https://www.jaoushingan.com/2022/02/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Hash/</id>
     <published>2022-02-01T18:28:18.000Z</published>
-    <updated>2022-07-10T06:00:50.580Z</updated>
+    <updated>2022-07-19T12:52:13.064Z</updated>
     
     
       
@@ -103,7 +103,7 @@
     <link href="https://www.jaoushingan.com/2022/02/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/ApplicationsofGraphs/"/>
     <id>https://www.jaoushingan.com/2022/02/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/ApplicationsofGraphs/</id>
     <published>2022-02-01T18:22:36.000Z</published>
-    <updated>2022-07-10T06:00:50.580Z</updated>
+    <updated>2022-07-19T12:52:13.060Z</updated>
     
     
     <summary type="html">图的应用</summary>
@@ -124,7 +124,7 @@
     <link href="https://www.jaoushingan.com/2022/01/21/PV/"/>
     <id>https://www.jaoushingan.com/2022/01/21/PV/</id>
     <published>2022-01-21T21:29:35.000Z</published>
-    <updated>2022-07-10T06:00:50.568Z</updated>
+    <updated>2022-07-19T12:52:13.048Z</updated>
     
     
     <summary type="html">信号量与 PV 操作, 比起管程来讲好理解</summary>
@@ -145,7 +145,7 @@
     <link href="https://www.jaoushingan.com/2021/12/18/web-login/"/>
     <id>https://www.jaoushingan.com/2021/12/18/web-login/</id>
     <published>2021-12-18T01:14:30.000Z</published>
-    <updated>2022-07-10T06:00:50.580Z</updated>
+    <updated>2022-07-19T12:52:13.060Z</updated>
     
     
     <summary type="html">前端抄自 Pixiv. 图片 PID 忘记存了</summary>
@@ -166,7 +166,7 @@
     <link href="https://www.jaoushingan.com/2021/11/19/nvim-latex/"/>
     <id>https://www.jaoushingan.com/2021/11/19/nvim-latex/</id>
     <published>2021-11-19T18:16:01.000Z</published>
-    <updated>2022-07-10T06:00:50.580Z</updated>
+    <updated>2022-07-19T12:52:13.060Z</updated>
     
     
     <summary type="html">使用 Vim 或者 Neovim 来作为撰写 $\LaTeX$ 工具的教程屡见不鲜, 但是大都是基于 VimScript, 很少见到有使用 Lua 配置的</summary>
@@ -193,7 +193,7 @@
     <link href="https://www.jaoushingan.com/2021/11/14/fcitx5-IntelliJ/"/>
     <id>https://www.jaoushingan.com/2021/11/14/fcitx5-IntelliJ/</id>
     <published>2021-11-14T00:00:00.000Z</published>
-    <updated>2022-07-10T06:00:50.580Z</updated>
+    <updated>2022-07-19T12:52:13.060Z</updated>
     
     
     <summary type="html">Wiki 上让参考&quot;此指导&quot;, 然而并不需要看那么多</summary>
@@ -216,7 +216,7 @@
     <link href="https://www.jaoushingan.com/2021/09/10/wps-scale/"/>
     <id>https://www.jaoushingan.com/2021/09/10/wps-scale/</id>
     <published>2021-09-10T12:24:13.000Z</published>
-    <updated>2022-07-10T06:00:50.580Z</updated>
+    <updated>2022-07-19T12:52:13.060Z</updated>
     
     
     <summary type="html">终于有原生 WPS 了, 打开一看却发现字体糊成一团,就好像没有抗锯齿</summary>
@@ -243,7 +243,7 @@
     <link href="https://www.jaoushingan.com/2021/08/21/docker/"/>
     <id>https://www.jaoushingan.com/2021/08/21/docker/</id>
     <published>2021-08-21T11:02:13.000Z</published>
-    <updated>2022-07-10T06:00:50.580Z</updated>
+    <updated>2022-07-19T12:52:13.060Z</updated>
     
     
     <summary type="html">Docker 基础知识.框架来源于 BV1og4y1q7M4,部分内容翻译自 docs.docker.com</summary>
@@ -262,7 +262,7 @@
     <link href="https://www.jaoushingan.com/2021/07/18/daodao-kai/"/>
     <id>https://www.jaoushingan.com/2021/07/18/daodao-kai/</id>
     <published>2021-07-18T21:16:30.000Z</published>
-    <updated>2022-07-10T06:00:50.568Z</updated>
+    <updated>2022-07-19T12:52:13.048Z</updated>
     
     
     <summary type="html">不再依赖于 Github issue, 增加了可用的前端页面来发送内容</summary>
@@ -285,7 +285,7 @@
     <link href="https://www.jaoushingan.com/2021/07/16/twikoo-img-zoom/"/>
     <id>https://www.jaoushingan.com/2021/07/16/twikoo-img-zoom/</id>
     <published>2021-07-16T01:09:38.000Z</published>
-    <updated>2022-07-10T06:00:50.580Z</updated>
+    <updated>2022-07-19T12:52:13.060Z</updated>
     
     
     <summary type="html">butterfly 把各种插件都集成好了, 真方便啊</summary>
@@ -308,7 +308,7 @@
     <link href="https://www.jaoushingan.com/2021/07/06/auto-update-link/"/>
     <id>https://www.jaoushingan.com/2021/07/06/auto-update-link/</id>
     <published>2021-07-06T02:38:38.000Z</published>
-    <updated>2022-07-10T06:00:50.568Z</updated>
+    <updated>2022-07-19T12:52:13.048Z</updated>
     
     
     <summary type="html">基于 twikoo 实现友链自动添加, 不再需要手动更新 link.yml. 后端使用最简化的 flask</summary>
@@ -331,7 +331,7 @@
     <link href="https://www.jaoushingan.com/2021/06/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C_04/"/>
     <id>https://www.jaoushingan.com/2021/06/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C_04/</id>
     <published>2021-06-29T00:00:00.000Z</published>
-    <updated>2022-07-10T06:00:50.588Z</updated>
+    <updated>2022-07-19T12:52:13.068Z</updated>
     
     
     <summary type="html">网络层的主要任务 实现网络互连 进而实现数据报再各网络之间的传输 要实现网络层任务, 需要解决以下的问题 网络层向运输层提供怎样的服务 可靠传输还是不可靠传输 网络寻址问题 路由选择问题 人工配置 实现路由选择协议</summary>
@@ -350,7 +350,7 @@
     <link href="https://www.jaoushingan.com/2021/06/25/jsDelivr/%E8%96%85%E7%BE%8A%E6%AF%9B/"/>
     <id>https://www.jaoushingan.com/2021/06/25/jsDelivr/%E8%96%85%E7%BE%8A%E6%AF%9B/</id>
     <published>2021-06-25T00:00:00.000Z</published>
-    <updated>2022-07-10T06:00:50.580Z</updated>
+    <updated>2022-07-19T12:52:13.060Z</updated>
     
     
     <summary type="html">薅资本主义的羊毛</summary>
@@ -375,7 +375,7 @@
     <link href="https://www.jaoushingan.com/2021/06/24/tools/window-to-top/"/>
     <id>https://www.jaoushingan.com/2021/06/24/tools/window-to-top/</id>
     <published>2021-06-24T00:00:00.000Z</published>
-    <updated>2022-07-10T06:00:50.580Z</updated>
+    <updated>2022-07-19T12:52:13.060Z</updated>
     
     
       
@@ -400,7 +400,7 @@
     <link href="https://www.jaoushingan.com/2021/06/12/%E6%95%B0%E6%8D%AE%E5%BA%93/database_design/"/>
     <id>https://www.jaoushingan.com/2021/06/12/%E6%95%B0%E6%8D%AE%E5%BA%93/database_design/</id>
     <published>2021-06-12T00:00:00.000Z</published>
-    <updated>2022-07-10T06:00:50.580Z</updated>
+    <updated>2022-07-19T12:52:13.060Z</updated>
     
     
       
@@ -425,7 +425,7 @@
     <link href="https://www.jaoushingan.com/2021/05/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C_01/"/>
     <id>https://www.jaoushingan.com/2021/05/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C_01/</id>
     <published>2021-05-02T00:00:00.000Z</published>
-    <updated>2022-07-10T06:00:50.584Z</updated>
+    <updated>2022-07-19T12:52:13.068Z</updated>
     
     
     <summary type="html">因特网概述 网络、互连（联）网和因特网 网络是由若干结点和连接这些结点的链路组成的多个网络可以通过路由器互连起来, 构成一个覆盖范围更大的网络, 即互联网</summary>
@@ -444,7 +444,7 @@
     <link href="https://www.jaoushingan.com/2021/05/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C_03/"/>
     <id>https://www.jaoushingan.com/2021/05/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C_03/</id>
     <published>2021-05-02T00:00:00.000Z</published>
-    <updated>2022-07-10T06:00:50.588Z</updated>
+    <updated>2022-07-19T12:52:13.068Z</updated>
     
     
     <summary type="html">数据链路层 数据链路层概述 数据链路层在网络体系中所处的地位研究数据链路层的问题时, 可以认为数据包只在数据链路层沿水平方向传送.如下图, 两台主机之间的通信可以看作是在 4 条不同的链路上的通信组成的.</summary>
@@ -463,7 +463,7 @@
     <link href="https://www.jaoushingan.com/2021/05/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C_02/"/>
     <id>https://www.jaoushingan.com/2021/05/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C_02/</id>
     <published>2021-05-02T00:00:00.000Z</published>
-    <updated>2022-07-10T06:00:50.588Z</updated>
+    <updated>2022-07-19T12:52:13.068Z</updated>
     
     
     <summary type="html">物理层的基本概念 物理层所考虑的 怎样在连接各种计算机的传输媒体上传输比特流 物理层为数据链路层屏蔽了各种传输媒体的差异, 是数据链路层只需要考虑如何完成本层的</summary>
