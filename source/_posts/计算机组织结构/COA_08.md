@@ -59,7 +59,7 @@ date: 2020-12-27
 + 数据位划分
   + 以 8 位的数据 $D = D_8...D_2D_1$为例子，校验码$C_1C_2C_3C_4$
   + 关系如下
-    <img src="https://npm.elemecdn.com/rikka-os@1.0.3/img/README.assets/2baad364b5a440170c2aa4414d5a2e8c5a2a7f1f.jpg"/>
+    <img src="https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/README.assets/2baad364b5a440170c2aa4414d5a2e8c5a2a7f1f.jpg"/>
     数据在传输的时候也正是这样穿插进行的
   + 数据位划分
     $$\begin{aligned}
@@ -79,7 +79,7 @@ date: 2020-12-27
 + 过程:
   + 对于 $n$ 位的数据 $D$, 次数为 $K$ 的生成多项式(用二进制表示的话有 $K+1$ 位),需要将 $D$ 左移 $K$ 位.
   + 进行模二取余的除法运算, 具体过程如下图:
-    <img src="https://npm.elemecdn.com/rikka-os@1.0.3/img/README.assets/42ae5b4ac3450a3bf179f67b6827527ba37e9b7c.gif@518w.gif"/>
+    <img src="https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/README.assets/42ae5b4ac3450a3bf179f67b6827527ba37e9b7c.gif@518w.gif"/>
 + 检查:
   + 将 $n+k$ 位的内容对生成多项式做上述操作,如果无误,所得结果为0
 

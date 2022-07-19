@@ -96,7 +96,7 @@ date: 2020-12-27
 
   **劣势:**无法兼顾公平性, 对设备故障敏感, 限制了总线速度
 
-  <img src = "https://npm.elemecdn.com/rikka-os@1.0.3/img/README.assets/ad9ccc3d658ce27417fa4964c61f7b2b52890852.webp">
+  <img src = "https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/README.assets/ad9ccc3d658ce27417fa4964c61f7b2b52890852.webp">
 
 
 
@@ -112,7 +112,7 @@ date: 2020-12-27
 
   ps: ID 线是**一组**而不是一根
 
-  ![](https://npm.elemecdn.com/rikka-os@1.0.3/img/README.assets/97b8bcebc5718ccae167c8a765ba5a92d06b55d6.webp)
+  ![](https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/README.assets/97b8bcebc5718ccae167c8a765ba5a92d06b55d6.webp)
 
 
 
@@ -128,7 +128,7 @@ date: 2020-12-27
 
   **劣势:**控制逻辑复杂, 更多的控制线
 
-  ![](https://npm.elemecdn.com/rikka-os@1.0.3/img/README.assets/c4c6d3ea6471ed7ad051062bced6132865d48487.webp)
+  ![](https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/README.assets/c4c6d3ea6471ed7ad051062bced6132865d48487.webp)
 
 **分布式:**
 
@@ -142,7 +142,7 @@ date: 2020-12-27
 
   每个设备独立决定它是否拥有最高优先级
 
-  ![](https://npm.elemecdn.com/rikka-os@1.0.3/img/README.assets/dfebd1c7b50dd3f714b0ee0e58f6fcd438fb8c22.webp)
+  ![](https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/README.assets/dfebd1c7b50dd3f714b0ee0e58f6fcd438fb8c22.webp)
 
 + 碰撞检测
 
@@ -176,19 +176,19 @@ date: 2020-12-27
 
   劣势: 对噪声敏感; 接口逻辑复杂
 
-  ![](https://npm.elemecdn.com/rikka-os@1.0.3/img/README.assets/02a74fd69a419c5ef9bcf0e77b23edcd281803c1.webp)
+  ![](https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/README.assets/02a74fd69a419c5ef9bcf0e77b23edcd281803c1.webp)
 
   **握手**的样例: 
 
-   ![](https://npm.elemecdn.com/rikka-os@1.0.3/img/README.assets/27998c3a8bb48f3970e1eaf868e837d52094e858.webp)				
+   ![](https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/README.assets/27998c3a8bb48f3970e1eaf868e837d52094e858.webp)				
 
-   ![](https://npm.elemecdn.com/rikka-os@1.0.3/img/README.assets/27babc06420cc8c0e436f97540af8e5e784e388b.webp)
+   ![](https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/README.assets/27babc06420cc8c0e436f97540af8e5e784e388b.webp)
 
 + 半同步时序: 结合同步时序(时钟)和异步时序(握手)
 
   为了减小噪声的影响, 在异步时序中使用时钟.时钟上升沿的就绪信号和应答信号都是有效的. 额外加一条等待线, 以协调不同速度的设备, 比如图中在第三个时钟周期时, Data1 尚未准备完毕, 所以继续等待直到 Data1 准备好, 释放等待线.
 
-  ![](https://npm.elemecdn.com/rikka-os@1.0.3/img/README.assets/ce326c52f5da9ded6538dbd707f812facba524ea.webp)
+  ![](https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/README.assets/ce326c52f5da9ded6538dbd707f812facba524ea.webp)
 
 + 分割事务: 分割总线事务: 当设备准备好数据时释放总线
 
@@ -198,7 +198,7 @@ date: 2020-12-27
 
   **缺点:**增加了每个总线事务的持续时间和系统复杂性
 
-  ![](https://npm.elemecdn.com/rikka-os@1.0.3/img/README.assets/a44f52cef72189278f36692269324130069b39d4.webp)
+  ![](https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/README.assets/a44f52cef72189278f36692269324130069b39d4.webp)
 
 #### 总线带宽和数据传输率
 

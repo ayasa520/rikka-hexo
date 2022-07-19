@@ -29,7 +29,7 @@ $X=X_S \times 2^{X_E},Y=Y_S \times 2^{Y_E}$
       \ne0,\begin{cases}大的向小的对齐:减小较r大的阶码,同时扩大其尾数\\小的向大的对齐:增大较小的阶码,同时减小其尾数 \end{cases} \\
       \end{cases}$
       在计算机中,尾数左移可能会使最高位数据丢j失,故采用小阶向大阶对齐
-      <img src="https://npm.elemecdn.com/rikka-os@1.0.3/img/README.assets/deb6114c1afee838908c5071612f84f69a0fa8d0.jpg" alt="浮点数加减" style="zoom:67%;" />
+      <img src="https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/README.assets/deb6114c1afee838908c5071612f84f69a0fa8d0.jpg" alt="浮点数加减" style="zoom:67%;" />
 
     <center>浮点数加减的过程</center>
 
@@ -66,7 +66,7 @@ $X=X_S \times 2^{X_E},Y=Y_S \times 2^{Y_E}$
     + 若最高位产生进位,结果正确(符号等同于被减数)
     + 若没有进位,应该取结果的补数,最终结果与被减数相反.
       注意:此处可以是认定为没有符号位的补码在做计算,所以最终结果需要进行修正.(因为正数补码是它自身,负数补码是其反码加一) 
-      <img src="https://npm.elemecdn.com/rikka-os@1.0.3/img/README.assets/baa713a920ac0acf967f9b22dda0cc73973d0598.webp" alt="浮点数运算源码加减法" style="zoom:80%;" />
+      <img src="https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/README.assets/baa713a920ac0acf967f9b22dda0cc73973d0598.webp" alt="浮点数运算源码加减法" style="zoom:80%;" />
 
   更通俗的说法:最终算A+B的时候(无论是一开始就是A+B还是减法转化而来).如A,B同号,尾数是正常相加;若A,B异号,尾数为$A_S+[B_S]_补$
 
@@ -108,7 +108,7 @@ $X=X_S \times 2^{X_E},Y=Y_S \times 2^{Y_E}$
 
 ## 浮点数乘法
 
-<img src="https://npm.elemecdn.com/rikka-os@1.0.3/img/README.assets/16896fbb58f26550525aedbf82281f8eec4abede.jpg" alt="浮点数乘" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/README.assets/16896fbb58f26550525aedbf82281f8eec4abede.jpg" alt="浮点数乘" style="zoom:67%;" />
 
 + 步骤
   + 如果任何一个操作数为0,返回0.
@@ -118,7 +118,7 @@ $X=X_S \times 2^{X_E},Y=Y_S \times 2^{Y_E}$
 
 ## 浮点数除法
 
-<img src="https://npm.elemecdn.com/rikka-os@1.0.3/img/README.assets/2489c91543786aa46bdfc31c6d4f6b1851450557.jpg" alt="浮点数除法" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/README.assets/2489c91543786aa46bdfc31c6d4f6b1851450557.jpg" alt="浮点数除法" style="zoom:67%;" />
 
 + 步骤
   + 除数为0,报错或设为无穷.

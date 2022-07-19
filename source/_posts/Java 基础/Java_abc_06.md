@@ -23,7 +23,7 @@ public boolean equals(Object obj)
 }
 ```
 
-![image-20210513011757424](https://npm.elemecdn.com/rikka-os@1.0.3/img/Java_abc_06.assets/image-20210513011757424.webp)
+![image-20210513011757424](https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/Java_abc_06.assets/image-20210513011757424.webp)
 
 + `equals` 比较二者指向对象的内容
 + `==` 比较二者是否指向同一地址（管理同一个对象）

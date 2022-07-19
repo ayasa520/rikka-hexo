@@ -24,21 +24,21 @@ CPU 的操作由它所执行的指令确定, 这些指令被称为**机器指令
 
 只有关机时, 程序执行才会停止, 或者遇到致命错误或者停止计算机的指令.
 
-<img src="https://npm.elemecdn.com/rikka-os@1.0.3/img/README.assets/image (1).jpg" style="zoom:80%;" />
+<img src="https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/README.assets/image (1).jpg" style="zoom:80%;" />
 
 指令周期状态图:
 
-<img src="https://npm.elemecdn.com/rikka-os@1.0.3/img/README.assets/image (1).jpg" style="zoom:80%;" />
+<img src="https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/README.assets/image (1).jpg" style="zoom:80%;" />
 
 ### 带有中断的指令周期
 
 带有中断的指令周期:
 
-<img src="https://npm.elemecdn.com/rikka-os@1.0.3/img/README.assets/image.jpg" style="zoom:80%;" />
+<img src="https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/README.assets/image.jpg" style="zoom:80%;" />
 
 带有中断的指令周期状态图:
 
-<img src="https://npm.elemecdn.com/rikka-os@1.0.3/img/README.assets/image.jpg" style="zoom:80%;" />
+<img src="https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/README.assets/image.jpg" style="zoom:80%;" />
 
 
 
@@ -60,7 +60,7 @@ CPU 的操作由它所执行的指令确定, 这些指令被称为**机器指令
 + 指令格式:指令被划分为字段，对应于指令的要素
 + 对于大多数指令集，使用一种以上的格式
 
-<img src="https://npm.elemecdn.com/rikka-os@1.0.3/img/README.assets/image (1).jpg" style="zoom:80%;" />
+<img src="https://cdn.jsdelivr.net/npm/rikka-os@1.0.3/img/README.assets/image (1).jpg" style="zoom:80%;" />
 
 + 符号表示:帮助程序员和教科书的读者处理指令
 + 操作码用缩写表示，称为助记符

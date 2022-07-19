@@ -31,7 +31,7 @@ function daodao_page_init(url, template_html, extra) {
                 extra();
         }
         if (template !== 'function') {
-            getScript('https://npm.elemecdn.com/art-template@4.13.2/lib/template-web.js').then(
+            getScript('https://cdn.jsdelivr.net/npm/art-template@4.13.2/lib/template-web.js').then(
                 generate_daodao_html  )
         }else{
             generate_daodao_html();

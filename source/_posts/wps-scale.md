@@ -8,11 +8,11 @@ categories: "教程"
 
 如果设置了全局缩放, 在 WPS 中可能会出现 UI 中文字清晰, 而正文的文字模糊的情况, 如下图: 
 
-![2021-09-10_13-20](https://npm.elemecdn.com/rikka-os2@1.0.0/2021-09-10_13-20.png)
+![2021-09-10_13-20](https://cdn.jsdelivr.net/npm/rikka-os2@1.0.0/2021-09-10_13-20.png)
 
 放大查看: 
 
-![image-20210910132548843](https://npm.elemecdn.com/rikka-os2@1.0.0/image-20210910132548843.png)
+![image-20210910132548843](https://cdn.jsdelivr.net/npm/rikka-os2@1.0.0/image-20210910132548843.png)
 
 
 
@@ -22,12 +22,12 @@ categories: "教程"
 
 比如修改 desktop 文件如下:
 
-![2021-09-08_11-38](https://npm.elemecdn.com/rikka-os2@1.0.1/2021-09-08_11-38.png)
+![2021-09-08_11-38](https://cdn.jsdelivr.net/npm/rikka-os2@1.0.1/2021-09-08_11-38.png)
 
 修改后的效果:
 
-![2021-09-10_13-19](https://npm.elemecdn.com/rikka-os2@1.0.0/2021-09-10_13-19.png)
+![2021-09-10_13-19](https://cdn.jsdelivr.net/npm/rikka-os2@1.0.0/2021-09-10_13-19.png)
 
 放大查看:
 
-![image-20210910133309962](https://npm.elemecdn.com/rikka-os2@1.0.0/image-20210910133309962.png)
+![image-20210910133309962](https://cdn.jsdelivr.net/npm/rikka-os2@1.0.0/image-20210910133309962.png)
