@@ -1054,8 +1054,8 @@ footer_beautify:
   swiperpara: 0 #若非0，则开启轮播功能，每行徽标个数
   bdageitem:
     - link: https://beian.miit.gov.cn/#/Integrated/index #徽标指向网站链接
-      shields: https://cdn.jsdelivr.net/npm/rikka-os2@1.0.7/img/bwan.svg
-      message: 晋ICP备2021010168号-1 #徽标提示语
+      shields: https://cdn.jsdelivr.net/npm/rikka-os2@1.0.8/img/bwan.svg
+      message: 晋ICP备2022007338号 #徽标提示语
   swiper_css: https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper/lib/swiper.min.css
   swiper_js: https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper/lib/swiper.min.js
   swiperbdage_init_js: https://cdn.jsdelivr.net/npm/hexo-butterfly-footer-beautify/lib/swiperbdage_init.min.js
