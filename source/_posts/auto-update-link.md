@@ -110,7 +110,7 @@ def hello_world():
     data = json.loads(request.get_data(as_text=True))
     data = json.loads(data['request_data'])
     # 检查来源, 换成自己的
-    if "comment" in data and data['href'] == 'https://www.jaoushingan.com/link/':
+    if "comment" in data and data['href'] == 'https://blog.jaoushingan.com/link/':
         with open('/var/hexo_source/hexo/source/_data/link.yml','a+')as f:
             # f.write(str(data))
             dom = etree.HTML(str(data['comment']))
@@ -175,7 +175,7 @@ CORS(app, supports_credentials=True)
 def hello_world():
     data = json.loads(request.get_data(as_text=True))
     data = json.loads(data['request_data'])
-    if "comment" in data and data['href'] == 'https://www.jaoushingan.com/link/':
+    if "comment" in data and data['href'] == 'https://blog.jaoushingan.com/link/':
         dom = etree.HTML(str(data['comment']))
         info = []
         try:

@@ -14,7 +14,7 @@ timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://www.jaoushingan.com/
+url: https://blog.jaoushingan.com/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -131,7 +131,7 @@ offline:
     - urlPattern: /* # 如果你需要加载CDN资源，请配置该选项，如果没有，可以不配置。
       handler: cacheFirst
       options:
-        origin: https://www.jaoushingan.com/ # 可替换成你的 url
+        origin: https://blog.jaoushingan.com/ # 可替换成你的 url
 
 feed:
   enable: true
