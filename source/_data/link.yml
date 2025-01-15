@@ -1,0 +1,135 @@
+# 在这里添加友链
+
+# - class_name: 网站
+#   class_desc: 值得推荐的网站
+#   link_list:
+#     - name: Youtube
+#       link: https://www.youtube.com/
+#       avatar: https://i.loli.net/2020/05/14/9ZkGg8v3azHJfM1.png
+#       descr: 视频网站
+#     - name: Weibo
+#       link: https://www.weibo.com/
+#       avatar: https://i.loli.net/2020/05/14/TLJBum386vcnI1P.png
+#       descr: 中国最大社交分享平台
+#     - name: Twitter
+#       link: https://twitter.com/
+#       avatar: https://i.loli.net/2020/05/14/5VyHPQqR6LWF39a.png
+#       descr: 社交分享平台
+
+
+- class_name: 站点
+  class_desc: 值得推荐的网站
+  link_list:
+    - name: 朝圣'blog
+      link: https://www.mcpeach.cc
+      descr: 不忘初心，方得始终。
+      avatar: https://tt.mcpeach.cc/tx.jpg
+
+    - name: Akilarの糖果屋
+      link: https://akilar.top/
+      avatar: https://akilar.top/img/siteicon/favicon.png
+      descr: 期待您的光临！
+      # siteshot: https://cdn.jsdelivr.net/gh/Akilarlxh/ScreenShot@gh-pages/akilar.top.jpg
+    - name: 小嘉的部落格               # 站點名稱
+      link: https://blog.imzjw.cn    # 站點鏈接
+      avatar: https://cdn.jsdelivr.net/npm/nanshen/avatar.jpg  # 站點頭像
+      descr: 好记性不如烂笔头          # 站點描述
+
+    - name: 清粥的小站
+      link: https://zhouwenzhe.com/
+      avatar: https://cdn.jsdelivr.net/gh/Vingurzhou/images@master/avatar/Yun.png
+      descr: 不负佳期韶华
+    
+    - name: 繁星小站
+      link: https://www.moeor.com/
+      avatar: https://www.moeor.com/avatar.webp
+      descr: 不过是大梦一场空！
+
+    - name: Lznote  
+      link: https://lznote.com
+      descr: 一个喜欢折腾的小姐姐  
+      avatar: https://cdn.jsdelivr.net/gh/liaoblog/img@master/blogpage/noteimg.png
+
+    - name: OY
+      link: https://oy6090.top/
+      avatar: https://cdn.jsdelivr.net/gh/OYCodeSite/CDN@0.2/oy_img/avatar.jpg
+      descr: 放弃不难，但坚持一定很酷。
+
+    - name: 青葱雅亭
+      link: https://www.itciraos.cn
+      avatar: https://www.itciraos.cn/mysource/avatar.webp
+      descr: 有朋自远方来，不亦乐乎。
+
+    - name: W4J1e's blog
+      avatar: https://hin.cool/favicon.ico
+      link: https://hin.cool
+      descr: 总是偏爱不务正业
+
+    - name: T1s3c’s Bl0g
+      link: https://iori-yimaga.top
+      avatar: https://cdn.jsdelivr.net/gh/Iori-yimaga/PicBed/MyBlog/avatar.jpg
+      descr: 当程序运行的那一刻，我知道是编译器对我的温柔
+
+    - name: 幻世·游戏人间·N次元
+      link: https://www.yd-cfcz.art
+      avatar: https://cdn.jsdelivr.net/gh/YDTRINLEY/YDTRINLEY.github.io/img/avatar.png
+      descr: YD·N次元药师的栖息地
+
+    - name: 沐印小站;
+      link: https://undf.top
+      avatar: https://c.undf.top/icon/android-chrome-144x144.png
+      desc: 时间不在于你拥有多少，而在于你如何使用!
+
+    - name: Android
+      link: https://android99.me
+      avatar: https://android99.me/img/avatar.png
+      descr: 矩阵
+
+    - name: dummerfu
+      link: https://dummerfu.top/
+      avatar: https://cdn.jsdelivr.net/gh/dummerchen/cdn@master/img/custom/avatar.jpg
+      descr: 一个兴趣使然的programmer
+
+    - name: 南雍随笔
+      link: https://ydjsir.com.cn/
+      avatar: https://avatars.githubusercontent.com/u/55691893?v=4
+      descr: 此时相望不相闻，愿逐月华流照君
+
+    - name: 凡间小狐狸
+      link: https://AIyyds.github.io
+      avatar: https://img-blog.csdnimg.cn/f7295d6b5574457f91c44b97305feeda.jpg
+      descr: 凡是过往，皆为序章
+      
+    - name: 牧马人的忧伤
+      link: https://lvxueyang.vip
+      avatar: https://lvxueyangboke.oss-cn-beijing.aliyuncs.com/images/20210805201008.jpg
+      descr: 这里的一切都有始有终，却能容纳所有的不期而遇和久别重逢，世界灿烂，欢迎回家
+
+    - name: 搬砖日志
+      link: https://dutljy.top/
+      avatar: https://bu.dusays.com/2021/09/03/6821a7fe3822b.jpg
+      descr: 永怀善意，清澈明朗
+     
+    - name: atoooms
+      link: https://atoooms.gitee.io/
+      avatar: https://z3.ax1x.com/2021/08/05/feTaGj.png
+      descr: 万物归于原子
+
+    - name: Pemp
+      link: https://pemp.top/
+      avatar: https://pemp.top/images/logo.jpg
+
+    - name: Xc's Blog
+      link: https://6ing.xyz/
+      avatar: https://cdn.jsdelivr.net/gh/mjcfx/picgo/img/qqtou.jpg
+      descr: 欢迎您的访问！
+
+    - name: Jasonの小窝
+      link: https://freeaas.com/
+      avatar: https://www.freeaas.com/a/avatar.jpg
+      descr: 因为热爱，所以执着
+
+    - name: 小胖墩er
+      link: https://chubbyduner.top
+      avatar: https://cdn.jsdelivr.net/gh/Chubby-Duner/image-hosting@master/blog/logo.jpeg
+      descr: 迟到总比不到的好，所以好好加油吧。

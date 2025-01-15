@@ -1,0 +1,490 @@
+{
+    "颜文字": {
+        "type": "emoticon",
+        "container": [
+            {
+                "icon": "OωO",
+                "text": "Author: DIYgod"
+            },
+            {
+                "icon": "|´・ω・)ノ",
+                "text": "Hi"
+            },
+            {
+                "icon": "ヾ(≧∇≦*)ゝ",
+                "text": "开心"
+            },
+            {
+                "icon": "(☆ω☆)",
+                "text": "星星眼"
+            },
+            {
+                "icon": "（╯‵□′）╯︵┴─┴",
+                "text": "掀桌"
+            },
+            {
+                "icon": "￣﹃￣",
+                "text": "流口水"
+            },
+            {
+                "icon": "(/ω＼)",
+                "text": "捂脸"
+            },
+            {
+                "icon": "∠( ᐛ 」∠)＿",
+                "text": "给跪"
+            },
+            {
+                "icon": "(๑•̀ㅁ•́ฅ)",
+                "text": "Hi"
+            },
+            {
+                "icon": "→_→",
+                "text": "斜眼"
+            },
+            {
+                "icon": "୧(๑•̀⌄•́๑)૭",
+                "text": "加油"
+            },
+            {
+                "icon": "٩(ˊᗜˋ*)و",
+                "text": "有木有WiFi"
+            },
+            {
+                "icon": "(ノ°ο°)ノ",
+                "text": "前方高能预警"
+            },
+            {
+                "icon": "(´இ皿இ｀)",
+                "text": "我从未见过如此厚颜无耻之人"
+            },
+            {
+                "icon": "⌇●﹏●⌇",
+                "text": "吓死宝宝惹"
+            },
+            {
+                "icon": "(ฅ´ω`ฅ)",
+                "text": "已阅留爪"
+            },
+            {
+                "icon": "(╯°A°)╯︵○○○",
+                "text": "去吧大师球"
+            },
+            {
+                "icon": "φ(￣∇￣o)",
+                "text": "太萌惹"
+            },
+            {
+                "icon": "ヾ(´･ ･｀｡)ノ\"",
+                "text": "咦咦咦"
+            },
+            {
+                "icon": "( ง ᵒ̌皿ᵒ̌)ง⁼³₌₃",
+                "text": "气呼呼"
+            },
+            {
+                "icon": "(ó﹏ò｡)",
+                "text": "我受到了惊吓"
+            },
+            {
+                "icon": "Σ(っ °Д °;)っ",
+                "text": "什么鬼"
+            },
+            {
+                "icon": "( ,,´･ω･)ﾉ\"(´っω･｀｡)",
+                "text": "摸摸头"
+            },
+            {
+                "icon": "╮(╯▽╰)╭ ",
+                "text": "无奈"
+            },
+            {
+                "icon": "o(*////▽////*)q ",
+                "text": "脸红"
+            },
+            {
+                "icon": "＞﹏＜",
+                "text": ""
+            },
+            {
+                "icon": "( ๑´•ω•) \"(ㆆᴗㆆ)",
+                "text": ""
+            }
+        ]
+    },
+    "Emoji": {
+        "type": "emoji",
+        "container": [
+            {
+                "icon": "😂",
+                "text": ""
+            },
+            {
+                "icon": "😀",
+                "text": ""
+            },
+            {
+                "icon": "😅",
+                "text": ""
+            },
+            {
+                "icon": "😊",
+                "text": ""
+            },
+            {
+                "icon": "🙂",
+                "text": ""
+            },
+            {
+                "icon": "🙃",
+                "text": ""
+            },
+            {
+                "icon": "😌",
+                "text": ""
+            },
+            {
+                "icon": "😍",
+                "text": ""
+            },
+            {
+                "icon": "😘 ",
+                "text": ""
+            },
+            {
+                "icon": "😜",
+                "text": ""
+            },
+            {
+                "icon": "😝",
+                "text": ""
+            },
+            {
+                "icon": "😏",
+                "text": ""
+            },
+            {
+                "icon": "😒",
+                "text": ""
+            },
+            {
+                "icon": "🙄",
+                "text": ""
+            },
+            {
+                "icon": "😳 ",
+                "text": ""
+            },
+            {
+                "icon": "😡",
+                "text": ""
+            },
+            {
+                "icon": "😔",
+                "text": ""
+            },
+            {
+                "icon": "😫",
+                "text": ""
+            },
+            {
+                "icon": "😱",
+                "text": ""
+            },
+            {
+                "icon": "😭",
+                "text": ""
+            },
+            {
+                "icon": "💩",
+                "text": ""
+            },
+            {
+                "icon": "👻",
+                "text": ""
+            },
+            {
+                "icon": "🙌",
+                "text": ""
+            },
+            {
+                "icon": "🖕",
+                "text": ""
+            },
+            {
+                "icon": "👍",
+                "text": ""
+            },
+            {
+                "icon": "👫",
+                "text": ""
+            },
+            {
+                "icon": "👬",
+                "text": ""
+            },
+            {
+                "icon": "👭",
+                "text": ""
+            },
+            {
+                "icon": "🌚",
+                "text": ""
+            },
+            {
+                "icon": "🌝",
+                "text": ""
+            },
+            {
+                "icon": "🙈",
+                "text": ""
+            },
+            {
+                "icon": "💊",
+                "text": ""
+            },
+            {
+                "icon": "😶",
+                "text": ""
+            },
+            {
+                "icon": "🙏",
+                "text": ""
+            },
+            {
+                "icon": "🍦",
+                "text": ""
+            },
+            {
+                "icon": "🍉",
+                "text": ""
+            },
+            {
+                "icon": "😣",
+                "text": ""
+            }
+        ]
+    },
+    "bilibiliHotKey": {
+        "type": "image",
+        "container": [
+            {
+                "text": "bilibiliHotKey-1",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/1.jpg'>"
+            },
+            {
+                "text": "bilibiliHotKey-2",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/10.jpg'>"
+            },
+            {
+                "text": "bilibiliHotKey-3",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/11.jpg'>"
+            },
+            {
+                "text": "bilibiliHotKey-4",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/12.jpg'>"
+            },
+            {
+                "text": "bilibiliHotKey-5",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/13.jpg'>"
+            },
+            {
+                "text": "bilibiliHotKey-6",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/14.jpg'>"
+            },
+            {
+                "text": "bilibiliHotKey-7",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/15.jpg'>"
+            },
+            {
+                "text": "bilibiliHotKey-8",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/16.jpg'>"
+            },
+            {
+                "text": "bilibiliHotKey-9",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/17.jpg'>"
+            },
+            {
+                "text": "bilibiliHotKey-10",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/18.jpg'>"
+            },
+            {
+                "text": "bilibiliHotKey-11",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/19.jpg'>"
+            },
+            {
+                "text": "bilibiliHotKey-12",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/2.jpg'>"
+            },
+            {
+                "text": "bilibiliHotKey-13",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/20.jpg'>"
+            },
+            {
+                "text": "bilibiliHotKey-14",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/21.jpg'>"
+            },
+            {
+                "text": "bilibiliHotKey-15",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/22.jpg'>"
+            },
+            {
+                "text": "bilibiliHotKey-16",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/23.jpg'>"
+            },
+            {
+                "text": "bilibiliHotKey-17",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/24.jpg'>"
+            },
+            {
+                "text": "bilibiliHotKey-18",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/25.jpg'>"
+            },
+            {
+                "text": "bilibiliHotKey-19",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/26.jpg'>"
+            },
+            {
+                "text": "bilibiliHotKey-20",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/27.jpg'>"
+            },
+            {
+                "text": "bilibiliHotKey-21",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/28.jpg'>"
+            },
+            {
+                "text": "bilibiliHotKey-22",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/29.jpg'>"
+            },
+            {
+                "text": "bilibiliHotKey-23",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/3.jpg'>"
+            },
+            {
+                "text": "bilibiliHotKey-24",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/30.jpg'>"
+            },
+            {
+                "text": "bilibiliHotKey-25",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/31.jpg'>"
+            },
+            {
+                "text": "bilibiliHotKey-26",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/32.jpg'>"
+            },
+            {
+                "text": "bilibiliHotKey-27",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/4.jpg'>"
+            },
+            {
+                "text": "bilibiliHotKey-28",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/5.jpg'>"
+            },
+            {
+                "text": "bilibiliHotKey-29",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/6.jpg'>"
+            },
+            {
+                "text": "bilibiliHotKey-30",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/7.jpg'>"
+            },
+            {
+                "text": "bilibiliHotKey-31",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/8.jpg'>"
+            },
+            {
+                "text": "bilibiliHotKey-32",
+                "icon": "<img src='https://cdn.jsdelivr.net/gh/2x-ercha/twikoo-magic@master/image/bilibiliHotKey/9.jpg'>"
+            }
+        ]
+    },
+    "Bilibili": {
+        "type": "image",
+        "container": [
+            {
+                "icon": "<img src=\"https://cdn.jsdelivr.net/gh/imaegoo/emotion/bilibili/6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png\">",
+                "text": "tv_doge"
+            },
+            {
+                "icon": "<img src=\"https://cdn.jsdelivr.net/gh/imaegoo/emotion/bilibili/a8111ad55953ef5e3be3327ef94eb4a39d535d06.png\">",
+                "text": "tv_亲亲"
+            },
+            {
+                "icon": "<img src=\"https://cdn.jsdelivr.net/gh/imaegoo/emotion/bilibili/bb690d4107620f1c15cff29509db529a73aee261.png\">",
+                "text": "tv_偷笑"
+            },
+            {
+                "icon": "<img src=\"https://cdn.jsdelivr.net/gh/imaegoo/emotion/bilibili/180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png\">",
+                "text": "tv_再见"
+            },
+            {
+                "icon": "<img src=\"https://cdn.jsdelivr.net/gh/imaegoo/emotion/bilibili/b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png\">",
+                "text": "tv_冷漠"
+            },
+            {
+                "icon": "<img src=\"https://cdn.jsdelivr.net/gh/imaegoo/emotion/bilibili/34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png\">",
+                "text": "tv_发怒"
+            },
+            {
+                "icon": "<img src=\"https://cdn.jsdelivr.net/gh/imaegoo/emotion/bilibili/34db290afd2963723c6eb3c4560667db7253a21a.png\">",
+                "text": "tv_发财"
+            },
+            {
+                "icon": "<img src=\"https://cdn.jsdelivr.net/gh/imaegoo/emotion/bilibili/9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png\">",
+                "text": "tv_可爱"
+            },
+            {
+                "icon": "<img src=\"https://cdn.jsdelivr.net/gh/imaegoo/emotion/bilibili/09dd16a7aa59b77baa1155d47484409624470c77.png\">",
+                "text": "tv_吐血"
+            },
+            {
+                "icon": "<img src=\"https://cdn.jsdelivr.net/gh/imaegoo/emotion/bilibili/fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png\">",
+                "text": "tv_呆"
+            },
+            {
+                "icon": "<img src=\"https://cdn.jsdelivr.net/gh/imaegoo/emotion/bilibili/9f996894a39e282ccf5e66856af49483f81870f3.png\">",
+                "text": "tv_呕吐"
+            },
+            {
+                "icon": "<img src=\"https://cdn.jsdelivr.net/gh/imaegoo/emotion/bilibili/241ee304e44c0af029adceb294399391e4737ef2.png\">",
+                "text": "tv_困"
+            },
+            {
+                "icon": "<img src=\"https://cdn.jsdelivr.net/gh/imaegoo/emotion/bilibili/1f0b87f731a671079842116e0991c91c2c88645a.png\">",
+                "text": "tv_坏笑"
+            },
+            {
+                "icon": "<img src=\"https://cdn.jsdelivr.net/gh/imaegoo/emotion/bilibili/093c1e2c490161aca397afc45573c877cdead616.png\">",
+                "text": "tv_大佬"
+            },
+            {
+                "icon": "<img src=\"https://cdn.jsdelivr.net/gh/imaegoo/emotion/bilibili/23269aeb35f99daee28dda129676f6e9ea87934f.png\">",
+                "text": "tv_大哭"
+            },
+            {
+                "icon": "<img src=\"https://cdn.jsdelivr.net/gh/imaegoo/emotion/bilibili/d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png\">",
+                "text": "tv_委屈"
+            },
+            {
+                "icon": "<img src=\"https://cdn.jsdelivr.net/gh/imaegoo/emotion/bilibili/a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png\">",
+                "text": "tv_害羞"
+            },
+            {
+                "icon": "<img src=\"https://cdn.jsdelivr.net/gh/imaegoo/emotion/bilibili/7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png\">",
+                "text": "tv_尴尬"
+            },
+            {
+                "icon": "<img src=\"https://cdn.jsdelivr.net/gh/imaegoo/emotion/bilibili/70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png\">",
+                "text": "tv_微笑"
+            },
+            {
+                "icon": "<img src=\"https://cdn.jsdelivr.net/gh/imaegoo/emotion/bilibili/90cf159733e558137ed20aa04d09964436f618a1.png\">",
+                "text": "tv_思考"
+            },
+            {
+                "icon": "<img src=\"https://cdn.jsdelivr.net/gh/imaegoo/emotion/bilibili/0d15c7e2ee58e935adc6a7193ee042388adc22af.png\">",
+                "text": "tv_惊吓"
+            }
+        ]
+    }
+}
